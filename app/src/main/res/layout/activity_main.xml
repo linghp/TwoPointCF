@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/fragment_MyCenter"
+        class="com.peoit.twopointcf.ui.fragment.MyCenterFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/indicator"
+        tools:layout="@layout/fragment_mycenter" />
+
+    <fragment
+        android:id="@+id/fragment_InvestFind"
+        class="com.peoit.twopointcf.ui.fragment.InvestFindFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/indicator"
+        tools:layout="@layout/fragment_investfind" />
+
+    <fragment
+        android:id="@+id/fragment_BusinessDynamics"
+        class="com.peoit.twopointcf.ui.fragment.BusinessDynamicsFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/indicator"
+        tools:layout="@layout/fragment_businessdynamics" />
+
+    <fragment
+        android:id="@+id/fragment_MyProject"
+        class="com.peoit.twopointcf.ui.fragment.MyProjectFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/indicator"
+        tools:layout="@layout/fragment_myproject" />
+
+    <com.peoit.twopointcf.ui.view.FragmentIndicator
+        android:id="@+id/indicator"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/highlighted_text_material_dark" />
+
+</RelativeLayout>

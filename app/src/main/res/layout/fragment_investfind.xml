@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/bg_gray">
+    <com.peoit.twopointcf.ui.view.TitleView
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+    <com.peoit.twopointcf.ui.view.SlidingTabLayout
+        android:layout_weight="2"
+        android:id="@+id/viewpager_tabs"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:textAppearance="@style/TextAppearance.my.Tab"
+        app:indicatorHeight="2dp"
+        app:contentInsetStart="6dp"
+        app:selectedColor="?attr/colorAccent"
+        android:fadingEdgeLength="@dimen/spacing_minor"/>
+
+        <TextView android:layout_weight="1"
+            android:layout_width="0dp" android:gravity="center"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView5"/>
+
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1" />
+</LinearLayout>
