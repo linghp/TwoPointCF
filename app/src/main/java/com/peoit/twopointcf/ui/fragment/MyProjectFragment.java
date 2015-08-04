@@ -48,9 +48,24 @@ public class MyProjectFragment extends BaseFragment {
             titleView.setTitle(R.string.myproject);
         }
 	}
-	
 
-	@Override
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void updateView() {
+
+    }
+
+
+    @Override
 	public void onHiddenChanged(boolean hidden) {
 		super.onHiddenChanged(hidden);
 	}

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.view.TitleView;
@@ -13,7 +14,7 @@ import com.peoit.twopointcf.ui.view.TitleView;
  * last:2015/7/31
  * description:
  */
-public class BaseFragment extends Fragment{
+public abstract class BaseFragment extends Fragment{
     protected View mParent;
     protected FragmentActivity mActivity;
     protected TitleView titleView;
@@ -24,5 +25,13 @@ public class BaseFragment extends Fragment{
         mParent = getView();
         mActivity = getActivity();
         titleView= (TitleView) getView().findViewById(R.id.title_view);
+    }
+
+    protected abstract void initView();
+    protected abstract void initData();
+    protected abstract void updateView();
+
+    protected void myToast(String content){
+        Toast.makeText(this.getActivity(),content,Toast.LENGTH_SHORT).show();
     }
 }

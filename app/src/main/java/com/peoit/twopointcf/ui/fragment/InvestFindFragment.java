@@ -83,9 +83,24 @@ public class InvestFindFragment extends BaseFragment {
             titleView.setTitle(R.string.investfind);
         }
 	}
-	
 
-	@Override
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void updateView() {
+
+    }
+
+
+    @Override
 	public void onResume() {
 		super.onResume();
 	}

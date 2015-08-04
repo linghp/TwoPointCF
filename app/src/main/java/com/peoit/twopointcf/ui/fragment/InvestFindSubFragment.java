@@ -46,9 +46,24 @@ public class InvestFindSubFragment extends BaseFragment {
             titleView.hideLeftBtn();
         }
 	}
-	
 
-	@Override
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void updateView() {
+
+    }
+
+
+    @Override
 	public void onHiddenChanged(boolean hidden) {
 		super.onHiddenChanged(hidden);
 	}

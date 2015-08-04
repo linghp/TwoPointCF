@@ -76,6 +76,7 @@ public class TitleView extends FrameLayout{
 	 * @param listener
 	 */
 	public void setRightBtn(int resid,OnClickListener listener){
+        btn_right.setVisibility(View.VISIBLE);
 		btn_right.setImageResource(resid);
 		btn_right.setOnClickListener(listener);
 	}

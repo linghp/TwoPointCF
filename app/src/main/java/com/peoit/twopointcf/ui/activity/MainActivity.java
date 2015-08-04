@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.view.FragmentIndicator;
@@ -17,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setFragmentIndicator(0);
-        Toast.makeText(this,"test",0).show();
     }
 
     /**

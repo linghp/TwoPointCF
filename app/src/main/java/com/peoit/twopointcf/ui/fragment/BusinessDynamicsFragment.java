@@ -54,4 +54,19 @@ public class BusinessDynamicsFragment extends BaseFragment {
 
 	}
 
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void updateView() {
+
+    }
+
 }
