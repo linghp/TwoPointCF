@@ -51,7 +51,7 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
 	}
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 

@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.ui.adapter.InvestFindSubFragmentAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 
 /**
@@ -15,7 +18,8 @@ import com.peoit.twopointcf.ui.base.BaseFragment;
  */
 public class InvestFindSubFragment extends BaseFragment {
 	private TextView mText;
-
+    private ListView listView;
+    private InvestFindSubFragmentAdapter adapter;
 
 	public static InvestFindSubFragment newInstance(int index) {
 		InvestFindSubFragment f = new InvestFindSubFragment();
@@ -35,7 +39,13 @@ public class InvestFindSubFragment extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_mycenter, container, false);
+		View view = inflater.inflate(R.layout.fragment_investfindsub, container, false);
+        initView(view);
+        adapter=new InvestFindSubFragmentAdapter(getActivity());
+        ImageView imageView=new ImageView(this.getActivity());
+        imageView.setImageResource(R.mipmap.ic_launcher);
+        listView.addHeaderView(imageView);
+        listView.setAdapter(adapter);
 		return view;
 	}
 
@@ -47,8 +57,8 @@ public class InvestFindSubFragment extends BaseFragment {
         }
 	}
     @Override
-    protected void initView() {
-
+    protected void initView(View view) {
+        listView = (ListView) view.findViewById(R.id.listView);
     }
 
     @Override

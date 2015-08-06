@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/white"
+              android:padding="3dp">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher"
+                   android:scaleType="centerCrop"
+            android:id="@+id/imageView"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_marginLeft="6dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:gravity="center_vertical">
+                <TextView android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Small Text"
+                    android:id="@+id/tv_01"
+                    />
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="24dp"
+                    android:id="@+id/imageView5"
+                    android:src="@mipmap/ic_launcher"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="right"/>
+                </LinearLayout>
+            <TextView android:layout_marginTop="6dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:text="Small Text"
+                      android:id="@+id/tv_02"
+                />
+            <TextView android:layout_marginTop="6dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:text="Small Text"
+                      android:id="@+id/tv_03"
+                />
+            <TextView android:layout_marginTop="6dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceSmall"
+                      android:text="Small Text"
+                      android:id="@+id/tv_04"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="6dp"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_horizontal"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:text="Small Text"
+                  android:id="@+id/tv_bottom01"
+            />
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:text="Small Text"
+                  android:id="@+id/tv_bottom02"
+                  android:layout_centerHorizontal="true"
+            />
+        <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:text="Small Text"
+                  android:layout_alignParentRight="true"
+                  android:id="@+id/tv_bottom03"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_bottom01"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="已筹"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_bottom02"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_centerHorizontal="true"
+            android:text="目前累计金额"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_bottom03"
+            android:layout_alignParentRight="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="剩余时间"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

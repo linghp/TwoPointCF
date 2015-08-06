@@ -85,7 +85,7 @@ public class InvestFindFragment extends BaseFragment {
 	}
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 
