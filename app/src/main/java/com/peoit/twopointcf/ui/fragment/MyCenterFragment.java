@@ -49,7 +49,7 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
 	}
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 

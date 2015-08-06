@@ -50,7 +50,7 @@ public class MyProjectFragment extends BaseFragment {
 	}
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 
