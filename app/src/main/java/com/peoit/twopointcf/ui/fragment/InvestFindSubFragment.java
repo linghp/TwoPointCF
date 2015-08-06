@@ -56,7 +56,6 @@ public class InvestFindSubFragment extends BaseFragment {
             titleView.hideLeftBtn();
         }
 	}
-
     @Override
     protected void initView(View view) {
         listView = (ListView) view.findViewById(R.id.listView);

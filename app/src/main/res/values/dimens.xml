@@ -7,4 +7,6 @@
     <dimen name="spacing_minor">8dp</dimen>
     <dimen name="spacing_major">16dp</dimen>
     <dimen name="spacing_massive">24dp</dimen>
+    <!-- 标题大小  -->
+    <dimen name="title_txt_size">16sp</dimen><!-- 页面title  -->
 </resources>
