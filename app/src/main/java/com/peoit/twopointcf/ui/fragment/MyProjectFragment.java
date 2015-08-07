@@ -13,7 +13,7 @@ import com.peoit.twopointcf.ui.base.BaseFragment;
  * @author ling
  * 个人中心
  */
-public class MyProjectFragment extends BaseFragment {
+public class MyProjectFragment extends BaseFragment implements View.OnClickListener{
 
 	private TextView mText;
 
@@ -46,6 +46,7 @@ public class MyProjectFragment extends BaseFragment {
         if(titleView!=null){
             titleView.hideLeftBtn();
             titleView.setTitle(R.string.myproject);
+			titleView.setRightBtn(R.mipmap.setting, this);
         }
 	}
 
@@ -61,7 +62,6 @@ public class MyProjectFragment extends BaseFragment {
 
     @Override
     protected void updateView() {
-
     }
 
 
@@ -75,4 +75,13 @@ public class MyProjectFragment extends BaseFragment {
 		super.onDestroy();
 	}
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.right_btn://title 右侧按钮
+                myToast("添加");
+                break;
+        }
+
+    }
 }
