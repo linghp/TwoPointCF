@@ -39,6 +39,7 @@
     <!-- light blue -->
     <color name="lightblue300">#4fc3f7</color>
     <color name="lightblue500">#03a9f4</color>
+    <color name="lightblue500alpha">#cc03a9f4</color>
     <color name="lightblue700">#0288d1</color>
     <!-- cyan 蓝绿色 -->
     <color name="cyan300">#4dd0e1</color>
@@ -190,5 +191,6 @@
     <color name="grey_60">#99333333</color>
     <color name="grey_45">#73333333</color>
     <color name="grey_30">#4C333333</color>
-    
+    <drawable name="lightbluealpha">@color/lightblue500alpha</drawable>
+    <drawable name="lightblue">@color/lightblue500</drawable>
 </resources>

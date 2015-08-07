@@ -28,4 +28,8 @@
     <string name="investfind_sub2">金额最高</string>
     <string name="investfind_sub3">最新项目</string>
     <string name="investfind_sub4">投资发现4</string>
+    <string name="title_activity_invest_find_detail">InvestFindDetail</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

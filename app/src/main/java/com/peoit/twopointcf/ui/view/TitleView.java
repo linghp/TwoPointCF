@@ -31,7 +31,7 @@ public class TitleView extends FrameLayout{
 
 	public TitleView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-
+        mActivity= (Activity) context;
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.title_view, this, true);
@@ -96,12 +96,16 @@ public class TitleView extends FrameLayout{
 		btn_right.setOnClickListener(null);
 	}
 
-	public void setActivity(Activity curActivity){
-		this.mActivity = curActivity;
-	}
+//	public void setActivity(Activity curActivity){
+//		this.mActivity = curActivity;
+//	}
 
 	public void setTitle(int title){
 		tv_title.setText(getContext().getText(title));
+		tv_title.setVisibility(View.VISIBLE);
+	}
+    public void setTitle(String title){
+		tv_title.setText(title);
 		tv_title.setVisibility(View.VISIBLE);
 	}
 

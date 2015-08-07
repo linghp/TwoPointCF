@@ -38,10 +38,11 @@
         tools:layout="@layout/fragment_myproject" />
 
     <com.peoit.twopointcf.ui.view.FragmentIndicator
+        android:paddingTop="0.5dp"
         android:id="@+id/indicator"
         android:layout_alignParentBottom="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/highlighted_text_material_dark" />
+        android:background="@color/bg_gray" />
 
 </RelativeLayout>

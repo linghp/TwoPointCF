@@ -73,13 +73,13 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 				break;
 			case 1:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView2);
-				prevIcon.setImageResource(R.mipmap.ic_mycenter_normal);
+				prevIcon.setImageResource(R.mipmap.investfindnormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView2);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
 			case 2:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView3);
-				prevIcon.setImageResource(R.mipmap.ic_mycenter_normal);
+				prevIcon.setImageResource(R.mipmap.bussinessdynamicnormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView3);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
@@ -104,13 +104,13 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 				break;
 			case 1:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView2);
-				currIcon.setImageResource(R.mipmap.ic_mycenter_focused);
+				currIcon.setImageResource(R.mipmap.investfindfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView2);
 				currText.setTextColor(COLOR_SELECT);
 				break;
 			case 2:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView3);
-				currIcon.setImageResource(R.mipmap.ic_mycenter_focused);
+				currIcon.setImageResource(R.mipmap.bussinessdynamicfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView3);
 				currText.setTextColor(COLOR_SELECT);
 				break;

@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="50dp"
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:paddingTop="16dp"
+              tools:context="com.peoit.twopointcf.ui.fragment.InvestFindDetailSub1Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/textlefttag"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:text="收入来源"
+        android:textColor="@color/orange500"
+        android:textSize="@dimen/title_txt_size"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="1)宠物酒吧：游客在酒吧内的酒水消费\n2)宠物娱乐：骑马，遛狗，钓鱼，喂鹿等"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@mipmap/textlefttag"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:text="成本分析"
+        android:textColor="@color/orange500"
+        android:textSize="@dimen/title_txt_size"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:src="@mipmap/investfinddetail_fragmentsub2_1"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@mipmap/textlefttag"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:text="盈利预测"
+        android:textColor="@color/orange500"
+        android:textSize="@dimen/title_txt_size"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:src="@mipmap/investfinddetail_fragmentsub2_2"
+        />
+
+</LinearLayout>
+
