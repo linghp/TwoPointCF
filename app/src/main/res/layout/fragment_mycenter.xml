@@ -39,7 +39,6 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
-                    android:onClick="doClick"
                     android:scaleType="fitXY"
                     android:src="@mipmap/defaultloginheader"
                     app:shape="circle" />

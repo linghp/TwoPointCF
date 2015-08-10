@@ -25,6 +25,8 @@ public abstract class BaseFragment extends Fragment{
         mParent = getView();
         mActivity = getActivity();
         titleView= (TitleView) getView().findViewById(R.id.title_view);
+        initView(mParent);
+        initData();
     }
 
     protected abstract void initView(View view);
