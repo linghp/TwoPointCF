@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.ui.activity.InvestFindDetail;
+import com.peoit.twopointcf.ui.activity.InvestFindDetailActivity;
 import com.peoit.twopointcf.ui.adapter.InvestFindSubFragmentAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.CommonUtil;
@@ -98,7 +98,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         if(position!=0){
             Bundle bundle=new Bundle();
             bundle.putInt("position",position);
-            CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetail.class,bundle,false);
+            CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetailActivity.class,bundle,false);
         }
     }
 }

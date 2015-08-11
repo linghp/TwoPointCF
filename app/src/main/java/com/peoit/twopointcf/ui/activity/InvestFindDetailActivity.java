@@ -1,7 +1,11 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
@@ -16,38 +20,57 @@ import com.peoit.twopointcf.utils.MyLogger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvestFindDetail extends BaseActivity implements View.OnClickListener{
+public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener {
     private TagViewPager tagViewPager;
-    private BaseFragment firstFragment,secondFragment,thirdFragment,fourthFragment;
+    private TextView tv_subtitle;
+    private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invest_find_detail);
+        updateView();
+    }
+
+    public static void startThisActivity(String title, Context context) {
+        Intent intent = new Intent(context, InvestFindDetailActivity.class);
+        intent.putExtra("title", title);
+        context.startActivity(intent);
     }
 
     @Override
     protected void initData() {
-        firstFragment=new InvestFindDetailSub1Fragment();
-        secondFragment=new InvestFindDetailSub2Fragment();
-        thirdFragment=new InvestFindDetailSub3Fragment();
-        fourthFragment=new InvestFindDetailSub4Fragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment,"firstFragment").commit();
+        firstFragment = new InvestFindDetailSub1Fragment();
+        secondFragment = new InvestFindDetailSub2Fragment();
+        thirdFragment = new InvestFindDetailSub3Fragment();
+        fourthFragment = new InvestFindDetailSub4Fragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
+
+        title = getIntent().getStringExtra("title");
     }
 
     @Override
     protected void initView() {
         tagViewPager = (TagViewPager) findViewById(R.id.tagViewPager);
-
-        titleView.setTitle("金佳俊宠物度假村");
+        tv_subtitle= (TextView) findViewById(R.id.tv_subtitle);
         findViewById(R.id.slide_tag1).setActivated(true);
         //轮播
-        List<Integer> imgLists=new ArrayList<>();
+        List<Integer> imgLists = new ArrayList<>();
         imgLists.add(R.mipmap.raw_1433489820);
         imgLists.add(R.mipmap.raw_1433489820);
         imgLists.add(R.mipmap.raw_1433489820);
         imgLists.add(R.mipmap.raw_1433489820);
-        tagViewPager.toUse(imgLists,this);
+        tagViewPager.toUse(imgLists, this);
+    }
+
+    private void updateView() {
+        if (TextUtils.isEmpty(title)) {
+            titleView.setTitle("金佳俊宠物度假村");
+        } else {
+            titleView.setTitle(title);
+            tv_subtitle.setText(title);
+        }  
     }
 
     @Override
@@ -81,21 +104,21 @@ public class InvestFindDetail extends BaseActivity implements View.OnClickListen
                     findViewById(R.id.slide_tag2).setActivated(true);
                     findViewById(R.id.slide_tag3).setActivated(false);
                     findViewById(R.id.slide_tag4).setActivated(false);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, secondFragment,"secondFragment").commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, secondFragment, "secondFragment").commit();
                     break;
                 case R.id.slide_tag3:
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(true);
                     findViewById(R.id.slide_tag4).setActivated(false);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, thirdFragment,"thirdFragment").commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, thirdFragment, "thirdFragment").commit();
                     break;
                 case R.id.slide_tag4:
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(false);
                     findViewById(R.id.slide_tag4).setActivated(true);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fourthFragment,"fourthFragment").commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fourthFragment, "fourthFragment").commit();
                     //v.setActivated(true);
                     //myToast("test");
                     break;

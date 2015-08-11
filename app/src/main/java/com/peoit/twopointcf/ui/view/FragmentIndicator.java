@@ -67,7 +67,7 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 		switch(mCurIndicator) {
 			case 0:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView1);
-				prevIcon.setImageResource(R.mipmap.ic_mycenter_normal);
+				prevIcon.setImageResource(R.mipmap.mycenternormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView1);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
@@ -85,7 +85,7 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 				break;
 			case 3:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView4);
-				prevIcon.setImageResource(R.mipmap.ic_mycenter_normal);
+				prevIcon.setImageResource(R.mipmap.myprojectnormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView4);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
@@ -98,7 +98,7 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 		switch(which) {
 			case 0:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView1);
-				currIcon.setImageResource(R.mipmap.ic_mycenter_focused);
+				currIcon.setImageResource(R.mipmap.mycenterfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView1);
 				currText.setTextColor(COLOR_SELECT);
 				break;
@@ -116,7 +116,7 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 				break;
 			case 3:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView4);
-				currIcon.setImageResource(R.mipmap.ic_mycenter_focused);
+				currIcon.setImageResource(R.mipmap.myprojectfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView4);
 				currText.setTextColor(COLOR_SELECT);
 				break;

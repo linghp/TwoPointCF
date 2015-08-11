@@ -22,8 +22,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setContentView(int layoutResID) {
         super.setContentView(R.layout.layout_base);
         initContentView(layoutResID);
-        initData();
         initView();
+        initData();
     }
 
     protected void initContentView(int layoutResID) {

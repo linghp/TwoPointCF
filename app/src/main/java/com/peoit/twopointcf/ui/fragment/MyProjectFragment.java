@@ -7,7 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.ui.activity.FollowProjectActivity;
+import com.peoit.twopointcf.ui.activity.InvestedProjectActivity;
+import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
  * @author ling
@@ -46,13 +50,16 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
         if(titleView!=null){
             titleView.hideLeftBtn();
             titleView.setTitle(R.string.myproject);
-			titleView.setRightBtn(R.mipmap.setting, this);
+			titleView.setRightBtn(R.mipmap.add, this);
         }
 	}
 
     @Override
     protected void initView(View view) {
-
+      view.findViewById(R.id.ll_01).setOnClickListener(this);
+      view.findViewById(R.id.ll_02).setOnClickListener(this);
+      view.findViewById(R.id.ll_03).setOnClickListener(this);
+      view.findViewById(R.id.ll_04).setOnClickListener(this);
     }
 
     @Override
@@ -81,6 +88,19 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
             case R.id.right_btn://title 右侧按钮
                 myToast("添加");
                 break;
+            case R.id.ll_01:
+                CommonUtil.gotoActivity(getActivity(), InvestedProjectActivity.class,false);
+                break;
+            case R.id.ll_02:
+                CommonUtil.gotoActivity(getActivity(), FollowProjectActivity.class, false);
+                break;
+            case R.id.ll_03:
+                myToast("03");
+                break;
+            case R.id.ll_04:
+                CommonUtil.gotoActivity(getActivity(), MyPublishProjectActivity.class, false);
+                break;
+
         }
 
     }

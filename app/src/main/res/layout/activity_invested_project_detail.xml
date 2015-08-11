@@ -1,9 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.peoit.twopointcf.ui.activity.InvestFindDetailActivity"
-    >
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       tools:context="com.peoit.twopointcf.ui.activity.InvestedProjectDetailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,14 +28,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="9dp"
                     android:text="金佳俊宠物度假村"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"
 
-                    android:id="@+id/tv_subtitle"/>
+                    android:textStyle="bold"/>
 
                 <include
                     layout="@layout/aa"
@@ -53,16 +52,16 @@
                     android:background="@color/gray"
                     />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginRight="9dp"
-                    android:text="融资计划"
-                    android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"
-
-                    />
+                <TextView android:layout_marginLeft="16dp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="12dp"
+                          android:drawableLeft="@mipmap/textlefttag"
+                          android:drawablePadding="6dp"
+                          android:gravity="center_vertical"
+                          android:text="股权结构"
+                          android:textColor="@color/orange500"
+                          android:textSize="@dimen/title_txt_size"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -75,13 +74,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:layout_weight="1"
                         android:text="融资资金"
                         android:textSize="@dimen/title_txt_size"
@@ -90,50 +89,34 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
                         android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:paddingLeft="9dp"
-                        android:text="400万"
-                        android:textColor="@color/lightblue500"
-                        android:textSize="@dimen/title_txt_size"
-                        android:textStyle="bold"
-                        />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="2dp"
-                            android:layout_marginTop="2dp"
-                            android:background="@color/grey500"
-                            />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="已投人数"
+                        android:text="持股比例"
                         android:textSize="@dimen/title_txt_size"
                         />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:paddingLeft="9dp"
-                        android:text="20人"
-                        android:textColor="@color/lightblue500"
+                        android:text="实际出资"
                         android:textSize="@dimen/title_txt_size"
-                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
+                        android:layout_weight="1"
+                        android:text="职务"
+                        android:textSize="@dimen/title_txt_size"
                         />
                 </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -146,65 +129,48 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:text="出让股份"
+                        android:text="张三"
                         android:textSize="@dimen/title_txt_size"
                         />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:paddingLeft="9dp"
-                        android:text="40%"
-                        android:textColor="@color/lightblue500"
-                        android:textSize="@dimen/title_txt_size"
-                        android:textStyle="bold"
-                        />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="20dp"
-                            android:layout_marginBottom="2dp"
-                            android:layout_marginTop="2dp"
-                            android:background="@color/grey500"
-                            />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="单股投资额"
+                        android:text="50%"
                         android:textSize="@dimen/title_txt_size"
                         />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:layout_weight="1"
-                        android:paddingLeft="9dp"
-                        android:text="2万"
-                        android:textColor="@color/lightblue500"
+                        android:text="100万"
                         android:textSize="@dimen/title_txt_size"
-                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
+                        android:layout_weight="1"
+                        android:text="总经理"
+                        android:textSize="@dimen/title_txt_size"
                         />
                 </LinearLayout>
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -212,121 +178,78 @@
                     android:layout_marginTop="9dp"
                     android:background="@color/grey500"
                     />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/slide_tag1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
                         android:layout_marginRight="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_fourtext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="商业计划"
-                        android:textColor="@color/tab_text"
+                        android:layout_weight="1"
+                        android:text="李四"
                         android:textSize="@dimen/title_txt_size"
                         />
 
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:background="@color/grey500"
-                        />
-
                     <TextView
-                        android:id="@+id/slide_tag2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
                         android:layout_marginRight="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_fourtext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="盈利模式"
-                        android:textColor="@color/tab_text"
+                        android:layout_weight="1"
+                        android:text="50%"
                         android:textSize="@dimen/title_txt_size"
                         />
 
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:background="@color/grey500"
-                        />
-
                     <TextView
-                        android:id="@+id/slide_tag3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
                         android:layout_marginRight="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_fourtext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="团队介绍"
-                        android:textColor="@color/tab_text"
+                        android:layout_weight="1"
+                        android:text="100万"
                         android:textSize="@dimen/title_txt_size"
                         />
 
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:background="@color/grey500"
-                        />
-
                     <TextView
-                        android:id="@+id/slide_tag4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_twotext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="讨论"
-                        android:textColor="@color/tab_text"
+                        android:layout_marginRight="9dp"
+                        android:layout_weight="1"
+                        android:text="市场总监"
                         android:textSize="@dimen/title_txt_size"
                         />
                 </LinearLayout>
-
-                <FrameLayout
-                    android:id="@+id/fl_fragment"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                </FrameLayout>
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/grey500"
+                    />
+                <TextView android:layout_marginLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:drawableLeft="@mipmap/textlefttag"
+                    android:drawablePadding="6dp"
+                    android:gravity="center_vertical"
+                    android:text="收支情况"
+                    android:textColor="@color/orange500"
+                    android:textSize="@dimen/title_txt_size"/>
+
+                <ImageView android:layout_margin="9dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:src="@mipmap/investfinddetail_fragmentsub2_2"
+                    />
             </LinearLayout>
 
         </RelativeLayout>
     </ScrollView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="6dp"
-        android:layout_marginLeft="9dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginBottom="3dp"
-        android:gravity="center"
-        android:background="@drawable/btn"
-        android:text="我要投资"
-        android:clickable="true"
-        android:textColor="@color/txt_white"
-        android:textSize="@dimen/btn_txt_size"
-        />
 </RelativeLayout>

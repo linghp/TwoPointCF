@@ -43,9 +43,9 @@ public class BusinessDynamicsFragmentAdapter extends BaseAdapter implements Pinn
                     break;
                 case BusinessDynamicsBean.ITEM:
                     convertView = mInflater.inflate(R.layout.businessdynamics_item_content, null);
-                    holder.tv_time = (TextView)convertView.findViewById(R.id.textView1);
                     holder.tv_title = (TextView)convertView.findViewById(R.id.tv_title);
                     holder.tv_content = (TextView)convertView.findViewById(R.id.tv_content);
+                    holder.tv_time = (TextView)convertView.findViewById(R.id.textView1);
                     break;
             }
             convertView.setTag(holder);
