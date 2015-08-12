@@ -17,18 +17,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical" android:layout_marginLeft="12dp" android:layout_marginRight="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp" android:layout_marginBottom="12dp">
 
                 <LinearLayout
                     android:id="@+id/ll_01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="9dp"
+                    android:layout_marginRight="6dp"
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:clickable="true"
@@ -81,9 +82,7 @@
                     android:id="@+id/ll_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="9dp"
-                    android:layout_marginRight="9dp"
-                    android:layout_marginTop="9dp"
+      android:layout_marginLeft="6dp"
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:clickable="true"
@@ -130,14 +129,13 @@
                     android:id="@+id/ll_03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginRight="9dp"
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:clickable="true"
                     android:gravity="center"
                     android:onClick="onClick"
                     android:orientation="vertical"
+                    android:layout_marginRight="6dp"
                     android:padding="16dp">
 
                     <RelativeLayout
@@ -172,7 +170,7 @@
                     android:id="@+id/ll_04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="9dp"
+                    android:layout_marginLeft="6dp"
                     android:layout_weight="1"
                     android:background="@color/white"
                     android:clickable="true"

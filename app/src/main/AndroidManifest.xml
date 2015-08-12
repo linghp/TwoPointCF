@@ -41,6 +41,10 @@
             android:name=".ui.activity.InvestedProjectDetailActivity"
             android:label="@string/title_activity_invested_project_detail" >
         </activity>
+        <activity
+            android:name=".ui.activity.PublishProjectActivity"
+            android:label="@string/title_activity_publish_project" >
+        </activity>
     </application>
 
 </manifest>

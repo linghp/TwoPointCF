@@ -24,6 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initContentView(layoutResID);
         initView();
         initData();
+        updateView();
     }
 
     protected void initContentView(int layoutResID) {
@@ -39,6 +40,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initData();
 
     protected abstract void initView();
+
+    protected abstract void updateView();
 
     protected void myToast(String content){
         Toast.makeText(this, content, Toast.LENGTH_SHORT).show();

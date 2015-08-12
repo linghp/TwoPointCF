@@ -10,6 +10,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.FollowProjectActivity;
 import com.peoit.twopointcf.ui.activity.InvestedProjectActivity;
 import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
+import com.peoit.twopointcf.ui.activity.PublishProjectActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.CommonUtil;
 
@@ -86,7 +87,7 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.right_btn://title 右侧按钮
-                myToast("添加");
+                CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
                 break;
             case R.id.ll_01:
                 CommonUtil.gotoActivity(getActivity(), InvestedProjectActivity.class,false);

@@ -1,8 +1,8 @@
 package com.peoit.twopointcf.ui.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,9 +14,9 @@ import com.peoit.twopointcf.ui.view.TitleView;
  * last:2015/7/31
  * description:
  */
-public abstract class BaseFragment extends Fragment{
+public abstract class BaseFragment extends Fragment {
     protected View mParent;
-    protected FragmentActivity mActivity;
+    protected Activity mActivity;
     protected TitleView titleView;
 
     @Override
@@ -27,6 +27,7 @@ public abstract class BaseFragment extends Fragment{
         titleView= (TitleView) getView().findViewById(R.id.title_view);
         initView(mParent);
         initData();
+        updateView();
     }
 
     protected abstract void initView(View view);

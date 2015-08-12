@@ -30,7 +30,6 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invest_find_detail);
-        updateView();
     }
 
     public static void startThisActivity(String title, Context context) {
@@ -64,7 +63,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         tagViewPager.toUse(imgLists, this);
     }
 
-    private void updateView() {
+    @Override
+    protected void updateView() {
         if (TextUtils.isEmpty(title)) {
             titleView.setTitle("金佳俊宠物度假村");
         } else {

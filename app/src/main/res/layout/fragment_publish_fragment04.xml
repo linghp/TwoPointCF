@@ -1,0 +1,137 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/bg_gray"
+             tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment04">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="分红模式"
+                android:textSize="@dimen/title_txt_size"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/down_arrow_grey"
+                android:text="选择模式"
+                style="@style/publish_leftpart_rightpart"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="分红比例"
+                android:textSize="@dimen/title_txt_size"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/publish_leftpart_rightpart"
+                android:drawableRight="@mipmap/down_arrow_grey"
+                android:text="选择分红比例"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="众筹项目启动条件"
+                android:textSize="@dimen/title_txt_size"/>
+
+            <TextView
+                style="@style/publish_leftpart_rightpart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/down_arrow_grey"
+                android:text="选择启动条件"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="股东特权说明"
+                android:textSize="@dimen/title_txt_size"/>
+
+            <EditText
+                style="@style/publish_leftpart_rightpart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入"
+                android:textColorHint="@color/grey500"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="项目代码(项目编号)"
+                android:textSize="@dimen/title_txt_size"/>
+
+            <EditText
+                style="@style/publish_leftpart_rightpart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入"
+                android:textColorHint="@color/grey500"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="交付保证金比例"
+                android:textSize="@dimen/title_txt_size"/>
+
+            <TextView
+                style="@style/publish_leftpart_rightpart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/down_arrow_grey"
+                android:text="选择保证金比例"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,7 +1,7 @@
 package com.peoit.twopointcf.ui.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +24,7 @@ public class BusinessDynamicsFragment extends BaseFragment implements AdapterVie
 
     private View mParent;
 
-    private FragmentActivity mActivity;
+    private Activity mActivity;
     private ListView listView;
     private BusinessDynamicsFragmentAdapter adapter;
     private List<BusinessDynamicsBean> businessDynamicsBeans=new ArrayList<>();

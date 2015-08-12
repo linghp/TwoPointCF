@@ -39,15 +39,19 @@ public class TitleView extends FrameLayout{
 		btn_left = (ImageView) findViewById(R.id.left_btn);
 		btn_right = (ImageView) findViewById(R.id.right_btn);
 		tv_title = (TextView) findViewById(R.id.title_text);
-		setBack();
+		setBack(null);
 	}
 
 	/**
 	 * 设置返回的一系列事件
 	 */
-	public void setBack(){
+	public void setBack(OnClickListener listener){
 		btn_left.setImageResource(R.mipmap.back);
-		btn_left.setOnClickListener(mListener);
+        if(listener!=null){
+            btn_left.setOnClickListener(listener);
+        }else {
+            btn_left.setOnClickListener(mListener);
+        }
 	}
 	/**
 	 * 设置左按钮

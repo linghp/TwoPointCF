@@ -36,4 +36,9 @@
     <string name="title_activity_follow_project">我关注的项目</string>
     <string name="title_activity_my_publish_project">我发布的项目</string>
     <string name="title_activity_invested_project_detail">已投项目-详情</string>
+    <string name="title_activity_publish_project">发布项目</string>
+
+    <string name="nextstep">下一步</string>
+    <string name="startpublish">开始发布</string>
+    <string name="publishprojectbonusmodel">发布项目分红模式</string>
 </resources>

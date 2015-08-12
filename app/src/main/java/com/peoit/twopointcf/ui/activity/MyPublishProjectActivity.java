@@ -1,6 +1,8 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
@@ -11,7 +13,7 @@ import com.peoit.twopointcf.ui.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPublishProjectActivity extends BaseActivity {
+public class MyPublishProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener{
     private ListView listView;
     private List<InvestedProjectBean> investedProjectBeans = new ArrayList<>();
     private FollowProjectAdapter followProjectAdapter;
@@ -37,5 +39,16 @@ public class MyPublishProjectActivity extends BaseActivity {
     protected void initView() {
         listView = (ListView) findViewById(R.id.listview);
         titleView.setTitle(getString(R.string.title_activity_my_publish_project));
+        listView.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected void updateView() {
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        PublishProjectActivity.startThisActivity(true,this);
     }
 }

@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/bg_gray"
+             tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment03">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="项目介绍"
+            android:textSize="@dimen/title_txt_size"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:hint="介绍内容"
+            android:lines="20"
+android:background="@drawable/shape2"
+            android:textColorHint="@color/grey500"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="上传附件"
+                    android:textSize="@dimen/title_txt_size"/>
+
+                <ImageView android:layout_marginLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/add_picture"/>
+
+
+            </LinearLayout>
+
+            <TextView android:layout_marginLeft="96dp" android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支持word、ppt、pdf格式。"
+                android:textColor="@color/grey500"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
