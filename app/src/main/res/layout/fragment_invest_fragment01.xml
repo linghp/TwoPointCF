@@ -1,0 +1,178 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginLeft="9dp"
+             android:layout_marginRight="9dp"
+             tools:context="com.peoit.twopointcf.ui.fragment.InvestFragment01">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="投资项目:"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    style="@style/publish_leftpart_rightpart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="金佳骏宠物度假村"
+                    android:textSize="@dimen/title_txt_size"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="发起人:"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    style="@style/publish_leftpart_rightpart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="张三"
+                    android:textSize="@dimen/title_txt_size"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="投资:"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    style="@style/publish_leftpart_rightpart"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+
+                    android:hint="请输入"
+                    android:textColorHint="@color/grey500"/>
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="股"
+                    android:textSize="@dimen/title_txt_size"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="金额:"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    style="@style/publish_leftpart_rightpart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="10万"
+                    android:textSize="@dimen/title_txt_size"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="占股:"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    style="@style/publish_leftpart_rightpart"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+
+                    android:hint="请输入"
+                    android:textColorHint="@color/grey500"/>
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textSize="@dimen/title_txt_size"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="说明:"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    style="@style/publish_leftpart_rightpart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入"
+                    android:lines="10"
+                    android:background="@drawable/shape2"
+                    android:textColorHint="@color/grey500"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

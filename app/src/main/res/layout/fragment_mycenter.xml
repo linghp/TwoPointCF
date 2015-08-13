@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:padding="10dp">
 
                 <com.peoit.twopointcf.ui.view.CustomShapeImageView
@@ -45,26 +46,26 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <TextView
+                    <TextView android:singleLine="true" android:ellipsize="end"
                         android:id="@+id/mycenter_tv1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="标题什么的都是什么鬼"
+                        android:text="李四" android:gravity="center"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/title_txt_size" />
+                        android:textSize="@dimen/title_txt_size" android:drawableRight="@mipmap/level"/>
 
                     <TextView
                         android:id="@+id/mycenter_tv2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="简介什么的都是什么鬼简介什么的都是什么鬼简介什么的都是什么鬼简介什么的都是什么鬼" />
+                        android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。" />
                 </LinearLayout>
 
                 <ImageView
@@ -105,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="实名认证"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_name"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"
@@ -149,7 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="绑定手机"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_phone"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"
@@ -193,7 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="支付密码"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_password"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"
@@ -237,7 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="个人资料"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_info"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"
@@ -290,7 +291,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="我的资金"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_money"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"
@@ -332,7 +333,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="我的等级"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_level"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"
@@ -374,7 +375,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="安全中心"
-                        android:drawableLeft="@mipmap/amy"
+                        android:drawableLeft="@mipmap/my_security"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/title_txt_size"

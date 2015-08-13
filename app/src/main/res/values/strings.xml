@@ -41,4 +41,10 @@
     <string name="nextstep">下一步</string>
     <string name="startpublish">开始发布</string>
     <string name="publishprojectbonusmodel">发布项目分红模式</string>
+    <string name="title_activity_invest">投资</string>
+    <string name="send_investrequest">发送投资申请</string>
+    <string name="confirmmargin">确认保证金</string>
+    <string name="paynow">立即支付</string>
+    <string name="paymargin">支付保证金</string>
+    <string name="confirmpay">确认支付</string>
 </resources>

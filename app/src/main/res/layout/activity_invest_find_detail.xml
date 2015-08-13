@@ -328,5 +328,7 @@
         android:clickable="true"
         android:textColor="@color/txt_white"
         android:textSize="@dimen/btn_txt_size"
+        android:id="@+id/tv_toinvest"
+        android:onClick="onClick"
         />
 </RelativeLayout>

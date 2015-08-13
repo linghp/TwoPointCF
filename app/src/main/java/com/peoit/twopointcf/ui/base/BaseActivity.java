@@ -37,9 +37,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         layout_body.addView(layout_current);
     }
 
-    protected abstract void initData();
-
     protected abstract void initView();
+
+    protected abstract void initData();
 
     protected abstract void updateView();
 

@@ -1,0 +1,234 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/bg_gray"
+             tools:context="com.peoit.twopointcf.ui.fragment.InvestFragment01">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_bottom"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="请在2小时内完成支付：剩余 1小时59分"
+                android:textColor="@color/orange300"
+                android:textSize="@dimen/title_txt_size"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content" android:textSize="@dimen/title_txt_size"
+                        android:gravity="right"
+                        android:text="订单名称:"
+                        />
+
+                    <TextView
+                        style="@style/publish_leftpart_rightpart" android:textSize="@dimen/title_txt_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="金佳骏宠物度假村股权购买定金"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView android:textSize="@dimen/title_txt_size"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="订单金额:"
+                        />
+
+                    <TextView android:textSize="@dimen/title_txt_size"
+                        style="@style/publish_leftpart_rightpart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5000元"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView android:textSize="@dimen/title_txt_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="还需支付:"
+                        />
+
+                    <TextView android:textSize="@dimen/title_txt_size"
+                        style="@style/publish_leftpart_rightpart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5000元"
+                        />
+                </LinearLayout>
+                <View android:layout_marginTop="9dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"/>
+                <LinearLayout android:id="@+id/ll_paymethod01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        style="@style/paymethod_image"
+                        android:src="@mipmap/zhifubao"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="支付宝支付"
+                            android:textSize="@dimen/title_txt_size"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="推荐有支付宝帐号的用户使用"
+                            />
+                    </LinearLayout>
+                    <ImageView android:id="@+id/iv_paymethod01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/sel_t"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"/>
+                <LinearLayout android:id="@+id/ll_paymethod02"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="16dp"
+                              android:gravity="center_vertical"
+                              android:orientation="horizontal">
+
+                    <ImageView
+                        style="@style/paymethod_image"
+                        android:src="@mipmap/yinlian"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="银行卡支付"
+                            android:textSize="@dimen/title_txt_size"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="支持储蓄卡、信用卡，无需开通网银"
+                            />
+                    </LinearLayout>
+                    <ImageView android:id="@+id/iv_paymethod02"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:src="@mipmap/sel_n"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"/>
+                <LinearLayout android:id="@+id/ll_paymethod03"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="16dp"
+                              android:gravity="center_vertical"
+                              android:orientation="horizontal">
+
+                    <ImageView
+                        android:src="@mipmap/weixin"
+                        style="@style/paymethod_image"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="微信支付"
+                            android:textSize="@dimen/title_txt_size"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="推荐安装微信5.0及以上版本的使用"
+                            />
+                    </LinearLayout>
+                    <ImageView android:id="@+id/iv_paymethod03"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:src="@mipmap/sel_n"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

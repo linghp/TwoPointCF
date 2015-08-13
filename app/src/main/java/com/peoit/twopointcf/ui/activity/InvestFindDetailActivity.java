@@ -15,6 +15,7 @@ import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub2Fragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub3Fragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub4Fragment;
 import com.peoit.twopointcf.ui.view.TagViewPager;
+import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
@@ -121,6 +122,9 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fourthFragment, "fourthFragment").commit();
                     //v.setActivated(true);
                     //myToast("test");
+                    break;
+                case R.id.tv_toinvest:
+                    CommonUtil.gotoActivity(this,InvestActivity.class,false);
                     break;
             }
         }
