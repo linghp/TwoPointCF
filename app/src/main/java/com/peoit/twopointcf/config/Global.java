@@ -18,5 +18,4 @@ public class Global {
 	public static LinearLayout.LayoutParams PARAM_MP_MP = new LinearLayout.LayoutParams(
 			LinearLayout.LayoutParams.MATCH_PARENT,
 			LinearLayout.LayoutParams.MATCH_PARENT);
-
 }

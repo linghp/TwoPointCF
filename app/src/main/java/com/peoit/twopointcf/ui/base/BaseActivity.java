@@ -1,12 +1,15 @@
 package com.peoit.twopointcf.ui.base;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.view.TitleView;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
  * Created by ling on 2015/8/6.
@@ -17,6 +20,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     private FrameLayout layout_body;
     protected TitleView titleView;
     protected View layout_current;
+    protected LocalUserInfo localUserInfo;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i("BaseActivity", getClass().getSimpleName());
+        localUserInfo = LocalUserInfo.getInstance(this);
+    }
 
     @Override
     public void setContentView(int layoutResID) {

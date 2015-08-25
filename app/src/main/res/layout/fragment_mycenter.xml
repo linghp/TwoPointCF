@@ -27,7 +27,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/txt_black3" />
 
-            <LinearLayout
+            <LinearLayout android:id="@+id/ll_mycenter01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"

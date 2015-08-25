@@ -47,4 +47,5 @@
     <string name="paynow">立即支付</string>
     <string name="paymargin">支付保证金</string>
     <string name="confirmpay">确认支付</string>
+    <string name="title_activity_user_info">UserInfoActivity</string>
 </resources>

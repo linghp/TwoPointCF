@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.TagViewPager;
+import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,8 @@ public class InvestedProjectDetailActivity extends BaseActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invested_project_detail);
+        MyLogger.i("123");
+        Log.i("InvestedProjectDetai","123");
     }
 
     public static void startThisActivity(String title, Context context) {
