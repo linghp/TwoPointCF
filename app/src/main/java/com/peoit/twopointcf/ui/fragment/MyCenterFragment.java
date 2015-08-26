@@ -52,7 +52,6 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         MyLogger.i("onActivityCreated");
-        updateView();
     }
 
     @Override

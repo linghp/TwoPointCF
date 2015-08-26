@@ -2,9 +2,11 @@ package com.peoit.twopointcf.ui.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +20,8 @@ import com.peoit.twopointcf.R;
 public class TitleView extends FrameLayout{
 	private Activity mActivity; // 当前activity
 	private ImageView btn_left, btn_right;
-	private TextView tv_title;
+	private TextView tv_title,left_text;
+	private EditText et_search;
 
 
 	public TitleView(Context context) {
@@ -39,6 +42,8 @@ public class TitleView extends FrameLayout{
 		btn_left = (ImageView) findViewById(R.id.left_btn);
 		btn_right = (ImageView) findViewById(R.id.right_btn);
 		tv_title = (TextView) findViewById(R.id.title_text);
+		et_search= (EditText) findViewById(R.id.et_search);
+		left_text= (TextView) findViewById(R.id.left_text);
 		setBack(null);
 	}
 
@@ -73,6 +78,15 @@ public class TitleView extends FrameLayout{
 	 */
 	public void hideLeftBtn(){
 		btn_left.setVisibility(View.INVISIBLE);
+	}
+	/**
+	 * 显示左边的textview，并设置值
+	 */
+	public void showLeftTextview(String str,OnClickListener listener){
+		left_text.setVisibility(View.VISIBLE);
+		btn_left.setVisibility(View.GONE);
+		left_text.setText(str);
+		left_text.setOnClickListener(listener);
 	}
 
 	/**
@@ -111,6 +125,26 @@ public class TitleView extends FrameLayout{
     public void setTitle(String title){
 		tv_title.setText(title);
 		tv_title.setVisibility(View.VISIBLE);
+	}
+	/**
+	 * 设置title右边图片
+	 */
+	public void setTitleRightDrawable(Drawable drawable,OnClickListener listener){
+		tv_title.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+		tv_title.setOnClickListener(listener);
+	}
+	/**
+	 * 显示edittext，替换title
+	 */
+	public void showEditText(){
+		et_search.setVisibility(View.VISIBLE);
+		tv_title.setVisibility(View.GONE);
+	}
+	/**
+	 * 获得edittext的内容
+	 */
+	public String getEditTextContent(){
+		return et_search.getText().toString().trim();
 	}
 
 	public void showTitle(){

@@ -20,7 +20,7 @@ import java.util.List;
  * @author ling
  *         经营动态
  */
-public class BusinessDynamicsFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class BusinessDynamicsFragment extends BaseFragment implements AdapterView.OnItemClickListener,View.OnClickListener{
 
     private View mParent;
 
@@ -60,6 +60,8 @@ public class BusinessDynamicsFragment extends BaseFragment implements AdapterVie
         if (titleView != null) {
             titleView.hideLeftBtn();
             titleView.setTitle(R.string.businessdynamics);
+//            Drawable drawable = getResources().getDrawable(R.mipmap.down_arrow);
+//            titleView.setTitleRightDrawable(drawable,this);
         }
 
     }
@@ -98,5 +100,14 @@ public class BusinessDynamicsFragment extends BaseFragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.title_text:
+
+                break;
+        }
     }
 }

@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.ui.activity.SearchActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.ui.view.SlidingTabLayout;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
  * @author ling
  *	投资发现
  */
-public class InvestFindFragment extends BaseFragment {
+public class InvestFindFragment extends BaseFragment implements View.OnClickListener{
     private ViewPager mViewPager;
     private TabPagerAdapter mAdapter;
     private SlidingTabLayout mSlidingTabStrip;
@@ -78,10 +80,6 @@ public class InvestFindFragment extends BaseFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-        if(titleView!=null){
-            titleView.hideLeftBtn();
-            titleView.setTitle(R.string.investfind);
-        }
 	}
 
     @Override
@@ -96,7 +94,11 @@ public class InvestFindFragment extends BaseFragment {
 
     @Override
     protected void updateView() {
-
+        if (titleView != null) {
+            titleView.setTitle(R.string.investfind);
+            titleView.setRightBtn(R.mipmap.search_white, this);
+            titleView.showLeftTextview("重庆",this);
+        }
     }
 
 
@@ -104,6 +106,19 @@ public class InvestFindFragment extends BaseFragment {
 	public void onResume() {
 		super.onResume();
 	}
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.right_btn:
+                CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
+                break;
+            case R.id.left_text:
+
+                break;
+
+        }
+    }
 
 	@Override
 	public void onHiddenChanged(boolean hidden) {

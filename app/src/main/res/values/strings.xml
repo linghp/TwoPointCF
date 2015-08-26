@@ -48,4 +48,7 @@
     <string name="paymargin">支付保证金</string>
     <string name="confirmpay">确认支付</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <string name="searchhint_home">请输入关键字</string>
 </resources>
