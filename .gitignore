@@ -1,3 +1,7 @@
+/CityListLibrary/build
+/CityListLibrary/CityListLibrary.iml
+/cityListDemo/build
+/cityListDemo/cityListDemo.iml
 .gradle
 /local.properties
 /.idea/workspace.xml

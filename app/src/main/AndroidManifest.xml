@@ -85,6 +85,10 @@
             android:name=".ui.activity.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
+        <activity
+            android:name=".ui.activity.CityActivity"
+            android:label="@string/citylist" >
+        </activity>
     </application>
 
 </manifest>

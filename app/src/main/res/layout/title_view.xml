@@ -49,19 +49,13 @@
 
         <EditText
             android:id="@+id/et_search"
+            style="@style/searchstyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="9dp"
-            android:layout_marginTop="9dp"
-            android:background="@drawable/search_bg"
-            android:gravity="center_vertical"
             android:hint="@string/searchhint_home"
-            android:imeOptions="actionSearch"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:singleLine="true"
-            android:visibility="gone"></EditText>
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            ></EditText>
 
     </RelativeLayout>
 

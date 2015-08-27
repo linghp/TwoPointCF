@@ -64,7 +64,7 @@ public class SearchActivity extends BaseActivity {
         mMenu.setMenuSelectedListener(new OnMenuSelectedListener() {
             @Override
             public void onSelected(View listview, int RowIndex, int ColumnIndex) {
-                Log.i("MainActivity", "select " + ColumnIndex + " column and " + RowIndex + " row");
+                Log.i("SearchActivity", "select " + ColumnIndex + " column and " + RowIndex + " row");
                 if (ColumnIndex == 0) {
                     city_index = RowIndex;
                 } else if (ColumnIndex == 1) {

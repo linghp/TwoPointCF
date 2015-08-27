@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.peoit.twopointcf.ui.activity.CityActivity;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.SearchActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
@@ -114,7 +115,7 @@ public class InvestFindFragment extends BaseFragment implements View.OnClickList
                 CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
                 break;
             case R.id.left_text:
-
+                CommonUtil.gotoActivity(getActivity(), CityActivity.class,false);
                 break;
 
         }
