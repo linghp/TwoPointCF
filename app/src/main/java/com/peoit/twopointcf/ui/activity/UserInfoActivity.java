@@ -13,8 +13,11 @@ import com.peoit.twopointcf.modules.chooseimages.ChooseImages;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.FileUtil;
 
+/**
+ * 个人中心——个人简介
+ */
 public class UserInfoActivity extends BaseActivity implements View.OnClickListener{
-private ImageView iv_photo;
+    private ImageView iv_photo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,7 @@ private ImageView iv_photo;
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             ChooseImages.activityResultSwitch(requestCode,data,iv_photo,this);
-        super.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -57,7 +60,7 @@ private ImageView iv_photo;
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_userinfo01:
-    ChooseImages.showPhotoDialog(this);
+                ChooseImages.showPhotoDialog(this);
                 break;
         }
     }
