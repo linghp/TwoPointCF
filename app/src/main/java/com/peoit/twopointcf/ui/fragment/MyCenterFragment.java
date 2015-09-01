@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.ui.activity.BoundPhoneActivity;
+import com.peoit.twopointcf.ui.activity.MyRatingActivity;
+import com.peoit.twopointcf.ui.activity.SecurityCenterActivity;
+import com.peoit.twopointcf.ui.activity.SetUpActivity;
 import com.peoit.twopointcf.ui.activity.UserInfoActivity;
+import com.peoit.twopointcf.ui.activity.VerifiedActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.FileUtil;
@@ -69,6 +74,11 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void initView(View view) {
         view.findViewById(R.id.ll_mycenter01).setOnClickListener(this);
+        view.findViewById(R.id.mycenter_ll2).setOnClickListener(this);
+        view.findViewById(R.id.mycenter_ll3).setOnClickListener(this);
+        view.findViewById(R.id.mycenter_ll4).setOnClickListener(this);
+        view.findViewById(R.id.mycenter_ll7).setOnClickListener(this);
+        view.findViewById(R.id.mycenter_ll8).setOnClickListener(this);
         iv_photo= (ImageView) view.findViewById(R.id.mycenter_iv);
     }
 
@@ -100,10 +110,34 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.right_btn:
-                myToast("setting");
+                //设置
+                CommonUtil.gotoActivity(getActivity(), SetUpActivity.class, false);
                 break;
             case R.id.ll_mycenter01:
-                CommonUtil.gotoActivity(getActivity(), UserInfoActivity.class,false);
+                //个人简介
+                CommonUtil.gotoActivity(getActivity(), UserInfoActivity.class, false);
+                break;
+            case R.id.mycenter_ll2:
+                //实名认证
+                CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class,false);
+                break;
+            case R.id.mycenter_ll3:
+                //绑定手机
+                CommonUtil.gotoActivity(getActivity(), BoundPhoneActivity.class,false);
+                break;
+            case R.id.mycenter_ll4:
+                //授权密码
+                SecurityCenterActivity.startThisActivity(false, getActivity());
+                break;
+            case R.id.mycenter_ll7:
+                //我的等级
+                CommonUtil.gotoActivity(getActivity(), MyRatingActivity.class, false);
+                break;
+            case R.id.mycenter_ll8:
+                //安全中心
+                SecurityCenterActivity.startThisActivity(true,getActivity());
+                break;
+            default:
                 break;
         }
     }

@@ -82,11 +82,27 @@
             android:name=".ui.activity.UserInfoActivity"
             android:label="@string/title_activity_user_info" />
         <activity
+            android:name=".ui.activity.VerifiedActivity"
+            android:label="@string/title_activity_verified" />
+        <activity
+            android:name=".ui.activity.BoundPhoneActivity"
+            android:label="@string/title_activity_boundphone" />
+        <activity
+            android:name=".ui.activity.SetUpActivity"
+            android:label="@string/title_activity_setup" />
+        <activity
+            android:name=".ui.activity.SecurityCenterActivity"
+            android:label="@string/title_activity_securitycenter" />
+        <activity
+            android:name=".ui.activity.MyRatingActivity"
+            android:label="@string/title_activity_myrating" />
+
+        <activity
             android:name=".ui.activity.SearchActivity"
-            android:label="@string/title_activity_search" >
-        </activity>
+            android:label="@string/title_activity_search"></activity>
         <activity
             android:name=".ui.activity.CityActivity"
+            android:label="@string/citylist"></activity>
             android:label="@string/citylist" >
         </activity>
         <activity

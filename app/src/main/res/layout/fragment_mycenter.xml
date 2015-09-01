@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="10dp" >
+                    android:padding="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="支付密码"
+                        android:text="授权密码"
                         android:drawableLeft="@mipmap/my_password"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
@@ -206,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="未设置"
+                        android:text=""
                         android:gravity="right"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/txt_black2"/>
@@ -224,6 +224,7 @@
                     android:layout_height="1dp"
                     android:background="@color/gray"
                     android:layout_marginLeft="10dp"
+                    android:visibility="gone"
                     android:layout_marginRight="10dp"/>
                 <LinearLayout
                     android:id="@+id/mycenter_ll5"
@@ -232,6 +233,7 @@
                     android:background="@color/white"
                     android:orientation="horizontal"
                     android:padding="10dp"
+                    android:visibility="gone"
                     >
 
                     <TextView
@@ -284,6 +286,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:padding="10dp"
                     >
 
@@ -319,7 +322,8 @@
                     android:layout_height="1dp"
                     android:background="@color/gray"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
                 <LinearLayout
                     android:id="@+id/mycenter_ll7"
                     android:layout_width="match_parent"

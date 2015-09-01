@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/setup_ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="清空缓存"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size"
+            android:padding="5dp"
+            android:drawableRight="@mipmap/next_level"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
+    <LinearLayout
+        android:id="@+id/setup_ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="关于我们"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size"
+            android:padding="5dp"
+            android:drawableRight="@mipmap/next_level"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/setup_tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:padding="6dp"
+        android:text="注销登录"
+        android:textColor="@color/txt_white"
+        android:textSize="@dimen/btn_txt_size" />
+
+</LinearLayout>

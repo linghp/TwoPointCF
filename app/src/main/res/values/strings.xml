@@ -49,8 +49,12 @@
     <string name="paymargin">支付保证金</string>
     <string name="confirmpay">确认支付</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="title_activity_verified">VerifiedActivity</string>
     <string name="title_activity_search">SearchActivity</string>
-
+    <string name="title_activity_boundphone">BoundPhoneActivity</string>
+    <string name="title_activity_myrating">MyRatingActivity</string>
+    <string name="title_activity_securitycenter">SecurityCenterActivity</string>
+    <string name="title_activity_setup">SetUpActivity</string>
     <string name="searchhint_home">请输入关键字</string>
     <string name="citylist">城市列表</string>
     <string name="title_activity_business_manager">经营管理</string>
