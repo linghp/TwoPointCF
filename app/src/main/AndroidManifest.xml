@@ -89,6 +89,14 @@
             android:name=".ui.activity.CityActivity"
             android:label="@string/citylist" >
         </activity>
+        <activity
+            android:name=".ui.activity.BusinessManagerActivity"
+            android:label="@string/title_activity_business_manager" >
+        </activity>
+        <activity
+            android:name=".ui.activity.BusinessManagerDetailActivity"
+            android:label="@string/title_activity_business_manager_detail" >
+        </activity>
     </application>
 
 </manifest>

@@ -33,6 +33,7 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_invested_project">已投项目</string>
+    <string name="published_project">已发项目</string>
     <string name="title_activity_follow_project">我关注的项目</string>
     <string name="title_activity_my_publish_project">我发布的项目</string>
     <string name="title_activity_invested_project_detail">已投项目-详情</string>
@@ -52,4 +53,7 @@
 
     <string name="searchhint_home">请输入关键字</string>
     <string name="citylist">城市列表</string>
+    <string name="title_activity_business_manager">经营管理</string>
+    <string name="title_activity_business_manager_detail">项目公告</string>
+    <string name="financialreports">财务报告</string>
 </resources>

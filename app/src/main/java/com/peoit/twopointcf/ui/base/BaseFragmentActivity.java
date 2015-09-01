@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.utils.MyLogger;
 
 /**
  * Created by ling on 2015/8/13.
@@ -41,7 +42,8 @@ public abstract class BaseFragmentActivity extends BaseActivity implements View.
     @Override
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() > 0) {
-                fragmentManager.popBackStack();
+            MyLogger.i("fragmentManager.getBackStackEntryCount(): "+fragmentManager.getBackStackEntryCount());
+            fragmentManager.popBackStack();
         } else {
             super.onBackPressed();
         }

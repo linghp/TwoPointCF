@@ -1,0 +1,18 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.twopointcf.ui.activity.BusinessManagerDetailActivity">
+
+    <fragment
+        android:id="@+id/fragment_ProjectAnnouncement"
+        class="com.peoit.twopointcf.ui.fragment.ProjectAnnouncementFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></fragment>
+    <fragment
+        android:id="@+id/fragment_FinancialReports"
+        class="com.peoit.twopointcf.ui.fragment.FinancialReportsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></fragment>
+
+</RelativeLayout>
