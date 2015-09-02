@@ -11,4 +11,7 @@
     <dimen name="title_txt_size">16sp</dimen><!-- 页面title  -->
     <dimen name="large_title_txt_size">18sp</dimen><!-- 页面title  -->
     <dimen name="btn_txt_size">20sp</dimen><!-- 页面title  -->
+
+    <dimen name="codelab_fab_margin_right">0dp</dimen>
+    <dimen name="codelab_fab_margin_bottom">0dp</dimen>
 </resources>

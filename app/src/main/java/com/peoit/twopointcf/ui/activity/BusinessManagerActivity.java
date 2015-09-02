@@ -13,16 +13,19 @@ import com.peoit.twopointcf.ui.view.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by ling on 2015/8/31.
  * description:（我的项目->）经营管理
  */
 public class BusinessManagerActivity extends BaseActivity {
+    public static final String INVESTED = "invested";
+    public static final String PUBLISHED = "published";
     private ViewPager mViewPager;
     private TabPagerAdapter mAdapter;
     private SlidingTabLayout mSlidingTabStrip;
     private DiscoverTab[] mTabs;
-    private int mCurrentItem=0;
+    private int mCurrentItem = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,8 @@ public class BusinessManagerActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mViewPager = (ViewPager)findViewById(R.id.viewpager);
-        mSlidingTabStrip = (SlidingTabLayout)findViewById(R.id.viewpager_tabs);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mSlidingTabStrip = (SlidingTabLayout) findViewById(R.id.viewpager_tabs);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class BusinessManagerActivity extends BaseActivity {
         //mViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.spacing_minor));
 
         mSlidingTabStrip.setViewPager(mViewPager);
-        setTabs(DiscoverTab.INVESTED,DiscoverTab.PUBLISHED);
+        setTabs(DiscoverTab.INVESTED, DiscoverTab.PUBLISHED);
     }
 
     @Override
@@ -66,13 +69,18 @@ public class BusinessManagerActivity extends BaseActivity {
     }
 
     private Fragment createFragmentForTab(DiscoverTab tab) {
+        BusinessManagerFragment businessManagerFragment = new BusinessManagerFragment();
+        Bundle bundle = new Bundle();
         switch (tab) {
             case INVESTED:
-                return new BusinessManagerFragment();
+                bundle.putString("type", INVESTED);
+                break;
             case PUBLISHED:
-                return new BusinessManagerFragment();
+                bundle.putString("type", PUBLISHED);
+                break;
         }
-        return null;
+        businessManagerFragment.setArguments(bundle);
+        return businessManagerFragment;
     }
 
     protected void setFragments(List<Fragment> fragments) {

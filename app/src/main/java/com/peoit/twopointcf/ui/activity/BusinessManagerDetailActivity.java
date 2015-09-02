@@ -1,5 +1,7 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,7 +13,10 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.other.ScrollAwareFABBehavior;
 import com.peoit.twopointcf.ui.base.BaseFragmentActivity;
+import com.peoit.twopointcf.ui.fragment.ProjectAnnouncementFragment;
+import com.peoit.twopointcf.utils.MyLogger;
 
 /**
  * Created by ling on 2015/9/1.
@@ -20,11 +25,17 @@ import com.peoit.twopointcf.ui.base.BaseFragmentActivity;
 public class BusinessManagerDetailActivity extends BaseFragmentActivity implements View.OnClickListener{
     private PopupWindow popupWindow;
     private Fragment[] mFragments;
-
+    private boolean isPublished;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_manager_detail);
+    }
+
+    public static void startThisActivity(boolean isPublished, Context context) {
+        Intent intent = new Intent(context, BusinessManagerDetailActivity.class);
+        intent.putExtra("isPublished", isPublished);
+        context.startActivity(intent);
     }
 
     @Override
@@ -36,8 +47,14 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
     @Override
     protected void initData() {
         super.initData();
+        isPublished=getIntent().getBooleanExtra("isPublished",false);
+        MyLogger.i("isPublished:"+isPublished);
+
         mFragments = new Fragment[2];
         mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.fragment_ProjectAnnouncement);
+        if(!isPublished) {
+            ((ProjectAnnouncementFragment) mFragments[0]).hiddenFAB();
+        }
         mFragments[1] = getSupportFragmentManager().findFragmentById(R.id.fragment_FinancialReports);
         getSupportFragmentManager().beginTransaction().hide(mFragments[0])
                 .hide(mFragments[1]).show(mFragments[0]).commit();
@@ -120,5 +137,11 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
                 popupWindow.showAsDropDown(v);
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ScrollAwareFABBehavior.isdisplay=true;
     }
 }

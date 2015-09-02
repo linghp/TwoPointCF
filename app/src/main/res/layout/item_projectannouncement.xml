@@ -24,5 +24,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
          />
 
-
+    <View android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_gray" />
 </LinearLayout>

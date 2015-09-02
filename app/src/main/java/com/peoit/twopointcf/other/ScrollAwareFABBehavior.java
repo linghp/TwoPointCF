@@ -15,14 +15,10 @@ import android.view.animation.Interpolator;
 
 import com.peoit.twopointcf.R;
 
-/**
- * Created by ling on 2015/9/1.
- * description:
- */
 public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     private boolean mIsAnimatingOut = false;
-
+    public static boolean isdisplay=true;
     public ScrollAwareFABBehavior(Context context, AttributeSet attrs) {
         super();
     }
@@ -30,7 +26,7 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
     @Override
     public boolean onStartNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,
                                        final View directTargetChild, final View target, final int nestedScrollAxes) {
-        // Ensure we react to vertical scrolling
+        // 确定是在垂直方向上滑动
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL
                 || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
     }
@@ -41,15 +37,15 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
                                final int dxUnconsumed, final int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
         if (dyConsumed > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {
-            // User scrolled down and the FAB is currently visible -> hide the FAB
+            // 不显示FAB
             animateOut(child);
         } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
-            // User scrolled up and the FAB is currently not visible -> show the FAB
+            // 显示FAB
             animateIn(child);
         }
     }
 
-    // Same animation that FloatingActionButton.Behavior uses to hide the FAB when the AppBarLayout exits
+    // 定义滑动时的属性动画效果
     private void animateOut(final FloatingActionButton button) {
         if (Build.VERSION.SDK_INT >= 14) {
             ViewCompat.animate(button).scaleX(0.0F).scaleY(0.0F).alpha(0.0F).setInterpolator(INTERPOLATOR).withLayer()
@@ -89,18 +85,19 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
         }
     }
 
-    // Same animation that FloatingActionButton.Behavior uses to show the FAB when the AppBarLayout enters
     private void animateIn(FloatingActionButton button) {
-        button.setVisibility(View.VISIBLE);
-        if (Build.VERSION.SDK_INT >= 14) {
-            ViewCompat.animate(button).scaleX(1.0F).scaleY(1.0F).alpha(1.0F)
-                    .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
-                    .start();
-        } else {
-            Animation anim = AnimationUtils.loadAnimation(button.getContext(), R.anim.fab_in);
-            anim.setDuration(200L);
-            anim.setInterpolator(INTERPOLATOR);
-            button.startAnimation(anim);
+        if(isdisplay) {
+            button.setVisibility(View.VISIBLE);
+            if (Build.VERSION.SDK_INT >= 14) {
+                ViewCompat.animate(button).scaleX(1.0F).scaleY(1.0F).alpha(1.0F)
+                        .setInterpolator(INTERPOLATOR).withLayer().setListener(null)
+                        .start();
+            } else {
+                Animation anim = AnimationUtils.loadAnimation(button.getContext(), R.anim.fab_in);
+                anim.setDuration(200L);
+                anim.setInterpolator(INTERPOLATOR);
+                button.startAnimation(anim);
+            }
         }
     }
 }

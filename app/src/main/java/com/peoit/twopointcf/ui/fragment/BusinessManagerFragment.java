@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.BusinessManagerBean;
+import com.peoit.twopointcf.ui.activity.BusinessManagerActivity;
 import com.peoit.twopointcf.ui.activity.BusinessManagerDetailActivity;
 import com.peoit.twopointcf.ui.adapter.BusinessManagerAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
@@ -26,6 +27,7 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
     private ListView listView;
     private List<BusinessManagerBean> lists;
     private BusinessManagerAdapter businessManagerAdapter;
+    private String type;
 
     public BusinessManagerFragment() {
         // Required empty public constructor
@@ -47,6 +49,8 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
 
     @Override
     protected void initData() {
+        type=getArguments().getString("type");
+
         lists=new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             lists.add(new BusinessManagerBean());
@@ -63,6 +67,14 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        CommonUtil.gotoActivity(getActivity(), BusinessManagerDetailActivity.class,false);
+        switch (type) {
+            case BusinessManagerActivity.INVESTED:
+                CommonUtil.gotoActivity(getActivity(), BusinessManagerDetailActivity.class,false);
+                break;
+            case BusinessManagerActivity.PUBLISHED:
+                BusinessManagerDetailActivity.startThisActivity(true,getActivity());
+                break;
+        }
+
     }
 }

@@ -1,10 +1,9 @@
 package com.peoit.twopointcf.ui.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
@@ -16,35 +15,50 @@ import java.util.List;
  * Created by ling on 2015/8/31.
  * description:
  */
-public class ProjectAnnouncementAdapter extends ArrayAdapter<ProjectAnnouncementBean>{
-    private LayoutInflater mInflater;
-    private int resourceId;
+public class ProjectAnnouncementAdapter extends RecyclerView.Adapter{
+    private Context context;
+    private List<ProjectAnnouncementBean> listData;
 
-    public ProjectAnnouncementAdapter(Context context, int resource, List objects) {
-        super(context, resource, objects);
-        resourceId=resource;
-        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public ProjectAnnouncementAdapter(Context context, List<ProjectAnnouncementBean> mList) {
+        super();
+        this.context = context;
+        this.listData = mList;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = mInflater.inflate(resourceId, null);
-            holder.tv_content = (TextView) convertView.findViewById(R.id.tv_01);
-            holder.tv_time = (TextView) convertView.findViewById(R.id.tv_02);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-        holder.tv_content.setText(getItem(position).getContent());
-        holder.tv_time.setText(getItem(position).getTime());
-        return convertView;
+    public int getItemCount() {
+        // TODO Auto-generated method stub
+        return listData.size();
     }
 
-    public static class ViewHolder {
+    @Override
+    public MViewHolder onCreateViewHolder(ViewGroup viewGroup, int arg1) {
+
+        View view = View.inflate(viewGroup.getContext(),
+                R.layout.item_projectannouncement, null);
+        // 创建一个ViewHolder
+        MViewHolder holder = new MViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+        ((MViewHolder)viewHolder).tv_content.setText(listData.get(i).getContent());
+        ((MViewHolder)viewHolder).tv_time.setText(listData.get(i).getTime());
+    }
+
+
+
+    public class MViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_content;
         public TextView tv_time;
+
+        public MViewHolder(View view) {
+            super(view);
+            this.tv_content = (TextView) view.findViewById(R.id.tv_01);
+            this.tv_time = (TextView) view.findViewById(R.id.tv_02);
+
+        }
     }
+
 }
