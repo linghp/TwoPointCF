@@ -17,6 +17,8 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
     private TextView securitycenterTv1;
     private TextView securitycenterTv2;
     private TextView securitycenterTv3;
+    private TextView securitycenterTv4;
+    private TextView securitycenterTv5;
     private boolean isSecurityCenter = false;
 
     public static void startThisActivity(boolean isSecurityCenter, Activity mAc) {
@@ -37,6 +39,8 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
         securitycenterTv1 = (TextView) findViewById(R.id.securitycenter_tv1);
         securitycenterTv2 = (TextView) findViewById(R.id.securitycenter_tv2);
         securitycenterTv3 = (TextView) findViewById(R.id.securitycenter_tv3);
+        securitycenterTv4 = (TextView) findViewById(R.id.securitycenter_tv4);
+        securitycenterTv5 = (TextView) findViewById(R.id.securitycenter_tv5);
     }
 
     @Override
@@ -47,10 +51,16 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
     @Override
     protected void updateView() {
         if (titleView != null) {
-            if (isSecurityCenter)
+            if (isSecurityCenter) {
                 titleView.setTitle("安全中心");
-            else
+                findViewById(R.id.securitycenter_ll1).setVisibility(View.VISIBLE);
+                findViewById(R.id.securitycenter_ll2).setVisibility(View.GONE);
+            }
+            else {
                 titleView.setTitle("授权密码");
+                findViewById(R.id.securitycenter_ll2).setVisibility(View.VISIBLE);
+                findViewById(R.id.securitycenter_ll1).setVisibility(View.GONE);
+            }
         }
     }
 
@@ -66,6 +76,12 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.securitycenter_tv3:
                 myToast("手势");
+                break;
+            case R.id.securitycenter_tv4:
+                myToast("重置支付密码");
+                break;
+            case R.id.securitycenter_tv5:
+                myToast("忘记支付密码");
                 break;
             default:
                 break;

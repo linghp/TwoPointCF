@@ -4,59 +4,108 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/securitycenter_tv1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:drawableRight="@mipmap/next_level"
-        android:onClick="onClick"
-        android:clickable="true"
-        android:padding="15dp"
-        android:text="重置支付密码"
-        android:textColor="@color/black"
-        android:textSize="@dimen/title_txt_size" />
-
-    <View
+    <LinearLayout
+        android:id="@+id/securitycenter_ll1"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/txt_black3" />
-
-    <TextView
-        android:id="@+id/securitycenter_tv2"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:drawableRight="@mipmap/next_level"
-        android:onClick="onClick"
-        android:padding="15dp"
-        android:clickable="true"
-        android:text="重置登录密码"
-        android:textColor="@color/black"
-        android:textSize="@dimen/title_txt_size" />
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/securitycenter_tv1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/next_level"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:padding="15dp"
+            android:text="重置支付密码"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
 
-    <View
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txt_black3" />
+
+        <TextView
+            android:id="@+id/securitycenter_tv2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/next_level"
+            android:onClick="onClick"
+            android:padding="15dp"
+            android:clickable="true"
+            android:text="重置登录密码"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txt_black3" />
+
+        <TextView
+            android:id="@+id/securitycenter_tv3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/next_level"
+            android:onClick="onClick"
+            android:padding="15dp"
+            android:clickable="true"
+            android:text="手势"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txt_black3" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/securitycenter_ll2"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/txt_black3" />
-
-    <TextView
-        android:id="@+id/securitycenter_tv3"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/white"
-        android:drawableRight="@mipmap/next_level"
-        android:onClick="onClick"
-        android:padding="15dp"
-        android:clickable="true"
-        android:text="手势"
-        android:textColor="@color/black"
-        android:textSize="@dimen/title_txt_size" />
+        android:orientation="vertical"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/securitycenter_tv4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/next_level"
+            android:onClick="onClick"
+            android:clickable="true"
+            android:padding="15dp"
+            android:text="重置支付密码"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/txt_black3" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txt_black3" />
 
+        <TextView
+            android:id="@+id/securitycenter_tv5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/next_level"
+            android:onClick="onClick"
+            android:padding="15dp"
+            android:clickable="true"
+            android:text="忘记支付密码"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/txt_black3" />
+    </LinearLayout>
 </LinearLayout>
