@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.twopointcf.ui.activity.BusinessManagerActivity">
+
+    <com.peoit.twopointcf.ui.view.SlidingTabLayout
+        android:id="@+id/viewpager_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:fadingEdgeLength="@dimen/spacing_minor"
+        android:textAppearance="@style/TextAppearance.my.Tab"
+        app:contentInsetStart="6dp"
+        app:indicatorHeight="2dp"
+        app:selectedColor="?attr/colorAccent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/viewpager_tabs" />
+
+</RelativeLayout>

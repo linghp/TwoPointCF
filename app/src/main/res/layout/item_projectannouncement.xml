@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+
+    <TextView
+        android:id="@+id/tv_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="完美世界宠物医院"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="@dimen/title_txt_size" />
+    <TextView android:layout_marginTop="9dp"
+        android:id="@+id/tv_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        tools:text="完美世界宠物医院"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+         />
+
+
+</LinearLayout>

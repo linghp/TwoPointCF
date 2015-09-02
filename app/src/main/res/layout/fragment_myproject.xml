@@ -154,7 +154,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="股权转让"
+                        android:text="@string/title_activity_business_manager"
                         android:textSize="@dimen/large_title_txt_size"/>
 
                     <TextView

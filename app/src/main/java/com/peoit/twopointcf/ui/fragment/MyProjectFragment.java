@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.ui.activity.BusinessManagerActivity;
 import com.peoit.twopointcf.ui.activity.FollowProjectActivity;
 import com.peoit.twopointcf.ui.activity.InvestedProjectActivity;
 import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
@@ -96,7 +97,7 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
                 CommonUtil.gotoActivity(getActivity(), FollowProjectActivity.class, false);
                 break;
             case R.id.ll_03:
-                myToast("03");
+                CommonUtil.gotoActivity(getActivity(), BusinessManagerActivity.class, false);
                 break;
             case R.id.ll_04:
                 CommonUtil.gotoActivity(getActivity(), MyPublishProjectActivity.class, false);
