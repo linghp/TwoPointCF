@@ -54,6 +54,7 @@
     <string name="title_activity_boundphone">BoundPhoneActivity</string>
     <string name="title_activity_myrating">MyRatingActivity</string>
     <string name="title_activity_securitycenter">SecurityCenterActivity</string>
+    <string name="title_activity_personalprofile">PersonalProfileActivity</string>
     <string name="title_activity_setup">SetUpActivity</string>
     <string name="searchhint_home">请输入关键字</string>
     <string name="citylist">城市列表</string>

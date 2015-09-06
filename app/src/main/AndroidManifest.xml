@@ -94,6 +94,9 @@
             android:name=".ui.activity.SecurityCenterActivity"
             android:label="@string/title_activity_securitycenter" />
         <activity
+            android:name=".ui.activity.PersonalProfileActivity"
+            android:label="@string/title_activity_securitycenter" />
+        <activity
             android:name=".ui.activity.MyRatingActivity"
             android:label="@string/title_activity_myrating" />
 
