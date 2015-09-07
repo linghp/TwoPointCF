@@ -91,6 +91,12 @@
             android:name=".ui.activity.SetUpActivity"
             android:label="@string/title_activity_setup" />
         <activity
+            android:name=".ui.activity.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:label="@string/title_activity_register" />
+        <activity
             android:name=".ui.activity.SecurityCenterActivity"
             android:label="@string/title_activity_securitycenter" />
         <activity

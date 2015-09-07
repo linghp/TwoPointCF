@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
  * 设置/安全中心
@@ -51,7 +52,7 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
                 myToast("关于我们");
                 break;
             case R.id.setup_tv1:
-                myToast("注销登录");
+                CommonUtil.gotoActivity(this,LoginActivity.class,true);
                 break;
             default:
                 break;
