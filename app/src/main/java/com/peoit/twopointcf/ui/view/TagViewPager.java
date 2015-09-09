@@ -22,6 +22,9 @@ import com.peoit.twopointcf.utils.CommonUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 轮播
+ */
 public class TagViewPager extends RelativeLayout implements
 		OnPageChangeListener, Runnable {
 	private boolean isAutoNext = false;
@@ -123,8 +126,6 @@ public class TagViewPager extends RelativeLayout implements
 
 	/**
 	 * 
-	 * @param adapter
-	 *            viewpager适配器
 	 * @param count
 	 *            viewpager实际item数量,一般是list.size();
 	 */

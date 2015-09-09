@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.base;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.ui.view.TitleView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 
@@ -16,7 +18,8 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
  * last:2015/8/6
  * description:
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView_Response {
+    private ProgressDialog pd;
     private FrameLayout layout_body;
     protected TitleView titleView;
     protected View layout_current;
@@ -54,7 +57,48 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void updateView();
 
-    protected void myToast(String content){
+    protected void myToast(String content) {
         Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgress(boolean flag, String message) {
+        if (pd == null) {
+            pd = new ProgressDialog(this);
+            pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pd.setCancelable(flag);
+            pd.setCanceledOnTouchOutside(false);
+            pd.setMessage(message);
+            pd.show();
+        } else {
+            pd.show();
+        }
+    }
+
+    @Override
+    public void hideProgress() {
+        if (pd == null)
+            return;
+
+        if (pd.isShowing()) {
+            pd.dismiss();
+        }
+    }
+
+    @Override
+    public void showToast(int resId) {
+        showToast(getString(resId));
+    }
+
+    @Override
+    public void showToast(String msg) {
+        if (!isFinishing()) {
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public String getStringbyid(int resId) {
+       return getString(resId);
     }
 }
