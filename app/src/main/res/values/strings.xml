@@ -63,4 +63,7 @@
     <string name="title_activity_business_manager">经营管理</string>
     <string name="title_activity_business_manager_detail">项目公告</string>
     <string name="financialreports">财务报告</string>
+
+    <string name="networkerror">网络错误</string>
+    <string name="networkrequest">请稍等...</string>
 </resources>

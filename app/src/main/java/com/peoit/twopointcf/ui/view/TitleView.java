@@ -170,4 +170,8 @@ public class TitleView extends FrameLayout{
 			}
 		}
 	};
+
+	public EditText getEt_search() {
+		return et_search;
+	}
 }

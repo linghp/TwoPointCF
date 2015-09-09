@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.BoundPhoneActivity;
 import com.peoit.twopointcf.ui.activity.MyRatingActivity;
@@ -53,6 +54,10 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
         return view;
     }
 
+    private void testGlide() {
+        Glide.with(this).load("http://www.ainonggu666.com/upload/d92911e8-780a-4d2b-9b20-f84b9534afd6.gif").into(iv_photo);
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -69,6 +74,7 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
                 iv_photo.setImageBitmap(bitmap);
             }
         }
+        //testGlide();
     }
 
     @Override

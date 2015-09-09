@@ -10,6 +10,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
 import com.peoit.twopointcf.config.Global;
+import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.utils.FileUtil;
 import com.peoit.twopointcf.utils.MyLogger;
 
@@ -32,6 +33,7 @@ public class MyApplication extends Application {
 		MyLogger.i("densityDpi", this.getResources().getDisplayMetrics().densityDpi + "");
 		initLocalStorage();
 		//initGPS();
+		OkHttpClientManager.getInstance();
 	}
 
 	private void initLocalStorage() {
