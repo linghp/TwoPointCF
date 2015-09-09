@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="账号"
+            android:text="昵称"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:hint="请输入账号"
+            android:hint="请输入昵称"
             android:inputType="text"
             android:singleLine="true"
             android:textColor="@color/txt_black1"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="账号"
+            android:text="邮箱"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:hint="请输入账号"
+            android:hint="请输入邮箱"
             android:inputType="text"
             android:singleLine="true"
             android:textColor="@color/txt_black1"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="账号"
+            android:text="电话"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -96,9 +96,10 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:hint="请输入账号"
+            android:hint="请输入电话"
             android:inputType="text"
             android:singleLine="true"
+            android:numeric="integer"
             android:textColor="@color/txt_black1"
             android:textColorHint="@color/txt_black2"
             android:textSize="18sp" />
@@ -120,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="账号"
+            android:text="登录密码"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -131,9 +132,10 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:hint="请输入账号"
+            android:hint="请输入登录密码"
             android:inputType="text"
             android:singleLine="true"
+            android:password="true"
             android:textColor="@color/txt_black1"
             android:textColorHint="@color/txt_black2"
             android:textSize="18sp" />
@@ -155,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="账号"
+            android:text="授权密码"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -166,9 +168,10 @@
             android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="center"
-            android:hint="请输入账号"
+            android:hint="请输入授权密码"
             android:inputType="text"
             android:singleLine="true"
+            android:password="true"
             android:textColor="@color/txt_black1"
             android:textColorHint="@color/txt_black2"
             android:textSize="18sp" />
@@ -192,7 +195,7 @@
         android:textColor="@color/txt_white"
         android:textSize="@dimen/btn_txt_size" />
     <TextView
-        android:id="@+id/register_tv3"
+        android:id="@+id/register_tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="同意众筹服务协议"
