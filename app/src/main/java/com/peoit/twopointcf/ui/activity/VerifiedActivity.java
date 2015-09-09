@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.modules.chooseimages.ChooseImages;
+import com.peoit.twopointcf.modules.chooseimages.ChooseImages_zyz;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 
 /**
@@ -53,6 +55,14 @@ public class VerifiedActivity extends BaseActivity implements View.OnClickListen
     protected void updateView() {
         if(titleView!=null) {
             titleView.setTitle("实名认证");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            ChooseImages_zyz.activityResultSwitch(requestCode, data, iv_photo1, VerifiedActivity.this);
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

@@ -25,7 +25,6 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
         Intent intent = new Intent(mAc, SecurityCenterActivity.class);
         intent.putExtra("isSecurityCenter", isSecurityCenter);
         mAc.startActivity(intent);
-
     }
 
     @Override
