@@ -19,17 +19,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private EditText registerEt4;
     private EditText registerEt5;
     private TextView registerTv1;
-    private TextView loginTv3;
-
-    private void assignViews() {
-        registerEt1 = (EditText) findViewById(R.id.register_et1);
-        registerEt2 = (EditText) findViewById(R.id.register_et2);
-        registerEt3 = (EditText) findViewById(R.id.register_et3);
-        registerEt4 = (EditText) findViewById(R.id.register_et4);
-        registerEt5 = (EditText) findViewById(R.id.register_et5);
-        registerTv1 = (TextView) findViewById(R.id.register_tv1);
-        loginTv3 = (TextView) findViewById(R.id.login_tv3);
-    }
+    private TextView registerTv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +29,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initView() {
-
+        registerEt1 = (EditText) findViewById(R.id.register_et1);
+        registerEt2 = (EditText) findViewById(R.id.register_et2);
+        registerEt3 = (EditText) findViewById(R.id.register_et3);
+        registerEt4 = (EditText) findViewById(R.id.register_et4);
+        registerEt5 = (EditText) findViewById(R.id.register_et5);
+        registerTv1 = (TextView) findViewById(R.id.register_tv1);
+        registerTv2 = (TextView) findViewById(R.id.register_tv2);
     }
 
     @Override
@@ -56,6 +52,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.register_tv1:
+                myToast("注册");
+                break;
+            case R.id.register_tv2:
+                myToast("众筹服务协议");
+            default:
+                break;
+        }
     }
 }
