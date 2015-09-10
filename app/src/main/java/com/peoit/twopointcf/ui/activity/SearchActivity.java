@@ -19,6 +19,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.InvestFindPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IInvestFind;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.ui.view.LoadingLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +42,43 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        testLoadingLayout();
+    }
+
+    private void testLoadingLayout() {
+        final LoadingLayout loadingLayout = (LoadingLayout) findViewById(R.id.loading_layout);
+        findViewById(R.id.btn_show_content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingLayout.showContent();
+            }
+        });
+        findViewById(R.id.btn_show_error).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingLayout.showError();
+            }
+        });
+        findViewById(R.id.btn_show_empty).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingLayout.showEmpty();
+            }
+        });
+        findViewById(R.id.btn_show_loading).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingLayout.showLoading();
+            }
+        });
+
+        loadingLayout.setOnRetryClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingLayout.showLoading();
+            }
+        });
     }
 
     @Override

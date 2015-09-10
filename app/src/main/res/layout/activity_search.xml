@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,11 +12,50 @@
         android:background="@color/ripple_material_dark"
         android:orientation="horizontal" />
 
-    <ListView
-        android:id="@+id/lv_list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <com.peoit.twopointcf.ui.view.LoadingLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/menu"
-        android:background="#ffffff"></ListView>
+        app:emptyView="@layout/empty_view">
 
+        <ListView
+            android:id="@+id/lv_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"></ListView>
+    </com.peoit.twopointcf.ui.view.LoadingLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        >
+        <Button
+            android:id="@+id/btn_show_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading"
+            />
+
+        <Button
+            android:id="@+id/btn_show_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empty"
+            />
+
+        <Button
+            android:id="@+id/btn_show_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Error"
+            />
+
+        <Button
+            android:id="@+id/btn_show_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Content"
+            />
+    </LinearLayout>
 </RelativeLayout>

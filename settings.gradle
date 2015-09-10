@@ -1,2 +1,2 @@
-include ':app', ':DropDownMenuLibrary'
+include ':app', ':DropDownMenuLibrary', ':testmodule'
 include ':CityListLibrary'
