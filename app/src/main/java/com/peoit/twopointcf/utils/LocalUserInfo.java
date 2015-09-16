@@ -22,13 +22,13 @@ public class LocalUserInfo {
 
     /**
      * 单例模式，获取instance实例
-     * 
+     *
      * @param cxt
      * @return
      */
     public static LocalUserInfo getInstance(Context cxt) {
         if (localUserInfo == null) {
-			localUserInfo = new LocalUserInfo(cxt);
+            localUserInfo = new LocalUserInfo(cxt);
         }
         editor = mSharedPreferences.edit();
         return localUserInfo;
@@ -40,141 +40,136 @@ public class LocalUserInfo {
         editor.commit();
     }
 
-	public String getUserPhotoName() {
-		return mSharedPreferences.getString(USERPHOTO_FILENAME, "");
-	}
-
-	public void setUserInfo(String str_name, String str_value) {
-        editor.putString(str_name, str_value);
-        editor.commit();
+    public String getUserPhotoName() {
+        return mSharedPreferences.getString(USERPHOTO_FILENAME, "");
     }
 
+//	public void setUserInfo(String str_name, String str_value) {
+//        editor.putString(str_name, str_value);
+//        editor.commit();
+//    }
+
     public void deleteUserInfo() {
-    	editor.clear();
-    	editor.commit();
+        editor.clear();
+        editor.commit();
     }
 
     public String getUserInfo(String str_name) {
         return mSharedPreferences.getString(str_name, "");
     }
-    
+
     public boolean contains(String key) {
-		return mSharedPreferences.contains(key);
-	}
+        return mSharedPreferences.contains(key);
+    }
 
-	/**
-	 * 保存键为key的值为vlaue
-	 * 
-	 * @param key
-	 * @param vlaue
-	 */
-	public void put(String key, int vlaue) {
-		Editor editor = mSharedPreferences.edit();
-		editor.putInt(key, vlaue);
-		editor.commit();
-	}
+    /**
+     * 保存键为key的值为vlaue
+     *
+     * @param key
+     * @param vlaue
+     */
+    public void put(String key, int vlaue) {
+        editor.putInt(key, vlaue);
+        editor.commit();
+    }
 
-	/**
-	 * 保存键为key的值为vlaue
-	 * 
-	 * @param key
-	 * @param vlaue
-	 */
-	public void put(String key, String vlaue) {
-		Editor editor = mSharedPreferences.edit();
-		editor.putString(key, vlaue);
-		editor.commit();
-	}
+    /**
+     * 保存键为key的值为vlaue
+     *
+     * @param key
+     * @param vlaue
+     */
+    public void put(String key, String vlaue) {
+        editor.putString(key, vlaue);
+        editor.commit();
+    }
 
-	/**
-	 * 保存键为key的值为vlaue
-	 * 
-	 * @param key
-	 * @param vlaue
-	 */
-	public void put(String key, boolean vlaue) {
-		Editor editor = mSharedPreferences.edit();
-		editor.putBoolean(key, vlaue);
-		editor.commit();
-	}
+    /**
+     * 保存键为key的值为vlaue
+     *
+     * @param key
+     * @param vlaue
+     */
+    public void put(String key, boolean vlaue) {
+        editor.putBoolean(key, vlaue);
+        editor.commit();
+    }
 
-	/**
-	 * 保存键为key的值为vlaue
-	 * 
-	 * @param key
-	 * @param vlaue
-	 */
-	public void put(String key, long vlaue) {
-		Editor editor = mSharedPreferences.edit();
-		editor.putLong(key, vlaue);
-		editor.commit();
-	}
+    /**
+     * 保存键为key的值为vlaue
+     *
+     * @param key
+     * @param vlaue
+     */
+    public void put(String key, long vlaue) {
+        editor.putLong(key, vlaue);
+        editor.commit();
+    }
 
-	/**
-	 * 保存键为key的值为vlaue
-	 * 
-	 * @param key
-	 * @param vlaue
-	 */
-	public void put(String key, float vlaue) {
-		Editor editor = mSharedPreferences.edit();
-		editor.putFloat(key, vlaue);
-		editor.commit();
-	}
+    /**
+     * 保存键为key的值为vlaue
+     *
+     * @param key
+     * @param vlaue
+     */
+    public void put(String key, float vlaue) {
+        editor.putFloat(key, vlaue);
+        editor.commit();
+    }
 
-	/**
-	 * key对应的整型值叠加1
-	 * 
-	 * @param key
-	 */
-	public void superposition(String key) {
-		int vlaue = mSharedPreferences.getInt(key, 0);
-		Editor editor = mSharedPreferences.edit();
-		vlaue++;
-		editor.putFloat(key, vlaue);
-		editor.commit();
-	}
+    /**
+     * key对应的整型值叠加1
+     *
+     * @param key
+     */
+    public void superposition(String key) {
+        int vlaue = mSharedPreferences.getInt(key, 0);
+        Editor editor = mSharedPreferences.edit();
+        vlaue++;
+        editor.putFloat(key, vlaue);
+        editor.commit();
+    }
 
-	public int getInt(String key, int defult) {
-		return mSharedPreferences.getInt(key, defult);
-	}
+    public int getInt(String key, int defult) {
+        return mSharedPreferences.getInt(key, defult);
+    }
 
-	public int getInt(String key) {
-		return mSharedPreferences.getInt(key, 0);
-	}
+    public int getInt(String key) {
+        return mSharedPreferences.getInt(key, 0);
+    }
 
-	public boolean getBoolean(String key) {
-		return mSharedPreferences.getBoolean(key, true);
-	}
+    public boolean getBoolean(String key) {
+        return mSharedPreferences.getBoolean(key, true);
+    }
 
-	public boolean getBoolean(String key, boolean isTrue) {
-		return mSharedPreferences.getBoolean(key, isTrue);
-	}
+    public boolean getBoolean(String key, boolean isTrue) {
+        return mSharedPreferences.getBoolean(key, isTrue);
+    }
 
-	public String getString(String key) {
-		return mSharedPreferences.getString(key, null);
-	}
+    public String getString(String key) {
+        return mSharedPreferences.getString(key, null);
+    }
 
-	public String getString(String key, String defult) {
-		return mSharedPreferences.getString(key, defult);
-	}
+    public String getString(String key, String defult) {
+        return mSharedPreferences.getString(key, defult);
+    }
 
-	public long getLong(String key, long defult) {
-		return mSharedPreferences.getLong(key, defult);
-	}
+    public long getLong(String key, long defult) {
+        return mSharedPreferences.getLong(key, defult);
+    }
 
-	public long getLong(String key) {
-		return mSharedPreferences.getLong(key, 0);
-	}
+    public long getLong(String key) {
+        return mSharedPreferences.getLong(key, 0);
+    }
 
-	public void remove(String... keys) {
-		Editor editor = mSharedPreferences.edit();
-		for (String key : keys) {
-			editor.remove(key);
-		}
-		editor.commit();
-	}
-	
+    public void remove(String... keys) {
+        Editor editor = mSharedPreferences.edit();
+        for (String key : keys) {
+            editor.remove(key);
+        }
+        editor.commit();
+    }
+
 //	/**
 //	 * 保存用户信息
 //	 * @param user

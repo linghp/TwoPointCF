@@ -1,6 +1,9 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,8 +12,9 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.modules.chooseimages.ChooseImages;
-import com.peoit.twopointcf.modules.chooseimages.ChooseImages_zyz;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+
+import java.io.File;
 
 /**
  * 实名认证
@@ -26,6 +30,7 @@ public class VerifiedActivity extends BaseActivity implements View.OnClickListen
     private ImageView iv_photo1;
     private ImageView iv_photo2;
     private TextView tv_define;//确定
+    private int iv_tag=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +66,40 @@ public class VerifiedActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            ChooseImages_zyz.activityResultSwitch(requestCode, data, iv_photo1, VerifiedActivity.this);
-            super.onActivityResult(requestCode, resultCode, data);
+            switch (requestCode) {
+                case ChooseImages.PHOTO_REQUEST_TAKEPHOTO:
+                    ChooseImages.startPhotoZoom(
+                            Uri.fromFile(new File(ChooseImages.imagelocaldir, ChooseImages.imageName)), 480, this);
+                    break;
+
+                case ChooseImages.PHOTO_REQUEST_GALLERY:
+                    if (data != null)
+                        ChooseImages.startPhotoZoom(data.getData(), 480, this);
+                    break;
+
+                case ChooseImages.PHOTO_REQUEST_CUT:
+                    // BitmapFactory.Options options = new BitmapFactory.Options();
+                    //
+                    // /**
+                    // * 最关键在此，把options.inJustDecodeBounds = true;
+                    // * 这里再decodeFile()，返回的bitmap为空
+                    // * ，但此时调用options.outHeight时，已经包含了图片的高了
+                    // */
+                    // options.inJustDecodeBounds = true;\
+                    Bitmap bitmap = BitmapFactory.decodeFile(ChooseImages.imagelocaldir
+                            + ChooseImages.imageName);
+                    //LocalUserInfo.getInstance(activity).setUserPhotoName(imageName);
+                    switch (iv_tag) {
+                        case 1:
+                            iv_photo1.setImageBitmap(bitmap);
+                            break;
+                        case 2:
+                            iv_photo2.setImageBitmap(bitmap);
+                            break;
+                    }
+                    //updatePhotoInServer(imageName);
+                    break;
+            }
         }
     }
 
@@ -74,8 +111,10 @@ public class VerifiedActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.verified_iv1:
                 ChooseImages.showPhotoDialog(this);
+                iv_tag=1;
                 break;
             case R.id.verified_iv2:
+                iv_tag=2;
                 ChooseImages.showPhotoDialog(this);
                 break;
             default:

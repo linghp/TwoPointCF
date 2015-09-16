@@ -98,7 +98,7 @@ public class TagViewPager extends RelativeLayout implements
 	 *            小图标距离父控件margin,如果在上面则代表距离上边框距离，如果在下面则代表距离下边框的距离
 	 */
 	public void init(int id1, int id2, int size, int imageMargin, int gravity,
-			int layoutMargin) {
+			int layoutMargin,int marginright) {
 		this.tagImageId_seleced = id1;
 		this.tagImageId_nomorl = id2;
 		this.margin = imageMargin;
@@ -110,18 +110,20 @@ public class TagViewPager extends RelativeLayout implements
 		params.addRule(RelativeLayout.CENTER_HORIZONTAL);
 		if (gravity == 2) {
 			params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-			params.setMargins(0, 0, 0, marginButtom);
+			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+			params.setMargins(0, 0, marginright, marginButtom);
 		} else {
 			params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 			params.setMargins(0, marginButtom, 0, 0);
 		}
 		tagImageLayout.setLayoutParams(params);
-		this.addView(tagImageLayout);
+
 		viewPager = new ViewPager(context);
 		viewPager.setOnPageChangeListener(this);
 		viewPager.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT));
 		this.addView(viewPager);
+		this.addView(tagImageLayout);
 	}
 
 	/**
@@ -316,7 +318,7 @@ public class TagViewPager extends RelativeLayout implements
 
     public void toUse(final List<Integer> imgList,  final OnClickListener listener){
         this.init(R.mipmap.tagvewpager_point01,
-                R.mipmap.tagvewpager_point02, 14, 5, 2, 20);
+                R.mipmap.tagvewpager_point02, 14, 5, 2, 20,32);
         this.setAutoNext(true, 5000);
 
         this.setOnGetView(new OnGetView() {

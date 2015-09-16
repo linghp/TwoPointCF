@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="published_status">
+        <item>审核中</item>
+        <item>待支付</item>
+        <item>已支付</item>
+        <item>众筹中</item>
+        <item>众筹完成</item>
+        <item>已取消</item>
+        <item>众筹失败</item>
+        <item>驳回</item>
+    </string-array>
+
+</resources>

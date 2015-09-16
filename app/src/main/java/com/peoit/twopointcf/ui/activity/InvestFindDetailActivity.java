@@ -78,7 +78,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     public void onClick(View v) {
         if (v.getTag() != null) {
             int tag = (int) v.getTag();
-            switch (tag) {
+            switch (tag) {//轮播图的每一张的tag
                 case 0:
                     // myToast(tag);
                 case 1:

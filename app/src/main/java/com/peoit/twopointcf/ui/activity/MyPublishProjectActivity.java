@@ -17,6 +17,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     private ListView listView;
     private List<InvestedProjectBean> investedProjectBeans = new ArrayList<>();
     private FollowProjectAdapter followProjectAdapter;
+    private String[] published_statuss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,16 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     protected void initData() {
+        published_statuss=this.getResources().getStringArray(R.array.published_status);
         generateData();
         followProjectAdapter = new FollowProjectAdapter(this, investedProjectBeans);
         listView.setAdapter(followProjectAdapter);
     }
 
     private void generateData() {
-        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.raw_1433491802, R.mipmap.passed, "最惠宝", "预计将在2天后审核通过"));
-        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.hongpa, R.mipmap.verifying, "轰趴", "预计将在2天后审核通过"));
+        for (String published_status : published_statuss) {
+            investedProjectBeans.add(new InvestedProjectBean(R.mipmap.raw_1433491802, published_status, "最惠宝", "预计将在2天后审核通过"));
+        }
     }
     @Override
     protected void initView() {
@@ -49,6 +52,12 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        PublishProjectActivity.startThisActivity(true,this);
+        //PublishProjectActivity.startThisActivity(true,this);
+        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).getTitle(),investedProjectBeans.get(position).getTime(),this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
