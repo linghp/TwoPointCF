@@ -54,7 +54,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.register_tv1:
-                myToast("注册");
+//                myToast("注册");
+                finish();
                 break;
             case R.id.register_tv2:
                 myToast("众筹服务协议");

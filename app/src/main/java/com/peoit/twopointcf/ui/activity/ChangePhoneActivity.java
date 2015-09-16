@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,16 +9,19 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
- * 绑定手机号
+ * 修改手机号/验证手机号
+ * ischange true/false
  * Created by zyz on 2015/8/29.
  */
-public class BoundPhoneActivity extends BaseActivity implements View.OnClickListener{
-    private LinearLayout boundphoneLl1,boundphoneLl2,boundphoneLl3;
+public class ChangePhoneActivity extends BaseActivity implements View.OnClickListener{
+    private LinearLayout boundphoneLl2,boundphoneLl3;
     private TextView tv_phonenum;
     private TextView boundphoneTv1,boundphoneTv2;
     private EditText et_phonenum,et_num;
+    private boolean ischange = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,6 @@ public class BoundPhoneActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initView() {
-        boundphoneLl1 = (LinearLayout) findViewById(R.id.boundphone_ll1);
         tv_phonenum = (TextView) findViewById(R.id.boundphone_et1);
         boundphoneTv1 = (TextView) findViewById(R.id.boundphone_tv1);
 
@@ -41,27 +44,32 @@ public class BoundPhoneActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
+        Intent intent = getIntent();
+        ischange = intent.getBooleanExtra("ischange",true);
 
     }
 
     @Override
     protected void updateView() {
         if(titleView!=null) {
-            titleView.setTitle("绑定手机");
+            if (ischange)
+            titleView.setTitle("修改手机号码");
+            else
+                titleView.setTitle("验证手机号码");
         }
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.boundphone_ll1:
-                titleView.setTitle("修改手机号");
-                boundphoneLl1.setVisibility(View.GONE);
-                boundphoneLl2.setVisibility(view.VISIBLE);
-                boundphoneLl3.setVisibility(view.VISIBLE);
-                break;
             case R.id.boundphone_tv1:
-                myToast("确定");
+                if (ischange) {
+                    myToast("修改成功");
+                    finish();
+                }else {
+                    myToast("验证成功");
+                    CommonUtil.gotoActivity(this,VerifySecurityQuestionActivity.class,true);
+                }
                 break;
             case R.id.boundphone_tv2:
                 myToast("获取验证码");

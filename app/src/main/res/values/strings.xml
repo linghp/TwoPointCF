@@ -51,7 +51,10 @@
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="title_activity_verified">VerifiedActivity</string>
     <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_boundphone">BoundPhoneActivity</string>
+    <string name="title_activity_changephone">ChangePhoneActivity</string>
+    <string name="title_activity_boundphonenum">BoundPhoneNumActivity</string>
+    <string name="title_activity_VerifySecurityQuestion">VerifySecurityQuestionActivity</string>
+    <string name="title_activity_ChangePasswordActivity">ChangePasswordActivity</string>
     <string name="title_activity_myrating">MyRatingActivity</string>
     <string name="title_activity_securitycenter">SecurityCenterActivity</string>
     <string name="title_activity_personalprofile">PersonalProfileActivity</string>

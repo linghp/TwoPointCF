@@ -56,14 +56,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.login_tv1:
-                myToast("登录");
+//                myToast("登录");
+                finish();
                 break;
             case R.id.login_tv2:
                 //注册
                 CommonUtil.gotoActivity(this,RegisterActivity.class,false);
                 break;
             case R.id.login_tv3:
-                myToast("忘记密码");
+//                myToast("忘记密码");
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("ischange",false);
+                CommonUtil.gotoActivityWithData(this,ChangePhoneActivity.class,bundle,false);
                 break;
             default:
                 break;
