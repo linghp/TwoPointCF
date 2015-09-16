@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.ui.activity.BoundPhoneActivity;
+import com.peoit.twopointcf.ui.activity.BoundPhoneNumActivity;
 import com.peoit.twopointcf.ui.activity.MyRatingActivity;
 import com.peoit.twopointcf.ui.activity.SecurityCenterActivity;
 import com.peoit.twopointcf.ui.activity.SetUpActivity;
@@ -129,7 +129,7 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.mycenter_ll3:
                 //绑定手机
-                CommonUtil.gotoActivity(getActivity(), BoundPhoneActivity.class,false);
+                CommonUtil.gotoActivity(getActivity(), BoundPhoneNumActivity.class,false);
                 break;
             case R.id.mycenter_ll4:
                 //授权密码

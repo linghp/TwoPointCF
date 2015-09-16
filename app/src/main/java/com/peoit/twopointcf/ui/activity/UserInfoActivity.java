@@ -79,11 +79,11 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.ll_userinfo07:
                 //手机号码
-                CommonUtil.gotoActivity(this, BoundPhoneActivity.class,false);
+                CommonUtil.gotoActivity(this, ChangePhoneActivity.class,false);
                 break;
             case R.id.ll_userinfo08:
                 //邮箱
-                CommonUtil.gotoActivity(this, BoundPhoneActivity.class,false);
+                CommonUtil.gotoActivity(this, ChangePhoneActivity.class,false);
                 break;
             default:
                 break;
