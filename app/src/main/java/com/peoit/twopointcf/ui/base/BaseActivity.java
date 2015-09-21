@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -24,12 +25,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected TitleView titleView;
     protected View layout_current;
     protected LocalUserInfo localUserInfo;
+    protected LayoutInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i("BaseActivity", getClass().getSimpleName());
         localUserInfo = LocalUserInfo.getInstance(this);
+        inflater=LayoutInflater.from(this);
     }
 
     @Override
@@ -59,6 +62,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     protected void myToast(String content) {
         Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
+    }
+
+    protected  <T extends View> T findViewByID_My(int id){
+        return (T) super.findViewById(id);
     }
 
     @Override
