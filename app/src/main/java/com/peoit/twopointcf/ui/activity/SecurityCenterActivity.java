@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
  * 安全中心/授权密码
@@ -72,6 +73,9 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.securitycenter_tv2:
                 myToast("重置登录密码");
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("ischange",false);
+                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
                 break;
             case R.id.securitycenter_tv3:
                 myToast("手势");

@@ -47,6 +47,7 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
     @Override
     protected void updateView() {
 
+
     }
 
     @Override
