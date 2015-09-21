@@ -27,14 +27,14 @@ import java.util.Date;
  * description:选择图片，通过拍照或者图片文件
  */
 public class ChooseImages {
-    private static String imagelocaldir;// 图片存储根路径
-    private static String imageName;// 头像存储文件名
+    public static String imagelocaldir;// 图片存储根路径
+    public static String imageName;// 头像存储文件名
 
     private ImageView iv_loading;
 
-    private static final int PHOTO_REQUEST_TAKEPHOTO = 1;// 拍照
-    private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
-    private static final int PHOTO_REQUEST_CUT = 3;// 结果
+    public static final int PHOTO_REQUEST_TAKEPHOTO = 1;// 拍照
+    public static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
+    public static final int PHOTO_REQUEST_CUT = 3;// 结果
 
     public static void showPhotoDialog(final Activity activity) {
         final AlertDialog dlg = new AlertDialog.Builder(activity).create();
@@ -86,6 +86,13 @@ public class ChooseImages {
         return dateFormat.format(date);
     }
 
+    /**
+     * 适用只有一张图片并保存在偏好里面，其他情况在调用方实现
+     * @param requestCode
+     * @param data
+     * @param iv_photo
+     * @param activity
+     */
     public static void activityResultSwitch(int requestCode,Intent data,ImageView iv_photo, Activity activity){
         switch (requestCode) {
             case PHOTO_REQUEST_TAKEPHOTO:
@@ -117,7 +124,7 @@ public class ChooseImages {
         }
     }
 
-    private static void startPhotoZoom(Uri uri1, int size,Activity activity) {
+    public static void startPhotoZoom(Uri uri1, int size,Activity activity) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri1, "image/*");
         // crop为true是设置在开启的intent中设置显示的view可以剪裁

@@ -161,7 +161,7 @@ public class OkHttpClientManager
     }
 
     /**
-     * ============Get·½±ãµÄ·ÃÎÊ·½Ê½============
+     * ============Getæ–¹ä¾¿çš„è®¿é—®æ–¹å¼============
      */
 
     public static void getAsyn(String url, ResultCallback callback)
@@ -175,7 +175,7 @@ public class OkHttpClientManager
     }
 
     /**
-     * ============POST·½±ãµÄ·ÃÎÊ·½Ê½===============
+     * ============POSTæ–¹ä¾¿çš„è®¿é—®æ–¹å¼===============
      */
     public static void postAsyn(String url, Param[] params, final ResultCallback callback)
     {
@@ -208,7 +208,7 @@ public class OkHttpClientManager
     }
 
 
-    //=============±ãÀûµÄ·ÃÎÊ·½Ê½½áÊø===============
+    //=============ä¾¿åˆ©çš„è®¿é—®æ–¹å¼ç»“æŸ===============
 
 
     private String guessMimeType(String path)
@@ -278,7 +278,7 @@ public class OkHttpClientManager
                 } catch (IOException e)
                 {
                     sendFailedStringCallback(response.request(), e, resCallBack);
-                } catch (com.google.gson.JsonParseException e)//Json½âÎöµÄ´íÎó
+                } catch (com.google.gson.JsonParseException e)//Jsonè§£æçš„é”™è¯¯
                 {
                     sendFailedStringCallback(response.request(), e, resCallBack);
                 }
@@ -442,7 +442,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µÄPostÇëÇó
+         * åŒæ­¥çš„Postè¯·æ±‚
          */
         public Response post(String url, Param[] params, Object tag) throws IOException
         {
@@ -457,7 +457,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µÄPostÇëÇó
+         * åŒæ­¥çš„Postè¯·æ±‚
          */
         public String postAsString(String url, Param[] params, Object tag) throws IOException
         {
@@ -482,7 +482,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Òì²½µÄpostÇëÇó
+         * å¼‚æ­¥çš„postè¯·æ±‚
          */
         public void postAsyn(String url, Param[] params, final ResultCallback callback, Object tag)
         {
@@ -491,7 +491,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µÄPostÇëÇó:Ö±½Ó½«bodyStrÒÔĞ´ÈëÇëÇóÌå
+         * åŒæ­¥çš„Postè¯·æ±‚:ç›´æ¥å°†bodySträ»¥å†™å…¥è¯·æ±‚ä½“
          */
         public Response post(String url, String bodyStr) throws IOException
         {
@@ -507,7 +507,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µÄPostÇëÇó:Ö±½Ó½«bodyFileÒÔĞ´ÈëÇëÇóÌå
+         * åŒæ­¥çš„Postè¯·æ±‚:ç›´æ¥å°†bodyFileä»¥å†™å…¥è¯·æ±‚ä½“
          */
         public Response post(String url, File bodyFile) throws IOException
         {
@@ -523,7 +523,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µÄPostÇëÇó
+         * åŒæ­¥çš„Postè¯·æ±‚
          */
         public Response post(String url, byte[] bodyBytes) throws IOException
         {
@@ -539,7 +539,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Ö±½Ó½«bodyStrÒÔĞ´ÈëÇëÇóÌå
+         * ç›´æ¥å°†bodySträ»¥å†™å…¥è¯·æ±‚ä½“
          */
         public void postAsyn(String url, String bodyStr, final ResultCallback callback)
         {
@@ -552,7 +552,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Ö±½Ó½«bodyBytesÒÔĞ´ÈëÇëÇóÌå
+         * ç›´æ¥å°†bodyBytesä»¥å†™å…¥è¯·æ±‚ä½“
          */
         public void postAsyn(String url, byte[] bodyBytes, final ResultCallback callback)
         {
@@ -565,7 +565,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Ö±½Ó½«bodyFileÒÔĞ´ÈëÇëÇóÌå
+         * ç›´æ¥å°†bodyFileä»¥å†™å…¥è¯·æ±‚ä½“
          */
         public void postAsyn(String url, File bodyFile, final ResultCallback callback)
         {
@@ -578,7 +578,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Ö±½Ó½«bodyStrÒÔĞ´ÈëÇëÇóÌå
+         * ç›´æ¥å°†bodySträ»¥å†™å…¥è¯·æ±‚ä½“
          */
         public void postAsynWithMediaType(String url, String bodyStr, MediaType type, final ResultCallback callback, Object tag)
         {
@@ -588,7 +588,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Ö±½Ó½«bodyBytesÒÔĞ´ÈëÇëÇóÌå
+         * ç›´æ¥å°†bodyBytesä»¥å†™å…¥è¯·æ±‚ä½“
          */
         public void postAsynWithMediaType(String url, byte[] bodyBytes, MediaType type, final ResultCallback callback, Object tag)
         {
@@ -598,7 +598,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Ö±½Ó½«bodyFileÒÔĞ´ÈëÇëÇóÌå
+         * ç›´æ¥å°†bodyFileä»¥å†™å…¥è¯·æ±‚ä½“
          */
         public void postAsynWithMediaType(String url, File bodyFile, MediaType type, final ResultCallback callback, Object tag)
         {
@@ -609,7 +609,7 @@ public class OkHttpClientManager
 
 
         /**
-         * post¹¹ÔìRequestµÄ·½·¨
+         * postæ„é€ Requestçš„æ–¹æ³•
          *
          * @param url
          * @param body
@@ -649,7 +649,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¨ÓÃµÄ·½·¨
+         * é€šç”¨çš„æ–¹æ³•
          */
         public Response get(Request request) throws IOException
         {
@@ -659,7 +659,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µÄGetÇëÇó
+         * åŒæ­¥çš„Getè¯·æ±‚
          */
         public Response get(String url) throws IOException
         {
@@ -674,7 +674,7 @@ public class OkHttpClientManager
 
 
         /**
-         * Í¬²½µÄGetÇëÇó
+         * åŒæ­¥çš„Getè¯·æ±‚
          */
         public String getAsString(String url) throws IOException
         {
@@ -688,7 +688,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¨ÓÃµÄ·½·¨
+         * é€šç”¨çš„æ–¹æ³•
          */
         public void getAsyn(Request request, ResultCallback callback)
         {
@@ -696,7 +696,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Òì²½µÄgetÇëÇó
+         * å¼‚æ­¥çš„getè¯·æ±‚
          */
         public void getAsyn(String url, final ResultCallback callback)
         {
@@ -714,12 +714,12 @@ public class OkHttpClientManager
     //====================UploadDelegate=======================
 
     /**
-     * ÉÏ´«Ïà¹ØµÄÄ£¿é
+     * ä¸Šä¼ ç›¸å…³çš„æ¨¡å—
      */
     public class UploadDelegate
     {
         /**
-         * Í¬²½»ùÓÚpostµÄÎÄ¼şÉÏ´«:ÉÏ´«µ¥¸öÎÄ¼ş
+         * åŒæ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ :ä¸Šä¼ å•ä¸ªæ–‡ä»¶
          */
         public Response post(String url, String fileKey, File file, Object tag) throws IOException
         {
@@ -727,7 +727,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½»ùÓÚpostµÄÎÄ¼şÉÏ´«:ÉÏ´«¶à¸öÎÄ¼şÒÔ¼°Ğ¯´økey-value¶Ô£ºÖ÷·½·¨
+         * åŒæ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ :ä¸Šä¼ å¤šä¸ªæ–‡ä»¶ä»¥åŠæºå¸¦key-valueå¯¹ï¼šä¸»æ–¹æ³•
          */
         public Response post(String url, String[] fileKeys, File[] files, Param[] params, Object tag) throws IOException
         {
@@ -736,7 +736,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¬²½µ¥ÎÄ¼şÉÏ´«
+         * åŒæ­¥å•æ–‡ä»¶ä¸Šä¼ 
          */
         public Response post(String url, String fileKey, File file, Param[] params, Object tag) throws IOException
         {
@@ -744,7 +744,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Òì²½»ùÓÚpostµÄÎÄ¼şÉÏ´«:Ö÷·½·¨
+         * å¼‚æ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ :ä¸»æ–¹æ³•
          */
         public void postAsyn(String url, String[] fileKeys, File[] files, Param[] params, ResultCallback callback, Object tag)
         {
@@ -753,7 +753,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Òì²½»ùÓÚpostµÄÎÄ¼şÉÏ´«:µ¥ÎÄ¼ş²»´ø²ÎÊıÉÏ´«
+         * å¼‚æ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ :å•æ–‡ä»¶ä¸å¸¦å‚æ•°ä¸Šä¼ 
          */
         public void postAsyn(String url, String fileKey, File file, ResultCallback callback, Object tag) throws IOException
         {
@@ -761,7 +761,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Òì²½»ùÓÚpostµÄÎÄ¼şÉÏ´«£¬µ¥ÎÄ¼şÇÒĞ¯´øÆäËûform²ÎÊıÉÏ´«
+         * å¼‚æ­¥åŸºäºpostçš„æ–‡ä»¶ä¸Šä¼ ï¼Œå•æ–‡ä»¶ä¸”æºå¸¦å…¶ä»–formå‚æ•°ä¸Šä¼ 
          */
         public void postAsyn(String url, String fileKey, File file, Param[] params, ResultCallback callback, Object tag)
         {
@@ -789,7 +789,7 @@ public class OkHttpClientManager
                     File file = files[i];
                     String fileName = file.getName();
                     fileBody = RequestBody.create(MediaType.parse(guessMimeType(fileName)), file);
-                    //TODO ¸ù¾İÎÄ¼şÃûÉèÖÃcontentType
+                    //TODO æ ¹æ®æ–‡ä»¶åè®¾ç½®contentType
                     builder.addPart(Headers.of("Content-Disposition",
                                     "form-data; name=\"" + fileKeys[i] + "\"; filename=\"" + fileName + "\""),
                             fileBody);
@@ -809,12 +809,12 @@ public class OkHttpClientManager
     //====================DisplayImageDelegate=======================
 
     /**
-     * ¼ÓÔØÍ¼Æ¬Ïà¹Ø
+     * åŠ è½½å›¾ç‰‡ç›¸å…³
      */
     public class DisplayImageDelegate
     {
         /**
-         * ¼ÓÔØÍ¼Æ¬
+         * åŠ è½½å›¾ç‰‡
          */
         public void displayImage(final ImageView view, final String url, final int errorResId, final Object tag)
         {
@@ -908,15 +908,15 @@ public class OkHttpClientManager
     //====================DownloadDelegate=======================
 
     /**
-     * ÏÂÔØÏà¹ØµÄÄ£¿é
+     * ä¸‹è½½ç›¸å…³çš„æ¨¡å—
      */
     public class DownloadDelegate
     {
         /**
-         * Òì²½ÏÂÔØÎÄ¼ş
+         * å¼‚æ­¥ä¸‹è½½æ–‡ä»¶
          *
          * @param url
-         * @param destFileDir ±¾µØÎÄ¼ş´æ´¢µÄÎÄ¼ş¼Ğ
+         * @param destFileDir æœ¬åœ°æ–‡ä»¶å­˜å‚¨çš„æ–‡ä»¶å¤¹
          * @param callback
          */
         public void downloadAsyn(final String url, final String destFileDir, final ResultCallback callback, Object tag)
@@ -957,7 +957,7 @@ public class OkHttpClientManager
                             fos.write(buf, 0, len);
                         }
                         fos.flush();
-                        //Èç¹ûÏÂÔØÎÄ¼ş³É¹¦£¬µÚÒ»¸ö²ÎÊıÎªÎÄ¼şµÄ¾ø¶ÔÂ·¾¶
+                        //å¦‚æœä¸‹è½½æ–‡ä»¶æˆåŠŸï¼Œç¬¬ä¸€ä¸ªå‚æ•°ä¸ºæ–‡ä»¶çš„ç»å¯¹è·¯å¾„
                         sendSuccessResultCallback(file.getAbsolutePath(), callback);
                     } catch (IOException e)
                     {
@@ -993,7 +993,7 @@ public class OkHttpClientManager
     //====================HttpsDelegate=======================
 
     /**
-     * HttpsÏà¹ØÄ£¿é
+     * Httpsç›¸å…³æ¨¡å—
      */
     public class HttpsDelegate
     {
@@ -1167,7 +1167,7 @@ public class OkHttpClientManager
     public static class ImageUtils
     {
         /**
-         * ¸ù¾İInputStream»ñÈ¡Í¼Æ¬Êµ¼ÊµÄ¿í¶ÈºÍ¸ß¶È
+         * æ ¹æ®InputStreamè·å–å›¾ç‰‡å®é™…çš„å®½åº¦å’Œé«˜åº¦
          *
          * @param imageStream
          * @return
@@ -1207,7 +1207,7 @@ public class OkHttpClientManager
 
         public static int calculateInSampleSize(ImageSize srcSize, ImageSize targetSize)
         {
-            // Ô´Í¼Æ¬µÄ¿í¶È
+            // æºå›¾ç‰‡çš„å®½åº¦
             int width = srcSize.width;
             int height = srcSize.height;
             int inSampleSize = 1;
@@ -1217,7 +1217,7 @@ public class OkHttpClientManager
 
             if (width > reqWidth && height > reqHeight)
             {
-                // ¼ÆËã³öÊµ¼Ê¿í¶ÈºÍÄ¿±ê¿í¶ÈµÄ±ÈÂÊ
+                // è®¡ç®—å‡ºå®é™…å®½åº¦å’Œç›®æ ‡å®½åº¦çš„æ¯”ç‡
                 int widthRatio = Math.round((float) width / (float) reqWidth);
                 int heightRatio = Math.round((float) height / (float) reqHeight);
                 inSampleSize = Math.max(widthRatio, heightRatio);
@@ -1226,7 +1226,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * ¸ù¾İImageView»ñÊÊµ±µÄÑ¹ËõµÄ¿íºÍ¸ß
+         * æ ¹æ®ImageViewè·é€‚å½“çš„å‹ç¼©çš„å®½å’Œé«˜
          *
          * @param view
          * @return
@@ -1243,7 +1243,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * ¸ù¾İview»ñµÃÆÚÍûµÄ¸ß¶È
+         * æ ¹æ®viewè·å¾—æœŸæœ›çš„é«˜åº¦
          *
          * @param view
          * @return
@@ -1255,22 +1255,22 @@ public class OkHttpClientManager
             if (view == null) return 0;
 
             final ViewGroup.LayoutParams params = view.getLayoutParams();
-            //Èç¹ûÊÇWRAP_CONTENT£¬´ËÊ±Í¼Æ¬»¹Ã»¼ÓÔØ£¬getWidth¸ù±¾ÎŞĞ§
+            //å¦‚æœæ˜¯WRAP_CONTENTï¼Œæ­¤æ—¶å›¾ç‰‡è¿˜æ²¡åŠ è½½ï¼ŒgetWidthæ ¹æœ¬æ— æ•ˆ
             if (params != null && params.height != ViewGroup.LayoutParams.WRAP_CONTENT)
             {
-                height = view.getWidth(); // »ñµÃÊµ¼ÊµÄ¿í¶È
+                height = view.getWidth(); // è·å¾—å®é™…çš„å®½åº¦
             }
             if (height <= 0 && params != null)
             {
-                height = params.height; // »ñµÃ²¼¾ÖÎÄ¼şÖĞµÄÉùÃ÷µÄ¿í¶È
+                height = params.height; // è·å¾—å¸ƒå±€æ–‡ä»¶ä¸­çš„å£°æ˜çš„å®½åº¦
             }
 
             if (height <= 0)
             {
-                height = getImageViewFieldValue(view, "mMaxHeight");// »ñµÃÉèÖÃµÄ×î´óµÄ¿í¶È
+                height = getImageViewFieldValue(view, "mMaxHeight");// è·å¾—è®¾ç½®çš„æœ€å¤§çš„å®½åº¦
             }
 
-            //Èç¹û¿í¶È»¹ÊÇÃ»ÓĞ»ñÈ¡µ½£¬±ï´óÕĞ£¬Ê¹ÓÃÆÁÄ»µÄ¿í¶È
+            //å¦‚æœå®½åº¦è¿˜æ˜¯æ²¡æœ‰è·å–åˆ°ï¼Œæ†‹å¤§æ‹›ï¼Œä½¿ç”¨å±å¹•çš„å®½åº¦
             if (height <= 0)
             {
                 DisplayMetrics displayMetrics = view.getContext().getResources()
@@ -1282,7 +1282,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * ¸ù¾İview»ñµÃÆÚÍûµÄ¿í¶È
+         * æ ¹æ®viewè·å¾—æœŸæœ›çš„å®½åº¦
          *
          * @param view
          * @return
@@ -1293,22 +1293,22 @@ public class OkHttpClientManager
             if (view == null) return 0;
 
             final ViewGroup.LayoutParams params = view.getLayoutParams();
-            //Èç¹ûÊÇWRAP_CONTENT£¬´ËÊ±Í¼Æ¬»¹Ã»¼ÓÔØ£¬getWidth¸ù±¾ÎŞĞ§
+            //å¦‚æœæ˜¯WRAP_CONTENTï¼Œæ­¤æ—¶å›¾ç‰‡è¿˜æ²¡åŠ è½½ï¼ŒgetWidthæ ¹æœ¬æ— æ•ˆ
             if (params != null && params.width != ViewGroup.LayoutParams.WRAP_CONTENT)
             {
-                width = view.getWidth(); // »ñµÃÊµ¼ÊµÄ¿í¶È
+                width = view.getWidth(); // è·å¾—å®é™…çš„å®½åº¦
             }
             if (width <= 0 && params != null)
             {
-                width = params.width; // »ñµÃ²¼¾ÖÎÄ¼şÖĞµÄÉùÃ÷µÄ¿í¶È
+                width = params.width; // è·å¾—å¸ƒå±€æ–‡ä»¶ä¸­çš„å£°æ˜çš„å®½åº¦
             }
 
             if (width <= 0)
 
             {
-                width = getImageViewFieldValue(view, "mMaxWidth");// »ñµÃÉèÖÃµÄ×î´óµÄ¿í¶È
+                width = getImageViewFieldValue(view, "mMaxWidth");// è·å¾—è®¾ç½®çš„æœ€å¤§çš„å®½åº¦
             }
-            //Èç¹û¿í¶È»¹ÊÇÃ»ÓĞ»ñÈ¡µ½£¬±ï´óÕĞ£¬Ê¹ÓÃÆÁÄ»µÄ¿í¶È
+            //å¦‚æœå®½åº¦è¿˜æ˜¯æ²¡æœ‰è·å–åˆ°ï¼Œæ†‹å¤§æ‹›ï¼Œä½¿ç”¨å±å¹•çš„å®½åº¦
             if (width <= 0)
 
             {
@@ -1321,7 +1321,7 @@ public class OkHttpClientManager
         }
 
         /**
-         * Í¨¹ı·´Éä»ñÈ¡imageviewµÄÄ³¸öÊôĞÔÖµ
+         * é€šè¿‡åå°„è·å–imageviewçš„æŸä¸ªå±æ€§å€¼
          *
          * @param object
          * @param fieldName

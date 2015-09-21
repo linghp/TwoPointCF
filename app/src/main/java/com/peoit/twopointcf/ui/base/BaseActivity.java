@@ -18,7 +18,7 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
  * last:2015/8/6
  * description:
  */
-public abstract class BaseActivity extends AppCompatActivity implements IBaseView_Response {
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView_Response,View.OnClickListener{
     private ProgressDialog pd;
     private FrameLayout layout_body;
     protected TitleView titleView;
@@ -100,5 +100,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     @Override
     public String getStringbyid(int resId) {
        return getString(resId);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

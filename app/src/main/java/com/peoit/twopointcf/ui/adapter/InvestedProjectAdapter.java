@@ -38,7 +38,7 @@ public class InvestedProjectAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.item_investedproject, null);
             holder.iv_left = (ImageView) convertView.findViewById(R.id.iv_left);
-            //holder.iv_tag = (ImageView) convertView.findViewById(R.id.iv_tag);
+            convertView.findViewById(R.id.tv_tag).setVisibility(View.GONE);
             holder.tv_title = (TextView) convertView.findViewById(R.id.tv_01);
             holder.tv_money = (TextView) convertView.findViewById(R.id.tv_02);
             holder.tv_time = (TextView) convertView.findViewById(R.id.tv_03);

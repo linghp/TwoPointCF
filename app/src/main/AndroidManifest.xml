@@ -114,13 +114,12 @@
         <activity
             android:name=".ui.activity.MyRatingActivity"
             android:label="@string/title_activity_myrating" />
-
         <activity
             android:name=".ui.activity.SearchActivity"
-            android:label="@string/title_activity_search"></activity>
+            android:label="@string/title_activity_search" />
         <activity
             android:name=".ui.activity.CityActivity"
-            android:label="@string/citylist"></activity>
+            android:label="@string/citylist" />
         <activity
             android:name=".ui.activity.BusinessManagerActivity"
             android:label="@string/title_activity_business_manager" >
@@ -128,6 +127,10 @@
         <activity
             android:name=".ui.activity.BusinessManagerDetailActivity"
             android:label="@string/title_activity_business_manager_detail" >
+        </activity>
+        <activity
+            android:name=".ui.activity.MyPublishDetailActivity"
+            android:label="@string/title_activity_my_publish_detail" >
         </activity>
     </application>
 

@@ -40,19 +40,19 @@ public class FollowProjectAdapter extends BaseAdapter {
             convertView.findViewById(R.id.ll_01).setVisibility(View.GONE);
             convertView.findViewById(R.id.ll_02).setVisibility(View.GONE);
             holder.iv_left = (ImageView) convertView.findViewById(R.id.iv_left);
-            holder.iv_tag = (ImageView) convertView.findViewById(R.id.iv_tag);
+            holder.tv_tag = (TextView) convertView.findViewById(R.id.tv_tag);
             holder.tv_title = (TextView) convertView.findViewById(R.id.tv_01);
             holder.tv_content = (TextView) convertView.findViewById(R.id.tv_04);
             holder.tv_content.setVisibility(View.VISIBLE);
-            holder.iv_tag.setVisibility(View.VISIBLE);
+            holder.tv_tag.setVisibility(View.VISIBLE);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.iv_left.setImageResource(getItem(position).getPicture());
         holder.tv_title.setText(getItem(position).getTitle());
-        holder.tv_content.setText(getItem(position).getContent());
-        holder.iv_tag.setImageResource(getItem(position).getPicture_tag());
+        holder.tv_content.setText(getItem(position).getMoney());
+        holder.tv_tag.setText(getItem(position).getTime());
         return convertView;
     }
 
@@ -77,7 +77,7 @@ public class FollowProjectAdapter extends BaseAdapter {
 
     public static class ViewHolder {
         public ImageView iv_left;
-        public ImageView iv_tag;
+        public TextView tv_tag;
         public TextView tv_title;
         public TextView tv_content;
     }

@@ -1,0 +1,309 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.twopointcf.ui.activity.MyPublishDetailActivity">
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:textSize="@dimen/title_txt_size"
+        android:textColor="@color/lightblue500"
+        tools:text="融资计划" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_status"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tagViewPager"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="9dp"
+                    android:text="融资计划"
+                    android:textSize="@dimen/title_txt_size"
+                    android:textStyle="bold"
+
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/grey500" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:text="融资资金"
+                        android:textSize="@dimen/title_txt_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="9dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="9dp"
+                        android:text="400万"
+                        android:textColor="@color/lightblue500"
+                        android:textSize="@dimen/title_txt_size"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/grey500" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="已投人数"
+                        android:textSize="@dimen/title_txt_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="9dp"
+                        android:text="20人"
+                        android:textColor="@color/lightblue500"
+                        android:textSize="@dimen/title_txt_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/grey500" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:text="出让股份"
+                        android:textSize="@dimen/title_txt_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="9dp"
+                        android:text="40%"
+                        android:textColor="@color/lightblue500"
+                        android:textSize="@dimen/title_txt_size"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/grey500" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="单股投资额"
+                        android:textSize="@dimen/title_txt_size" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="9dp"
+                        android:text="2万"
+                        android:textColor="@color/lightblue500"
+                        android:textSize="@dimen/title_txt_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="9dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/grey500" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/slide_tag1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
+                        android:clickable="true"
+                        android:drawableBottom="@drawable/selector_fourtext_bottom"
+                        android:drawablePadding="9dp"
+                        android:onClick="onClick"
+                        android:paddingTop="9dp"
+                        android:text="商业计划"
+                        android:textColor="@color/tab_text"
+                        android:textSize="@dimen/title_txt_size" />
+
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey500" />
+
+                    <TextView
+                        android:id="@+id/slide_tag2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
+                        android:clickable="true"
+                        android:drawableBottom="@drawable/selector_fourtext_bottom"
+                        android:drawablePadding="9dp"
+                        android:onClick="onClick"
+                        android:paddingTop="9dp"
+                        android:text="盈利模式"
+                        android:textColor="@color/tab_text"
+                        android:textSize="@dimen/title_txt_size" />
+
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey500" />
+
+                    <TextView
+                        android:id="@+id/slide_tag3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
+                        android:clickable="true"
+                        android:drawableBottom="@drawable/selector_fourtext_bottom"
+                        android:drawablePadding="9dp"
+                        android:onClick="onClick"
+                        android:paddingTop="9dp"
+                        android:text="团队介绍"
+                        android:textColor="@color/tab_text"
+                        android:textSize="@dimen/title_txt_size" />
+
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"
+                        android:background="@color/grey500" />
+
+                    <TextView
+                        android:id="@+id/slide_tag4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:clickable="true"
+                        android:drawableBottom="@drawable/selector_twotext_bottom"
+                        android:drawablePadding="9dp"
+                        android:onClick="onClick"
+                        android:paddingTop="9dp"
+                        android:text="讨论"
+                        android:textColor="@color/tab_text"
+                        android:textSize="@dimen/title_txt_size" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></FrameLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+    <TextView
+        android:id="@+id/tv_bottom01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_bottom02"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:background="@drawable/btn"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:padding="6dp"
+        tools:text="我要投资"
+        android:textColor="@color/txt_white"
+        android:textSize="@dimen/btn_txt_size" android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_bottom02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:background="@drawable/btn"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:padding="6dp"
+        tools:text="我要投资"
+        android:textColor="@color/txt_white"
+        android:textSize="@dimen/btn_txt_size" android:visibility="gone"/>
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.peoit.twopointcf.ui.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,6 +55,7 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         // 设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     @Override
@@ -70,6 +72,10 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的是滴是滴", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的少的地方是是滴是滴", "2015/08/12"));
+        lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));
+        lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));
+        lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));
+        lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的所得税的树干上的水电费", "2015/08/12"));

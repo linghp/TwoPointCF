@@ -18,6 +18,7 @@ import com.peoit.twopointcf.ui.fragment.PublishFragment03;
 import com.peoit.twopointcf.ui.fragment.PublishFragment04;
 import com.peoit.twopointcf.ui.fragment.PublishFragment05;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.MyLogger;
 
 public class PublishProjectActivity extends BaseFragmentActivity implements View.OnClickListener {
     private TextView tv_publish;
@@ -129,8 +130,9 @@ public class PublishProjectActivity extends BaseFragmentActivity implements View
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() > 0) {
             if(isFromMyPublishProject&&fragmentManager.getBackStackEntryCount()==1){
+                MyLogger.i("onBackPressed");
                 fragmentManager.popBackStack();
-                super.onBackPressed();
+                finish();
             }else {
                 fragmentManager.popBackStack();
             }

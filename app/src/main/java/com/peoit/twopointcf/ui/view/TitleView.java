@@ -20,7 +20,7 @@ import com.peoit.twopointcf.R;
 public class TitleView extends FrameLayout{
 	private Activity mActivity; // 当前activity
 	private ImageView btn_left, btn_right;
-	private TextView tv_title,left_text;
+	private TextView tv_title,left_text,right_text;
 	private EditText et_search;
 
 
@@ -44,6 +44,7 @@ public class TitleView extends FrameLayout{
 		tv_title = (TextView) findViewById(R.id.title_text);
 		et_search= (EditText) findViewById(R.id.et_search);
 		left_text= (TextView) findViewById(R.id.left_text);
+		right_text= (TextView) findViewById(R.id.right_text);
 		setBack(null);
 	}
 
@@ -112,6 +113,16 @@ public class TitleView extends FrameLayout{
 	public void hideRightBtn_invisible(){
 		btn_right.setVisibility(View.INVISIBLE);
 		btn_right.setOnClickListener(null);
+	}
+
+	/**
+	 * 显示右边的textview，并设置值
+	 */
+	public void showRightTextview(String str,OnClickListener listener){
+		right_text.setVisibility(View.VISIBLE);
+		btn_right.setVisibility(View.GONE);
+		right_text.setText(str);
+		right_text.setOnClickListener(listener);
 	}
 
 //	public void setActivity(Activity curActivity){
