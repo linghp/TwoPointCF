@@ -69,7 +69,8 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
 
         switch (view.getId()) {
             case R.id.securitycenter_tv1:
-                myToast("重置支付密码");
+//                myToast("重置支付密码");
+                CommonUtil.gotoActivity(this,SafetyEfficacyActivity.class,false);
                 break;
             case R.id.securitycenter_tv2:
                 myToast("重置登录密码");
