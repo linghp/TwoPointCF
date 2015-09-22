@@ -11,4 +11,28 @@
         <item>驳回</item>
     </string-array>
 
+    <string-array name="investfinddetail_subitemname">
+        <item>融资资金</item>
+        <item>已投人数</item>
+        <item>出让股份</item>
+        <item>单股投资额</item>
+        <item>单股比例</item>
+
+        <item>所在城市</item>
+        <item>股权类型</item>
+        <item>结束时间</item>
+        <item>分红模式</item>
+        <item>分红比例</item>
+
+        <item>股东特权</item>
+        <item>保障金比例</item>
+        <item>启动条件</item>
+        <item>行业类型</item>
+        <item>详细地址</item>
+
+        <item>营业执照</item>
+        <item>信用报告</item>
+        <item>行业许可证</item>
+    </string-array>
+
 </resources>

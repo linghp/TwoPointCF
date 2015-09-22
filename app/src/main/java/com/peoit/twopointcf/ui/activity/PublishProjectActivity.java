@@ -53,13 +53,13 @@ public class PublishProjectActivity extends BaseFragmentActivity implements View
                     titleView.setTitle(getString(R.string.title_activity_publish_project));
                     tv_publish.setText(getString(R.string.startpublish));
                 } else if (count == 1) {
-                    titleView.setTitle(getString(R.string.title_activity_publish_project));
+                    titleView.setTitle(getString(R.string.title_activity_publish_project)+"  (1/3)");
                     tv_publish.setText(getString(R.string.nextstep));
                 } else if (count == 2) {
-                    titleView.setTitle(getString(R.string.title_activity_publish_project));
+                    titleView.setTitle(getString(R.string.title_activity_publish_project)+"  (2/3)");
                     tv_publish.setText(getString(R.string.nextstep));
                 } else if (count == 3) {
-                    titleView.setTitle(getString(R.string.publishprojectbonusmodel));
+                    titleView.setTitle(getString(R.string.title_activity_publish_project)+"  (3/3)");
                     tv_publish.setText(getString(R.string.nextstep));
                 } else if (count == 4) {
                     titleView.setTitle(getString(R.string.title_activity_publish_project));

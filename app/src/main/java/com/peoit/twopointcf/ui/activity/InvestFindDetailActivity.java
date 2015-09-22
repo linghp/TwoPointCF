@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
@@ -24,6 +25,7 @@ import java.util.List;
 public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener {
     private TagViewPager tagViewPager;
     private TextView tv_subtitle;
+    private LinearLayout linearLayoutsub;
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
     private String title;
 
@@ -40,20 +42,10 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    protected void initData() {
-        firstFragment = new InvestFindDetailSub1Fragment();
-        secondFragment = new InvestFindDetailSub2Fragment();
-        thirdFragment = new InvestFindDetailSub3Fragment();
-        fourthFragment = new InvestFindDetailSub4Fragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
-
-        title = getIntent().getStringExtra("title");
-    }
-
-    @Override
     protected void initView() {
         tagViewPager = (TagViewPager) findViewById(R.id.tagViewPager);
         tv_subtitle= (TextView) findViewById(R.id.tv_subtitle);
+        linearLayoutsub=findViewByID_My(R.id.linearLayoutsub);
         findViewById(R.id.slide_tag1).setActivated(true);
         //轮播
         List<Integer> imgLists = new ArrayList<>();
@@ -65,13 +57,48 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
+    protected void initData() {
+        firstFragment = new InvestFindDetailSub1Fragment();
+        secondFragment = new InvestFindDetailSub2Fragment();
+        thirdFragment = new InvestFindDetailSub3Fragment();
+        fourthFragment = new InvestFindDetailSub4Fragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
+
+        title = getIntent().getStringExtra("title");
+        String[] investfinddetail_subitemvalues={"800万元","32人","50.00%","60000元","0.75%",
+                "重庆","红利股","2015-09-21","未知","3.75%",
+                "无","5.00%","众筹完成","食品","重庆市渝中区大坪",
+                "点击查看","点击查看","点击查看"};
+        String[] investfinddetail_subitemnames=getResources().getStringArray(R.array.investfinddetail_subitemname);
+        for (int i = 0; i < investfinddetail_subitemnames.length; i++) {
+            View view=inflater.inflate(R.layout.activity_invest_find_detail_subitem,null);
+            TextView tv01= (TextView) view.findViewById(R.id.tv_01);
+            TextView tv02= (TextView) view.findViewById(R.id.tv_02);
+            tv01.setText(investfinddetail_subitemnames[i]);
+            tv02.setText(investfinddetail_subitemvalues[i]);
+            linearLayoutsub.addView(view);
+        }
+    }
+
+    @Override
     protected void updateView() {
         if (TextUtils.isEmpty(title)) {
             titleView.setTitle("金佳俊宠物度假村");
         } else {
             titleView.setTitle(title);
             tv_subtitle.setText(title);
-        }  
+        }
+
+        titleView.setRightBtn(R.mipmap.collection, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v.getTag().equals(R.mipmap.collection)) {
+                    titleView.setRightBtn(R.mipmap.collection_on, this);
+                }else {
+                    titleView.setRightBtn(R.mipmap.collection, this);
+                }
+            }
+        });
     }
 
     @Override
