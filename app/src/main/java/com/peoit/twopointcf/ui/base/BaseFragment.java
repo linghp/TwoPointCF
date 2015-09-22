@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.view.TitleView;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
@@ -20,6 +21,7 @@ public abstract class BaseFragment extends Fragment {
     protected View mParent;
     protected Activity mActivity;
     protected TitleView titleView;
+    protected AbPullToRefreshView pullview;
     protected LocalUserInfo localUserInfo;
 
     @Override
@@ -30,9 +32,24 @@ public abstract class BaseFragment extends Fragment {
         mActivity = getActivity();
         titleView= (TitleView) getView().findViewById(R.id.title_view);
         localUserInfo = LocalUserInfo.getInstance(getActivity());
+        initPullview();
         initView(mParent);
         initData();
         updateView();
+    }
+    protected void initPullview(){
+        pullview=findViewByID_My(R.id.pullview);
+        if(pullview!=null){
+            // 设置pull进度条的样式
+            pullview.getHeaderView().setHeaderProgressBarDrawable(
+                    this.getResources().getDrawable(R.drawable.progress_circular));
+            pullview.getFooterView().setFooterProgressBarDrawable(
+                    this.getResources().getDrawable(R.drawable.progress_circular));
+        }
+    }
+
+    protected  <T extends View> T findViewByID_My(int id){
+        return (T) mParent.findViewById(id);
     }
 
     protected abstract void initView(View view);

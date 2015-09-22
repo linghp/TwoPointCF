@@ -9,11 +9,12 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.InvestedProjectBean;
 import com.peoit.twopointcf.ui.adapter.FollowProjectAdapter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener{
+public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,AbPullToRefreshView.OnHeaderRefreshListener {
 
     private ListView listView;
     private List<InvestedProjectBean> investedProjectBeans = new ArrayList<>();
@@ -42,6 +43,9 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
         listView = (ListView) findViewById(R.id.listview);
         titleView.setTitle(getString(R.string.title_activity_follow_project));
         listView.setOnItemClickListener(this);
+
+        pullview.setOnHeaderRefreshListener(this);
+        pullview.setLoadMoreEnable(false);
     }
 
     @Override
@@ -52,5 +56,10 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position).getTitle(),this);
+    }
+
+    @Override
+    public void onHeaderRefresh(AbPullToRefreshView view) {
+
     }
 }

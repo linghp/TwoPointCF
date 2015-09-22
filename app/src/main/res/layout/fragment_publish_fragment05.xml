@@ -1,23 +1,25 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@color/bg_gray"
-             tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment05">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:clickable="true"
+    tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment05">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none" >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -25,19 +27,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="融资用途"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -45,19 +48,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="股权总额"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -65,19 +69,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="发行总额"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -85,19 +90,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="售卖金额(单股)"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -105,19 +111,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="股权类型"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -125,19 +132,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="起售股份所占比例"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -145,19 +153,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="项目众筹资金结束条件"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -165,19 +174,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="项目众筹资金结束条件"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -185,19 +195,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="经营情况"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
 
-            <LinearLayout android:layout_marginTop="12dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -205,14 +216,14 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="预估每股分红金额"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
