@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.ui.view.TitleView;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
@@ -21,8 +23,9 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
  */
 public abstract class BaseActivity extends AppCompatActivity implements IBaseView_Response,View.OnClickListener{
     private ProgressDialog pd;
-    private FrameLayout layout_body;
+    private ViewGroup layout_body;
     protected TitleView titleView;
+    protected AbPullToRefreshView pullview;
     protected View layout_current;
     protected LocalUserInfo localUserInfo;
     protected LayoutInflater inflater;
@@ -39,9 +42,21 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     public void setContentView(int layoutResID) {
         super.setContentView(R.layout.layout_base);
         initContentView(layoutResID);
+        initPullview();
         initView();
         initData();
         updateView();
+    }
+
+    protected void initPullview(){
+        pullview=findViewByID_My(R.id.pullview);
+        if(pullview!=null){
+            // 设置pull进度条的样式
+            pullview.getHeaderView().setHeaderProgressBarDrawable(
+                    this.getResources().getDrawable(R.drawable.progress_circular));
+            pullview.getFooterView().setFooterProgressBarDrawable(
+                    this.getResources().getDrawable(R.drawable.progress_circular));
+        }
     }
 
     protected void initContentView(int layoutResID) {

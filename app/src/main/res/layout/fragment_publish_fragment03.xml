@@ -3,12 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
+    android:clickable="true"
     tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment03">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:orientation="vertical">
 
 
@@ -239,4 +242,5 @@
                 android:textColor="@color/grey500" />
         </LinearLayout>-->
     </LinearLayout>
+    </ScrollView>
 </FrameLayout>

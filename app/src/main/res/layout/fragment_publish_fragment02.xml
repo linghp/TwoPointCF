@@ -1,13 +1,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment02" android:background="@color/bg_gray">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@color/bg_gray"
+    tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment02">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -25,19 +26,21 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="项目名称:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +51,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="项目介绍:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -60,11 +63,13 @@
                     android:lines="20"
                     android:textColorHint="@color/grey500" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,18 +81,21 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="所在城市:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="选择城市" android:drawableRight="@mipmap/down_arrow_grey"/>
+                    android:drawableRight="@mipmap/down_arrow_grey"
+                    android:text="选择城市" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,18 +107,21 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="行业类型:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="选择行业" android:drawableRight="@mipmap/down_arrow_grey"/>
+                    android:drawableRight="@mipmap/down_arrow_grey"
+                    android:text="选择行业" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,19 +132,21 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="详细地址:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,17 +158,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="项目图片:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@mipmap/add_picture"/>
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/add_picture" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,17 +183,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="营业执照:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@mipmap/add_picture"/>
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/add_picture" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -189,17 +208,20 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="个人信用报告:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@mipmap/add_picture"/>
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/add_picture" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="9dp"
                 android:background="@color/gray" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,12 +233,14 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="行业许可证:"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:src="@mipmap/add_picture"/>
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/add_picture" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

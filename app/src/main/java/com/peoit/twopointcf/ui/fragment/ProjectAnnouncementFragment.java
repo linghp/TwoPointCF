@@ -16,6 +16,7 @@ import com.peoit.twopointcf.entity.ProjectAnnouncementBean;
 import com.peoit.twopointcf.other.ScrollAwareFABBehavior;
 import com.peoit.twopointcf.ui.adapter.ProjectAnnouncementAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ import java.util.List;
  * Created by ling on 2015/9/1.
  * description:（我的项目->经营管理->)项目公告
  */
-public class ProjectAnnouncementFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class ProjectAnnouncementFragment extends BaseFragment implements AdapterView.OnItemClickListener,
+        AbPullToRefreshView.OnHeaderRefreshListener,AbPullToRefreshView.OnFooterLoadListener{
     private RecyclerView recyclerView;
     private FloatingActionButton fab;
     private List<ProjectAnnouncementBean> lists;
@@ -56,6 +58,9 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
         // 设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        pullview.setOnHeaderRefreshListener(this);
+        pullview.setOnFooterLoadListener(this);
     }
 
     @Override
@@ -100,4 +105,13 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
         isPublished = false;
     }
 
+    @Override
+    public void onHeaderRefresh(AbPullToRefreshView view) {
+        pullview.onHeaderRefreshFinish();
+    }
+
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+        pullview.onFooterLoadFinish();
+    }
 }

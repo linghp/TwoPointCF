@@ -1,18 +1,19 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment01"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    tools:context="com.peoit.twopointcf.ui.fragment.PublishFragment01">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/tv_publish"
-        android:paddingTop="@dimen/activity_vertical_margin"
         android:background="@drawable/shape2"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,7 +21,7 @@
             android:layout_marginTop="16dp"
             android:text="服务协议"
             android:textSize="@dimen/large_title_txt_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -55,13 +56,13 @@
 服务协议说明\n
 服务协议说明\n
 服务协议说明\n
-服务协议说明\n"/>
+服务协议说明\n" />
         </ScrollView>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我已阅读并同意服务协议 "/>
+            android:text="我已阅读并同意服务协议 " />
     </LinearLayout>
 
 
