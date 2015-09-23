@@ -48,7 +48,7 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.setup_ll1:
-                DialogTool.commonDialog(this, R.mipmap.ic_launcher, "清空缓存", "确认清空缓存？", "确认", new DialogInterface.OnClickListener() {
+                DialogTool.createCommonDialog(this, R.mipmap.ic_launcher, "清空缓存", "确认清空缓存？", "确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         myToast("清空缓存");
@@ -59,6 +59,26 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
                         myToast("取消");
                     }
                 }).show();
+                /*final List<String> strings = new ArrayList<String>();
+                strings.add("清除");
+                strings.add("不清除");
+                strings.add("清除不清除");
+                DialogTool.createRadioDialog(this, R.mipmap.ic_launcher, "清空缓存", strings, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        myToast("选择了"+strings.get(i));
+                    }
+                }, "确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        myToast("确定");
+                    }
+                }, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        myToast("取消");
+                    }
+                }).show();*/
                 break;
             case R.id.setup_ll2:
                 myToast("关于我们");
