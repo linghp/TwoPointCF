@@ -13,7 +13,7 @@ import com.peoit.twopointcf.ui.activity.CityActivity;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.SearchActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
-import com.peoit.twopointcf.ui.view.SlidingTabLayout;
+import com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout;
 import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.ArrayList;

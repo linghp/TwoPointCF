@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package com.peoit.twopointcf.ui.view;
+package com.peoit.twopointcf.ui.view.SlidingTabLayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -33,11 +31,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.utils.MyLogger;
 
 
 /**
  */
-public class SlidingTabLayout extends HorizontalScrollView {
+public class SlidingTabLayout_noViewpager extends HorizontalScrollView {
 
     public interface TabListener {
 
@@ -58,22 +57,21 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     private int mTabViewTextAppearance;
 
-    private ViewPager mViewPager;
-    private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
-
     private TabListener mTabListener;
 
     private final SlidingTabStrip mTabStrip;
 
-    public SlidingTabLayout(Context context) {
+    private int currentItemPosition=0;
+
+    public SlidingTabLayout_noViewpager(Context context) {
         this(context, null);
     }
 
-    public SlidingTabLayout(Context context, AttributeSet attrs) {
+    public SlidingTabLayout_noViewpager(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SlidingTabLayout(Context context, AttributeSet attrs, int defStyle) {
+    public SlidingTabLayout_noViewpager(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         // Disable the Scroll Bar
@@ -110,17 +108,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
     }
 
     /**
-     * Set the {@link ViewPager.OnPageChangeListener}. When using {@link SlidingTabLayout} you are
-     * required to set any {@link ViewPager.OnPageChangeListener} through this method. This is so
-     * that the layout can update it's scroll position correctly.
-     *
-     * @see ViewPager#setOnPageChangeListener(ViewPager.OnPageChangeListener)
-     */
-    public void setOnPageChangeListener(ViewPager.OnPageChangeListener listener) {
-        mViewPagerPageChangeListener = listener;
-    }
-
-    /**
      * Set the custom layout to be inflated for the tab views.
      *
      * @param layoutResId Layout id to be inflated
@@ -139,20 +126,11 @@ public class SlidingTabLayout extends HorizontalScrollView {
      * Sets the associated view pager. Note that the assumption here is that the pager content
      * (number of tabs and tab titles) does not change after this call has been made.
      */
-    public void setViewPager(ViewPager viewPager) {
-        mViewPager = viewPager;
-        if (viewPager != null) {
-            viewPager.setOnPageChangeListener(new InternalViewPagerListener());
-        }
-        notifyDataSetChanged();
+    public void init(String[] titles) {
+        mTabStrip.removeAllViews();
+        populateTabStrip(titles);
     }
 
-    public void notifyDataSetChanged() {
-        mTabStrip.removeAllViews();
-        if (mViewPager != null) {
-            populateTabStrip();
-        }
-    }
 
     /**
      * Create a default view to be used for tabs. This is called if a custom tab view is not set via
@@ -187,11 +165,10 @@ public class SlidingTabLayout extends HorizontalScrollView {
         return textView;
     }
 
-    private void populateTabStrip() {
-        final PagerAdapter adapter = mViewPager.getAdapter();
-        final View.OnClickListener tabClickListener = new TabClickListener();
+    private void populateTabStrip(String[] titles) {
+        final OnClickListener tabClickListener = new TabClickListener();
 
-        for (int i = 0; i < adapter.getCount(); i++) {
+        for (int i = 0; i < titles.length; i++) {
             View tabView = null;
             TextView tabTitleView = null;
 
@@ -214,7 +191,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 tabTitleView.setTextAppearance(getContext(), mTabViewTextAppearance);
             }
 
-            tabTitleView.setText(adapter.getPageTitle(i));
+            tabTitleView.setText(titles[i]);
             tabView.setOnClickListener(tabClickListener);
             mTabStrip.addView(tabView);
         }
@@ -224,14 +201,12 @@ public class SlidingTabLayout extends HorizontalScrollView {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        if (mViewPager != null) {
-            scrollToTab(mViewPager.getCurrentItem(), 0);
-        }
+            scrollToTab(currentItemPosition, 0);
     }
 
     private void scrollToTab(int tabIndex, float positionOffset) {
         final int tabStripChildCount = mTabStrip.getChildCount();
-        if (tabStripChildCount == 0 || tabIndex < 0 || tabIndex >= tabStripChildCount) {
+        if (tabStripChildCount == 0 || tabIndex < 0 || tabIndex > tabStripChildCount) {
             return;
         }
 
@@ -240,79 +215,34 @@ public class SlidingTabLayout extends HorizontalScrollView {
         View selectedChild = mTabStrip.getChildAt(tabIndex);
         if (selectedChild != null) {
             int targetScrollX = selectedChild.getLeft() +
-                    Math.round(positionOffset * selectedChild.getWidth()) - mTitleOffset;
-
+                    Math.round(selectedChild.getWidth()) + 480;
+            MyLogger.i(targetScrollX+"");
             scrollTo(targetScrollX, 0);
         }
     }
 
     private void setSelectedTab(int position, float positionOffset) {
-        position = Math.round(position + positionOffset);
-
         for (int i = 0; i < mTabStrip.getChildCount(); i++) {
             mTabStrip.getChildAt(i).setActivated(position == i);
         }
+        mTabStrip.onViewPagerPageChanged(position, positionOffset);
     }
 
-    private class InternalViewPagerListener implements ViewPager.OnPageChangeListener {
-        private int mScrollState;
 
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            int tabStripChildCount = mTabStrip.getChildCount();
-            if ((tabStripChildCount == 0) || (position < 0) || (position >= tabStripChildCount)) {
-                return;
-            }
-
-            mTabStrip.onViewPagerPageChanged(position, positionOffset);
-
-
-            scrollToTab(position, positionOffset);
-
-            if (mViewPagerPageChangeListener != null) {
-                mViewPagerPageChangeListener.onPageScrolled(position, positionOffset,
-                        positionOffsetPixels);
-            }
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-            mScrollState = state;
-
-            if (mViewPagerPageChangeListener != null) {
-                mViewPagerPageChangeListener.onPageScrollStateChanged(state);
-            }
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            if (mScrollState == ViewPager.SCROLL_STATE_IDLE) {
-                mTabStrip.onViewPagerPageChanged(position, 0f);
-                scrollToTab(position, 0);
-            }
-
-            if (mViewPagerPageChangeListener != null) {
-                mViewPagerPageChangeListener.onPageSelected(position);
-            }
-        }
-    }
-
-    private class TabClickListener implements View.OnClickListener {
+    private class TabClickListener implements OnClickListener {
         @Override
         public void onClick(View v) {
             for (int i = 0; i < mTabStrip.getChildCount(); i++) {
                 if (v == mTabStrip.getChildAt(i)) {
-                    final int previousPos = mViewPager.getCurrentItem();
-                    mViewPager.setCurrentItem(i);
-
+                    scrollToTab(i, 0);
                     if (mTabListener != null) {
-                        if (previousPos != i) {
+                        if (currentItemPosition != i) {
                             mTabListener.onTabSelected(i);
                         } else {
                             mTabListener.onTabReSelected(i);
                         }
                     }
-
+                    currentItemPosition=i;
                     return;
                 }
             }

@@ -11,6 +11,11 @@
         <item>驳回</item>
     </string-array>
 
+    <string-array name="business_manager_detail_subtitle">
+        <item>@string/title_activity_business_manager_detail</item>
+        <item>@string/financialreports</item>
+    </string-array>
+
     <string-array name="investfinddetail_subitemname">
         <item>融资资金</item>
         <item>已投人数</item>

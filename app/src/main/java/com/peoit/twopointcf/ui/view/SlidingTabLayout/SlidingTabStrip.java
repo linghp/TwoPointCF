@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.peoit.twopointcf.ui.view;
+package com.peoit.twopointcf.ui.view.SlidingTabLayout;
 
 import android.content.Context;
 import android.graphics.Canvas;

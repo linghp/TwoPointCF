@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.fragment.BusinessManagerFragment;
-import com.peoit.twopointcf.ui.view.SlidingTabLayout;
+import com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;

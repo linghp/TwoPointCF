@@ -17,7 +17,7 @@
         android:layout_marginRight="16dp"
         android:orientation="horizontal">
 
-        <com.peoit.twopointcf.ui.view.SlidingTabLayout
+        <com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout
             android:id="@+id/viewpager_tabs"
             android:layout_width="0dp"
             android:layout_height="48dp"
