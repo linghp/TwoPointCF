@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/myprojectnormal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基于你当前操作环境的检测，请选择以下任何一种方式进行效验"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/safetyefficacy_ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="验证短信"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size"
+            android:padding="5dp"
+            android:drawableRight="@mipmap/next_level"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
+    <LinearLayout
+        android:id="@+id/safetyefficacy_ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="onClick"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="联系在线客服"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size"
+            android:padding="5dp"
+            android:drawableRight="@mipmap/next_level"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
+
+</LinearLayout>

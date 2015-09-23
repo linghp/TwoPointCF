@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.DialogTool;
 
 /**
  * 设置/安全中心
@@ -46,7 +48,17 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.setup_ll1:
-                myToast("清空缓存");
+                DialogTool.commonDialog(this, R.mipmap.ic_launcher, "清空缓存", "确认清空缓存？", "确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        myToast("清空缓存");
+                    }
+                }, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        myToast("取消");
+                    }
+                }).show();
                 break;
             case R.id.setup_ll2:
                 myToast("关于我们");
