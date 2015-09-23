@@ -132,6 +132,10 @@
             android:name=".ui.activity.MyPublishDetailActivity"
             android:label="@string/title_activity_my_publish_detail" >
         </activity>
+        <activity
+            android:name=".ui.activity.SimplePhotoViewActivity"
+            android:label="@string/title_activity_simple_photo_view" >
+        </activity>
     </application>
 
 </manifest>

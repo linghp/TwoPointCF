@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" android:background="@color/bg_gray">
 
     <com.peoit.twopointcf.ui.view.TitleView
         android:id="@+id/title_view"
@@ -13,20 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/title_view">
-
-        <ViewStub
-            android:id="@+id/layout_loading_stub"
-            android:inflatedId="@+id/layout_loading"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/layout_loading"/>
-
-        <ViewStub
-            android:id="@+id/layout_nodata_stub"
-            android:inflatedId="@+id/layout_nodata"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/layout_notdata"/>
     </FrameLayout>
 
 </RelativeLayout>
