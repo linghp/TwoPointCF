@@ -77,6 +77,15 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             tv01.setText(investfinddetail_subitemnames[i]);
             tv02.setText(investfinddetail_subitemvalues[i]);
             linearLayoutsub.addView(view);
+            final String title=investfinddetail_subitemnames[i];
+            if(investfinddetail_subitemvalues[i].contains("点击查看")){
+                tv02.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SimplePhotoViewActivity.startThisActivity(title,InvestFindDetailActivity.this);
+                    }
+                });
+            }
         }
     }
 

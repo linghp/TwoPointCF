@@ -64,9 +64,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
         layout_body = (FrameLayout) super.findViewById(R.id.layout_body);
 
-        layout_current = getLayoutInflater().inflate(layoutResID, null);
+        layout_current = getLayoutInflater().inflate(layoutResID, layout_body);
 
-        layout_body.addView(layout_current);
+        //layout_body.addView(layout_current);
     }
 
     protected abstract void initView();

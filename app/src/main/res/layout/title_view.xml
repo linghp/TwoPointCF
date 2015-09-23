@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="48dip"
     android:background="@color/lightblue500"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
     <RelativeLayout
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@string/mycenter" />
+            tools:text="@string/mycenter" />
 
         <EditText
             android:id="@+id/et_search"
