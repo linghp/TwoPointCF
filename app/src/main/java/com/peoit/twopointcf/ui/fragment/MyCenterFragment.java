@@ -97,6 +97,7 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
     protected void updateView() {
         if (titleView != null) {
             titleView.hideLeftBtn();
+            titleView.setTitle(R.string.mycenter);
             titleView.setRightBtn(R.mipmap.setting, this);
         }
     }

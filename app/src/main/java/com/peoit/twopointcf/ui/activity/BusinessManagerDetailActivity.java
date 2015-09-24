@@ -22,7 +22,7 @@ import com.peoit.twopointcf.utils.MyLogger;
  * Created by ling on 2015/9/1.
  * description:（我的项目->）经营管理详情
  */
-public class BusinessManagerDetailActivity extends BaseFragmentActivity implements View.OnClickListener,SlidingTabLayout_noViewpager.TabListener {
+public class BusinessManagerDetailActivity extends BaseFragmentActivity implements SlidingTabLayout_noViewpager.TabListener {
     private PopupWindow popupWindow;
     private Fragment[] mFragments;
     private boolean isPublished;

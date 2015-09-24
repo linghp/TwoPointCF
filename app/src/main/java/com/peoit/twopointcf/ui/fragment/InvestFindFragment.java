@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * @author ling
- *	投资发现
+ *	投资发现--此类弃用（用InvestFindSubFragment代替）
  */
 public class InvestFindFragment extends BaseFragment implements View.OnClickListener{
     private ViewPager mViewPager;

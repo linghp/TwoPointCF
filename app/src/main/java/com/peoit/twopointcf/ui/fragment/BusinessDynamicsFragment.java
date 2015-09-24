@@ -1,6 +1,5 @@
 package com.peoit.twopointcf.ui.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +17,9 @@ import java.util.List;
 
 /**
  * @author ling
- *         经营动态
+ *         资讯中心
  */
 public class BusinessDynamicsFragment extends BaseFragment implements AdapterView.OnItemClickListener,View.OnClickListener{
-
-    private View mParent;
-
-    private Activity mActivity;
     private ListView listView;
     private BusinessDynamicsFragmentAdapter adapter;
     private List<BusinessDynamicsBean> businessDynamicsBeans=new ArrayList<>();
@@ -55,15 +50,6 @@ public class BusinessDynamicsFragment extends BaseFragment implements AdapterVie
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mParent = getView();
-        mActivity = getActivity();
-        if (titleView != null) {
-            titleView.hideLeftBtn();
-            titleView.setTitle(R.string.businessdynamics);
-//            Drawable drawable = getResources().getDrawable(R.mipmap.down_arrow);
-//            titleView.setTitleRightDrawable(drawable,this);
-        }
-
     }
 
     @Override
@@ -92,7 +78,12 @@ public class BusinessDynamicsFragment extends BaseFragment implements AdapterVie
 
     @Override
     protected void updateView() {
-
+        if (titleView != null) {
+            titleView.hideLeftBtn();
+            titleView.setTitle(R.string.businessdynamics);
+//            Drawable drawable = getResources().getDrawable(R.mipmap.down_arrow);
+//            titleView.setTitleRightDrawable(drawable,this);
+        }
     }
 
 

@@ -65,28 +65,29 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 		ImageView prevIcon;
 		TextView prevText;
 		switch(mCurIndicator) {
+
 			case 0:
-				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView1);
-				prevIcon.setImageResource(R.mipmap.mycenternormal);
-				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView1);
-				prevText.setTextColor(COLOR_UNSELECT);
-				break;
-			case 1:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView2);
 				prevIcon.setImageResource(R.mipmap.investfindnormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView2);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
-			case 2:
+			case 1:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView3);
 				prevIcon.setImageResource(R.mipmap.bussinessdynamicnormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView3);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
-			case 3:
+			case 2:
 				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView4);
 				prevIcon.setImageResource(R.mipmap.myprojectnormal);
 				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView4);
+				prevText.setTextColor(COLOR_UNSELECT);
+				break;
+			case 3:
+				prevIcon =(ImageView) mIndicators[mCurIndicator].findViewById(R.id.imageView1);
+				prevIcon.setImageResource(R.mipmap.mycenternormal);
+				prevText = (TextView) mIndicators[mCurIndicator].findViewById(R.id.textView1);
 				prevText.setTextColor(COLOR_UNSELECT);
 				break;
 		}
@@ -96,28 +97,29 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 		ImageView currIcon;
 		TextView currText;
 		switch(which) {
+
 			case 0:
-				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView1);
-				currIcon.setImageResource(R.mipmap.mycenterfocus);
-				currText = (TextView) mIndicators[which].findViewById(R.id.textView1);
-				currText.setTextColor(COLOR_SELECT);
-				break;
-			case 1:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView2);
 				currIcon.setImageResource(R.mipmap.investfindfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView2);
 				currText.setTextColor(COLOR_SELECT);
 				break;
-			case 2:
+			case 1:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView3);
 				currIcon.setImageResource(R.mipmap.bussinessdynamicfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView3);
 				currText.setTextColor(COLOR_SELECT);
 				break;
-			case 3:
+			case 2:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView4);
 				currIcon.setImageResource(R.mipmap.myprojectfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView4);
+				currText.setTextColor(COLOR_SELECT);
+				break;
+			case 3:
+				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView1);
+				currIcon.setImageResource(R.mipmap.mycenterfocus);
+				currText = (TextView) mIndicators[which].findViewById(R.id.textView1);
 				currText.setTextColor(COLOR_SELECT);
 				break;
 		}

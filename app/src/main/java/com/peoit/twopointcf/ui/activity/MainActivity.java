@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private void setFragmentIndicator(int whichIsDefault) {
         mFragments = new Fragment[4];
-        mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.fragment_MyCenter);//个人中心
-        mFragments[1] = getSupportFragmentManager().findFragmentById(R.id.fragment_InvestFind);//投资发现
-        mFragments[2] = getSupportFragmentManager().findFragmentById(R.id.fragment_BusinessDynamics);//经营动态
-        mFragments[3] = getSupportFragmentManager().findFragmentById(R.id.fragment_MyProject);//我的项目
+        mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.fragment_InvestFind);//投资发现
+        mFragments[1] = getSupportFragmentManager().findFragmentById(R.id.fragment_BusinessDynamics);//资讯中心
+        mFragments[2] = getSupportFragmentManager().findFragmentById(R.id.fragment_MyProject);//我的项目
+        mFragments[3] = getSupportFragmentManager().findFragmentById(R.id.fragment_MyCenter);//个人中心
         getSupportFragmentManager().beginTransaction().hide(mFragments[0])
                 .hide(mFragments[1]).hide(mFragments[2]).hide(mFragments[3]).show(mFragments[whichIsDefault]).commit();
 
