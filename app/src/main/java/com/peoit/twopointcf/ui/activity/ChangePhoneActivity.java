@@ -67,7 +67,8 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
                     myToast("修改成功");
                     finish();
                 }else {
-                    myToast("验证成功");
+//                    myToast("验证成功");
+
                     CommonUtil.gotoActivity(this,VerifySecurityQuestionActivity.class,true);
                 }
                 break;
@@ -79,5 +80,13 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
                 break;
         }
 
+    }
+    private boolean match() {
+//        userName = loginEt1.getText().toString();
+//        if (TextUtils.isEmpty(userName)) {
+//            showToast("请输入账号");
+//            return false;
+//        }
+        return true;
     }
 }

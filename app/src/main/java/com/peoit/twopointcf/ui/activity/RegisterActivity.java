@@ -17,7 +17,7 @@ import java.util.Map;
  * 注册
  * Created by zyz on 2015/9/7.
  */
-public class RegisterActivity extends BaseActivity implements View.OnClickListener, RegisterPresenter.OnHttpResultListener {
+public class RegisterActivity extends BaseActivity implements RegisterPresenter.OnHttpResultListener {
     private EditText registerEt1;
     private EditText registerEt2;
     private EditText registerEt3;

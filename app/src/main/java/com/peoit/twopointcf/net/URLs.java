@@ -20,14 +20,26 @@ public class URLs {
      */
     public static final String USER_VLIDATECODE = HOST + "api/identifyingCode";
     /**
+     * 验证验证码
+     */
+    public static final String USER_VALIDATECODE = HOST + "api/validateCode";
+    /**
      * 登录
      */
     public static final String USER_SIGNIN = HOST + "api/user/login";
+    /**
+     * 修改密码
+     */
+    public static final String USER_CHANGEPASSWORD = HOST + "api/user/changePassword";
     /**
      * 第三方登陆
      */
     public static final String OAUTH_SIGNIN = HOST + "xxx";
 
+    /**
+     * 上传实名认证信息
+     */
+//    public static final String USER_SIGNIN = HOST + "xxx";
     /**
      * 拼接请求路径
      *

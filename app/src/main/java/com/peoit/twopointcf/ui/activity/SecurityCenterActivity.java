@@ -74,9 +74,10 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.securitycenter_tv2:
                 myToast("重置登录密码");
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("ischange",false);
-                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
+                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
+//                Bundle bundle = new Bundle();
+//                bundle.putBoolean("ischange",false);
+//                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
                 break;
             case R.id.securitycenter_tv3:
                 myToast("手势");
