@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="昵称"
+            android:text="昵        称"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="邮箱"
+            android:text="邮         箱"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="电话"
+            android:text="电        话"
             android:textColor="@color/black"
             android:textSize="@dimen/large_title_txt_size" />
 
@@ -176,7 +176,63 @@
             android:textColorHint="@color/txt_black2"
             android:textSize="18sp" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
 
+    <LinearLayout
+        android:id="@+id/boundphone_ll3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验  证  码"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_title_txt_size" />
+
+        <EditText
+            android:id="@+id/register_et6"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:gravity="center|right"
+            android:hint="短信验证码"
+            android:numeric="integer"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/txt_black1"
+            android:textColorHint="@color/txt_black2"
+            android:textSize="18sp"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/txt_black2" />
+
+        <TextView
+            android:id="@+id/register_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="获取验证码"
+            android:textColor="@color/txt_white"
+            android:textSize="@dimen/title_txt_size" />
+
+    </LinearLayout>
     <TextView
         android:id="@+id/register_tv1"
         android:layout_width="match_parent"

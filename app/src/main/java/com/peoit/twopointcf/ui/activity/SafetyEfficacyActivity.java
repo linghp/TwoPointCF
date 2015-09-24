@@ -33,7 +33,9 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected void updateView() {
-
+        if(titleView!=null) {
+            titleView.setTitle("安全效验");
+        }
     }
 
     @Override
