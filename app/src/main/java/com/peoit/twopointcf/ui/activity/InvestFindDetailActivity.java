@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,6 +48,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         tv_subtitle= (TextView) findViewById(R.id.tv_subtitle);
         linearLayoutsub=findViewByID_My(R.id.linearLayoutsub);
         findViewById(R.id.slide_tag1).setActivated(true);
+
+        ViewGroup.LayoutParams layoutParams=tagViewPager.getLayoutParams();
+        layoutParams.width= CommonUtil.getScreenWidth(this);
+        layoutParams.height = layoutParams.width / 3;
+        tagViewPager.setLayoutParams(layoutParams);
         //轮播
         List<Integer> imgLists = new ArrayList<>();
         imgLists.add(R.mipmap.raw_1433489820);
@@ -97,13 +103,15 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             titleView.setTitle(title);
             tv_subtitle.setText(title);
         }
-
+        titleView.getBtn_right().setTag(R.mipmap.collection);
         titleView.setRightBtn(R.mipmap.collection, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(v.getTag().equals(R.mipmap.collection)) {
+                    v.setTag(R.mipmap.collection_on);
                     titleView.setRightBtn(R.mipmap.collection_on, this);
                 }else {
+                    v.setTag(R.mipmap.collection);
                     titleView.setRightBtn(R.mipmap.collection, this);
                 }
             }

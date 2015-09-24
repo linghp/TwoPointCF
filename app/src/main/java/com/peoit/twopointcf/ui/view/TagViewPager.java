@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -331,12 +330,12 @@ public class TagViewPager extends RelativeLayout implements
                 //iv.setTag(position);
                 iv.setOnClickListener(listener);
                 iv.setScaleType(ImageView.ScaleType.FIT_XY);
-                LayoutParams layoutParams = (LayoutParams) TagViewPager.this.getLayoutParams();
-                layoutParams.width = CommonUtil
-                        .getScreenWidth(context);
-//									layoutParams.height = layoutParams.width * 2 / 3;
-                layoutParams.height = layoutParams.width * 1 / 2;
-                iv.setLayoutParams(layoutParams);
+//				ViewGroup.LayoutParams layoutParams = TagViewPager.this.getLayoutParams();
+//                layoutParams.width = CommonUtil
+//                        .getScreenWidth(context);
+////									layoutParams.height = layoutParams.width * 2 / 3;
+//                layoutParams.height = layoutParams.width * 1 / 2;
+//                iv.setLayoutParams(layoutParams);
 
                 // 图片的下载
 //                mAbImageLoader.display(iv, Constant.BASEURL

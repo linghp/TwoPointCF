@@ -6,16 +6,8 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:id="@+id/fragment_MyCenter"
-        class="com.peoit.twopointcf.ui.fragment.MyCenterFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/indicator"
-        tools:layout="@layout/fragment_mycenter" />
-
-    <fragment
         android:id="@+id/fragment_InvestFind"
-        class="com.peoit.twopointcf.ui.fragment.InvestFindFragment"
+        class="com.peoit.twopointcf.ui.fragment.InvestFindSubFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/indicator"
@@ -23,7 +15,7 @@
 
     <fragment
         android:id="@+id/fragment_BusinessDynamics"
-        class="com.peoit.twopointcf.ui.fragment.BusinessDynamicsFragment"
+        class="com.peoit.twopointcf.ui.fragment.InformationCenterFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/indicator"
@@ -36,6 +28,14 @@
         android:layout_height="fill_parent"
         android:layout_above="@+id/indicator"
         tools:layout="@layout/fragment_myproject" />
+
+    <fragment
+        android:id="@+id/fragment_MyCenter"
+        class="com.peoit.twopointcf.ui.fragment.MyCenterFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/indicator"
+        tools:layout="@layout/fragment_mycenter" />
 
     <com.peoit.twopointcf.ui.view.FragmentIndicator
         android:paddingTop="0.5dp"

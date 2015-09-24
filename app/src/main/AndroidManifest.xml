@@ -99,7 +99,6 @@
         <activity
             android:name=".ui.activity.SafetyEfficacyActivity"
             android:label="@string/title_activity_SafetyEfficacy" />
-
         <activity
             android:name=".ui.activity.SetUpActivity"
             android:label="@string/title_activity_setup" />
@@ -139,6 +138,10 @@
         <activity
             android:name=".ui.activity.SimplePhotoViewActivity"
             android:label="@string/title_activity_simple_photo_view" >
+        </activity>
+        <activity
+            android:name=".ui.activity.InformationCenterDetailActivity"
+            android:label="@string/title_activity_information_center_detail" >
         </activity>
     </application>
 

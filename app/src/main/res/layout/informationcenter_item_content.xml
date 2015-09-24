@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" android:background="@color/white">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textColor="@color/lightblue500"
+        android:textSize="@dimen/title_txt_size"
+        android:textStyle="bold"
+        tools:text="金佳俊宠物度假村" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="水电费水电费水电费水电费上发送到发送到啥地方所得税地方上的所得税的发生的山东省分公司公司的公司的格式格式格式的格式归属感分地方法规" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="3dp"
+        tools:text="2015-09-23" />
+</LinearLayout>

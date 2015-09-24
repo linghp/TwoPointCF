@@ -23,6 +23,9 @@ public class TitleView extends FrameLayout{
 	private TextView tv_title,left_text,right_text;
 	private EditText et_search;
 
+	public ImageView getBtn_right() {
+		return btn_right;
+	}
 
 	public TitleView(Context context) {
 		this(context, null);
@@ -95,7 +98,7 @@ public class TitleView extends FrameLayout{
 	 * @param listener
 	 */
 	public void setRightBtn(int resid,OnClickListener listener){
-		btn_right.setTag(resid);
+		//btn_right.setTag(resid);
         btn_right.setVisibility(View.VISIBLE);
 		btn_right.setImageResource(resid);
 		btn_right.setOnClickListener(listener);
