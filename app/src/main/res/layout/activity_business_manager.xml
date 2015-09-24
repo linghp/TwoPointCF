@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.peoit.twopointcf.ui.activity.BusinessManagerActivity">
 
-    <com.peoit.twopointcf.ui.view.SlidingTabLayout
+    <com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout
         android:id="@+id/viewpager_tabs"
         android:layout_width="wrap_content"
         android:layout_height="48dp"

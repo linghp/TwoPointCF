@@ -14,7 +14,6 @@ import com.peoit.twopointcf.ui.activity.BusinessManagerActivity;
 import com.peoit.twopointcf.ui.activity.BusinessManagerDetailActivity;
 import com.peoit.twopointcf.ui.adapter.BusinessManagerAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
-import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,10 +68,10 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (type) {
             case BusinessManagerActivity.INVESTED:
-                CommonUtil.gotoActivity(getActivity(), BusinessManagerDetailActivity.class,false);
+                BusinessManagerDetailActivity.startThisActivity(false, lists.get(position).getTitle(), getActivity());
                 break;
             case BusinessManagerActivity.PUBLISHED:
-                BusinessManagerDetailActivity.startThisActivity(true,getActivity());
+                BusinessManagerDetailActivity.startThisActivity(true,lists.get(position).getTitle(),getActivity());
                 break;
         }
 

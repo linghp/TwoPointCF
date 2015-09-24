@@ -38,8 +38,8 @@ public class BusinessManagerAdapter extends ArrayAdapter<BusinessManagerBean>{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        holder.tv_title.setText(getItem(position).getTitle());
-//        holder.tv_content.setText(getItem(position).getContent());
+        holder.tv_title.setText(getItem(position).getTitle());
+        holder.tv_content.setText(getItem(position).getContent());
         return convertView;
     }
 

@@ -5,8 +5,8 @@ package com.peoit.twopointcf.entity;
  * description:
  */
 public class BusinessManagerBean {
-    private String title;
-    private String content;
+    private String title="完美世界宠物医院";
+    private String content="项目编号：0";
 
 
 

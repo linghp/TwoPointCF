@@ -2,14 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.peoit.twopointcf.ui.activity.BusinessManagerDetailActivity">
-
-    <fragment
+    <com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout_noViewpager
+        android:id="@+id/tabs"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:fadingEdgeLength="@dimen/spacing_minor"
+        android:textAppearance="@style/TextAppearance.my.Tab"
+        app:contentInsetStart="6dp"
+        app:indicatorHeight="2dp"
+        android:layout_centerHorizontal="true"
+        app:selectedColor="?attr/colorAccent" />
+    <fragment android:layout_below="@id/tabs"
         android:id="@+id/fragment_ProjectAnnouncement"
         class="com.peoit.twopointcf.ui.fragment.ProjectAnnouncementFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></fragment>
-    <fragment
+    <fragment android:layout_below="@id/tabs"
         android:id="@+id/fragment_FinancialReports"
         class="com.peoit.twopointcf.ui.fragment.FinancialReportsFragment"
         android:layout_width="match_parent"

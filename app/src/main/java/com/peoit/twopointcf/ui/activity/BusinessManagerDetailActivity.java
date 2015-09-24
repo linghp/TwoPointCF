@@ -15,58 +15,71 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.other.ScrollAwareFABBehavior;
 import com.peoit.twopointcf.ui.base.BaseFragmentActivity;
-import com.peoit.twopointcf.ui.fragment.ProjectAnnouncementFragment;
+import com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout_noViewpager;
 import com.peoit.twopointcf.utils.MyLogger;
 
 /**
  * Created by ling on 2015/9/1.
  * description:（我的项目->）经营管理详情
  */
-public class BusinessManagerDetailActivity extends BaseFragmentActivity implements View.OnClickListener{
+public class BusinessManagerDetailActivity extends BaseFragmentActivity implements View.OnClickListener,SlidingTabLayout_noViewpager.TabListener {
     private PopupWindow popupWindow;
     private Fragment[] mFragments;
     private boolean isPublished;
+    private String title;
+    private SlidingTabLayout_noViewpager tabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_manager_detail);
     }
 
-    public static void startThisActivity(boolean isPublished, Context context) {
+    public static void startThisActivity(boolean isPublished,String title,Context context) {
         Intent intent = new Intent(context, BusinessManagerDetailActivity.class);
         intent.putExtra("isPublished", isPublished);
+        intent.putExtra("title", title);
         context.startActivity(intent);
     }
 
     @Override
     protected void initView() {
         super.initView();
-        initPopupWindow();
+        tabs=findViewByID_My(R.id.tabs);
+        //initPopupWindow();
     }
 
     @Override
     protected void initData() {
         super.initData();
         isPublished=getIntent().getBooleanExtra("isPublished",false);
-        MyLogger.i("isPublished:"+isPublished);
+        title=getIntent().getStringExtra("title");
+        MyLogger.i("title:"+title);
 
         mFragments = new Fragment[2];
         mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.fragment_ProjectAnnouncement);
-        if(!isPublished) {
-            ((ProjectAnnouncementFragment) mFragments[0]).hiddenFAB();
-        }
+//        if(!isPublished) {
+//            ((ProjectAnnouncementFragment) mFragments[0]).hiddenFAB();
+//        }
         mFragments[1] = getSupportFragmentManager().findFragmentById(R.id.fragment_FinancialReports);
         getSupportFragmentManager().beginTransaction().hide(mFragments[0])
                 .hide(mFragments[1]).show(mFragments[0]).commit();
+
+        tabs.init(getResources().getStringArray(R.array.business_manager_detail_subtitle));
+        tabs.setTabListener(this);
     }
 
     @Override
     protected void updateView() {
         if (titleView != null) {
-            titleView.setTitle(R.string.title_activity_business_manager_detail);
-            Drawable drawable = getResources().getDrawable(R.mipmap.down_arrow);
-            titleView.setTitleRightDrawable(drawable,this);
+            titleView.setTitle(title);
+//            Drawable drawable = getResources().getDrawable(R.mipmap.down_arrow);
+//            titleView.setTitleRightDrawable(drawable,this);
+            if(isPublished){
+                titleView.setRightBtn(R.mipmap.add,this);
+            }
         }
+
+
     }
 
     private void initPopupWindow() {
@@ -136,6 +149,13 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
             case R.id.title_text:
                 popupWindow.showAsDropDown(v);
                 break;
+            case R.id.right_btn:
+                if(mFragments[0].isVisible()){
+                    myToast("0");
+                }else{
+                    myToast("1");
+                }
+                break;
         }
     }
 
@@ -143,5 +163,16 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
     protected void onDestroy() {
         super.onDestroy();
         ScrollAwareFABBehavior.isdisplay=true;
+    }
+
+    @Override
+    public void onTabSelected(int pos) {
+        getSupportFragmentManager().beginTransaction().hide(mFragments[0])
+                .hide(mFragments[1]).show(mFragments[pos]).commit();
+    }
+
+    @Override
+    public void onTabReSelected(int pos) {
+
     }
 }
