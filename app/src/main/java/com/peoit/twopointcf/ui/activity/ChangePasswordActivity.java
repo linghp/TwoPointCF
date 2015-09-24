@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
-import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
  * 修改密码
@@ -53,7 +52,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
         switch (view.getId()){
             case R.id.changepassword_tv2:
                 myToast("修改密码成功");
-                CommonUtil.gotoActivity(this,LoginActivity.class,true);
+                finish();
                 break;
             default:
                 break;

@@ -6,7 +6,7 @@ package com.peoit.twopointcf.net;
  * @author ling
  */
 public class URLs {
-    public static final String HOST = "http://xxx.xxx.xxx";
+    public static final String HOST = "http://192.168.0.150:8080/";
     public static final String PROJECT_NAME = "";
     public static final String API = "";
 
@@ -14,15 +14,19 @@ public class URLs {
     /**
      * 注册
      */
-    public static final String USER_SIGNUP = "xxx";
+    public static final String USER_SIGNUP = HOST + "api/user/createUser";
     /**
-     * 登陆
+     * 获取验证码
      */
-    public static final String USER_SIGNIN = "xxx";
+    public static final String USER_VLIDATECODE = HOST + "api/identifyingCode";
+    /**
+     * 登录
+     */
+    public static final String USER_SIGNIN = HOST + "api/user/login";
     /**
      * 第三方登陆
      */
-    public static final String OAUTH_SIGNIN = "xxx";
+    public static final String OAUTH_SIGNIN = HOST + "xxx";
 
     /**
      * 拼接请求路径

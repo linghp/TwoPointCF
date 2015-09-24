@@ -1,26 +1,34 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.presenters.impl.LoginPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 登录
  * Created by zyz on 2015/9/7.
  */
-public class LoginActivity extends BaseActivity implements View.OnClickListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginPresenter.OnHttpResultListener{
     private ImageView loginIv1;
     private EditText loginEt1;
     private EditText loginEt2;
     private TextView loginTv1;
     private TextView loginTv2;
     private TextView loginTv3;
+    private String userName;
+    private String password;
+    private LoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +48,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void initData() {
-
+    presenter = new LoginPresenter(this);
     }
 
     @Override
@@ -57,7 +65,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         switch (view.getId()){
             case R.id.login_tv1:
 //                myToast("登录");
-                finish();
+                if (match()){
+                    Map<String, String> maps = new HashMap<>();
+                    maps.put("userName", userName);
+                    maps.put("password", password);
+                    presenter.getData(maps);
+                }
                 break;
             case R.id.login_tv2:
                 //注册
@@ -72,6 +85,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             default:
                 break;
         }
+
+    }
+    private boolean match() {
+        userName = loginEt1.getText().toString();
+        if (TextUtils.isEmpty(userName)) {
+            showToast("请输入账号");
+            return false;
+        }
+        password = loginEt2.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            showToast("请输入密码");
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
 
     }
 }
