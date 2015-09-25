@@ -4,6 +4,9 @@ package com.peoit.twopointcf.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+
+import com.peoit.twopointcf.entity.UserInfo;
 
 public class LocalUserInfo {
     /**
@@ -11,6 +14,8 @@ public class LocalUserInfo {
      */
     public static final String PREFERENCE_NAME = "local_userinfo";
     public static final String USERPHOTO_FILENAME = "userphotoname";//头像图片文件名
+
+    public static final String USERNAME = "userName";//头像图片文件名
     private static SharedPreferences mSharedPreferences;
     private static LocalUserInfo localUserInfo;
     private static Editor editor;
@@ -191,16 +196,20 @@ public class LocalUserInfo {
 //
 //	}
 //
-//	/**
-//	 * 获取当前用户
-//	 * @return
-//	 */
-//	public UserInfo getUser(){
-//		UserInfo info = new UserInfo(getInt(Constant.PRE_USER_ID, Integer.MIN_VALUE),
-//				getInt(Constant.PRE_USER_LOGINTYPE, Integer.MIN_VALUE),
-//				getString(Constant.PRE_USER_NICKNAME),
-//				getString(Constant.PRE_USER_PHONENUMBER),
-//				getString(USERPHOTO_FILENAME),getString(Constant.INT_SHOPID),getBoolean("payed", false));
-//		return info;
-//	}
+	/**
+	 * 获取当前用户信息
+	 * @return
+	 */
+	public UserInfo getUser(){
+        if (!TextUtils.isEmpty(getString(USERNAME))) {
+//            UserInfo info = new UserInfo(getInt(Constant.PRE_USER_ID, Integer.MIN_VALUE),
+//                    getInt(Constant.PRE_USER_LOGINTYPE, Integer.MIN_VALUE),
+//                    getString(Constant.PRE_USER_NICKNAME),
+//                    getString(Constant.PRE_USER_PHONENUMBER),
+//                    getString(USERPHOTO_FILENAME), getString(Constant.INT_SHOPID), getBoolean("payed", false));
+//            return info;
+        }
+        return null;
+	}
+
 }

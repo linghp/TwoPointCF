@@ -25,7 +25,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
     public void getData(Map maps) {
         OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<Object>() {
             @Override
-            public void onError(Request request, Exception e) {
+            public void onError(Request request, String info,Exception e) {
                 mView.showToast(R.string.networkerror);
                 e.printStackTrace();
             }

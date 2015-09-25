@@ -1,8 +1,11 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.text.TextUtils;
+
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.entity.RegisterBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.IRegister;
@@ -15,15 +18,17 @@ import java.util.Map;
  * 注册
  * Created by zyz on 2015/9/24.
  */
-public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpResultListener>implements IRegister {
+public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpResultListener> implements IRegister {
 
-    public interface OnHttpResultListener extends IBaseView_Response{
+    public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
     }
+
     public RegisterPresenter(OnHttpResultListener view) {
         super(view);
     }
-    public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T>{
+
+    public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
         @Override
         public void onBefore(Request request) {
             mView.showProgress(false, mView.getStringbyid(R.string.networkrequest));
@@ -41,27 +46,32 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
     public void initView(OnHttpResultListener view) {
         super.initView(view);
     }
+
     @Override
     public void getData(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_SIGNUP, maps, new MyResultCallback<Object>() {
+        OkHttpClientManager.postAsyn(URLs.USER_SIGNUP, maps, new MyResultCallback<RegisterBean>() {
             @Override
-            public void onError(Request request, Exception e) {
-                mView.showToast(R.string.networkerror);
-                e.printStackTrace();
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast(info);
+                }
             }
 
             @Override
-            public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>注册" + response.toString());
-//                if (response != null){
-//
-//                }
+            public void onResponse(RegisterBean response) {
+                if (response != null){
+                    mView.showToast(R.string.registersuccess);
+                    MyLogger.i(">>>>>>>>>>>>>>>>注册" + response.toString());
+                }
             }
         }, mView);
     }
 
     //获取手机验证码
-    public void getVlidateCode(String phoneNum){
+    public void getVlidateCode(String phoneNum) {
         MyLogger.i(">>>>>>>>>>>>手机号码：" + phoneNum);
 //        OkHttpClientManager.getAsyn(URLs.USER_VLIDATECODE + ,new);
 

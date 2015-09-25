@@ -74,4 +74,6 @@
     <string name="title_activity_my_publish_detail">MyPublishDetailActivity</string>
     <string name="title_activity_simple_photo_view">SimplePhotoViewActivity</string>
     <string name="title_activity_information_center_detail">InformationCenterDetailActivity</string>
+
+    <string name="registersuccess">注册成功</string>
 </resources>
