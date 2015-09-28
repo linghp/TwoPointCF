@@ -27,12 +27,13 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/txt_black3" />
 
-            <LinearLayout android:id="@+id/ll_mycenter01"
+            <LinearLayout
+                android:id="@+id/ll_mycenter01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="10dp">
 
                 <com.peoit.twopointcf.ui.view.CustomShapeImageView
@@ -52,20 +53,24 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <TextView android:singleLine="true" android:ellipsize="end"
+                    <TextView
                         android:id="@+id/mycenter_tv1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="李四" android:gravity="center"
+                        android:drawableRight="@mipmap/level"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="登录"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/title_txt_size" android:drawableRight="@mipmap/level"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:id="@+id/mycenter_tv2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。" />
+                        android:text="" />
                 </LinearLayout>
 
                 <ImageView
@@ -84,16 +89,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/txt_black3" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/txt_black3" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/mycenter_ll2"
@@ -102,26 +109,27 @@
                     android:background="@color/white"
                     android:orientation="horizontal"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="实名认证"
-                        android:drawableLeft="@mipmap/my_name"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_name"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="实名认证"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:id="@+id/mycenter_tv3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="已认证"
-                        android:gravity="right"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="未认证"
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -131,41 +139,42 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/next_level" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@color/gray" />
+
                 <LinearLayout
                     android:id="@+id/mycenter_ll3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="绑定手机"
-                        android:drawableLeft="@mipmap/my_phone"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_phone"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="绑定手机"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:id="@+id/mycenter_tv4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="185****4321"
-                        android:gravity="right"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text=""
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -175,41 +184,42 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/next_level" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@color/gray" />
+
                 <LinearLayout
                     android:id="@+id/mycenter_ll4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="授权密码"
-                        android:drawableLeft="@mipmap/my_password"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_password"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="授权密码"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:id="@+id/mycenter_tv5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text=""
-                        android:gravity="right"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text=""
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -219,13 +229,15 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/next_level" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray"
                     android:layout_marginLeft="10dp"
-                    android:visibility="gone"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@color/gray"
+                    android:visibility="gone" />
+
                 <LinearLayout
                     android:id="@+id/mycenter_ll5"
                     android:layout_width="match_parent"
@@ -233,27 +245,26 @@
                     android:background="@color/white"
                     android:orientation="horizontal"
                     android:padding="10dp"
-                    android:visibility="gone"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="个人资料"
-                        android:drawableLeft="@mipmap/my_info"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_info"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="个人资料"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -265,20 +276,23 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/txt_black3" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/txt_black3" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/mycenter_ll6"
@@ -286,28 +300,27 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:visibility="gone"
                     android:padding="10dp"
-                    >
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的资金"
-                        android:drawableLeft="@mipmap/my_money"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_money"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="我的资金"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -317,40 +330,41 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/next_level" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:visibility="gone"/>
+                    android:background="@color/gray"
+                    android:visibility="gone" />
+
                 <LinearLayout
                     android:id="@+id/mycenter_ll7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的等级"
-                        android:drawableLeft="@mipmap/my_level"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_level"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="我的等级"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -360,39 +374,40 @@
                         android:scaleType="fitXY"
                         android:src="@mipmap/next_level" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@color/gray" />
+
                 <LinearLayout
                     android:id="@+id/mycenter_ll8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="10dp"
-                    >
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="安全中心"
-                        android:drawableLeft="@mipmap/my_security"
                         android:layout_gravity="center_vertical"
+                        android:drawableLeft="@mipmap/my_security"
+                        android:drawablePadding="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/title_txt_size"
+                        android:text="安全中心"
                         android:textColor="@color/txt_black1"
-                        android:drawablePadding="5dp"/>
+                        android:textSize="@dimen/title_txt_size" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/txt_black2"/>
+                        android:textColor="@color/txt_black2" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -404,6 +419,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

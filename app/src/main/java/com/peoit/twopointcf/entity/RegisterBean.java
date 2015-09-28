@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
+ * 注册
  * Created by zyz on 2015/9/24.
  */
 public class RegisterBean implements Serializable {
@@ -140,5 +141,23 @@ public class RegisterBean implements Serializable {
 
     public void setVerifyCode(Object verifyCode) {
         this.verifyCode = verifyCode;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisterBean{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", authorizationCode='" + authorizationCode + '\'' +
+                ", avatar=" + avatar +
+                ", level=" + level +
+                ", userCaption=" + userCaption +
+                ", isRealNameValidated=" + isRealNameValidated +
+                ", userRealName=" + userRealName +
+                ", verifyCode=" + verifyCode +
+                '}';
     }
 }

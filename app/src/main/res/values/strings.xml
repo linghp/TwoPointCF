@@ -76,4 +76,5 @@
     <string name="title_activity_information_center_detail">InformationCenterDetailActivity</string>
 
     <string name="registersuccess">注册成功</string>
+    <string name="loginsuccess">登录成功</string>
 </resources>
