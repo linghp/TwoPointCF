@@ -6,7 +6,7 @@ package com.peoit.twopointcf.net;
  * @author ling
  */
 public class URLs {
-    public static final String HOST = "http://192.168.0.150:8080/";
+    public static final String HOST = "http://192.168.0.176:8080/";
     public static final String PROJECT_NAME = "";
     public static final String API = "";
 
