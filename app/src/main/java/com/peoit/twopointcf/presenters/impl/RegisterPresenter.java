@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.peoit.twopointcf.R;
@@ -65,15 +66,33 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
                 if (response != null){
                     mView.showToast(R.string.registersuccess);
                     MyLogger.i(">>>>>>>>>>>>>>>>注册" + response.toString());
+                    ((Activity)mView).finish();
                 }
             }
         }, mView);
     }
 
     //获取手机验证码
-    public void getVlidateCode(String phoneNum) {
-        MyLogger.i(">>>>>>>>>>>>手机号码：" + phoneNum);
-//        OkHttpClientManager.getAsyn(URLs.USER_VLIDATECODE + ,new);
+    public void getVlidateCode(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.USER_VLIDATECODE, maps, new MyResultCallback<String>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast(info);
+                }
+            }
+
+            @Override
+            public void onResponse(String response) {
+                if (response != null){
+                    mView.showToast(response.toString());
+                    MyLogger.i(">>>>>>>>>>>>>>>>获取手机验证码" + response.toString());
+                }
+            }
+        },mView);
 
     }
 

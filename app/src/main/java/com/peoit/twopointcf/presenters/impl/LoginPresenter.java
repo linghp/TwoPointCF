@@ -1,11 +1,16 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.app.Activity;
+import android.text.TextUtils;
+
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.entity.RegisterBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.ILogin;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
@@ -23,19 +28,25 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
 
     @Override
     public void getData(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<Object>() {
+        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<RegisterBean>() {
             @Override
             public void onError(Request request, String info,Exception e) {
-                mView.showToast(R.string.networkerror);
-                e.printStackTrace();
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("用户名和密码不匹配");
+                }
             }
 
             @Override
-            public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>登录" + response.toString());
-//                if (response != null){
-//
-//                }
+            public void onResponse(RegisterBean response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>登录" + response.toString());
+                    mView.showToast(R.string.loginsuccess);
+                    LocalUserInfo.putUser(response);
+                            ((Activity) mView).finish();
+                }
             }
         }, mView);
     }

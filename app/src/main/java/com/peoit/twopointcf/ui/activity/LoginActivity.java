@@ -67,7 +67,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 //                myToast("登录");
                 if (match()){
                     Map<String, String> maps = new HashMap<>();
-                    maps.put("userName", userName);
+                    maps.put("loginId", userName);
                     maps.put("password", password);
                     presenter.getData(maps);
                 }

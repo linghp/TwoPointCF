@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 
+import com.peoit.twopointcf.entity.RegisterBean;
 import com.peoit.twopointcf.entity.UserInfo;
 
 public class LocalUserInfo {
@@ -175,11 +176,12 @@ public class LocalUserInfo {
         editor.commit();
     }
 
-//	/**
-//	 * 保存用户信息
-//	 * @param user
-//	 */
-//	public void putUser(UserInfo user) {
+	/**
+	 * 保存用户信息
+	 * @param user
+	 */
+	public static void putUser(RegisterBean user) {
+        MyLogger.i(">>>>>>>>>>保存用户信息"+user.toString());
 //		put(Constant.PRE_USER_ID, user.getId());
 //		put(Constant.PRE_USER_LOGINTYPE, user.getLoginType());
 //		put(Constant.PRE_USER_NICKNAME, user.getNickName());
@@ -193,9 +195,9 @@ public class LocalUserInfo {
 //				System.currentTimeMillis());
 //		put(Constant.PRE_LOGIN_STATE, true);
 //		put("payed", user.isPayed());
-//
-//	}
-//
+
+	}
+
 	/**
 	 * 获取当前用户信息
 	 * @return

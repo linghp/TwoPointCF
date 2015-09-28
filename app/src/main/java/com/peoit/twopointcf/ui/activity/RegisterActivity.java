@@ -88,7 +88,9 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                     showToast("请输入电话");
                 } else {
                     if (isMobileNO(phoneNumber)) {
-                        presenter.getVlidateCode(phoneNumber);
+                        Map<String, String> maps = new HashMap<>();
+                        maps.put("phoneNumber", phoneNumber);
+                        presenter.getVlidateCode(maps);
                     } else {
                         showToast("手机号不合法");
                     }

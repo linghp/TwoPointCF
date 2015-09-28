@@ -77,4 +77,5 @@
 
     <string name="registersuccess">注册成功</string>
     <string name="publishsuccess">发布成功</string>
+    <string name="loginsuccess">登录成功</string>
 </resources>
