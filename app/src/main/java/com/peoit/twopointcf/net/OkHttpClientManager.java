@@ -210,6 +210,12 @@ public class OkHttpClientManager
         getInstance().getPostDelegate().postAsyn(url, bodyStr, callback, tag);
     }
 
+    //带文件上传，多个文件和其他参数
+    public static void postAsyn(String url, String[] fileKeys, File[] files, Map<String, String> params, ResultCallback callback, Object tag)
+    {
+        Param[] params1=map2Params(params);
+        getInstance()._getUploadDelegate().postAsyn(url,fileKeys,files,params1,callback,tag);
+    }
 
     //=============便利的访问方式结束===============
 
@@ -233,7 +239,7 @@ public class OkHttpClientManager
         else return params;
     }
 
-    private Param[] map2Params(Map<String, String> params)
+    public static Param[] map2Params(Map<String, String> params)
     {
         if (params == null) return new Param[0];
         int size = params.size();

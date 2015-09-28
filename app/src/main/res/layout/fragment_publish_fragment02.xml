@@ -28,7 +28,7 @@
                     android:text="项目名称:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <EditText
+                <EditText android:id="@+id/et_projectName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
@@ -53,7 +53,7 @@
                     android:text="项目介绍:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <EditText
+                <EditText android:id="@+id/et_projectIntro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
@@ -83,7 +83,7 @@
                     android:text="所在城市:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <TextView
+                <TextView android:id="@+id/tv_projectCity"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@mipmap/down_arrow_grey"
@@ -109,7 +109,7 @@
                     android:text="行业类型:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <TextView
+                <TextView android:id="@+id/tv_industryType"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@mipmap/down_arrow_grey"
@@ -134,7 +134,7 @@
                     android:text="详细地址:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <EditText
+                <EditText android:id="@+id/et_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="请输入"
@@ -160,10 +160,10 @@
                     android:text="项目图片:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/add_picture" />
+                <com.peoit.photochooser.AutoHeightGridView
+                    android:id="@+id/gridView01"
+                    style="@style/publishproject_gridview" />
+
             </LinearLayout>
 
             <View
@@ -185,10 +185,9 @@
                     android:text="营业执照:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/add_picture" />
+                <com.peoit.photochooser.AutoHeightGridView
+                    android:id="@+id/gridView02"
+                    style="@style/publishproject_gridview" />
             </LinearLayout>
 
             <View
@@ -210,10 +209,9 @@
                     android:text="个人信用报告:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/add_picture" />
+                <com.peoit.photochooser.AutoHeightGridView
+                    android:id="@+id/gridView03"
+                    style="@style/publishproject_gridview" />
             </LinearLayout>
 
             <View
@@ -235,10 +233,9 @@
                     android:text="行业许可证:"
                     android:textSize="@dimen/title_txt_size" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/add_picture" />
+                <com.peoit.photochooser.AutoHeightGridView
+                    android:id="@+id/gridView04"
+                    style="@style/publishproject_gridview" />
             </LinearLayout>
 
             <View

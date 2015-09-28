@@ -65,4 +65,17 @@
         <item name="android:paddingRight">8dp</item>
         <item name="android:singleLine">true</item>
     </style>
+
+    <style name="publishproject_gridview">
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnWidth">62dp</item>
+        <item name="android:numColumns">3</item>
+        <item name="android:horizontalSpacing">8dp</item>
+        <item name="android:verticalSpacing">8dp</item>
+        <item name="android:stretchMode">none</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

@@ -40,6 +40,13 @@ public class URLs {
      * 上传实名认证信息
      */
 //    public static final String USER_SIGNIN = HOST + "xxx";
+
+
+
+    /**
+     * 创建项目
+     */
+    public static final String CREATEPROJECT = HOST + "api/project/createProject";
     /**
      * 拼接请求路径
      *

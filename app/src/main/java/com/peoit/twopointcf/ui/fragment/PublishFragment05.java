@@ -2,7 +2,6 @@ package com.peoit.twopointcf.ui.fragment;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 弃用
  */
 public class PublishFragment05 extends BaseFragment {
 
