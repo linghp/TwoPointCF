@@ -42,6 +42,9 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
         if(titleView!=null) {
             titleView.setTitle("设置");
         }
+        if(localUserInfo.getUser()==null){
+            setupTv1.setVisibility(View.GONE);
+        }
     }
 
     @Override

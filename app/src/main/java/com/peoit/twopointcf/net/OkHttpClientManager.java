@@ -23,6 +23,9 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -255,7 +258,7 @@ public class OkHttpClientManager
             @Override
             public void onFailure(final Request request, final IOException e)
             {
-                sendFailedStringCallback(request, e, resCallBack);
+                sendFailedStringCallback(request, "",e, resCallBack);
             }
 
             @Override
@@ -265,36 +268,47 @@ public class OkHttpClientManager
                 {
                     final String string = response.body().string();
                     MyLogger.i("onResponse",string);
-                    if (resCallBack.mType == String.class)
-                    {
-                        sendSuccessResultCallback(string, resCallBack);
-                    } else
-                    {
-                        Object o = mGson.fromJson(string, resCallBack.mType);
-                        sendSuccessResultCallback(o, resCallBack);
+                    JSONObject mJsonObject = new JSONObject(string);
+                    String result_code=mJsonObject.getString("result_code");
+                    String reason=mJsonObject.getString("reason");
+                    String result=mJsonObject.getString("result");
+                    if(result_code.equals("200")) {
+
+                        if (resCallBack.mType == String.class) {
+                            sendSuccessResultCallback(string, resCallBack);
+                        } else {
+                            Object o = mGson.fromJson(result, resCallBack.mType);
+                            sendSuccessResultCallback(o, resCallBack);
+                        }
+                    }else{
+                        sendFailedStringCallback(response.request(),reason, null, resCallBack);
                     }
 
 
-                } catch (IOException e)
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }catch (IOException e)
                 {
-                    sendFailedStringCallback(response.request(), e, resCallBack);
+                    sendFailedStringCallback(response.request(),"", e, resCallBack);
                 } catch (com.google.gson.JsonParseException e)//Json解析的错误
                 {
-                    sendFailedStringCallback(response.request(), e, resCallBack);
+                    sendFailedStringCallback(response.request(),"", e, resCallBack);
+                }catch (Exception e){
+                    sendFailedStringCallback(response.request(),"", e, resCallBack);
                 }
 
             }
         });
     }
 
-    private void sendFailedStringCallback(final Request request, final Exception e, final ResultCallback callback)
+    private void sendFailedStringCallback(final Request request, final String info,final Exception e, final ResultCallback callback)
     {
         mDelivery.post(new Runnable()
         {
             @Override
             public void run()
             {
-                callback.onError(request, e);
+                callback.onError(request,info, e);
                 callback.onAfter();
             }
         });
@@ -393,7 +407,7 @@ public class OkHttpClientManager
         {
         }
 
-        public abstract void onError(Request request, Exception e);
+        public abstract void onError(Request request,String info, Exception e);
 
         public abstract void onResponse(T response);
     }
@@ -401,7 +415,7 @@ public class OkHttpClientManager
     private final ResultCallback<String> DEFAULT_RESULT_CALLBACK = new ResultCallback<String>()
     {
         @Override
-        public void onError(Request request, Exception e)
+        public void onError(Request request,String info, Exception e)
         {
 
         }
@@ -931,7 +945,7 @@ public class OkHttpClientManager
                 @Override
                 public void onFailure(final Request request, final IOException e)
                 {
-                    sendFailedStringCallback(request, e, callback);
+                    sendFailedStringCallback(request, "",e, callback);
                 }
 
                 @Override
@@ -961,7 +975,7 @@ public class OkHttpClientManager
                         sendSuccessResultCallback(file.getAbsolutePath(), callback);
                     } catch (IOException e)
                     {
-                        sendFailedStringCallback(response.request(), e, callback);
+                        sendFailedStringCallback(response.request(),"", e, callback);
                     } finally
                     {
                         try

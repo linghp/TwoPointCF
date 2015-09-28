@@ -51,7 +51,7 @@ public class InvestFindPresenter extends BasePresenter<InvestFindPresenter.OnHtt
         OkHttpClientManager.postAsyn("http://www.ainonggu666.com/api/product", maps,
                 new MyResultCallback<Object>() {
                     @Override
-                    public void onError(Request request, Exception e) {
+                    public void onError(Request request, String info,Exception e) {
                         mView.showToast(R.string.networkerror);
                         e.printStackTrace();
                     }

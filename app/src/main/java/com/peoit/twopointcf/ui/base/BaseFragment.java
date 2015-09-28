@@ -17,7 +17,7 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
  * last:2015/7/31
  * description:
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener{
     protected View mParent;
     protected Activity mActivity;
     protected TitleView titleView;
@@ -58,5 +58,10 @@ public abstract class BaseFragment extends Fragment {
 
     protected void myToast(String content){
         Toast.makeText(this.getActivity(),content,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

@@ -1,93 +1,144 @@
 package com.peoit.twopointcf.entity;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
  * Created by zyz on 2015/9/24.
  */
 public class RegisterBean implements Serializable {
-
-    /**
-     * userId : 0
-     * userName : apple
-     * avatar : upload/aaasdas.jpg
-     * level : 2
-     * phoneNumber : 123456789
-     * email : qwretyu@123.com
-     * isRealNameValidated : 1
-     * userRealName : jack
-     */
-
-    private int userId;
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("userName")
+    @Expose
     private String userName;
-    private String avatar;
-    private String level;
-    private String phoneNumber;
+    @SerializedName("email")
+    @Expose
     private String email;
-    private String isRealNameValidated;
-    private String userRealName;
+    @SerializedName("phoneNumber")
+    @Expose
+    private String phoneNumber;
+    @SerializedName("password")
+    @Expose
+    private String password;
+    @SerializedName("authorizationCode")
+    @Expose
+    private String authorizationCode;
+    @SerializedName("avatar")
+    @Expose
+    private Object avatar;
+    @SerializedName("level")
+    @Expose
+    private Object level;
+    @SerializedName("userCaption")
+    @Expose
+    private Object userCaption;
+    @SerializedName("isRealNameValidated")
+    @Expose
+    private Object isRealNameValidated;
+    @SerializedName("userRealName")
+    @Expose
+    private Object userRealName;
+    @SerializedName("verifyCode")
+    @Expose
+    private Object verifyCode;
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public String getId() {
+        return id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setIsRealNameValidated(String isRealNameValidated) {
-        this.isRealNameValidated = isRealNameValidated;
-    }
-
-    public void setUserRealName(String userRealName) {
-        this.userRealName = userRealName;
-    }
-
-    public int getUserId() {
-        return userId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getIsRealNameValidated() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAuthorizationCode() {
+        return authorizationCode;
+    }
+
+    public void setAuthorizationCode(String authorizationCode) {
+        this.authorizationCode = authorizationCode;
+    }
+
+    public Object getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Object avatar) {
+        this.avatar = avatar;
+    }
+
+    public Object getLevel() {
+        return level;
+    }
+
+    public void setLevel(Object level) {
+        this.level = level;
+    }
+
+    public Object getUserCaption() {
+        return userCaption;
+    }
+
+    public void setUserCaption(Object userCaption) {
+        this.userCaption = userCaption;
+    }
+
+    public Object getIsRealNameValidated() {
         return isRealNameValidated;
     }
 
-    public String getUserRealName() {
+    public void setIsRealNameValidated(Object isRealNameValidated) {
+        this.isRealNameValidated = isRealNameValidated;
+    }
+
+    public Object getUserRealName() {
         return userRealName;
+    }
+
+    public void setUserRealName(Object userRealName) {
+        this.userRealName = userRealName;
+    }
+
+    public Object getVerifyCode() {
+        return verifyCode;
+    }
+
+    public void setVerifyCode(Object verifyCode) {
+        this.verifyCode = verifyCode;
     }
 }

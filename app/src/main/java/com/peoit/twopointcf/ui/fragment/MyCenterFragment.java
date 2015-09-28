@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.BoundPhoneNumActivity;
+import com.peoit.twopointcf.ui.activity.LoginActivity;
 import com.peoit.twopointcf.ui.activity.MyRatingActivity;
 import com.peoit.twopointcf.ui.activity.SecurityCenterActivity;
 import com.peoit.twopointcf.ui.activity.SetUpActivity;
@@ -27,7 +28,7 @@ import com.peoit.twopointcf.utils.MyLogger;
  * @author ling
  *         个人中心
  */
-public class MyCenterFragment extends BaseFragment implements View.OnClickListener {
+public class MyCenterFragment extends BaseFragment {
     private TextView mText;
     private ImageView iv_photo;
 
@@ -119,7 +120,15 @@ public class MyCenterFragment extends BaseFragment implements View.OnClickListen
             case R.id.right_btn:
                 //设置
                 CommonUtil.gotoActivity(getActivity(), SetUpActivity.class, false);
-                break;
+                return;
+        }
+
+        if (localUserInfo.getUser()==null){
+            CommonUtil.gotoActivity(getActivity(),LoginActivity.class,false);
+            return;
+        }
+
+        switch (v.getId()) {
             case R.id.ll_mycenter01:
                 //个人简介
                 CommonUtil.gotoActivity(getActivity(), UserInfoActivity.class, false);
