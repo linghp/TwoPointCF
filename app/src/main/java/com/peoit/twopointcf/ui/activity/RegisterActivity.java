@@ -88,7 +88,6 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                     showToast("请输入电话");
                 } else {
                     if (isMobileNO(phoneNumber)) {
-                        showToast("手机号通过");
                         presenter.getVlidateCode(phoneNumber);
                     } else {
                         showToast("手机号不合法");
@@ -113,7 +112,6 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             return false;
         }else {
             if (isMobileEM(email)) {
-                showToast("邮箱号通过");
 //                presenter.getVlidateCode(email);
             } else {
                 showToast("邮箱不合法");
@@ -126,8 +124,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             return false;
         } else {
             if (isMobileNO(phoneNumber)) {
-                showToast("手机号通过");
-                presenter.getVlidateCode(phoneNumber);
+//                presenter.getVlidateCode(phoneNumber);
             } else {
                 showToast("手机号不合法");
                 return false;
