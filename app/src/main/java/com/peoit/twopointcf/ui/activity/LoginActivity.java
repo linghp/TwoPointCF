@@ -77,7 +77,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.login_tv2:
                 //注册
                 CommonUtil.gotoActivity(this,RegisterActivity.class,false);
-
                 break;
             case R.id.login_tv3:
 //                myToast("忘记密码");

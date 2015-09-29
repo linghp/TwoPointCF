@@ -3,6 +3,7 @@ package com.peoit.twopointcf.utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
@@ -82,7 +83,8 @@ public class DateTimePickDialogUtil implements OnDateChangedListener,
 		LinearLayout dateTimeLayout = (LinearLayout) activity
 				.getLayoutInflater().inflate(R.layout.common_datetime, null);
 		datePicker = (DatePicker) dateTimeLayout.findViewById(R.id.datepicker);
-//		timePicker = (TimePicker) dateTimeLayout.findViewById(R.id.timepicker);
+		timePicker = (TimePicker) dateTimeLayout.findViewById(R.id.timepicker);
+		timePicker.setVisibility(View.VISIBLE);
 		init(datePicker, timePicker);
 		timePicker.setIs24HourView(true);
 		timePicker.setOnTimeChangedListener(this);

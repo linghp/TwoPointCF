@@ -22,7 +22,11 @@ public class URLs {
     /**
      * 验证验证码
      */
-    public static final String USER_VALIDATECODE = HOST + "api/validateCode";
+    public static final String USER_VALIDATECODE = HOST + "api/user/validateCode";
+    /**
+     * 验证手机号是否已被注册
+     */
+    public static final String USER_PHONEVALIDATE = HOST + "api/user/phoneValidate";
     /**
      * 登录
      */

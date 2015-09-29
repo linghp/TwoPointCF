@@ -98,6 +98,7 @@
             android:gravity="center"
             android:hint="请输入电话"
             android:inputType="text"
+            android:maxLength="11"
             android:singleLine="true"
             android:numeric="integer"
             android:textColor="@color/txt_black1"
