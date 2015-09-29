@@ -68,7 +68,6 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
                     finish();
                 }else {
 //                    myToast("验证成功");
-
                     CommonUtil.gotoActivity(this,VerifySecurityQuestionActivity.class,true);
                 }
                 break;

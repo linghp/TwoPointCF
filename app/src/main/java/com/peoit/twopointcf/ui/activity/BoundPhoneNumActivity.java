@@ -53,4 +53,5 @@ public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickL
                 break;
         }
     }
+
 }

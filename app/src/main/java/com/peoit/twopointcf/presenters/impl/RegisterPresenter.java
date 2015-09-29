@@ -64,10 +64,10 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
             @Override
             public void onResponse(RegisterBean response) {
-                if (response != null){
+                if (response != null) {
                     mView.showToast(R.string.registersuccess);
                     MyLogger.i(">>>>>>>>>>>>>>>>注册" + response.toString());
-                    ((Activity)mView).finish();
+                    ((Activity) mView).finish();
                 }
             }
         });
@@ -89,12 +89,36 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
             @Override
             public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast("请求成功"+response.toString());
+                    mView.showToast("请求成功" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>获取手机验证码" + response.toString());
+
                 }
             }
         },mView);
+    }
 
+    //验证手机号是否已被注册
+    public void getPhoneValidate(final Map map){
+        OkHttpClientManager.postAsyn(URLs.USER_PHONEVALIDATE, map, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast(info);
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null){
+                    mView.showToast("请求成功" + response.toString());
+                    MyLogger.i(">>>>>>>>>>>>>>>>验证手机号是否已被注册" + response.toString());
+                    getVlidateCode(map);
+                }
+            }
+        });
     }
 
 }
