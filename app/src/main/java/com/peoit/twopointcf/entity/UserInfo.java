@@ -8,189 +8,157 @@ import java.io.Serializable;
 /**
  * zyz:这些字段是接口文档上的，信息不全，重用的RegisterBean类。注册返回数据和登录返回数据一样的
  * Created by ling on 2015/9/25.
- * description:
+ * description: 目前和RegisterBean一样
  */
 public class UserInfo implements Serializable{
-        @SerializedName("userId")
+        @SerializedName("id")
         @Expose
-        private Integer userId;
+        private String id;
         @SerializedName("userName")
         @Expose
         private String userName;
-        @SerializedName("avatar")
-        @Expose
-        private String avatar;
-        @SerializedName("level")
-        @Expose
-        private String level;
-        @SerializedName("phoneNumber")
-        @Expose
-        private String phoneNumber;
         @SerializedName("email")
         @Expose
         private String email;
+        @SerializedName("phoneNumber")
+        @Expose
+        private String phoneNumber;
+        @SerializedName("password")
+        @Expose
+        private String password;
+        @SerializedName("authorizationCode")
+        @Expose
+        private String authorizationCode;
+        @SerializedName("avatar")
+        @Expose
+        private Object avatar;
+        @SerializedName("level")
+        @Expose
+        private Object level;
+        @SerializedName("userCaption")
+        @Expose
+        private Object userCaption;
         @SerializedName("isRealNameValidated")
         @Expose
-        private String isRealNameValidated;
+        private Object isRealNameValidated;
         @SerializedName("userRealName")
         @Expose
-        private String userRealName;
+        private Object userRealName;
+        @SerializedName("verifyCode")
+        @Expose
+        private Object verifyCode;
 
-        /**
-         *
-         * @return
-         * The userId
-         */
-        public Integer getUserId() {
-            return userId;
+        public String getId() {
+                return id;
         }
 
-        /**
-         *
-         * @param userId
-         * The userId
-         */
-        public void setUserId(Integer userId) {
-            this.userId = userId;
+        public void setId(String id) {
+                this.id = id;
         }
 
-        /**
-         *
-         * @return
-         * The userName
-         */
         public String getUserName() {
-            return userName;
+                return userName;
         }
 
-        /**
-         *
-         * @param userName
-         * The userName
-         */
         public void setUserName(String userName) {
-            this.userName = userName;
+                this.userName = userName;
         }
 
-        /**
-         *
-         * @return
-         * The avatar
-         */
-        public String getAvatar() {
-            return avatar;
-        }
-
-        /**
-         *
-         * @param avatar
-         * The avatar
-         */
-        public void setAvatar(String avatar) {
-            this.avatar = avatar;
-        }
-
-        /**
-         *
-         * @return
-         * The level
-         */
-        public String getLevel() {
-            return level;
-        }
-
-        /**
-         *
-         * @param level
-         * The level
-         */
-        public void setLevel(String level) {
-            this.level = level;
-        }
-
-        /**
-         *
-         * @return
-         * The phoneNumber
-         */
-        public String getPhoneNumber() {
-            return phoneNumber;
-        }
-
-        /**
-         *
-         * @param phoneNumber
-         * The phoneNumber
-         */
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-
-        /**
-         *
-         * @return
-         * The email
-         */
         public String getEmail() {
-            return email;
+                return email;
         }
 
-        /**
-         *
-         * @param email
-         * The email
-         */
         public void setEmail(String email) {
-            this.email = email;
+                this.email = email;
         }
 
-        /**
-         *
-         * @return
-         * The isRealNameValidated
-         */
-        public String getIsRealNameValidated() {
-            return isRealNameValidated;
+        public String getPhoneNumber() {
+                return phoneNumber;
         }
 
-        /**
-         *
-         * @param isRealNameValidated
-         * The isRealNameValidated
-         */
-        public void setIsRealNameValidated(String isRealNameValidated) {
-            this.isRealNameValidated = isRealNameValidated;
+        public void setPhoneNumber(String phoneNumber) {
+                this.phoneNumber = phoneNumber;
         }
 
-        /**
-         *
-         * @return
-         * The userRealName
-         */
-        public String getUserRealName() {
-            return userRealName;
+        public String getPassword() {
+                return password;
         }
 
-        /**
-         *
-         * @param userRealName
-         * The userRealName
-         */
-        public void setUserRealName(String userRealName) {
-            this.userRealName = userRealName;
+        public void setPassword(String password) {
+                this.password = password;
         }
 
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", level='" + level + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", isRealNameValidated='" + isRealNameValidated + '\'' +
-                ", userRealName='" + userRealName + '\'' +
-                '}';
-    }
+        public String getAuthorizationCode() {
+                return authorizationCode;
+        }
+
+        public void setAuthorizationCode(String authorizationCode) {
+                this.authorizationCode = authorizationCode;
+        }
+
+        public Object getAvatar() {
+                return avatar;
+        }
+
+        public void setAvatar(Object avatar) {
+                this.avatar = avatar;
+        }
+
+        public Object getLevel() {
+                return level;
+        }
+
+        public void setLevel(Object level) {
+                this.level = level;
+        }
+
+        public Object getUserCaption() {
+                return userCaption;
+        }
+
+        public void setUserCaption(Object userCaption) {
+                this.userCaption = userCaption;
+        }
+
+        public Object getIsRealNameValidated() {
+                return isRealNameValidated;
+        }
+
+        public void setIsRealNameValidated(Object isRealNameValidated) {
+                this.isRealNameValidated = isRealNameValidated;
+        }
+
+        public Object getUserRealName() {
+                return userRealName;
+        }
+
+        public void setUserRealName(Object userRealName) {
+                this.userRealName = userRealName;
+        }
+
+        public Object getVerifyCode() {
+                return verifyCode;
+        }
+
+        public void setVerifyCode(Object verifyCode) {
+                this.verifyCode = verifyCode;
+        }
+
+        @Override
+        public String toString() {
+                return "RegisterBean{" +
+                        "id='" + id + '\'' +
+                        ", userName='" + userName + '\'' +
+                        ", email='" + email + '\'' +
+                        ", phoneNumber='" + phoneNumber + '\'' +
+                        ", password='" + password + '\'' +
+                        ", authorizationCode='" + authorizationCode + '\'' +
+                        ", avatar=" + avatar +
+                        ", level=" + level +
+                        ", userCaption=" + userCaption +
+                        ", isRealNameValidated=" + isRealNameValidated +
+                        ", userRealName=" + userRealName +
+                        ", verifyCode=" + verifyCode +
+                        '}';
+        }
 }

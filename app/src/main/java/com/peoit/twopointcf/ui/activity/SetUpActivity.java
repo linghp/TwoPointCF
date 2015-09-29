@@ -15,7 +15,7 @@ import com.peoit.twopointcf.utils.DialogTool;
  * 设置/安全中心
  * Created by zyz on 2015/8/29.
  */
-public class SetUpActivity extends BaseActivity {
+public class SetUpActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout setupLl1;
     private LinearLayout setupLl2;
     private TextView setupTv1;
@@ -85,10 +85,10 @@ public class SetUpActivity extends BaseActivity {
                 break;
             case R.id.setup_ll2:
                 myToast("关于我们");
-
                 break;
             case R.id.setup_tv1:
-                CommonUtil.gotoActivity(this, LoginActivity.class, true);
+                localUserInfo.deleteUserInfo();
+                CommonUtil.gotoActivity(this,LoginActivity.class,true);
 
                 break;
             default:

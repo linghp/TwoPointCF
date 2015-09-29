@@ -6,24 +6,26 @@ import android.text.TextUtils;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
-import com.peoit.twopointcf.presenters.interfaces.IPublishProject;
+import com.peoit.twopointcf.presenters.interfaces.IFindProject;
+import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
-import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by ling on 2015/9/7.
  * description:
  */
-public class PublishProjectPresenter extends BasePresenter<PublishProjectPresenter.OnHttpResultListener> implements IPublishProject {
+public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnHttpResultListener> implements IFindProject {
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
     }
 
-    public PublishProjectPresenter(OnHttpResultListener view) {
+    public FindProjectPresenter(OnHttpResultListener view) {
         super(view);
     }
 
@@ -47,10 +49,9 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
     }
 
     @Override
-    public void upload(String[] fileKeys, File[] files, Map<String, String> params) {
-
-        OkHttpClientManager.postAsyn(URLs.CREATEPROJECT,fileKeys,files, params,
-                new MyResultCallback<Object>() {
+    public void getData(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
+                new MyResultCallback<List<ProjectBean>>() {
                     @Override
                     public void onError(Request request, String info,Exception e) {
                         if (TextUtils.isEmpty(info)) {
@@ -62,8 +63,9 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
                     }
 
                     @Override
-                    public void onResponse(Object u) {
-                        //mView.showToast(R.string.publishsuccess);
+                    public void onResponse(List<ProjectBean> response) {
+                        //mTv.setText(u.toString());
+                        MyLogger.i(response.toString());
                         mView.onHttpResultSuccess();
                     }
                 }, mView);

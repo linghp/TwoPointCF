@@ -213,6 +213,11 @@ public class OkHttpClientManager
     //带文件上传，多个文件和其他参数
     public static void postAsyn(String url, String[] fileKeys, File[] files, Map<String, String> params, ResultCallback callback, Object tag)
     {
+        StringBuffer sb=new StringBuffer();
+        for (int i = 0; i < fileKeys.length; i++) {
+            sb.append(fileKeys[i]+": "+files[i].getAbsolutePath()+"\n");
+        }
+        MyLogger.i("RequestData",sb.toString()+params.toString());
         Param[] params1=map2Params(params);
         getInstance()._getUploadDelegate().postAsyn(url,fileKeys,files,params1,callback,tag);
     }
@@ -293,6 +298,7 @@ public class OkHttpClientManager
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    sendFailedStringCallback(response.request(),"", e, resCallBack);
                 }catch (IOException e)
                 {
                     sendFailedStringCallback(response.request(),"", e, resCallBack);

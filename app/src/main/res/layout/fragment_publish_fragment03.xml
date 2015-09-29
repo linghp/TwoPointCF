@@ -27,7 +27,7 @@
                 android:text="融资用途:"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <EditText
+            <EditText android:id="@+id/et_moneyUse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入"
@@ -50,7 +50,7 @@
                 android:text="股权总额:"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <EditText
+            <EditText android:id="@+id/et_totalStockMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入"
@@ -77,7 +77,7 @@
                 android:text="发行总额:"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <EditText
+            <EditText android:id="@+id/et_sellStockMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入"
@@ -108,7 +108,7 @@
                 android:text="售卖金额(单股):"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <EditText
+            <EditText android:id="@+id/et_perSellStockMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="请输入"
@@ -155,7 +155,7 @@
                 android:text="股权类型:"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <TextView
+            <TextView android:id="@+id/tv_stocktype"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="请选择" android:drawableRight="@mipmap/down_arrow_grey"/>
@@ -178,7 +178,7 @@
                 android:text="众筹结束时间:"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <TextView
+            <TextView android:id="@+id/tv_endDate"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="请选择" android:drawableRight="@mipmap/down_arrow_grey"/>
@@ -201,7 +201,7 @@
                 android:text="项目启动条件:"
                 android:textSize="@dimen/title_txt_size"/>
 
-            <TextView
+            <TextView android:id="@+id/tv_successCondition"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="请选择" android:drawableRight="@mipmap/down_arrow_grey"/>

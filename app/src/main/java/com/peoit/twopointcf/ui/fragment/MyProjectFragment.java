@@ -10,6 +10,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.BusinessManagerActivity;
 import com.peoit.twopointcf.ui.activity.FollowProjectActivity;
 import com.peoit.twopointcf.ui.activity.InvestedProjectActivity;
+import com.peoit.twopointcf.ui.activity.LoginActivity;
 import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 import com.peoit.twopointcf.ui.activity.PublishProjectActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
@@ -86,6 +87,10 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        if (!localUserInfo.isLogin()){
+            CommonUtil.gotoActivity(getActivity(),LoginActivity.class,false);
+            return;
+        }
         switch (view.getId()){
             case R.id.right_btn://title 右侧按钮
                 CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);

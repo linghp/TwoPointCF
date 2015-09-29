@@ -123,7 +123,7 @@ public class MyCenterFragment extends BaseFragment {
                 return;
         }
 
-        if (localUserInfo.getUser()==null){
+        if (!localUserInfo.isLogin()){
             CommonUtil.gotoActivity(getActivity(),LoginActivity.class,false);
             return;
         }

@@ -11,6 +11,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.LoginPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -106,5 +107,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onHttpResultSuccess() {
 
+    }
+
+    @Override
+    public LocalUserInfo getLocalUserInfo() {
+        return localUserInfo;
     }
 }

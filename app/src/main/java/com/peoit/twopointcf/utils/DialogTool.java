@@ -113,7 +113,7 @@ public class DialogTool {
     }
 
     /**
-     * 　　* 创建单选按钮对话框
+     * 　　* 创建单选按钮对话框 list
      * 　　*
      * 　　* @param ctx 上下文 必填
      * 　　* @param iconId 图标，如：R.drawable.icon 必填
@@ -152,6 +152,43 @@ public class DialogTool {
         builder.setNegativeButton(btnName2, listener2);
         // 创建一个单选按钮对话框
         dialog = builder.create();
+        return dialog;
+    }
+
+    /**
+     * 　　* 创建单选按钮对话框  数组
+     * 　　*
+     * 　　* @param ctx 上下文 必填
+     * 　　* @param iconId 图标，如：R.drawable.icon 必填
+     * 　　* @param title 标题 必填
+     * 　　* @param itemsId 字符串数组资源id 必填
+     * 　　* @param listener
+     *      单选按钮项监听器，需实现android.content.DialogInterface.OnClickListener接口 必填
+     * * @param btnName1 按钮1名称 必填
+     * * 　　* @param btnName2 按钮2名称 必填
+     * 　　* @param listener1 监听器1，需实现android.content.DialogInterface.OnClickListener接口必填
+     * * @param listener2 监听器2，需实现android.content.DialogInterface.OnClickListener接口必填
+     * 　　* @return
+     */
+
+    public static Dialog createRadioDialog(Context ctx,
+                                           int iconId,
+                                           String title,
+                                           String[] items,
+                                           DialogInterface.OnClickListener listener
+                                           ) {
+        Dialog dialog = null;
+        android.app.AlertDialog.Builder builder = new
+                android.app.AlertDialog.Builder(ctx);
+        // 设置对话框的图标
+        builder.setIcon(iconId);
+        // 设置对话框的标题
+        builder.setTitle(title);
+        // 0: 默认第一个单选按钮被选中
+        builder.setSingleChoiceItems(items, 0, listener);
+        // 创建一个单选按钮对话框
+        dialog = builder.create();
+        dialog.show();
         return dialog;
     }
 
