@@ -44,8 +44,9 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
                 if (response != null) {
                     MyLogger.i(">>>>>>>>>>>>>>>>登录" + response.toString());
                     mView.showToast(R.string.loginsuccess);
+                    //存入数据
                     LocalUserInfo.putUser(response);
-                            ((Activity) mView).finish();
+                    ((Activity) mView).finish();
                 }
             }
         }, mView);

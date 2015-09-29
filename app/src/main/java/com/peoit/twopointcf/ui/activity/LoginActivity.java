@@ -44,6 +44,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         loginTv1 = (TextView) findViewById(R.id.login_tv1);
         loginTv2 = (TextView) findViewById(R.id.login_tv2);
         loginTv3 = (TextView) findViewById(R.id.login_tv3);
+
+
     }
 
     @Override
@@ -75,6 +77,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.login_tv2:
                 //注册
                 CommonUtil.gotoActivity(this,RegisterActivity.class,false);
+
                 break;
             case R.id.login_tv3:
 //                myToast("忘记密码");
@@ -88,12 +91,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     }
     private boolean match() {
-        userName = loginEt1.getText().toString();
+        userName = loginEt1.getText().toString().trim();
         if (TextUtils.isEmpty(userName)) {
             showToast("请输入账号");
             return false;
         }
-        password = loginEt2.getText().toString();
+        password = loginEt2.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
             showToast("请输入密码");
             return false;

@@ -50,6 +50,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
     @Override
     public void getData(Map maps) {
+        //注册
         OkHttpClientManager.postAsyn(URLs.USER_SIGNUP, maps, new MyResultCallback<RegisterBean>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -69,12 +70,12 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
                     ((Activity)mView).finish();
                 }
             }
-        }, mView);
+        });
     }
 
     //获取手机验证码
     public void getVlidateCode(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_VLIDATECODE, maps, new MyResultCallback<String>() {
+        OkHttpClientManager.postAsyn(URLs.USER_VLIDATECODE, maps, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
@@ -86,9 +87,9 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
             }
 
             @Override
-            public void onResponse(String response) {
+            public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast(response.toString());
+                    mView.showToast("请求成功"+response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>获取手机验证码" + response.toString());
                 }
             }

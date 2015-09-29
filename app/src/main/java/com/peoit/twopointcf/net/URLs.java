@@ -18,7 +18,7 @@ public class URLs {
     /**
      * 获取验证码
      */
-    public static final String USER_VLIDATECODE = HOST + "api/identifyingCode";
+    public static final String USER_VLIDATECODE = HOST + "api/user/identifyingCode";
     /**
      * 验证验证码
      */
@@ -28,7 +28,7 @@ public class URLs {
      */
     public static final String USER_SIGNIN = HOST + "api/user/login";
     /**
-     * 修改密码
+     * 修改密码或授权密码
      */
     public static final String USER_CHANGEPASSWORD = HOST + "api/user/changePassword";
     /**
