@@ -83,7 +83,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                 break;
             case R.id.register_tv3:
 //                myToast("获取验证码");
-                phoneNumber = registerEt3.getText().toString();
+                phoneNumber = registerEt3.getText().toString().trim();
                 if (TextUtils.isEmpty(phoneNumber)) {
                     showToast("请输入电话");
                 } else {
@@ -103,12 +103,12 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     }
 
     private boolean match() {
-        userName = registerEt1.getText().toString();
+        userName = registerEt1.getText().toString().trim();
         if (TextUtils.isEmpty(userName)) {
             showToast("请输入昵称");
             return false;
         }
-        email = registerEt2.getText().toString();//邮箱
+        email = registerEt2.getText().toString().trim();//邮箱
         if (TextUtils.isEmpty(email)) {
             showToast("请输入邮箱");
             return false;
@@ -121,7 +121,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             }
         }
 
-        phoneNumber = registerEt3.getText().toString();
+        phoneNumber = registerEt3.getText().toString().trim();
         if (TextUtils.isEmpty(phoneNumber)) {
             return false;
         } else {
@@ -132,17 +132,17 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                 return false;
             }
         }
-        password = registerEt4.getText().toString();
+        password = registerEt4.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
             showToast("请输入登录密码");
             return false;
         }
-        authorizationCode = registerEt5.getText().toString();
+        authorizationCode = registerEt5.getText().toString().trim();
         if (TextUtils.isEmpty(authorizationCode)) {
             showToast("请输入授权密码");
             return false;
         }
-        verifyCode = registerEt6.getText().toString();
+        verifyCode = registerEt6.getText().toString().trim();
         if (TextUtils.isEmpty(verifyCode)) {
             showToast("请输入验证码");
             return false;

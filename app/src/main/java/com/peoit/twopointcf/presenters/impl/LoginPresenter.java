@@ -28,9 +28,9 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
 
     @Override
     public void getData(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<UserInfo>() {
+        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<RegisterBean>() {
             @Override
-            public void onError(Request request, String info, Exception e) {
+            public void onError(Request request, String info,Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
@@ -44,13 +44,13 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
                 if (response != null) {
                     MyLogger.i(">>>>>>>>>>>>>>>>登录" + response.toString());
                     mView.showToast(R.string.loginsuccess);
+                    //存入数据
                     mView.getLocalUserInfo().putUser(response);
                     ((Activity) mView).finish();
                 }
             }
         }, mView);
     }
-
     public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
         @Override
         public void onBefore(Request request) {
