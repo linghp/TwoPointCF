@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
-import com.peoit.twopointcf.entity.RegisterBean;
+import com.peoit.twopointcf.entity.UserInfo;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.ILogin;
@@ -28,9 +28,9 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
 
     @Override
     public void getData(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<RegisterBean>() {
+        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<UserInfo>() {
             @Override
-            public void onError(Request request, String info,Exception e) {
+            public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
@@ -40,16 +40,17 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
             }
 
             @Override
-            public void onResponse(RegisterBean response) {
+            public void onResponse(UserInfo response) {
                 if (response != null) {
                     MyLogger.i(">>>>>>>>>>>>>>>>登录" + response.toString());
                     mView.showToast(R.string.loginsuccess);
-                    LocalUserInfo.putUser(response);
-                            ((Activity) mView).finish();
+                    mView.getLocalUserInfo().putUser(response);
+                    ((Activity) mView).finish();
                 }
             }
         }, mView);
     }
+
     public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
         @Override
         public void onBefore(Request request) {
@@ -63,7 +64,10 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
             super.onAfter();
         }
     }
+
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
+
+        LocalUserInfo getLocalUserInfo();
     }
 }

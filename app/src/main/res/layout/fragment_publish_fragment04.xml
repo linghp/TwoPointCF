@@ -25,12 +25,12 @@
                 android:text="分红模式:"
                 android:textSize="@dimen/title_txt_size" />
 
-            <TextView
+            <TextView android:id="@+id/tv_dividendType"
                 style="@style/publish_leftpart_rightpart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/down_arrow_grey"
-                android:text="选择模式" />
+                android:text="@string/choose_dividendtype" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:text="股东特权说明:"
                 android:textSize="@dimen/title_txt_size" />
 
-            <EditText
+            <EditText android:id="@+id/et_stockholderPrivilege"
                 style="@style/publish_leftpart_rightpart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

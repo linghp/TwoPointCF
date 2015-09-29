@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -105,12 +106,24 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
                     PublishFragment02 fragment = new PublishFragment02();
                     addFragmentToStack(fragment, "publishfragment02");
                 } else if (count == 1) {
+                    PublishFragment02 fragment02 = (PublishFragment02) fragmentManager.findFragmentByTag("publishfragment02");
+                    if(!fragment02.putData()){
+                        return;
+                    }
                     PublishFragment03 fragment = new PublishFragment03();
                     addFragmentToStack(fragment, "publishfragment03");
                 } else if (count == 2) {
+                    PublishFragment03 fragment03 = (PublishFragment03) fragmentManager.findFragmentByTag("publishfragment03");
+                    if(!fragment03.putData()){
+                        return;
+                    }
                     PublishFragment04 fragment = new PublishFragment04();
                     addFragmentToStack(fragment, "publishfragment04");
                 } else if (count == 3) {
+                    PublishFragment04 fragment04 = (PublishFragment04) fragmentManager.findFragmentByTag("publishfragment04");
+                    if(!fragment04.putData()){
+                        return;
+                    }
                     toPublish();
                 }
                 break;
@@ -150,21 +163,26 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
     }
 
     public void toPublish() {
-        params.put("userId", "bb240e99-778a-4bed-beac-9c191e290bb2");
-        params.put("projectName", "01");
-        params.put("industryType", "01");
-        params.put("projectCity", "01");
-        params.put("projectIntro", "01");
-        params.put("moneyUse", "1");
-        params.put("totalStockMoney", "1");
-        params.put("sellStockMoney", "1");
-        params.put("perSellStockMoney", "1");
-        params.put("successCondition", "1");
+        String userid=localUserInfo.getUserId();
+        if(TextUtils.isEmpty(userid)){
+            myToast("请登录");
+            return;
+        }
+        params.put("userId", userid);
+//        params.put("projectName", "01");
+//        params.put("industryType", "01");
+//        params.put("projectCity", "01");
+//        params.put("projectIntro", "01");
+//        params.put("moneyUse", "1");
+//        params.put("totalStockMoney", "1");
+//        params.put("sellStockMoney", "1");
+//        params.put("perSellStockMoney", "1");
+        params.put("successCondition", "80");
         params.put("endDate", "1");
-        params.put("dividendType", "1");
-        params.put("dividendPercent", "1");
-        params.put("stockholderPrivilege", "1");
-        params.put("investorEarnestPercent", "1");
+       // params.put("dividendType", "1");
+        params.put("dividendPercent", "80");
+        //params.put("stockholderPrivilege", "1");
+        params.put("investorEarnestPercent", "10");
 
         PublishFragment02 fragment = (PublishFragment02) fragmentManager.findFragmentByTag("publishfragment02");
         if (fragment != null) {

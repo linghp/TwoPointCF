@@ -73,7 +73,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -85,9 +84,10 @@
 
                 <TextView android:id="@+id/tv_projectCity"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:drawableRight="@mipmap/down_arrow_grey"
-                    android:text="选择城市" />
+                    android:text="@string/choosecity" />
             </LinearLayout>
 
             <View
@@ -99,7 +99,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -111,9 +111,10 @@
 
                 <TextView android:id="@+id/tv_industryType"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
                     android:drawableRight="@mipmap/down_arrow_grey"
-                    android:text="选择行业" />
+                    android:text="@string/chooseindustry" />
             </LinearLayout>
 
             <View
@@ -150,7 +151,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -175,7 +176,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -199,7 +200,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -223,7 +224,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 

@@ -78,5 +78,7 @@
     <string name="registersuccess">注册成功</string>
     <string name="loginsuccess">登录成功</string>
     <string name="publishsuccess">发布成功</string>
-    <string name="loginsuccess">登录成功</string>
+    <string name="choosecity">选择城市</string>
+    <string name="chooseindustry">选择行业</string>
+    <string name="choose_dividendtype">选择分红模式</string>
 </resources>

@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 
-import com.peoit.twopointcf.entity.RegisterBean;
 import com.peoit.twopointcf.entity.UserInfo;
 
 public class LocalUserInfo {
@@ -16,7 +15,10 @@ public class LocalUserInfo {
     public static final String PREFERENCE_NAME = "local_userinfo";
     public static final String USERPHOTO_FILENAME = "userphotoname";//头像图片文件名
 
-    public static final String USERNAME = "userName";//头像图片文件名
+    public static final String USERNAME = "userName";//用户名
+    public static final String USERID = "userID";//用户id
+    public static final String EMAIL = "email";//
+    public static final String PHONENUMBER = "phoneNumber";//
     private static SharedPreferences mSharedPreferences;
     private static LocalUserInfo localUserInfo;
     private static Editor editor;
@@ -178,13 +180,13 @@ public class LocalUserInfo {
 
 	/**
 	 * 保存用户信息
-	 * @param user
+	 * @param
 	 */
-	public static void putUser(RegisterBean user) {
-        MyLogger.i(">>>>>>>>>>保存用户信息"+user.toString());
-//		put(Constant.PRE_USER_ID, user.getId());
-//		put(Constant.PRE_USER_LOGINTYPE, user.getLoginType());
-//		put(Constant.PRE_USER_NICKNAME, user.getNickName());
+	public void putUser(UserInfo userInfo) {
+        MyLogger.i(">>>>>>>>>>保存用户信息" + userInfo.toString());
+		put(USERNAME, userInfo.getUserName());
+		put(USERID, userInfo.getId());
+	//	put(Constant.PRE_USER_NICKNAME, userInfo.getNickName());
 //		put(Constant.PRE_USER_PHONENUMBER, user.getPhoneNumber());
 //		put(USERPHOTO_FILENAME, user.getScalePhoto());
 //		put(Constant.INT_SHOPID, user.getShopId());//shopId
@@ -214,4 +216,15 @@ public class LocalUserInfo {
         return null;
 	}
 
+    public String getUserId(){
+        String useid=getString(USERID);
+        if (!TextUtils.isEmpty(useid)) {
+            return useid;
+        }
+        return "";
+    }
+
+    public boolean isLogin(){
+        return !TextUtils.isEmpty(getString(USERID));
+    }
 }

@@ -42,7 +42,7 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
         if(titleView!=null) {
             titleView.setTitle("设置");
         }
-        if(localUserInfo.getUser()==null){
+        if(!localUserInfo.isLogin()){
             setupTv1.setVisibility(View.GONE);
         }
     }
@@ -87,6 +87,7 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
                 myToast("关于我们");
                 break;
             case R.id.setup_tv1:
+                localUserInfo.deleteUserInfo();
                 CommonUtil.gotoActivity(this,LoginActivity.class,true);
                 break;
             default:

@@ -48,6 +48,10 @@ public class URLs {
      */
     public static final String CREATEPROJECT = HOST + "api/project/createProject";
     /**
+     * 创建项目
+     */
+    public static final String FINDPROJECT = HOST + "api/project/findProject";
+    /**
      * 拼接请求路径
      *
      * @PARAM URI

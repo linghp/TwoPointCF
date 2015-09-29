@@ -7,17 +7,22 @@ import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.InvestedProjectBean;
+import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
+import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.ui.adapter.FollowProjectAdapter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MyPublishProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener{
+public class MyPublishProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,FindProjectPresenter.OnHttpResultListener{
     private ListView listView;
     private List<InvestedProjectBean> investedProjectBeans = new ArrayList<>();
     private FollowProjectAdapter followProjectAdapter;
     private String[] published_statuss;
+    private IFindProject presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +32,15 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     protected void initData() {
+        presenter=new FindProjectPresenter(this);
         published_statuss=this.getResources().getStringArray(R.array.published_status);
         generateData();
         followProjectAdapter = new FollowProjectAdapter(this, investedProjectBeans);
         listView.setAdapter(followProjectAdapter);
+
+        Map<String, String> maps = new HashMap<>();
+        maps.put("publisherId", localUserInfo.getUserId());
+        presenter.getData(maps);
     }
 
     private void generateData() {
@@ -58,6 +68,11 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
 
     }
 }
