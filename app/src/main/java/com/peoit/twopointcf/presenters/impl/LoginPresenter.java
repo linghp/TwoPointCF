@@ -28,7 +28,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
 
     @Override
     public void getData(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<RegisterBean>() {
+        OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<UserInfo>() {
             @Override
             public void onError(Request request, String info,Exception e) {
                 if (TextUtils.isEmpty(info)) {
