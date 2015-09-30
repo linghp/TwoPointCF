@@ -52,10 +52,23 @@ public class URLs {
      * 创建项目
      */
     public static final String CREATEPROJECT = HOST + "/api/project/createProject";
+
     /**
-     * 创建项目
+     * 发现项目
+     * 我发布的项目 参数publisherId
      */
     public static final String FINDPROJECT = HOST + "/api/project/findProject";
+
+    /**
+     * 投资项目
+     */
+    public static final String INVESTPROJECT = HOST + "/api/project/invest";
+
+    /**
+     * 查询已投资项目
+     */
+    public static final String FINDINVESTEDPROJECT = HOST + "/api/project/findInvesteddProject";
+
     /**
      * 拼接请求路径
      *

@@ -10,26 +10,38 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
+import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.ui.activity.CityActivity;
 import com.peoit.twopointcf.ui.activity.InvestFindDetailActivity;
+import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 import com.peoit.twopointcf.ui.activity.SearchActivity;
-import com.peoit.twopointcf.ui.adapter.InvestFindSubFragmentAdapter;
+import com.peoit.twopointcf.ui.adapter.ProjectAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.ui.view.TagViewPager;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ling
  *         投资发现
  */
-public class InvestFindSubFragment extends BaseFragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class InvestFindSubFragment extends BaseFragment implements AdapterView.OnItemClickListener, FindProjectPresenter.OnHttpResultListener,
+        AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener {
     private TextView mText;
     private TagViewPager tagViewPager;
     private ListView listView;
-    private InvestFindSubFragmentAdapter adapter;
+    //private InvestFindSubFragmentAdapter adapter;
+    private List<ProjectBean> projectBeans = new ArrayList<>();
+    private ProjectAdapter projectAdapter;
+    private IFindProject presenter;
+    private Map<String, String> maps = new HashMap<>();
 
     public static InvestFindSubFragment newInstance(int index) {
         InvestFindSubFragment f = new InvestFindSubFragment();
@@ -60,7 +72,6 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
 
     @Override
     protected void initView(View view) {
-        adapter = new InvestFindSubFragmentAdapter(getActivity());
 //        ImageView imageView=new ImageView(this.getActivity());
         AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.width = CommonUtil.getScreenWidth(getActivity());
@@ -73,6 +84,10 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         tagViewPager = new TagViewPager(getActivity());
         tagViewPager.setLayoutParams(layoutParams);
         listView = (ListView) view.findViewById(R.id.listView);
+
+        pullview.setOnHeaderRefreshListener(this);
+        pullview.setOnFooterLoadListener(this);
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -85,8 +100,14 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         imgLists.add(R.mipmap.raw_1433489820);
         tagViewPager.toUse(imgLists, this);
         listView.addHeaderView(tagViewPager);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
+
+        presenter=new FindProjectPresenter(this);
+        projectAdapter = new ProjectAdapter(getActivity(), projectBeans, MyPublishProjectActivity.maps_status);
+        listView.setAdapter(projectAdapter);
+
+        //maps.put("publisherId", localUserInfo.getUserId());
+        presenter.getData(maps, projectBeans);
+        listView.setAdapter(projectAdapter);
     }
 
     @Override
@@ -114,7 +135,8 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         if (position != 0) {
             Bundle bundle = new Bundle();
             bundle.putInt("position", position);
-            CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetailActivity.class, bundle, false);
+            InvestFindDetailActivity.startThisActivity(projectBeans.get(position-1),getActivity());
+           // CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetailActivity.class, bundle, false);
         }
     }
 
@@ -144,5 +166,26 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
 
             }
         }
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
+        projectAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onHttpResult() {
+        pullview.onHeaderRefreshFinish();
+        pullview.onFooterLoadFinish();
+    }
+
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+        presenter.getDataMore(maps);
+    }
+
+    @Override
+    public void onHeaderRefresh(AbPullToRefreshView view) {
+        presenter.getData(maps,projectBeans);
     }
 }
