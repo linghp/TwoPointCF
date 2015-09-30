@@ -20,9 +20,9 @@ import com.peoit.twopointcf.utils.DialogTool;
  * A simple {@link Fragment} subclass.
  */
 public class PublishFragment04 extends BaseFragment {
-    private TextView tv_dividendType;
+    private TextView tv_dividendType,tv_proportion1,tv_proportion2;
     private EditText et_stockholderPrivilege;
-    private String[] dividendtypes;
+    private String[] dividendtypes,proportion1,proportion2;
     private PublishProjectActivity publishProjectActivity;
     private String dividendtype,stockholderPrivilege;
 
@@ -44,12 +44,18 @@ public class PublishFragment04 extends BaseFragment {
     protected void initView(View view) {
         et_stockholderPrivilege=findViewByID_My(R.id.et_stockholderPrivilege);
         tv_dividendType=findViewByID_My(R.id.tv_dividendType);
+        tv_proportion1 = findViewByID_My(R.id.tv_proportion1);
+        tv_proportion2 = findViewByID_My(R.id.tv_proportion2);
         tv_dividendType.setOnClickListener(this);
+        tv_proportion1.setOnClickListener(this);
+        tv_proportion2.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
         dividendtypes=getActivity().getResources().getStringArray(R.array.publishproject_dividendtypes);
+        proportion1 = getActivity().getResources().getStringArray(R.array.publishproject_proportion1);
+        proportion2 = getActivity().getResources().getStringArray(R.array.publishproject_proportion2);
     }
 
     @Override
@@ -87,7 +93,7 @@ public class PublishFragment04 extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.tv_dividendType:
-                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "股权类型", dividendtypes, new DialogInterface.OnClickListener() {
+                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "分红模式", dividendtypes, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -96,6 +102,27 @@ public class PublishFragment04 extends BaseFragment {
                     }
                 });
                 break;
+            case R.id.tv_proportion1:
+                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "分红比例", proportion1, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tv_proportion1.setText(proportion1[which]);
+                        dialog.dismiss();
+                    }
+                });
+                break;
+            case R.id.tv_proportion2:
+                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "分红比例", proportion2, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tv_proportion2.setText(proportion2[which]);
+                        dialog.dismiss();
+                    }
+                });
+                break;
+
         }
     }
 }

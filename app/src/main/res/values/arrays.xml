@@ -104,9 +104,36 @@
         <item>原始股</item>
     </string-array>
 
+    <string-array name="publishproject_proportion">
+        <item>50%</item>
+        <item>55%</item>
+        <item>60%</item>
+        <item>65%</item>
+        <item>70%</item>
+        <item>75%</item>
+        <item>80%</item>
+        <item>85%</item>
+        <item>90%</item>
+        <item>95%</item>
+        <item>100%</item>
+    </string-array>
     <string-array name="publishproject_dividendtypes">
         <item>季度分红</item>
         <item>年度分红</item>
+    </string-array>
+    <string-array name="publishproject_proportion1">
+        <item>80%</item>
+        <item>85%</item>
+        <item>90%</item>
+        <item>95%</item>
+        <item>100%</item>
+    </string-array>
+    <string-array name="publishproject_proportion2">
+        <item>10%</item>
+        <item>15%</item>
+        <item>20%</item>
+        <item>25%</item>
+        <item>30%</item>
     </string-array>
 
 </resources>
