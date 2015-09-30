@@ -22,6 +22,9 @@ import java.util.Map;
  */
 public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnHttpResultListener> implements IFindProject {
     private List<ProjectBean> projectBeans;
+    private int offset=0;
+    private int pageSize=1;
+
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
         void onHttpResult();
@@ -71,8 +74,37 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                     @Override
                     public void onResponse(List<ProjectBean> response) {
                         //mTv.setText(u.toString());
+                        offset=0;
                         MyLogger.i(response.toString());
                         FindProjectPresenter.this.projectBeans.clear();
+                        FindProjectPresenter.this.projectBeans.addAll(response);
+                        mView.onHttpResultSuccess();
+                    }
+                }, mView);
+    }
+
+    @Override
+    public void getDataMore(Map maps) {
+        offset=offset+pageSize;
+        maps.put("offset",offset);
+        maps.put("pageSize",pageSize);
+        OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
+                new MyResultCallback<List<ProjectBean>>() {
+                    @Override
+                    public void onError(Request request, String info,Exception e) {
+                        offset=offset-pageSize;
+                        if (TextUtils.isEmpty(info)) {
+                            mView.showToast(R.string.networkerror);
+                            e.printStackTrace();
+                        } else {
+                            mView.showToast(info);
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(List<ProjectBean> response) {
+                        //mTv.setText(u.toString());
+                        MyLogger.i(response.toString());
                         FindProjectPresenter.this.projectBeans.addAll(response);
                         mView.onHttpResultSuccess();
                     }
