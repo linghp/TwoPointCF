@@ -14,6 +14,7 @@ import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.URLs;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ling on 2015/8/11.
@@ -24,11 +25,13 @@ public class ProjectAdapter extends BaseAdapter {
     private Context context;
     private List<ProjectBean> items;
     private LayoutInflater mInflater;
+    private Map<String,String> maps;
 
-    public ProjectAdapter(Context context, List<ProjectBean> items) {
+    public ProjectAdapter(Context context, List<ProjectBean> items,Map<String,String> maps) {
         super();
         this.context = context;
         this.items = items;
+        this.maps=maps;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -57,7 +60,7 @@ public class ProjectAdapter extends BaseAdapter {
         }
         holder.tv_title.setText(getItem(position).projectName);
         holder.tv_content.setText(getItem(position).projectIntro);
-        holder.tv_tag.setText(getItem(position).status);
+        holder.tv_tag.setText(maps.get(getItem(position).status));
         return convertView;
     }
 

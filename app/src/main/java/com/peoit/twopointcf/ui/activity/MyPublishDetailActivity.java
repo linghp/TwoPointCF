@@ -51,7 +51,7 @@ public class MyPublishDetailActivity extends BaseActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
 
         title = getIntent().getStringExtra("title");
-        statusvalue = getIntent().getStringExtra("statusvalue");
+        statusvalue = MyPublishProjectActivity.maps_status.get(getIntent().getStringExtra("statusvalue"));
     }
 
     @Override
