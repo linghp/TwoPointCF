@@ -8,8 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.InvestedProjectBean;
+import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.URLs;
 
 import java.util.List;
 
@@ -18,12 +20,12 @@ import java.util.List;
  * last:2015/8/11
  * description:
  */
-public class FollowProjectAdapter extends BaseAdapter {
+public class ProjectAdapter extends BaseAdapter {
     private Context context;
-    private List<InvestedProjectBean> items;
+    private List<ProjectBean> items;
     private LayoutInflater mInflater;
 
-    public FollowProjectAdapter(Context context, List<InvestedProjectBean> items) {
+    public ProjectAdapter(Context context, List<ProjectBean> items) {
         super();
         this.context = context;
         this.items = items;
@@ -49,10 +51,13 @@ public class FollowProjectAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.iv_left.setImageResource(getItem(position).getPicture());
-        holder.tv_title.setText(getItem(position).getTitle());
-        holder.tv_content.setText(getItem(position).getMoney());
-        holder.tv_tag.setText(getItem(position).getTime());
+        //holder.iv_left.setImageResource(getItem(position).getPicture());
+        if(getItem(position).projectPhotos.size()>0) {
+            Glide.with(context).load(URLs.HOST+getItem(position).projectPhotos.get(0)).into(holder.iv_left);
+        }
+        holder.tv_title.setText(getItem(position).projectName);
+        holder.tv_content.setText(getItem(position).projectIntro);
+        holder.tv_tag.setText(getItem(position).status);
         return convertView;
     }
 
@@ -64,7 +69,7 @@ public class FollowProjectAdapter extends BaseAdapter {
     }
 
     @Override
-    public InvestedProjectBean getItem(int position) {
+    public ProjectBean getItem(int position) {
         // TODO Auto-generated method stub
         return items.get(position);
     }

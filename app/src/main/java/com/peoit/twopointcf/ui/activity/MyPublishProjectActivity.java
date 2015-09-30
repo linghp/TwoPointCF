@@ -6,23 +6,26 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.InvestedProjectBean;
+import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IFindProject;
-import com.peoit.twopointcf.ui.adapter.FollowProjectAdapter;
+import com.peoit.twopointcf.ui.adapter.ProjectAdapter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MyPublishProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,FindProjectPresenter.OnHttpResultListener{
+public class MyPublishProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,FindProjectPresenter.OnHttpResultListener,
+        AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener{
     private ListView listView;
-    private List<InvestedProjectBean> investedProjectBeans = new ArrayList<>();
-    private FollowProjectAdapter followProjectAdapter;
+    private List<ProjectBean> investedProjectBeans = new ArrayList<>();
+    private ProjectAdapter projectAdapter;
     private String[] published_statuss;
     private IFindProject presenter;
+    private Map<String, String> maps = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,25 +37,26 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     protected void initData() {
         presenter=new FindProjectPresenter(this);
         published_statuss=this.getResources().getStringArray(R.array.published_status);
-        generateData();
-        followProjectAdapter = new FollowProjectAdapter(this, investedProjectBeans);
-        listView.setAdapter(followProjectAdapter);
+        //generateData();
+        projectAdapter = new ProjectAdapter(this, investedProjectBeans);
+        listView.setAdapter(projectAdapter);
 
-        Map<String, String> maps = new HashMap<>();
         maps.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(maps);
+        presenter.getData(maps,investedProjectBeans);
     }
 
-    private void generateData() {
-        for (String published_status : published_statuss) {
-            investedProjectBeans.add(new InvestedProjectBean(R.mipmap.raw_1433491802, published_status, "最惠宝", "预计将在2天后审核通过"));
-        }
-    }
+//    private void generateData() {
+//        for (String published_status : published_statuss) {
+//            investedProjectBeans.add(new InvestedProjectBean(R.mipmap.raw_1433491802, published_status, "最惠宝", "预计将在2天后审核通过"));
+//        }
+//    }
     @Override
     protected void initView() {
         listView = (ListView) findViewById(R.id.listview);
         titleView.setTitle(getString(R.string.title_activity_my_publish_project));
         listView.setOnItemClickListener(this);
+        pullview.setOnHeaderRefreshListener(this);
+        pullview.setOnFooterLoadListener(this);
     }
 
     @Override
@@ -63,7 +67,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //PublishProjectActivity.startThisActivity(true,this);
-        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).getTitle(),investedProjectBeans.get(position).getTime(),this);
+        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).projectName,investedProjectBeans.get(position).status,this);
     }
 
     @Override
@@ -73,6 +77,22 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     public void onHttpResultSuccess() {
+        projectAdapter.notifyDataSetChanged();
+    }
 
+    @Override
+    public void onHttpResult() {
+        pullview.onHeaderRefreshFinish();
+        pullview.onFooterLoadFinish();
+    }
+
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+
+    }
+
+    @Override
+    public void onHeaderRefresh(AbPullToRefreshView view) {
+        presenter.getData(maps,investedProjectBeans);
     }
 }

@@ -1,5 +1,8 @@
 package com.peoit.twopointcf.presenters.interfaces;
 
+import com.peoit.twopointcf.entity.ProjectBean;
+
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,5 +13,5 @@ public interface IFindProject {
     /**
      * 获取数据
      */
-    void getData(Map map);
+    void getData(Map map,List<ProjectBean> projectBeans);
 }

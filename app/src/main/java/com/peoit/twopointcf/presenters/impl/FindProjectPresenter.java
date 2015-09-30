@@ -21,8 +21,10 @@ import java.util.Map;
  * description:
  */
 public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnHttpResultListener> implements IFindProject {
+    private List<ProjectBean> projectBeans;
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
+        void onHttpResult();
     }
 
     public FindProjectPresenter(OnHttpResultListener view) {
@@ -38,18 +40,22 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
         @Override
         public void onBefore(Request request) {
             super.onBefore(request);
-            mView.showProgress(false, mView.getStringbyid(R.string.networkrequest));
+            if(projectBeans.size()==0) {//防止下拉刷新和对话框进度同时出现
+                mView.showProgress(false, mView.getStringbyid(R.string.networkrequest));
+            }
         }
 
         @Override
         public void onAfter() {
             super.onAfter();
             mView.hideProgress();
+            mView.onHttpResult();
         }
     }
 
     @Override
-    public void getData(Map maps) {
+    public void getData(Map maps,List<ProjectBean> projectBeans) {
+        this.projectBeans=projectBeans;
         OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
@@ -66,6 +72,8 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                     public void onResponse(List<ProjectBean> response) {
                         //mTv.setText(u.toString());
                         MyLogger.i(response.toString());
+                        FindProjectPresenter.this.projectBeans.clear();
+                        FindProjectPresenter.this.projectBeans.addAll(response);
                         mView.onHttpResultSuccess();
                     }
                 }, mView);
