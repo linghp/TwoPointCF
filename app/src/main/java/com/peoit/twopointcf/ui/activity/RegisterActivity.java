@@ -68,14 +68,15 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             case R.id.register_tv1:
 //                myToast("注册");
                 if (match()) {
-                    Map<String, String> maps = new HashMap<>();
+                    /*Map<String, String> maps = new HashMap<>();
                     maps.put("userName", userName);
                     maps.put("phoneNumber", phoneNumber);
                     maps.put("email", email);
                     maps.put("password", password);
                     maps.put("authorizationCode", authorizationCode);
                     maps.put("verifyCode", verifyCode);
-                    presenter.getData(maps);
+                    presenter.getData(maps);*/
+                    presenter.getValidateCode(userName,phoneNumber,email,password,authorizationCode,verifyCode);
                 }
                 break;
             case R.id.register_tv2:
