@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.activity.PublishProjectActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.utils.DataPickDialogUtil;
 import com.peoit.twopointcf.utils.DialogTool;
 
 /**
@@ -21,10 +22,11 @@ import com.peoit.twopointcf.utils.DialogTool;
  */
 public class PublishFragment03 extends BaseFragment {
     private EditText et_moneyUse, et_totalStockMoney, et_sellStockMoney, et_perSellStockMoney;
-    private TextView tv_stocktype, tv_endDate, tv_successCondition;
-    private String moneyUse,totalStockMoney,sellStockMoney,perSellStockMoney,stocktype,endDate,successCondition;
+    private TextView tv_stocktype, tv_endDate, tv_successCondition, tv_proportion;
+    private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stocktype, endDate, successCondition;
     private PublishProjectActivity publishProjectActivity;
-    private String[] stockTypes;
+    private String[] stockTypes, proportion;
+
     public PublishFragment03() {
         // Required empty public constructor
     }
@@ -39,21 +41,25 @@ public class PublishFragment03 extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        et_moneyUse=findViewByID_My(R.id.et_moneyUse);
-        et_totalStockMoney=findViewByID_My(R.id.et_totalStockMoney);
-        et_sellStockMoney=findViewByID_My(R.id.et_sellStockMoney);
-        et_perSellStockMoney=findViewByID_My(R.id.et_perSellStockMoney);
-        tv_stocktype=findViewByID_My(R.id.tv_stocktype);
-        tv_endDate=findViewByID_My(R.id.tv_endDate);
-        tv_successCondition=findViewByID_My(R.id.tv_successCondition);
+        et_moneyUse = findViewByID_My(R.id.et_moneyUse);
+        et_totalStockMoney = findViewByID_My(R.id.et_totalStockMoney);
+        et_sellStockMoney = findViewByID_My(R.id.et_sellStockMoney);
+        et_perSellStockMoney = findViewByID_My(R.id.et_perSellStockMoney);
+        tv_stocktype = findViewByID_My(R.id.tv_stocktype);
+        tv_proportion = findViewByID_My(R.id.tv_proportion);
+        tv_endDate = findViewByID_My(R.id.tv_endDate);
+        tv_successCondition = findViewByID_My(R.id.tv_successCondition);
 
         tv_stocktype.setOnClickListener(this);
         tv_endDate.setOnClickListener(this);
+        tv_proportion.setOnClickListener(this);
+        tv_successCondition.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-        stockTypes=getActivity().getResources().getStringArray(R.array.publishproject_stocktypes);
+        stockTypes = getActivity().getResources().getStringArray(R.array.publishproject_stocktypes);
+        proportion = getActivity().getResources().getStringArray(R.array.publishproject_proportion);
     }
 
     @Override
@@ -61,8 +67,8 @@ public class PublishFragment03 extends BaseFragment {
 
     }
 
-    public boolean putData(){
-        if(match()){
+    public boolean putData() {
+        if (match()) {
             publishProjectActivity.params.put("moneyUse", moneyUse);
             publishProjectActivity.params.put("totalStockMoney", totalStockMoney);
             publishProjectActivity.params.put("sellStockMoney", sellStockMoney);
@@ -95,16 +101,16 @@ public class PublishFragment03 extends BaseFragment {
             myToast("请输入售卖金额");
             return false;
         }
-//        stocktype = tv_stocktype.getText().toString().trim();
-//        if (TextUtils.isEmpty(stocktype)) {
-//            myToast("请输入股权总额");
-//            return false;
-//        }
-//        endDate = tv_endDate.getText().toString().trim();
-//        if (TextUtils.isEmpty(endDate)) {
-//            myToast("众筹结束时间");
-//            return false;
-//        }
+        stocktype = tv_stocktype.getText().toString().trim();
+        if (TextUtils.isEmpty(stocktype)) {
+            myToast("请输入股权总额");
+            return false;
+        }
+        endDate = tv_endDate.getText().toString().trim();
+        if (TextUtils.isEmpty(endDate)) {
+            myToast("众筹结束时间");
+            return false;
+        }
 
         return true;
     }
@@ -113,7 +119,11 @@ public class PublishFragment03 extends BaseFragment {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
+            /*case R.id.tv_proportion:
+                //起售股份所占比例
+                break;*/
             case R.id.tv_stocktype:
+                //股权类型
                 DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "股权类型", stockTypes, new DialogInterface.OnClickListener() {
 
                     @Override
@@ -124,7 +134,22 @@ public class PublishFragment03 extends BaseFragment {
                 });
                 break;
             case R.id.tv_endDate:
+                //众筹结束时间
+                DataPickDialogUtil dataPickDialogUtil = new DataPickDialogUtil(getActivity());
+                dataPickDialogUtil.dateTimePicKDialog(tv_endDate);
+                break;
+            case R.id.tv_successCondition:
+                //项目启动条件
+                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "项目启动条件", proportion, new DialogInterface.OnClickListener() {
 
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tv_successCondition.setText(proportion[which]);
+                        dialog.dismiss();
+                    }
+                });
+                break;
+            default:
                 break;
         }
     }

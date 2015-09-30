@@ -26,7 +26,9 @@ import com.peoit.twopointcf.utils.MyLogger;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ *发布项目
+ */
 public class PublishProjectActivity extends BaseFragmentActivity implements PublishProjectPresenter.OnHttpResultListener {
     private TextView tv_publish;
     private boolean isFromMyPublishProject;
