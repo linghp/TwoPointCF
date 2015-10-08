@@ -23,7 +23,7 @@ import java.util.Map;
 public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnHttpResultListener> implements IFindProject {
     private List<ProjectBean> projectBeans;
     private int offset=0;
-    private int pageSize=1;
+    private int pageSize=10;
 
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();

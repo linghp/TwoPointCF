@@ -27,10 +27,11 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     private IFindProject presenter;
     private Map<String, String> maps = new HashMap<>();
     public static Map<String, String> maps_status = new HashMap<>();
+    public static final String WAITING_INVESTED="waiting_invested";
 
     static {
         maps_status.put("waiting_verified","已发布，等待审核");
-        maps_status.put("waiting_invested","审核成功，等待投资完成");
+        maps_status.put(WAITING_INVESTED,"审核成功，等待投资完成");
         maps_status.put("verify_failed","审核失败");
     }
 

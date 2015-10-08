@@ -1,6 +1,5 @@
 package com.peoit.twopointcf.ui.base;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +9,7 @@ import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.ui.activity.MainActivity;
 import com.peoit.twopointcf.ui.view.TitleView;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
@@ -22,7 +22,7 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
 public abstract class BaseFragment extends Fragment implements IBaseView_Response,View.OnClickListener{
     private ProgressDialog pd;
     protected View mParent;
-    protected Activity mActivity;
+    protected BaseActivity mActivity;
     protected TitleView titleView;
     protected AbPullToRefreshView pullview;
     protected LocalUserInfo localUserInfo;
@@ -32,7 +32,9 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
         super.onActivityCreated(savedInstanceState);
         Log.i("BaseFragment", getClass().getSimpleName());
         mParent = getView();
-        mActivity = getActivity();
+        if(!(getActivity() instanceof MainActivity)){
+            mActivity = (BaseActivity) getActivity();
+        }
         titleView= (TitleView) getView().findViewById(R.id.title_view);
         localUserInfo = LocalUserInfo.getInstance(getActivity());
         initPullview();
@@ -61,6 +63,10 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
 
     protected void myToast(String content){
         Toast.makeText(this.getActivity(),content,Toast.LENGTH_SHORT).show();
+    }
+
+    public void requestServer(){
+
     }
 
     @Override
@@ -108,4 +114,5 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
     public void onClick(View v) {
 
     }
+
 }

@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:max="100"
-        android:progress="65"
+        tools:progress="65"
         />
 
     <RelativeLayout
@@ -25,7 +25,7 @@
             android:id="@+id/tv_bottom01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="65%"
+            tools:text="65%"
             android:textAppearance="?android:attr/textAppearanceSmall"
             />
 
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="195万"
+            tools:text="195万"
             android:textAppearance="?android:attr/textAppearanceSmall"
             />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="12天"
+            tools:text="12天"
             android:textAppearance="?android:attr/textAppearanceSmall"
             />
 
