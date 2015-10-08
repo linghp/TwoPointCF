@@ -59,6 +59,8 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
     @Override
     public void getData(Map maps,List<ProjectBean> projectBeans) {
         this.projectBeans=projectBeans;
+        maps.put("offset",0+"");
+        maps.put("pageSize",pageSize+"");
         OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
@@ -86,8 +88,8 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
     @Override
     public void getDataMore(Map maps) {
         offset=offset+pageSize;
-        maps.put("offset",offset);
-        maps.put("pageSize",pageSize);
+        maps.put("offset",offset+"");
+        maps.put("pageSize",pageSize+"");
         OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
@@ -105,6 +107,10 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                     public void onResponse(List<ProjectBean> response) {
                         //mTv.setText(u.toString());
                         MyLogger.i(response.toString());
+                        if (response.size()==0){
+                            mView.showToast(R.string.islastpage);
+                            return;
+                        }
                         FindProjectPresenter.this.projectBeans.addAll(response);
                         mView.onHttpResultSuccess();
                     }

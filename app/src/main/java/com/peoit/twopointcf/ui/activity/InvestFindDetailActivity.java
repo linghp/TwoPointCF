@@ -3,13 +3,13 @@ package com.peoit.twopointcf.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub1Fragment;
@@ -28,7 +28,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     private TextView tv_subtitle;
     private LinearLayout linearLayoutsub;
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
-    private String title;
+    private ProjectBean projectBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,9 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         setContentView(R.layout.activity_invest_find_detail);
     }
 
-    public static void startThisActivity(String title, Context context) {
+    public static void startThisActivity(ProjectBean projectBean, Context context) {
         Intent intent = new Intent(context, InvestFindDetailActivity.class);
-        intent.putExtra("title", title);
+        intent.putExtra("projectBean", projectBean);
         context.startActivity(intent);
     }
 
@@ -70,7 +70,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         fourthFragment = new InvestFindDetailSub4Fragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
 
-        title = getIntent().getStringExtra("title");
+        projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
         String[] investfinddetail_subitemvalues={"800万元","32人","50.00%","60000元","0.75%",
                 "重庆","红利股","2015-09-21","未知","3.75%",
                 "无","5.00%","众筹完成","食品","重庆市渝中区大坪",
@@ -97,11 +97,9 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
     @Override
     protected void updateView() {
-        if (TextUtils.isEmpty(title)) {
-            titleView.setTitle("金佳俊宠物度假村");
-        } else {
-            titleView.setTitle(title);
-            tv_subtitle.setText(title);
+        if (projectBean!=null) {
+            titleView.setTitle(projectBean.projectName);
+            tv_subtitle.setText(projectBean.projectName);
         }
         titleView.getBtn_right().setTag(R.mipmap.collection);
         titleView.setRightBtn(R.mipmap.collection, new View.OnClickListener() {

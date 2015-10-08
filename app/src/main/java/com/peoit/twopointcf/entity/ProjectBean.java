@@ -3,6 +3,7 @@ package com.peoit.twopointcf.entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by ling on 2015/9/29.
  * description:
  */
-public class ProjectBean {
+public class ProjectBean implements Serializable{
     @SerializedName("id")
     @Expose
     public String id;

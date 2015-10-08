@@ -1,6 +1,7 @@
 package com.peoit.twopointcf.ui.base;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.ui.view.TitleView;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
@@ -17,7 +19,8 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
  * last:2015/7/31
  * description:
  */
-public abstract class BaseFragment extends Fragment implements View.OnClickListener{
+public abstract class BaseFragment extends Fragment implements IBaseView_Response,View.OnClickListener{
+    private ProgressDialog pd;
     protected View mParent;
     protected Activity mActivity;
     protected TitleView titleView;
@@ -58,6 +61,47 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     protected void myToast(String content){
         Toast.makeText(this.getActivity(),content,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgress(boolean flag, String message) {
+        if (pd == null) {
+            pd = new ProgressDialog(getActivity());
+            pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pd.setCancelable(flag);
+            pd.setCanceledOnTouchOutside(false);
+            pd.setMessage(message);
+            pd.show();
+        } else {
+            pd.show();
+        }
+    }
+
+    @Override
+    public void hideProgress() {
+        if (pd == null)
+            return;
+
+        if (pd.isShowing()) {
+            pd.dismiss();
+        }
+    }
+
+    @Override
+    public void showToast(int resId) {
+        showToast(getString(resId));
+    }
+
+    @Override
+    public void showToast(String msg) {
+        if (!getActivity().isFinishing()) {
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public String getStringbyid(int resId) {
+        return getString(resId);
     }
 
     @Override
