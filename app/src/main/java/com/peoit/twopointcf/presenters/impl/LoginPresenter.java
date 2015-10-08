@@ -67,7 +67,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
 
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
-
+        //存入数据
         LocalUserInfo getLocalUserInfo();
     }
 }

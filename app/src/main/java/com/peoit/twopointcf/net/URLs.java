@@ -29,6 +29,10 @@ public class URLs {
      */
     public static final String USER_PHONEVALIDATE = HOST + "/api/user/phoneValidate";
     /**
+     *验证登录名是否可用
+     */
+    public static final String USER_USERNAMEVAILDATE = HOST + "/api/user/userNameValidate";
+    /**
      * 登录
      */
     public static final String USER_SIGNIN = HOST + "/api/user/login";

@@ -132,6 +132,29 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
         },mView);
     }
 
+    //验证昵称是否可用
+    public  void getUserNameValidate(Map map){
+        OkHttpClientManager.postAsyn(URLs.USER_USERNAMEVAILDATE, map, new MyResultCallback() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast(info);
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null){
+                    mView.showToast("请求成功" + response.toString());
+                    MyLogger.i(">>>>>>>>>>>>>>>>验证昵称是否可用" + response.toString());
+                }
+            }
+        });
+    }
+
     //验证手机号是否已被注册
     public void getPhoneValidate(final Map map){
         OkHttpClientManager.postAsyn(URLs.USER_PHONEVALIDATE, map, new MyResultCallback<Object>() {

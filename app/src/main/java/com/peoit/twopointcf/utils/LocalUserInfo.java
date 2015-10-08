@@ -186,8 +186,8 @@ public class LocalUserInfo {
         MyLogger.i(">>>>>>>>>>保存用户信息" + userInfo.toString());
 		put(USERNAME, userInfo.getUserName());
 		put(USERID, userInfo.getId());
-	//	put(Constant.PRE_USER_NICKNAME, userInfo.getNickName());
-//		put(Constant.PRE_USER_PHONENUMBER, user.getPhoneNumber());
+		put(EMAIL, userInfo.getEmail());
+		put(PHONENUMBER, userInfo.getPhoneNumber());
 //		put(USERPHOTO_FILENAME, user.getScalePhoto());
 //		put(Constant.INT_SHOPID, user.getShopId());//shopId
 //		MyLogger.i("保存用户信息:"+Constant.INT_SHOPID);
@@ -220,6 +220,27 @@ public class LocalUserInfo {
         String useid=getString(USERID);
         if (!TextUtils.isEmpty(useid)) {
             return useid;
+        }
+        return "";
+    }
+    public String getUsername(){
+        String userName=getString(USERNAME);
+        if (!TextUtils.isEmpty(userName)) {
+            return userName;
+        }
+        return "";
+    }
+    public String getPhonenumber(){
+        String phoneNumber=getString(PHONENUMBER);
+        if (!TextUtils.isEmpty(phoneNumber)) {
+            return phoneNumber;
+        }
+        return "";
+    }
+    public String getEmail(){
+        String email=getString(EMAIL);
+        if (!TextUtils.isEmpty(email)) {
+            return email;
         }
         return "";
     }

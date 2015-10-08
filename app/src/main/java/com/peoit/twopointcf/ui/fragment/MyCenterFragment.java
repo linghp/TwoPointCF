@@ -29,7 +29,7 @@ import com.peoit.twopointcf.utils.MyLogger;
  *         个人中心
  */
 public class MyCenterFragment extends BaseFragment {
-    private TextView mText;
+    private TextView mycenter_tv1,mycenter_tv4;
     private ImageView iv_photo;
 
     public static MyCenterFragment newInstance(int index) {
@@ -74,6 +74,10 @@ public class MyCenterFragment extends BaseFragment {
                 Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getImageDownloadDir(getActivity()) + photoName);
                 iv_photo.setImageBitmap(bitmap);
             }
+            //昵称
+            mycenter_tv1.setText(localUserInfo.getUsername()+"");
+            //绑定手机
+            mycenter_tv4.setText(localUserInfo.getPhonenumber()+"");
         }
         //testGlide();
     }
@@ -87,11 +91,12 @@ public class MyCenterFragment extends BaseFragment {
         view.findViewById(R.id.mycenter_ll7).setOnClickListener(this);
         view.findViewById(R.id.mycenter_ll8).setOnClickListener(this);
         iv_photo= (ImageView) view.findViewById(R.id.mycenter_iv);
+        mycenter_tv1 = findViewByID_My(R.id.mycenter_tv1);
+        mycenter_tv4 = findViewByID_My(R.id.mycenter_tv4);
     }
 
     @Override
     protected void initData() {
-
     }
 
     @Override
