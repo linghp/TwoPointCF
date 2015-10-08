@@ -96,7 +96,6 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                         showToast("手机号不合法");
                     }
                 }
-
                 break;
             default:
                 break;
@@ -108,6 +107,11 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         if (TextUtils.isEmpty(userName)) {
             showToast("请输入昵称");
             return false;
+        }else {
+            //验证昵称是否可用
+            Map<String, String> maps = new HashMap<>();
+            maps.put("userName", userName);
+            presenter.getUserNameValidate(maps);
         }
         email = registerEt2.getText().toString().trim();//邮箱
         if (TextUtils.isEmpty(email)) {
