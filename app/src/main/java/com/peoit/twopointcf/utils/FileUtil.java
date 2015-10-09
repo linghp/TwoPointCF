@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -175,21 +173,6 @@ public class FileUtil {
         return imageDownloadDir;
     }
 
-    /**
-     * 描述：获取src中的图片资源.
-     *
-     * @param src 图片的src路径，如（“image/arrow.png”）
-     * @return Bitmap 图片
-     */
-    public static Bitmap getBitmapFromSrc(String src){
-        Bitmap bit = null;
-        try {
-            bit = BitmapFactory.decodeStream(FileUtil.class.getResourceAsStream(src));
-        } catch (Exception e) {
-            MyLogger.e("获取图片异常：" + e.getMessage());
-        }
-        return bit;
-    }
 
     /*以下为通过uri获取文件路径*/
     @SuppressLint("NewApi")

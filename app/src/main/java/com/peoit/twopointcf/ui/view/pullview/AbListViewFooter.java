@@ -119,8 +119,8 @@ public class AbListViewFooter extends LinearLayout {
 		
 		LayoutParams layoutParamsWW = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW.gravity = Gravity.CENTER;
-//		layoutParamsWW.width = CommonUtil.dip2px(mContext, 50);
-//		layoutParamsWW.height = CommonUtil.dip2px(mContext, 50);
+		layoutParamsWW.width = CommonUtil.dip2px(mContext, 24);
+		layoutParamsWW.height = CommonUtil.dip2px(mContext, 24);
 		layoutParamsWW.rightMargin = CommonUtil.dip2px(mContext, 10);
 		footerView.addView(footerProgressBar,layoutParamsWW);
 		
@@ -128,6 +128,7 @@ public class AbListViewFooter extends LinearLayout {
 		footerView.addView(footerTextView,layoutParamsWW1);
 		
 		LayoutParams layoutParamsFW = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		layoutParamsFW.height = CommonUtil.dip2px(mContext, 36);
 		addView(footerView,layoutParamsFW);
 		
 		//获取View的高度

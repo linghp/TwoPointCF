@@ -44,14 +44,15 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
         public void onBefore(Request request) {
             super.onBefore(request);
             if(projectBeans.size()==0) {//防止下拉刷新和对话框进度同时出现
-                mView.showProgress(false, mView.getStringbyid(R.string.networkrequest));
+                //mView.showProgress(false, mView.getStringbyid(R.string.networkrequest));
+                mView.showLoadingPage();
             }
         }
 
         @Override
         public void onAfter() {
             super.onAfter();
-            mView.hideProgress();
+            //mView.hideProgress();
             mView.onHttpResult();
         }
     }
@@ -71,12 +72,18 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                         } else {
                             mView.showToast(info);
                         }
+                        mView.showErrorPage();
                     }
 
                     @Override
                     public void onResponse(List<ProjectBean> response) {
                         //mTv.setText(u.toString());
                         offset=0;
+                        if(response.size()>0){
+                            mView.showContentPage();
+                        }else {
+                            mView.showEmptyPage();
+                        }
                         MyLogger.i(response.toString());
                         FindProjectPresenter.this.projectBeans.clear();
                         FindProjectPresenter.this.projectBeans.addAll(response);

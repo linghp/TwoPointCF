@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.ui.activity.MainActivity;
+import com.peoit.twopointcf.ui.view.LoadingLayout;
 import com.peoit.twopointcf.ui.view.TitleView;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
@@ -25,6 +26,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
     protected BaseActivity mActivity;
     protected TitleView titleView;
     protected AbPullToRefreshView pullview;
+    protected LoadingLayout loadingLayout;
     protected LocalUserInfo localUserInfo;
 
     @Override
@@ -37,12 +39,12 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
         }
         titleView= (TitleView) getView().findViewById(R.id.title_view);
         localUserInfo = LocalUserInfo.getInstance(getActivity());
-        initPullview();
+        initCommonView();
         initView(mParent);
         initData();
         updateView();
     }
-    protected void initPullview(){
+    protected void initCommonView(){
         pullview=findViewByID_My(R.id.pullview);
         if(pullview!=null){
             // 设置pull进度条的样式
@@ -50,6 +52,17 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
                     this.getResources().getDrawable(R.drawable.progress_circular));
             pullview.getFooterView().setFooterProgressBarDrawable(
                     this.getResources().getDrawable(R.drawable.progress_circular));
+        }
+
+        loadingLayout = findViewByID_My(R.id.loading_layout);
+        if(loadingLayout!=null) {
+            loadingLayout.setOnRetryClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadingLayout.showLoading();
+                    requestServer();
+                }
+            });
         }
     }
 
@@ -108,6 +121,27 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
     @Override
     public String getStringbyid(int resId) {
         return getString(resId);
+    }
+
+
+    @Override
+    public void showLoadingPage() {
+        loadingLayout.showLoading();
+    }
+
+    @Override
+    public void showErrorPage() {
+        loadingLayout.showError();
+    }
+
+    @Override
+    public void showEmptyPage() {
+        loadingLayout.showEmpty();
+    }
+
+    @Override
+    public void showContentPage() {
+        loadingLayout.showContent();
     }
 
     @Override

@@ -33,4 +33,20 @@ public interface IBaseView_Response {
 
     String getStringbyid(int resId);
 
+    /**
+     * 显示加载界面
+     */
+    void showLoadingPage();
+    /**
+     * 显示错误界面
+     */
+    void showErrorPage();
+    /**
+     * 显示空数据界面
+     */
+    void showEmptyPage();
+    /**
+     * 显示数据界面
+     */
+    void showContentPage();
 }

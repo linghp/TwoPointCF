@@ -169,6 +169,12 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     }
 
     @Override
+    public void requestServer() {
+        super.requestServer();
+        presenter.getData(maps, projectBeans);
+    }
+
+    @Override
     public void onHttpResultSuccess() {
         projectAdapter.notifyDataSetChanged();
     }
