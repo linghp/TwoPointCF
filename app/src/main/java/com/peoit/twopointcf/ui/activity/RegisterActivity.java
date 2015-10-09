@@ -1,6 +1,7 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     private TextView registerTv2;
     private TextView registerTv3;
     String userName, phoneNumber, email, password, authorizationCode, verifyCode;
-
+    private TimeCount time;
     private RegisterPresenter presenter;
 
     @Override
@@ -48,6 +49,85 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         registerTv1 = (TextView) findViewById(R.id.register_tv1);
         registerTv2 = (TextView) findViewById(R.id.register_tv2);
         registerTv3 = (TextView) findViewById(R.id.register_tv3);//获取验证码
+        time = new TimeCount(60000, 1000);//构造CountDownTimer对象
+        //昵称失去焦点时触发
+        registerEt1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (registerEt1.hasFocus() == false) {
+                    userName = registerEt1.getText().toString().trim();
+                    if (TextUtils.isEmpty(userName)) {
+                        showToast("请输入昵称");
+                    } else {
+                        //验证昵称是否可用
+                        Map<String, String> maps = new HashMap<>();
+                        maps.put("userName", userName);
+                        presenter.getUserNameValidate(maps);
+                    }
+                }
+            }
+        });
+        //邮箱失去焦点时触发
+        registerEt2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (registerEt2.hasFocus() == false) {
+                    email = registerEt2.getText().toString().trim();//邮箱
+                    if (TextUtils.isEmpty(email)) {
+                        showToast("请输入邮箱");
+                    } else {
+                        if (isMobileEM(email)) {
+//                presenter.getVlidateCode(email);
+                        } else {
+                            showToast("邮箱不合法");
+                        }
+                    }
+                }
+            }
+        });
+        //电话失去焦点时触发
+        registerEt3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (registerEt3.hasFocus() == false) {
+                    phoneNumber = registerEt3.getText().toString().trim();
+                    if (TextUtils.isEmpty(phoneNumber)) {
+                        showToast("请输入手机号");
+                    } else {
+                        if (isMobileNO(phoneNumber)) {
+                            //检测手机号是否被注册
+                            Map<String, String> maps = new HashMap<>();
+                            maps.put("phoneNumber", phoneNumber);
+                            presenter.getPhoneValidate(maps);
+                        } else {
+                            showToast("手机号不合法");
+                        }
+                    }
+                }
+            }
+        });
+        //验证码失去焦点时触发
+        registerEt6.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (registerEt6.hasFocus() == false) {
+                    phoneNumber = registerEt3.getText().toString().trim();
+                    verifyCode = registerEt6.getText().toString().trim();
+                    if (TextUtils.isEmpty(phoneNumber)) {
+                        showToast("请输入手机号");
+                    } else if (TextUtils.isEmpty(verifyCode)) {
+                        showToast("请输入验证码");
+                    } else {
+                        //检测验证码是否正确
+                        Map<String, String> maps = new HashMap<>();
+                        maps.put("phoneNumber", phoneNumber);
+                        maps.put("validateCode", verifyCode);
+                        presenter.getValidateCode(maps);
+                    }
+
+                }
+            }
+        });
     }
 
     @Override
@@ -68,15 +148,16 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             case R.id.register_tv1:
 //                myToast("注册");
                 if (match()) {
-                    /*Map<String, String> maps = new HashMap<>();
+                    //注册
+                    Map<String, String> maps = new HashMap<>();
                     maps.put("userName", userName);
                     maps.put("phoneNumber", phoneNumber);
                     maps.put("email", email);
                     maps.put("password", password);
                     maps.put("authorizationCode", authorizationCode);
                     maps.put("verifyCode", verifyCode);
-                    presenter.getData(maps);*/
-                    presenter.getValidateCode(userName,phoneNumber,email,password,authorizationCode,verifyCode);
+                    presenter.getData(maps);
+
                 }
                 break;
             case R.id.register_tv2:
@@ -89,9 +170,11 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                     showToast("请输入电话");
                 } else {
                     if (isMobileNO(phoneNumber)) {
+                        time.start();//开始计时
+                        //获取验证码
                         Map<String, String> maps = new HashMap<>();
                         maps.put("phoneNumber", phoneNumber);
-                        presenter.getPhoneValidate(maps);
+                        presenter.getVlidateCode(maps);
                     } else {
                         showToast("手机号不合法");
                     }
@@ -107,17 +190,12 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         if (TextUtils.isEmpty(userName)) {
             showToast("请输入昵称");
             return false;
-        }else {
-            //验证昵称是否可用
-            Map<String, String> maps = new HashMap<>();
-            maps.put("userName", userName);
-            presenter.getUserNameValidate(maps);
         }
         email = registerEt2.getText().toString().trim();//邮箱
         if (TextUtils.isEmpty(email)) {
             showToast("请输入邮箱");
             return false;
-        }else {
+        } else {
             if (isMobileEM(email)) {
 //                presenter.getVlidateCode(email);
             } else {
@@ -125,9 +203,9 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                 return false;
             }
         }
-
         phoneNumber = registerEt3.getText().toString().trim();
         if (TextUtils.isEmpty(phoneNumber)) {
+            showToast("请输入手机号");
             return false;
         } else {
             if (isMobileNO(phoneNumber)) {
@@ -180,5 +258,24 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
 
     @Override
     public void onHttpResultSuccess() {
+    }
+
+    //获取验证码倒计时
+    class TimeCount extends CountDownTimer {
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);//参数依次为总时长,和计时的时间间隔
+        }
+
+        @Override
+        public void onFinish() {//计时完毕时触发
+            registerTv3.setText("重新获取");
+            registerTv3.setClickable(true);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {//计时过程显示
+            registerTv3.setClickable(false);
+            registerTv3.setText(millisUntilFinished / 1000 + "s后获取");
+        }
     }
 }

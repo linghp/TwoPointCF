@@ -17,8 +17,12 @@ public class LocalUserInfo {
 
     public static final String USERNAME = "userName";//用户名
     public static final String USERID = "userID";//用户id
-    public static final String EMAIL = "email";//
-    public static final String PHONENUMBER = "phoneNumber";//
+    public static final String EMAIL = "email";//邮箱
+    public static final String PHONENUMBER = "phoneNumber";//电话
+    public static final String LEVEL = "level";//等级
+    public static final String USERCAPTION = "userCaption";//用户简介
+    public static final String ISREALNAMEVALIDATED = "isRealNameValidated";//用户是否实名验证
+    public static final String USERREALNAME = "userRealName";//用户真实姓名
     private static SharedPreferences mSharedPreferences;
     private static LocalUserInfo localUserInfo;
     private static Editor editor;
@@ -184,11 +188,14 @@ public class LocalUserInfo {
 	 */
 	public void putUser(UserInfo userInfo) {
         MyLogger.i(">>>>>>>>>>保存用户信息" + userInfo.toString());
-		put(USERNAME, userInfo.getUserName());
+        put(USERNAME, userInfo.getUserName());
 		put(USERID, userInfo.getId());
+        put(LEVEL,userInfo.getLevel()+"");
 		put(EMAIL, userInfo.getEmail());
 		put(PHONENUMBER, userInfo.getPhoneNumber());
-//		put(USERPHOTO_FILENAME, user.getScalePhoto());
+        put(USERCAPTION,userInfo.getUserCaption()+"");
+        put(ISREALNAMEVALIDATED,userInfo.getIsRealNameValidated()+"");
+		put(USERREALNAME, userInfo.getUserRealName()+"");
 //		put(Constant.INT_SHOPID, user.getShopId());//shopId
 //		MyLogger.i("保存用户信息:"+Constant.INT_SHOPID);
 //		put(Constant.PRE_LOGIN_USERNAME,
@@ -230,6 +237,14 @@ public class LocalUserInfo {
         }
         return "";
     }
+
+    public String getUserRealName(){
+        String userRealName=getString(USERREALNAME);
+        if (!TextUtils.isEmpty(userRealName)) {
+            return userRealName;
+        }
+        return "";
+    }
     public String getPhonenumber(){
         String phoneNumber=getString(PHONENUMBER);
         if (!TextUtils.isEmpty(phoneNumber)) {
@@ -241,6 +256,27 @@ public class LocalUserInfo {
         String email=getString(EMAIL);
         if (!TextUtils.isEmpty(email)) {
             return email;
+        }
+        return "";
+    }
+    public String getlevel(){
+        String level=getString(LEVEL);
+        if (!TextUtils.isEmpty(level)) {
+            return level;
+        }
+        return "";
+    }
+    public String getuserCaption(){
+        String userCaption=getString(USERCAPTION);
+        if (!TextUtils.isEmpty(userCaption)) {
+            return userCaption;
+        }
+        return "";
+    }
+    public String getIsrealnamevalidated(){
+        String isrealnamevalidated=getString(ISREALNAMEVALIDATED);
+        if (!TextUtils.isEmpty(isrealnamevalidated)) {
+            return isrealnamevalidated;
         }
         return "";
     }

@@ -65,16 +65,17 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getImageDownloadDir(this)+ photoName);
                 iv_photo.setImageBitmap(bitmap);
             }
-            tv_userinfo1.setText(localUserInfo.getUsername());//姓名
-//            tv_userinfo2.setText(localUserInfo.getUsername());//性别
-//            tv_userinfo3.setText(localUserInfo.getUsername());//等级
-//            tv_userinfo4.setText(localUserInfo.getUsername());//个人简介
-//            tv_userinfo5.setText(localUserInfo.getUsername());//实名认证
+            tv_userinfo1.setText(localUserInfo.getUserRealName());//真实姓名
+//            tv_userinfo2.setText(localUserInfo.);//性别
+            tv_userinfo3.setText(localUserInfo.getlevel());//等级
+            tv_userinfo4.setText(localUserInfo.getuserCaption());//个人简介
+            if (("n").equals(localUserInfo.getIsrealnamevalidated())){
+                tv_userinfo5.setText("立即认证");//实名认证
+            }else {
+                tv_userinfo5.setText("已认证");
+            }
             tv_userinfo6.setText(localUserInfo.getPhonenumber());//手机号码
             tv_userinfo7.setText(localUserInfo.getEmail());//邮箱
-
-
-
         }
     }
 
