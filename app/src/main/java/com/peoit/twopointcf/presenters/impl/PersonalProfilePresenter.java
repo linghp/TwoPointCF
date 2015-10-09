@@ -9,7 +9,6 @@ import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.IPersonalProfile;
-import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
 import java.util.Map;
@@ -41,23 +40,25 @@ public class PersonalProfilePresenter extends BasePresenter<PersonalProfilePrese
     }
     @Override
     public void getData(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_CHANGEPASSWORD, maps, new MyResultCallback() {
+        OkHttpClientManager.postAsyn(URLs.CHANGEUSERCAPTION, maps, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-//                    mView.showToast("用户名和密码不匹配");
+                    mView.showToast("修改失败");
                 }
             }
 
             @Override
             public void onResponse(Object response) {
-                if (response != null) {
+                /*if (response != null) {
                     MyLogger.i(">>>>>>>>>>>>>>>>修改个人简介" + response.toString());
                     ((Activity) mView).finish();
-                }
+                }*/
+                mView.showToast("修改成功");
+                ((Activity) mView).finish();
             }
         });
 

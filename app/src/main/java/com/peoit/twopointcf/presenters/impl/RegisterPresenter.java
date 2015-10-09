@@ -13,7 +13,6 @@ import com.peoit.twopointcf.presenters.interfaces.IRegister;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -59,7 +58,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast(info);
+                    mView.showToast("注册失败");
                 }
             }
 
@@ -75,35 +74,23 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
     }
 
     //验证手机验证码
-    public void getValidateCode(String userName,String phoneNumber,String email,String password,String authorizationCode,String verifyCode){
-        final Map<String, String> maps = new HashMap<>();
-        maps.put("userName", userName);
-        maps.put("phoneNumber", phoneNumber);
-        maps.put("email", email);
-        maps.put("password", password);
-        maps.put("authorizationCode", authorizationCode);
-        maps.put("verifyCode", verifyCode);
-
-        Map<String, String> map = new HashMap<>();
-        maps.put("phoneNumber", phoneNumber);
-        maps.put("validateCode", verifyCode);
-        OkHttpClientManager.postAsyn(URLs.USER_VALIDATECODE, map, new MyResultCallback<String>() {
+    public void getValidateCode(Map map){
+        OkHttpClientManager.postAsyn(URLs.USER_VALIDATECODE, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast(info);
+                    mView.showToast("验证码错误");
                 }
             }
 
             @Override
-            public void onResponse(String response) {
+            public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast("验证成功");
+                    mView.showToast("验证码验证成功");
                     MyLogger.i(">>>>>>>>>验证手机验证码" + response.toString());
-                    getData(maps);
                 }
             }
         },mView);
@@ -124,7 +111,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
             @Override
             public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast("请求成功" + response.toString());
+                    mView.showToast("获取手机验证码成功" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>获取手机验证码" + response.toString());
 
                 }
@@ -134,21 +121,21 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
     //验证昵称是否可用
     public  void getUserNameValidate(Map map){
-        OkHttpClientManager.postAsyn(URLs.USER_USERNAMEVAILDATE, map, new MyResultCallback() {
+        OkHttpClientManager.postAsyn(URLs.USER_USERNAMEVAILDATE, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast(info);
+                    mView.showToast("昵称不可用");
                 }
             }
 
             @Override
             public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast("请求成功" + response.toString());
+                    mView.showToast("昵称验证通过" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>验证昵称是否可用" + response.toString());
                 }
             }
@@ -164,16 +151,16 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast(info);
+                    mView.showToast("手机号已被注册");
                 }
             }
 
             @Override
             public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast("请求成功" + response.toString());
+                    mView.showToast("手机号验证成功" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>验证手机号是否已被注册" + response.toString());
-                    getVlidateCode(map);
+
                 }
             }
         });

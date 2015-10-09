@@ -41,6 +41,10 @@ public class URLs {
      */
     public static final String USER_CHANGEPASSWORD = HOST + "/api/user/changePassword";
     /**
+     * 修改用户简介
+     */
+    public static final String CHANGEUSERCAPTION = HOST + "/api/user/changeUserCaption";
+    /**
      * 第三方登陆
      */
     public static final String OAUTH_SIGNIN = HOST + "xxx";
