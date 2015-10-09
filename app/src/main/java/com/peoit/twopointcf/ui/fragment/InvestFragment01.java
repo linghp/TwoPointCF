@@ -3,17 +3,33 @@ package com.peoit.twopointcf.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.ui.activity.InvestActivity;
+import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.utils.CommonUtil;
+
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InvestFragment01 extends Fragment {
-
+public class InvestFragment01 extends BaseFragment{
+    private TextView tv_projectname, tv_initiator, tv_money, tv_percentage;
+    private EditText et_stockcount, tv_description;
+    private ProjectBean projectBean;
+    //private IInvestProject presenter;
+    private int stockcount;
+    public double investorEarnest;
 
     public InvestFragment01() {
         // Required empty public constructor
@@ -23,9 +39,92 @@ public class InvestFragment01 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_invest_fragment01, container, false);
     }
 
 
+    @Override
+    protected void initView(View view) {
+        tv_projectname = findViewByID_My(R.id.tv_projectname);
+        tv_initiator = findViewByID_My(R.id.tv_initiator);
+        tv_money = findViewByID_My(R.id.tv_money);
+        tv_percentage = findViewByID_My(R.id.tv_percentage);
+        et_stockcount = findViewByID_My(R.id.et_stockcount);
+        tv_description = findViewByID_My(R.id.tv_description);
+
+        et_stockcount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String s1 = s.toString();
+                if (!TextUtils.isEmpty(s1)) {
+                    stockcount = Integer.parseInt(s1);
+                    double money = stockcount * (projectBean.perSellStockMoney+0.0);
+                    investorEarnest=money*projectBean.investorEarnestPercent/100;
+                    String money_tt = CommonUtil.twoPointConversion(money / 10000.0) + "万";
+                    String percentage = CommonUtil.twoPointConversion(money / (projectBean.sellStockMoney + 0.0)) + "%";
+                    tv_money.setText(money_tt);
+                    tv_percentage.setText(percentage);
+                }else{
+                    stockcount=0;
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void initData() {
+        projectBean = ((InvestActivity) mActivity).projectBean;
+        //presenter=new InvestProjectPresenter(this);
+    }
+
+    @Override
+    protected void updateView() {
+        if (projectBean != null) {
+            tv_projectname.setText(projectBean.projectName);
+            //tv_initiator.setText(projectBean.projectName);
+        }
+    }
+
+    @Override
+    public void requestServer() {//这个用来判断参数状态
+        super.requestServer();
+        HashMap<String, String> params = mActivity.params;
+        if(match()) {
+            params.put("projectId",projectBean.id);
+            params.put("userId",localUserInfo.getUserId());
+            params.put("amount",stockcount+"");
+            params.put("description",tv_description.getText().toString().trim());
+
+            mActivity.onResultSuccess();
+        }
+    }
+
+    private boolean match() {
+       // projectName = et_projectName.getText().toString().trim();
+        if (stockcount<=0) {
+            myToast("请输入投资股数");
+            return false;
+        }
+        if (stockcount>(projectBean.sellStockMoney/projectBean.perSellStockMoney)) {
+            myToast("您输入的投资股数已超出总股数");
+            return false;
+        }
+
+        return true;
+    }
+
+//    @Override
+//    public void onHttpResultSuccess() {
+//        mActivity.onHttpResultSuccess();
+//    }
 }

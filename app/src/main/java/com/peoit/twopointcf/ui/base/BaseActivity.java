@@ -16,6 +16,8 @@ import com.peoit.twopointcf.ui.view.TitleView;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 
+import java.util.HashMap;
+
 /**
  * Created by ling on 2015/8/6.
  * last:2015/8/6
@@ -29,6 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     protected View layout_current;
     protected LocalUserInfo localUserInfo;
     protected LayoutInflater inflater;
+    public HashMap<String, String> params = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,13 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     protected  <T extends View> T findViewByID_My(int id){
         return (T) super.findViewById(id);
+    }
+
+    /**
+     * 在fragment中请求服务器或本地判断，成功后在activity中做进一步操作
+     */
+    public void onResultSuccess(){
+
     }
 
     @Override

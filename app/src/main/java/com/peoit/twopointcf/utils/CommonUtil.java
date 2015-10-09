@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.peoit.twopointcf.config.Global;
 
+import java.text.DecimalFormat;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -294,5 +295,13 @@ public class CommonUtil {
         String s = UUID.randomUUID().toString(); 
         //去掉“-”符号 
         return s.substring(0,8)+s.substring(9,13)+s.substring(14,18)+s.substring(19,23)+s.substring(24); 
-    } 
+    }
+
+	//保留两位小数
+	public static String twoPointConversion(double price) {
+		MyLogger.i(">>>>>>>>>>>>>>>>>>>>>>>"+price);
+		DecimalFormat decimalFormat=new DecimalFormat("0.00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+		String str=decimalFormat.format(price);
+		return str;
+	}
 }

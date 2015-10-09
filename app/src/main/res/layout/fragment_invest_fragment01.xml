@@ -31,7 +31,7 @@
                     android:textStyle="bold"
                     />
 
-                <TextView
+                <TextView android:id="@+id/tv_projectname"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <TextView android:id="@+id/tv_initiator"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -77,11 +77,13 @@
                     android:textSize="@dimen/title_txt_size"
                     android:textStyle="bold"/>
 
-                <EditText
+                <EditText android:id="@+id/et_stockcount"
                     style="@style/publish_leftpart_rightpart"
-                    android:layout_width="60dp"
+                    android:inputType="number"
+                    android:ems="5"
+                    android:maxLength="10"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:hint="请输入"
                     android:textColorHint="@color/grey500"/>
 
@@ -108,11 +110,11 @@
                     android:textSize="@dimen/title_txt_size"
                     android:textStyle="bold"/>
 
-                <TextView
+                <TextView android:id="@+id/tv_money"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="10万"
+                    android:text="0.00万"
                     android:textSize="@dimen/title_txt_size"/>
             </LinearLayout>
 
@@ -131,18 +133,12 @@
                     android:textSize="@dimen/title_txt_size"
                     android:textStyle="bold"/>
 
-                <EditText
+
+                <TextView android:id="@+id/tv_percentage"
                     style="@style/publish_leftpart_rightpart"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-
-                    android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
-
-                <TextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="%"
+                    android:text="0.00%"
                     android:textSize="@dimen/title_txt_size"
                     />
             </LinearLayout>
@@ -162,7 +158,7 @@
                     android:textSize="@dimen/title_txt_size"
                     android:textStyle="bold"/>
 
-                <EditText
+                <EditText android:id="@+id/tv_description"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
