@@ -80,7 +80,12 @@
     <string name="publishsuccess">发布成功</string>
     <string name="islastpage">已到最后一页</string>
 
-    <string name="choosecity">选择城市</string>
-    <string name="chooseindustry">选择行业</string>
-    <string name="choose_dividendtype">选择分红模式</string>
+    <string name="choosecity">请选择城市</string>
+    <string name="chooseindustry">请选择行业</string>
+    <string name="choosestocktype">请选择股权类型</string>
+    <string name="choosesendDate">请选择结束时间</string>
+    <string name="choosessuccessCondition">请选择启动条件</string>
+    <string name="choose_dividendtype">请选择分红模式</string>
+    <string name="choose_dividendratio">请选择分红比例</string>
+    <string name="choose_securitydeposit">请选择保证金比例</string>
 </resources>

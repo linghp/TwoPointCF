@@ -15,7 +15,7 @@ import com.peoit.twopointcf.utils.CommonUtil;
  */
 public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout boundphoneLl1;
-    private TextView boundphoneTv1;
+    private TextView boundphoneTv1,num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,8 @@ public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickL
     protected void initView() {
         boundphoneLl1 = (LinearLayout) findViewById(R.id.boundphone_ll1);
         boundphoneTv1 = (TextView) findViewById(R.id.boundphone_tv1);
+        num = findViewByID_My(R.id.boundphone_et1);
+        num.setText(localUserInfo.getPhonenumber());
     }
 
     @Override

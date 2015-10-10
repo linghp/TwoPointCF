@@ -95,6 +95,13 @@ public class PublishFragment03 extends BaseFragment {
         if (TextUtils.isEmpty(sellStockMoney)) {
             myToast("请输入发行总额");
             return false;
+        }else {
+            float i = 0;
+             i = Float.valueOf(sellStockMoney);
+            if (i > 3000000){
+                myToast("发行总额不得大于300万");
+                return false;
+            }
         }
         perSellStockMoney = et_perSellStockMoney.getText().toString().trim();
         if (TextUtils.isEmpty(perSellStockMoney)) {
@@ -102,13 +109,18 @@ public class PublishFragment03 extends BaseFragment {
             return false;
         }
         stocktype = tv_stocktype.getText().toString().trim();
-        if (TextUtils.isEmpty(stocktype)) {
-            myToast("请输入股权总额");
+        if (TextUtils.isEmpty(getString(R.string.choosestocktype))) {
+            myToast("请输入股权类型");
             return false;
         }
         endDate = tv_endDate.getText().toString().trim();
-        if (TextUtils.isEmpty(endDate)) {
-            myToast("众筹结束时间");
+        if (TextUtils.isEmpty(getString(R.string.choosesendDate))) {
+            myToast("请输入众筹结束时间");
+            return false;
+        }
+        successCondition = tv_successCondition.getText().toString().trim();
+        if (TextUtils.isEmpty(getString(R.string.choosessuccessCondition))) {
+            myToast("请输入项目于启动条件");
             return false;
         }
 

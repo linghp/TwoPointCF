@@ -33,7 +33,7 @@
                     android:id="@+id/et_moneyUse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="请输入"
+                    android:hint="请输入融资用途"
                     android:textColorHint="@color/grey500" />
             </LinearLayout>
 
@@ -59,7 +59,7 @@
                     android:id="@+id/et_totalStockMoney"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="请输入"
+                    android:hint="请输入股权总额"
                     android:numeric="decimal"
                     android:textColorHint="@color/grey500" />
             </LinearLayout>
@@ -92,7 +92,7 @@
                         android:id="@+id/et_sellStockMoney"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="请输入"
+                        android:hint="请输入发行总额"
                         android:numeric="decimal"
                         android:textColorHint="@color/grey500" />
                 </LinearLayout>
@@ -118,7 +118,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="售卖金额(单股):"
                     android:textSize="@dimen/title_txt_size" />
@@ -127,7 +127,7 @@
                     android:id="@+id/et_perSellStockMoney"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="请输入"
+                    android:hint="请输入售卖金额"
                     android:numeric="decimal"
                     android:textColorHint="@color/grey500" />
             </LinearLayout>
@@ -145,7 +145,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:text="起售股份所占比例:"
                     android:textSize="@dimen/title_txt_size" />
@@ -172,17 +172,17 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="股权类型:"
                     android:textSize="@dimen/title_txt_size" />
 
                 <TextView
                     android:id="@+id/tv_stocktype"
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@mipmap/down_arrow_grey"
-                    android:text="请选择" />
+                    android:text="@string/choosestocktype" />
             </LinearLayout>
 
             <View
@@ -199,17 +199,17 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="众筹结束时间:"
                     android:textSize="@dimen/title_txt_size" />
 
                 <TextView
                     android:id="@+id/tv_endDate"
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@mipmap/down_arrow_grey"
-                    android:text="请选择" />
+                    android:text="@string/choosesendDate" />
             </LinearLayout>
 
             <View
@@ -226,17 +226,17 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="项目启动条件:"
                     android:textSize="@dimen/title_txt_size" />
 
                 <TextView
                     android:id="@+id/tv_successCondition"
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:drawableRight="@mipmap/down_arrow_grey"
-                    android:text="请选择" />
+                    android:text="@string/choosessuccessCondition" />
             </LinearLayout>
             <!--        <LinearLayout
                         android:layout_width="match_parent"

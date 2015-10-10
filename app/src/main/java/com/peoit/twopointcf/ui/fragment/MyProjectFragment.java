@@ -92,7 +92,7 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
             return;
         }
         switch (view.getId()){
-            case R.id.right_btn://title 右侧按钮
+            case R.id.right_btn://title 右侧按钮(发布项目)
                 CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
                 break;
             case R.id.ll_01:

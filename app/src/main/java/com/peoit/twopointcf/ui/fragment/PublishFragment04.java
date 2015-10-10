@@ -24,7 +24,7 @@ public class PublishFragment04 extends BaseFragment {
     private EditText et_stockholderPrivilege;
     private String[] dividendtypes,proportion1,proportion2;
     private PublishProjectActivity publishProjectActivity;
-    private String dividendtype,stockholderPrivilege;
+    private String dividendtype,dividendratio,securitydeposit,stockholderPrivilege;
 
     public PublishFragment04() {
         // Required empty public constructor
@@ -77,7 +77,17 @@ public class PublishFragment04 extends BaseFragment {
     private boolean match() {
         dividendtype = tv_dividendType.getText().toString().trim();
         if (dividendtype.equals(getString(R.string.choose_dividendtype))) {
-            myToast("请输入分红模式");
+            myToast("请选择分红模式");
+            return false;
+        }
+        dividendratio = tv_proportion1.getText().toString().trim();
+        if (dividendratio.equals(getString(R.string.choose_dividendratio))) {
+            myToast("请选择分红比例");
+            return false;
+        }
+        securitydeposit = tv_proportion2.getText().toString().trim();
+        if (securitydeposit.equals(getString(R.string.choose_securitydeposit))) {
+            myToast("请选择保证金比例");
             return false;
         }
         stockholderPrivilege = et_stockholderPrivilege.getText().toString().trim();
@@ -113,7 +123,7 @@ public class PublishFragment04 extends BaseFragment {
                 });
                 break;
             case R.id.tv_proportion2:
-                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "分红比例", proportion2, new DialogInterface.OnClickListener() {
+                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "保证金比例", proportion2, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
