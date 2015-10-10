@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:showIn="@layout/fragment_invest_find_detail_sub4">
+
+    <com.peoit.twopointcf.ui.view.CustomShapeImageView
+        android:id="@+id/mycenter_iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/photo1"
+        app:shape="circle" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="hero"
+            android:textSize="@dimen/title_txt_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规地方更大幅度法国大范甘迪电饭锅电饭锅电饭锅 地方好地方地方好的好的发挥多好的地方" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/chattag" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

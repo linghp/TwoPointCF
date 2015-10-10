@@ -85,6 +85,13 @@ public class ProjectBean implements Serializable{
     @Expose
     public List<Object> industryLicense = new ArrayList<Object>();
 
+
+    //以下为自己添加的字段
+    public int mStockCount;//占股
+    public int mMoney;//投资总额
+    public int mInvestorEarnest;//保证金
+
+
     @Override
     public String toString() {
         return "ProjectBean{" +
