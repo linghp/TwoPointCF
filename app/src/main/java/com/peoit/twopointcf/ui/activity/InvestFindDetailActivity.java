@@ -83,7 +83,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
         if(projectBean!=null) {
-            String[] investfinddetail_subitemvalues = {projectBean.totalStockMoney/10000.0+"万元", "0人", (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",
+            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", "0人", (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",
                     (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",
                     projectBean.projectCity, "红利股", projectBean.endDate, projectBean.dividendType, projectBean.dividendPercent+"%",
                     projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%", projectBean.successCondition+"%", projectBean.industryType, "重庆市渝中区大坪",
@@ -193,7 +193,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     break;
                 case R.id.tv_toinvest:
                     //CommonUtil.gotoActivity(this,InvestActivity.class,false);
-                    InvestActivity.startThisActivity(projectBean,this);
+                    if(localUserInfo.isLogin()) {
+                        InvestActivity.startThisActivity(projectBean, this);
+                    }else {
+                        CommonUtil.gotoActivity(this,LoginActivity.class,false);
+                    }
                     break;
             }
         }

@@ -106,8 +106,10 @@ public class InvestActivity extends BaseFragmentActivity {
                 DialogTool.createCommonDialog(this, 0, "提醒", "请确定并进入支付保证金页面，您将要支付"+Math.round(fragment01.investorEarnest)+"元保证金。", "确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        InvestFragment02 fragment = new InvestFragment02();
-                        addFragmentToStack(fragment, "InvestFragment02");
+                        if(projectBean!=null) {
+                            InvestFragment02 fragment = new InvestFragment02();
+                            addFragmentToStack(fragment, "InvestFragment02");
+                        }
                     }
                 }, "取消", new DialogInterface.OnClickListener() {
                     @Override

@@ -119,7 +119,7 @@
             android:label="@string/title_activity_myrating" />
         <activity
             android:name=".ui.activity.SearchActivity"
-            android:label="@string/title_activity_search" />
+            android:label="@string/title_activity_search" android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".ui.activity.CityActivity"
             android:label="@string/citylist" />

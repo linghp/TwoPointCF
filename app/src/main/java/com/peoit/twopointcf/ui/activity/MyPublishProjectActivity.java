@@ -50,7 +50,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
         listView.setAdapter(projectAdapter);
 
         maps.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(maps,investedProjectBeans);
+        presenter.getData(maps, investedProjectBeans);
     }
 
 //    private void generateData() {
@@ -81,6 +81,12 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void requestServer() {
+        super.requestServer();
+        presenter.getData(maps, investedProjectBeans);
     }
 
     @Override

@@ -74,6 +74,10 @@ public class InvestFragment01 extends BaseFragment{
                     String percentage = CommonUtil.twoPointConversion(money / (projectBean.sellStockMoney + 0.0)) + "%";
                     tv_money.setText(money_tt);
                     tv_percentage.setText(percentage);
+
+                    projectBean.mStockCount=stockcount;
+                    projectBean.mMoney=(int)money;
+                    projectBean.mInvestorEarnest=(int)investorEarnest;
                 }else{
                     stockcount=0;
                 }

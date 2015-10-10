@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.ui.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InvestFragment03 extends Fragment {
+public class InvestFragment03 extends BaseFragment {
 
 
     public InvestFragment03() {
@@ -28,4 +29,18 @@ public class InvestFragment03 extends Fragment {
     }
 
 
+    @Override
+    protected void initView(View view) {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void updateView() {
+
+    }
 }

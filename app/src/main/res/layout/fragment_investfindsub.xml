@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
@@ -10,17 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView
-        android:id="@+id/pullview"
+    <com.peoit.twopointcf.ui.view.LoadingLayout
+        android:id="@+id/loading_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:emptyView="@layout/empty_view">
 
-        <ListView
-            android:id="@+id/listView"
+        <com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView
+            android:id="@+id/pullview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@null"
-            android:dividerHeight="9dp"
-            android:headerDividersEnabled="true" />
-    </com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView>
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="9dp"
+                android:headerDividersEnabled="true" />
+        </com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView>
+    </com.peoit.twopointcf.ui.view.LoadingLayout>
 </LinearLayout>

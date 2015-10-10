@@ -30,10 +30,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.utils.AbDateUtil;
 import com.peoit.twopointcf.utils.AbViewUtil;
 import com.peoit.twopointcf.utils.CommonUtil;
-import com.peoit.twopointcf.utils.FileUtil;
 
 // TODO: Auto-generated Javadoc
 
@@ -136,9 +136,8 @@ public class AbListViewHeader extends LinearLayout {
 		//显示箭头与进度
 		FrameLayout headImage =  new FrameLayout(context);
 		arrowImageView = new ImageView(context);
-		//从包里获取的箭头图片
-		arrowImage = FileUtil.getBitmapFromSrc("image/arrow.png");
-		arrowImageView.setImageBitmap(arrowImage);
+
+		arrowImageView.setImageResource(R.mipmap.arrow);
 		
 		//style="?android:attr/progressBarStyleSmall" 默认的样式
 		headerProgressBar = new ProgressBar(context,null,android.R.attr.progressBarStyle);
@@ -146,8 +145,8 @@ public class AbListViewHeader extends LinearLayout {
 		
 		LayoutParams layoutParamsWW = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParamsWW.gravity = Gravity.CENTER;
-//		layoutParamsWW.width = CommonUtil.dip2px(mContext, 50);
-//		layoutParamsWW.height = CommonUtil.dip2px(mContext, 50);
+		layoutParamsWW.width = CommonUtil.dip2px(mContext, 24);
+		layoutParamsWW.height = CommonUtil.dip2px(mContext, 24);
 		headImage.addView(arrowImageView,layoutParamsWW);
 		headImage.addView(headerProgressBar,layoutParamsWW);
 		
