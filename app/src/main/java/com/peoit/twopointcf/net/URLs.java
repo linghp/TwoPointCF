@@ -45,6 +45,26 @@ public class URLs {
      */
     public static final String CHANGEUSERCAPTION = HOST + "/api/user/changeUserCaption";
     /**
+     * 修改邮箱
+     */
+    public static final String CHANGEEMAIL = HOST + "/api/user/changeEmail";
+    /**
+     * 修改手机号
+     */
+    public static final String CHANGEPHONE= HOST + "/api/user/changeMobile";
+    /**
+     * 修改头像
+     */
+    public static final String CHANGEAVATAR= HOST + "/api/user/changeAvatar";
+    /**
+     * 获取用户级别
+     */
+    public static final String GETUSERLEVEL= HOST + "/api/user/getUserLevel";
+    /**
+     * 获取用户实名认证状态
+     */
+    public static final String GETUSERISVERIFIED= HOST + "/api/user/isVerified";
+    /**
      * 第三方登陆
      */
     public static final String OAUTH_SIGNIN = HOST + "xxx";

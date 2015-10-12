@@ -45,7 +45,7 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
                 myToast("验证短信");
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("ischange",false);
-                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
+                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, true);
                 break;
             case R.id.safetyefficacy_ll2:
                 myToast("联系在线客服");

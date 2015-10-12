@@ -73,20 +73,21 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
                 CommonUtil.gotoActivity(this,SafetyEfficacyActivity.class,false);
                 break;
             case R.id.securitycenter_tv2:
-                myToast("重置登录密码");
-                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
-//                Bundle bundle = new Bundle();
-//                bundle.putBoolean("ischange",false);
-//                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
+//                myToast("重置登录密码");
+//                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
+                CommonUtil.gotoActivity(this, ChangePasswordActivity.class, true);//修改密码
                 break;
             case R.id.securitycenter_tv3:
                 myToast("手势");
                 break;
             case R.id.securitycenter_tv4:
-                myToast("重置支付密码");
+//                myToast("重置支付密码");
+                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
                 break;
             case R.id.securitycenter_tv5:
-                myToast("忘记支付密码");
+//                myToast("忘记支付密码");
+//                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
+                CommonUtil.gotoActivity(this, ChangePasswordActivity.class, true);//修改密码
                 break;
             default:
                 break;

@@ -12,17 +12,22 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.modules.chooseimages.ChooseImages;
+import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.FileUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 个人中心——个人简介
  */
-public class UserInfoActivity extends BaseActivity implements View.OnClickListener{
+public class UserInfoActivity extends BaseActivity implements View.OnClickListener, ChangePasswordPresenter.OnHttpResultListener{
     private ImageView iv_photo;
     private TextView tv_userinfo1,tv_userinfo2,tv_userinfo3,tv_userinfo4,tv_userinfo5,tv_userinfo6,tv_userinfo7;
     private LinearLayout ll_info,ll_verified,ll_photonum,ll_mailbox;
+    private ChangePasswordPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,11 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initData() {
+        presenter = new ChangePasswordPresenter(this);
+        //获取用户等级
+        Map<String, String> maps = new HashMap<>();
+        maps.put("userId",localUserInfo.getUserId());
+        presenter.getUserIsVerified(maps);
 
     }
 
@@ -107,10 +117,15 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.ll_userinfo08:
                 //邮箱
-                CommonUtil.gotoActivity(this, ChangePhoneActivity.class,false);
+                CommonUtil.gotoActivity(this, ChangeEmailActivity.class, false);
                 break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
+
     }
 }
