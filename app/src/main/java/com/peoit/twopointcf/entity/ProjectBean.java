@@ -47,10 +47,10 @@ public class ProjectBean implements Serializable{
     public Integer perSellStockMoney;
     @SerializedName("successCondition")
     @Expose
-    public Integer successCondition;
+    public double successCondition;
     @SerializedName("lowestSellingPercentage")
     @Expose
-    public Integer lowestSellingPercentage;
+    public double lowestSellingPercentage;
     @SerializedName("endDate")
     @Expose
     public String endDate;
@@ -59,16 +59,16 @@ public class ProjectBean implements Serializable{
     public String dividendType;
     @SerializedName("dividendPercent")
     @Expose
-    public Integer dividendPercent;
+    public double dividendPercent;
     @SerializedName("stockholderPrivilege")
     @Expose
     public String stockholderPrivilege;
     @SerializedName("investorEarnestPercent")
     @Expose
-    public Integer investorEarnestPercent;
+    public double investorEarnestPercent;
     @SerializedName("stockType")
     @Expose
-    public Object stockType;
+    public String stockType;
     @SerializedName("status")
     @Expose
     public String status;
@@ -84,6 +84,16 @@ public class ProjectBean implements Serializable{
     @SerializedName("industryLicense")
     @Expose
     public List<Object> industryLicense = new ArrayList<Object>();
+
+    public int investedAmount;
+    public int userInvestedAmount;
+    public String userInvestedDate;
+    public Object marketAnalysis;
+    public Object sourceOfIncome;
+    public Object profitForecast;
+    public Object teamIntroducation;
+    public int investUserAmount;
+    public String publisherName;
 
 
     //以下为自己添加的字段
@@ -121,4 +131,6 @@ public class ProjectBean implements Serializable{
                 ", industryLicense=" + industryLicense +
                 '}';
     }
+
+
 }

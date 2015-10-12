@@ -6,8 +6,8 @@ package com.peoit.twopointcf.net;
  * @author ling
  */
 public class URLs {
-    //public static final String HOST = "http://192.168.0.176:8080";
-    public static final String HOST = "http://115.28.245.170:8080/honeycomb";
+    public static final String HOST = "http://192.168.0.104:8080";
+    //public static final String HOST = "http://115.28.245.170:8080/honeycomb";
     public static final String PROJECT_NAME = "";
     public static final String API = "";
 
@@ -65,7 +65,7 @@ public class URLs {
      * 发现项目
      * 我发布的项目 参数publisherId
      */
-    public static final String FINDPROJECT = HOST + "/api/project/findProject";
+    public static final String FINDPROJECT = HOST + "/api/project/findProjects";
 
     /**
      * 投资项目
@@ -75,7 +75,7 @@ public class URLs {
     /**
      * 查询已投资项目
      */
-    public static final String FINDINVESTEDPROJECT = HOST + "/api/project/findInvesteddProject";
+    public static final String FINDINVESTEDPROJECT = HOST + "/api/project/findInvestedProject";
 
     /**
      * 拼接请求路径

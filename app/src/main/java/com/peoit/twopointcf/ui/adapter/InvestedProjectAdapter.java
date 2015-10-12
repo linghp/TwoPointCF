@@ -8,8 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.InvestedProjectBean;
+import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.URLs;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.List;
 
@@ -20,10 +23,10 @@ import java.util.List;
  */
 public class InvestedProjectAdapter extends BaseAdapter {
     private Context context;
-    private List<InvestedProjectBean> items;
+    private List<ProjectBean> items;
     private LayoutInflater mInflater;
 
-    public InvestedProjectAdapter(Context context, List<InvestedProjectBean> items) {
+    public InvestedProjectAdapter(Context context, List<ProjectBean> items) {
         super();
         this.context = context;
         this.items = items;
@@ -46,10 +49,12 @@ public class InvestedProjectAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.iv_left.setImageResource(getItem(position).getPicture());
-        holder.tv_title.setText(getItem(position).getTitle());
-        holder.tv_money.setText(getItem(position).getMoney());
-        holder.tv_time.setText(getItem(position).getTime());
+        if(getItem(position).projectPhotos.size()>0) {
+            Glide.with(context).load(URLs.HOST+getItem(position).projectPhotos.get(0)).into(holder.iv_left);
+        }
+        holder.tv_title.setText(getItem(position).projectName);
+        holder.tv_money.setText(CommonUtil.twoPointConversion(getItem(position).userInvestedAmount*getItem(position).perSellStockMoney/10000.0)+"万元");
+        holder.tv_time.setText(getItem(position).userInvestedDate);
         return convertView;
     }
 
@@ -61,7 +66,7 @@ public class InvestedProjectAdapter extends BaseAdapter {
     }
 
     @Override
-    public InvestedProjectBean getItem(int position) {
+    public ProjectBean getItem(int position) {
         // TODO Auto-generated method stub
         return items.get(position);
     }

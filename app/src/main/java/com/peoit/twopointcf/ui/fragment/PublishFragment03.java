@@ -73,8 +73,10 @@ public class PublishFragment03 extends BaseFragment {
             publishProjectActivity.params.put("totalStockMoney", totalStockMoney);
             publishProjectActivity.params.put("sellStockMoney", sellStockMoney);
             publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
-//            publishProjectActivity.params.put("endDate", industryType);
-//            publishProjectActivity.params.put("successCondition", industryType);
+            publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
+            publishProjectActivity.params.put("stockType", stocktype);
+            publishProjectActivity.params.put("endDate", endDate);
+            publishProjectActivity.params.put("successCondition", successCondition.replace("%",""));
             return true;
         }
         return false;
@@ -101,14 +103,24 @@ public class PublishFragment03 extends BaseFragment {
             myToast("请输入售卖金额");
             return false;
         }
+        int perSellStockMoney_int=Integer.parseInt(perSellStockMoney);
+        if (perSellStockMoney_int%1000!=0) {
+            myToast("售卖金额必须是1000的倍数");
+            return false;
+        }
         stocktype = tv_stocktype.getText().toString().trim();
-        if (TextUtils.isEmpty(stocktype)) {
-            myToast("请输入股权总额");
+        if (stocktype.equals("请选择")) {
+            myToast("请选择股权类型");
             return false;
         }
         endDate = tv_endDate.getText().toString().trim();
-        if (TextUtils.isEmpty(endDate)) {
-            myToast("众筹结束时间");
+        if (endDate.equals("请选择")) {
+            myToast("请选择众筹结束时间");
+            return false;
+        }
+        successCondition = tv_successCondition.getText().toString().trim();
+        if (successCondition.equals("请选择")) {
+            myToast("请选择项目启动条件");
             return false;
         }
 

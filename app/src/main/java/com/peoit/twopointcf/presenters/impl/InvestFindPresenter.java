@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * Created by ling on 2015/9/7.
- * description:
+ * description:已弃用
  */
 public class InvestFindPresenter extends BasePresenter<InvestFindPresenter.OnHttpResultListener> implements IInvestFind {
     public interface OnHttpResultListener extends IBaseView_Response {

@@ -66,9 +66,9 @@ public class PublishFragment04 extends BaseFragment {
     public boolean putData(){
         if(match()){
             publishProjectActivity.params.put("dividendType", dividendtype);
-            //publishProjectActivity.params.put("totalStockMoney", totalStockMoney);
+            publishProjectActivity.params.put("dividendPercent", "80");
             publishProjectActivity.params.put("stockholderPrivilege", stockholderPrivilege);
-            //publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
+            publishProjectActivity.params.put("investorEarnestPercent", "10");
             return true;
         }
         return false;

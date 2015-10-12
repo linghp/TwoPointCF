@@ -83,10 +83,10 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
         if(projectBean!=null) {
-            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", "0人", (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",
+            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", projectBean.investUserAmount+"", (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",
                     (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",
-                    projectBean.projectCity, "红利股", projectBean.endDate, projectBean.dividendType, projectBean.dividendPercent+"%",
-                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%", projectBean.successCondition+"%", projectBean.industryType, "重庆市渝中区大坪",
+                    projectBean.projectCity, projectBean.stockType, projectBean.endDate, projectBean.dividendType, projectBean.dividendPercent+"%",
+                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%", projectBean.successCondition+"%", projectBean.industryType, projectBean.address,
                     "点击查看", "点击查看", "点击查看"};
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
             for (int i = 0; i < investfinddetail_subitemnames.length; i++) {
@@ -97,7 +97,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 tv02.setText(investfinddetail_subitemvalues[i]);
                 linearLayoutsub.addView(view);
                 final String title = investfinddetail_subitemnames[i];
-                if (investfinddetail_subitemvalues[i].contains("点击查看")) {
+                if (investfinddetail_subitemvalues[i]!=null&&investfinddetail_subitemvalues[i].contains("点击查看")) {
                     tv02.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -117,10 +117,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             if(!projectBean.status.equals(MyPublishProjectActivity.WAITING_INVESTED)){
                 findViewById(R.id.tv_toinvest).setVisibility(View.GONE);
             }
-
-            progressBar.setProgress(65);
-            tv_bottom01.setText("65%");
-            tv_bottom02.setText("195万");
+            double investedPercent=projectBean.investedAmount/((projectBean.sellStockMoney/projectBean.perSellStockMoney)+0.0);
+            int investedPercent_int=(int) Math.round(investedPercent*100);
+            progressBar.setProgress(investedPercent_int);
+            tv_bottom01.setText(investedPercent_int+"%");
+            tv_bottom02.setText(CommonUtil.twoPointConversion(projectBean.sellStockMoney/10000.0)+"万");
             if(!TextUtils.isEmpty(projectBean.endDate)) {
                 Calendar c = new GregorianCalendar();
                 int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(projectBean.endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());

@@ -8,7 +8,6 @@ import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
-import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
@@ -58,11 +57,11 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
     }
 
     @Override
-    public void getData(Map maps,List<ProjectBean> projectBeans) {
+    public void getData(String url,Map maps,List<ProjectBean> projectBeans) {
         this.projectBeans=projectBeans;
         maps.put("offset",0+"");
         maps.put("pageSize",pageSize+"");
-        OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
+        OkHttpClientManager.postAsyn(url, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
                     public void onError(Request request, String info,Exception e) {
@@ -93,11 +92,11 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
     }
 
     @Override
-    public void getDataMore(Map maps) {
+    public void getDataMore(String url,Map maps) {
         offset=offset+pageSize;
         maps.put("offset",offset+"");
         maps.put("pageSize",pageSize+"");
-        OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
+        OkHttpClientManager.postAsyn(url, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
                     public void onError(Request request, String info,Exception e) {
