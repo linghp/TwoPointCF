@@ -20,14 +20,14 @@
             android:paddingTop="6dp">
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="分红模式:"
                 android:textSize="@dimen/title_txt_size" />
 
             <TextView android:id="@+id/tv_dividendType"
                 style="@style/publish_leftpart_rightpart"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/down_arrow_grey"
                 android:text="@string/choose_dividendtype" />
@@ -44,7 +44,7 @@
             android:paddingTop="6dp">
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="分红比例:"
                 android:textSize="@dimen/title_txt_size" />
@@ -52,10 +52,10 @@
             <TextView
                 android:id="@+id/tv_proportion1"
                 style="@style/publish_leftpart_rightpart"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/down_arrow_grey"
-                android:text="选择分红比例" />
+                android:text="@string/choose_dividendratio" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             android:paddingTop="6dp">
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="股东特权说明:"
                 android:textSize="@dimen/title_txt_size" />
@@ -94,7 +94,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="交付保证金比例:"
                 android:textSize="@dimen/title_txt_size" />
@@ -102,10 +102,10 @@
             <TextView
                 android:id="@+id/tv_proportion2"
                 style="@style/publish_leftpart_rightpart"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/down_arrow_grey"
-                android:text="选择保证金比例" />
+                android:text="@string/choose_securitydeposit" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"

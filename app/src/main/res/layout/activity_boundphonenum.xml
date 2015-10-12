@@ -29,7 +29,7 @@
             android:drawableRight="@mipmap/next_level"
             android:gravity="right"
             android:padding="5dp"
-            android:text="18306041721"
+            android:text=""
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
 
