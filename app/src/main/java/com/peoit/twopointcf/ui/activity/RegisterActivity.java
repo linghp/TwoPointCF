@@ -248,7 +248,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     }
 
     /**
-     * 验证手机格式
+     * 验证邮箱格式
      */
     public static boolean isMobileEM(String email) {
         //验证邮箱

@@ -184,8 +184,8 @@ public class DialogTool {
         builder.setIcon(iconId);
         // 设置对话框的标题
         builder.setTitle(title);
-        // 0: 默认第一个单选按钮被选中
-        builder.setSingleChoiceItems(items, 0, listener);
+        // 0: 默认第一个单选按钮被选中  -1:不选中
+        builder.setSingleChoiceItems(items, -1, listener);
         // 创建一个单选按钮对话框
         dialog = builder.create();
         dialog.show();

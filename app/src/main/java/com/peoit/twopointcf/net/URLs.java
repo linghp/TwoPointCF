@@ -6,8 +6,8 @@ package com.peoit.twopointcf.net;
  * @author ling
  */
 public class URLs {
-    //public static final String HOST = "http://192.168.0.176:8080";
-    public static final String HOST = "http://115.28.245.170:8080/honeycomb";
+    public static final String HOST = "http://192.168.0.104:8080";
+//    public static final String HOST = "http://115.28.245.170:8080/honeycomb";
     public static final String PROJECT_NAME = "";
     public static final String API = "";
 
@@ -44,6 +44,26 @@ public class URLs {
      * 修改用户简介
      */
     public static final String CHANGEUSERCAPTION = HOST + "/api/user/changeUserCaption";
+    /**
+     * 修改邮箱
+     */
+    public static final String CHANGEEMAIL = HOST + "/api/user/changeEmail";
+    /**
+     * 修改手机号
+     */
+    public static final String CHANGEPHONE= HOST + "/api/user/changeMobile";
+    /**
+     * 修改头像
+     */
+    public static final String CHANGEAVATAR= HOST + "/api/user/changeAvatar";
+    /**
+     * 获取用户级别
+     */
+    public static final String GETUSERLEVEL= HOST + "/api/user/getUserLevel";
+    /**
+     * 获取用户实名认证状态
+     */
+    public static final String GETUSERISVERIFIED= HOST + "/api/user/isVerified";
     /**
      * 第三方登陆
      */

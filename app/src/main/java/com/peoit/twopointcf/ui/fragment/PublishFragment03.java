@@ -23,7 +23,7 @@ import com.peoit.twopointcf.utils.DialogTool;
 public class PublishFragment03 extends BaseFragment {
     private EditText et_moneyUse, et_totalStockMoney, et_sellStockMoney, et_perSellStockMoney;
     private TextView tv_stocktype, tv_endDate, tv_successCondition, tv_proportion;
-    private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stocktype, endDate, successCondition;
+    private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stockType, endDate, successCondition;
     private PublishProjectActivity publishProjectActivity;
     private String[] stockTypes, proportion;
 
@@ -73,8 +73,9 @@ public class PublishFragment03 extends BaseFragment {
             publishProjectActivity.params.put("totalStockMoney", totalStockMoney);
             publishProjectActivity.params.put("sellStockMoney", sellStockMoney);
             publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
-//            publishProjectActivity.params.put("endDate", industryType);
-//            publishProjectActivity.params.put("successCondition", industryType);
+            publishProjectActivity.params.put("stockType", stockType);
+            publishProjectActivity.params.put("endDate", endDate);
+            publishProjectActivity.params.put("successCondition", successCondition);
             return true;
         }
         return false;
@@ -108,19 +109,19 @@ public class PublishFragment03 extends BaseFragment {
             myToast("请输入售卖金额");
             return false;
         }
-        stocktype = tv_stocktype.getText().toString().trim();
-        if (TextUtils.isEmpty(getString(R.string.choosestocktype))) {
-            myToast("请输入股权类型");
+        stockType = tv_stocktype.getText().toString().trim();
+        if (stockType.equals(getString(R.string.choosestocktype))) {
+            myToast("请选择股权类型");
             return false;
         }
         endDate = tv_endDate.getText().toString().trim();
-        if (TextUtils.isEmpty(getString(R.string.choosesendDate))) {
-            myToast("请输入众筹结束时间");
+        if (endDate.equals(getString(R.string.choosesendDate))) {
+            myToast("请选择众筹结束时间");
             return false;
         }
         successCondition = tv_successCondition.getText().toString().trim();
-        if (TextUtils.isEmpty(getString(R.string.choosessuccessCondition))) {
-            myToast("请输入项目于启动条件");
+        if (successCondition.equals(getString(R.string.choosessuccessCondition))) {
+            myToast("请选择项目于启动条件");
             return false;
         }
 

@@ -97,6 +97,9 @@
             android:name=".ui.activity.ChangePasswordActivity"
             android:label="@string/title_activity_ChangePassword" />
         <activity
+            android:name=".ui.activity.ChangeEmailActivity"
+            android:label="@string/title_activity_ChangeEmail" />
+        <activity
             android:name=".ui.activity.SafetyEfficacyActivity"
             android:label="@string/title_activity_SafetyEfficacy" />
         <activity

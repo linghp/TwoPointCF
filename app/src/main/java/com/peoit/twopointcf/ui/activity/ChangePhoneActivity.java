@@ -2,26 +2,33 @@ package com.peoit.twopointcf.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 修改手机号/验证手机号
  * ischange true/false
  * Created by zyz on 2015/8/29.
  */
-public class ChangePhoneActivity extends BaseActivity implements View.OnClickListener{
-    private LinearLayout boundphoneLl2,boundphoneLl3;
+public class ChangePhoneActivity extends BaseActivity implements View.OnClickListener , ChangePasswordPresenter.OnHttpResultListener{
+    private LinearLayout boundphoneLl2, boundphoneLl3;
     private TextView tv_phonenum;
-    private TextView boundphoneTv1,boundphoneTv2;
-    private EditText et_phonenum,et_num;
+    private TextView boundphoneTv1, boundphoneTv2;
+    private EditText et_phonenum, et_num;
     private boolean ischange = true;
+    private String phonenum;
+    private ChangePasswordPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,30 +52,43 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        ischange = intent.getBooleanExtra("ischange",true);
-
+        ischange = intent.getBooleanExtra("ischange", true);
+        presenter = new ChangePasswordPresenter(this);
     }
 
     @Override
     protected void updateView() {
-        if(titleView!=null) {
-            if (ischange)
-            titleView.setTitle("修改手机号码");
-            else
+        if (titleView != null) {
+            if (ischange) {
+                titleView.setTitle("修改手机号码");
+                boundphoneLl3.setVisibility(View.GONE);
+            }
+            else{
                 titleView.setTitle("验证手机号码");
+                et_phonenum.setText(localUserInfo.getPhonenumber());
+            }
+
         }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.boundphone_tv1:
                 if (ischange) {
-                    myToast("修改成功");
-                    finish();
-                }else {
+//                    myToast("修改手机号成功");
+//                    finish();
+                    if (match()){
+                        Map<String, String> maps = new HashMap<>();
+                        maps.put("mobile", phonenum);
+                        maps.put("userId",localUserInfo.getUserId());
+                        presenter.getChangePhone(maps);
+                    }
+
+                } else {
 //                    myToast("验证成功");
-                    CommonUtil.gotoActivity(this,VerifySecurityQuestionActivity.class,true);
+//                    CommonUtil.gotoActivity(this,VerifySecurityQuestionActivity.class,true);//验证密保问题
+                    CommonUtil.gotoActivity(this, ChangePasswordActivity.class, true);//修改密码
                 }
                 break;
             case R.id.boundphone_tv2:
@@ -80,12 +100,18 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
         }
 
     }
+
     private boolean match() {
-//        userName = loginEt1.getText().toString();
-//        if (TextUtils.isEmpty(userName)) {
-//            showToast("请输入账号");
-//            return false;
-//        }
+        phonenum = et_phonenum.getText().toString();
+        if (TextUtils.isEmpty(phonenum)) {
+            showToast("请输入手机号码");
+            return false;
+        }
         return true;
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
+
     }
 }
