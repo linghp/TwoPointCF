@@ -104,21 +104,21 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
      * @param map
      */
     public void getUserIsVerified(Map map){
-        OkHttpClientManager.postAsyn(URLs.CHANGEPHONE, map, new MyResultCallback<Object>() {
+        OkHttpClientManager.postAsyn(URLs.GETUSERISVERIFIED, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("获取用户实名认证状态");
+                    mView.showToast("获取用户实名认证状态失败");
                 }
             }
 
             @Override
             public void onResponse(Object response) {
                 MyLogger.i(">>>>>>>>>>>>>>>>获取用户实名认证状态" + response.toString());
-//                mView.showToast(R.string.changesuccess);
+                mView.showToast("获取用户实名认证状态"+ response.toString());
 //                ((Activity) mView).finish();
             }
         });

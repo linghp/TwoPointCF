@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -48,7 +49,6 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
 
     @Override
     public void upload(String[] fileKeys, File[] files, Map<String, String> params) {
-
         OkHttpClientManager.postAsyn(URLs.CREATEPROJECT,fileKeys,files, params,
                 new MyResultCallback<Object>() {
                     @Override
@@ -63,9 +63,33 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
 
                     @Override
                     public void onResponse(Object u) {
-                        //mView.showToast(R.string.publishsuccess);
+//                        mView.showToast(R.string.publishsuccess);
                         mView.onHttpResultSuccess();
                     }
                 }, mView);
+    }
+
+    /**
+     * 实名认证
+     */
+    public void getVerified(String[] fileKeys, File[] files, Map<String, String> params){
+        OkHttpClientManager.postAsyn(URLs.USER_VERIFYID, fileKeys, files, params, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("认证失败"+info);
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+//                mView.onHttpResultSuccess();
+                mView.showToast("认证成功");
+                ((Activity) mView).finish();
+            }
+        }, mView);
     }
 }
