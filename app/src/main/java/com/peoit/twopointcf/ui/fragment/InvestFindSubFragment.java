@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.ui.activity.CityActivity;
@@ -106,7 +107,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         listView.setAdapter(projectAdapter);
 
         //maps.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(maps, projectBeans);
+        presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
         listView.setAdapter(projectAdapter);
     }
 
@@ -171,7 +172,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     public void requestServer() {
         super.requestServer();
-        presenter.getData(maps, projectBeans);
+        presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
     }
 
     @Override
@@ -187,11 +188,11 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
 
     @Override
     public void onFooterLoad(AbPullToRefreshView view) {
-        presenter.getDataMore(maps);
+        presenter.getDataMore(URLs.FINDPROJECT,maps);
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
-        presenter.getData(maps,projectBeans);
+        presenter.getData(URLs.FINDPROJECT,maps,projectBeans);
     }
 }

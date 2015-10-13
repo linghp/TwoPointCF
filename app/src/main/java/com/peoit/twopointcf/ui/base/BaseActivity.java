@@ -89,6 +89,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         //layout_body.addView(layout_current);
     }
 
+    /**
+     * 无数据或出错时点击重新加载时调用
+     */
     public void requestServer(){
 
     }

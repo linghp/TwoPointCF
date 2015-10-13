@@ -179,12 +179,12 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
 //        params.put("totalStockMoney", "1");
 //        params.put("sellStockMoney", "1");
 //        params.put("perSellStockMoney", "1");
-        params.put("successCondition", "80");
-        params.put("endDate", "1");
+//        params.put("successCondition", "80");
+//        params.put("endDate", "1");
        // params.put("dividendType", "1");
-        params.put("dividendPercent", "80");
+//        params.put("dividendPercent", "80");
         //params.put("stockholderPrivilege", "1");
-        params.put("investorEarnestPercent", "10");
+//        params.put("investorEarnestPercent", "10");
 
         PublishFragment02 fragment = (PublishFragment02) fragmentManager.findFragmentByTag("publishfragment02");
         if (fragment != null) {

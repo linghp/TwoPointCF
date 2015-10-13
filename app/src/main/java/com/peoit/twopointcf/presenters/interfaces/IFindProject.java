@@ -13,10 +13,10 @@ public interface IFindProject {
     /**
      * 获取数据
      */
-    void getData(Map map,List<ProjectBean> projectBeans);
+    void getData(String url,Map map,List<ProjectBean> projectBeans);
 
     /**
      * 获取下一页
      */
-    void getDataMore(Map map);
+    void getDataMore(String url,Map map);
 }

@@ -23,7 +23,7 @@ import com.peoit.twopointcf.utils.DialogTool;
 public class PublishFragment03 extends BaseFragment {
     private EditText et_moneyUse, et_totalStockMoney, et_sellStockMoney, et_perSellStockMoney;
     private TextView tv_stocktype, tv_endDate, tv_successCondition, tv_proportion;
-    private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stockType, endDate, successCondition;
+    private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stocktype, endDate, successCondition;
     private PublishProjectActivity publishProjectActivity;
     private String[] stockTypes, proportion;
 
@@ -73,9 +73,10 @@ public class PublishFragment03 extends BaseFragment {
             publishProjectActivity.params.put("totalStockMoney", totalStockMoney);
             publishProjectActivity.params.put("sellStockMoney", sellStockMoney);
             publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
-            publishProjectActivity.params.put("stockType", stockType);
+            publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
+            publishProjectActivity.params.put("stockType", stocktype);
             publishProjectActivity.params.put("endDate", endDate);
-            publishProjectActivity.params.put("successCondition", successCondition);
+            publishProjectActivity.params.put("successCondition", successCondition.replace("%",""));
             return true;
         }
         return false;
@@ -96,32 +97,30 @@ public class PublishFragment03 extends BaseFragment {
         if (TextUtils.isEmpty(sellStockMoney)) {
             myToast("请输入发行总额");
             return false;
-        }else {
-            float i = 0;
-             i = Float.valueOf(sellStockMoney);
-            if (i > 3000000){
-                myToast("发行总额不得大于300万");
-                return false;
-            }
         }
         perSellStockMoney = et_perSellStockMoney.getText().toString().trim();
         if (TextUtils.isEmpty(perSellStockMoney)) {
             myToast("请输入售卖金额");
             return false;
         }
-        stockType = tv_stocktype.getText().toString().trim();
-        if (stockType.equals(getString(R.string.choosestocktype))) {
+        int perSellStockMoney_int=Integer.parseInt(perSellStockMoney);
+        if (perSellStockMoney_int%1000!=0) {
+            myToast("售卖金额必须是1000的倍数");
+            return false;
+        }
+        stocktype = tv_stocktype.getText().toString().trim();
+        if (stocktype.equals("请选择")) {
             myToast("请选择股权类型");
             return false;
         }
         endDate = tv_endDate.getText().toString().trim();
-        if (endDate.equals(getString(R.string.choosesendDate))) {
+        if (endDate.equals("请选择")) {
             myToast("请选择众筹结束时间");
             return false;
         }
         successCondition = tv_successCondition.getText().toString().trim();
-        if (successCondition.equals(getString(R.string.choosessuccessCondition))) {
-            myToast("请选择项目于启动条件");
+        if (successCondition.equals("请选择")) {
+            myToast("请选择项目启动条件");
             return false;
         }
 

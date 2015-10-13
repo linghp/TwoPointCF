@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.ui.adapter.ProjectAdapter;
@@ -30,9 +31,14 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     public static final String WAITING_INVESTED="waiting_invested";
 
     static {
-        maps_status.put("waiting_verified","已发布，等待审核");
-        maps_status.put(WAITING_INVESTED,"审核成功，等待投资完成");
-        maps_status.put("verify_failed","审核失败");
+        maps_status.put("waiting_verified","待审核");
+        maps_status.put("waiting_pay","待付保证金");
+        maps_status.put(WAITING_INVESTED,"众筹中");
+        maps_status.put("verify_failed","驳回");
+        maps_status.put("invest_failed","众筹失败");
+        maps_status.put("invest_delay","待延期审核");
+        maps_status.put("invest_success","待启动");
+        maps_status.put("project_success","众筹成功");
     }
 
     @Override
@@ -50,7 +56,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
         listView.setAdapter(projectAdapter);
 
         maps.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(maps, investedProjectBeans);
+        presenter.getData(URLs.FINDPROJECT,maps, investedProjectBeans);
     }
 
 //    private void generateData() {
@@ -86,7 +92,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     public void requestServer() {
         super.requestServer();
-        presenter.getData(maps, investedProjectBeans);
+        presenter.getData(URLs.FINDPROJECT,maps, investedProjectBeans);
     }
 
     @Override
@@ -102,11 +108,11 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     public void onFooterLoad(AbPullToRefreshView view) {
-        presenter.getDataMore(maps);
+        presenter.getDataMore(URLs.FINDPROJECT,maps);
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
-        presenter.getData(maps,investedProjectBeans);
+        presenter.getData(URLs.FINDPROJECT,maps,investedProjectBeans);
     }
 }

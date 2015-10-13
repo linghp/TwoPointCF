@@ -91,7 +91,8 @@ public class InvestActivity extends BaseFragmentActivity {
                             }).show();
 
                 } else if (count == 2) {
-
+                    InvestFragment03 fragment03= (InvestFragment03) fragmentManager.findFragmentByTag("InvestFragment03");
+                    fragment03.requestServer(params);
                 }
                 break;
         }
