@@ -9,7 +9,6 @@ import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.ILogin;
-import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
 import java.util.Map;
@@ -42,7 +41,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
+//                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
                     mView.showToast(R.string.changesuccess);
                     ((Activity) mView).finish();
             }
@@ -67,7 +66,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
+//                MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
                 mView.showToast(R.string.changesuccess);
                 ((Activity) mView).finish();
             }
@@ -92,7 +91,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
+//                MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
                 mView.showToast(R.string.changesuccess);
                 ((Activity) mView).finish();
             }
@@ -117,9 +116,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>获取用户实名认证状态" + response.toString());
                 mView.showToast("获取用户实名认证状态"+ response.toString());
-//                ((Activity) mView).finish();
             }
         });
     }

@@ -45,7 +45,6 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
     private String projectName, projectIntro, projectCity, industryType;
     private String[] citys;
     private String[] industryTypes;
-
     public PublishFragment02() {
         // Required empty public constructor
     }
@@ -101,7 +100,6 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected void updateView() {
-
     }
 
     public boolean putData(){

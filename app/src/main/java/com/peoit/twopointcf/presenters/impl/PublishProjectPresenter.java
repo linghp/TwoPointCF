@@ -49,10 +49,38 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
 
     @Override
     public void upload(String[] fileKeys, File[] files, Map<String, String> params) {
-        OkHttpClientManager.postAsyn(URLs.CREATEPROJECT,fileKeys,files, params,
+        OkHttpClientManager.postAsyn(URLs.CREATEPROJECT, fileKeys, files, params,
                 new MyResultCallback<Object>() {
                     @Override
-                    public void onError(Request request, String info,Exception e) {
+                    public void onError(Request request, String info, Exception e) {
+                        if (TextUtils.isEmpty(info)) {
+                            mView.showToast(R.string.networkerror);
+                            e.printStackTrace();
+                        } else {
+                            mView.showToast(info);
+                        }
+                    }
+
+                    @Override
+                    public void onResponse(Object u) {
+//                        mView.showToast(R.string.publishsuccess);
+                        mView.onHttpResultSuccess();
+                    }
+                }, mView);
+    }
+
+    /**
+     * 修改项目
+     * @param fileKeys
+     * @param files
+     * @param params
+     */
+    @Override
+    public void updateProject(String[] fileKeys, File[] files, Map<String, String> params) {
+        OkHttpClientManager.postAsyn(URLs.UPDATEPROJECT, fileKeys, files, params,
+                new MyResultCallback<Object>() {
+                    @Override
+                    public void onError(Request request, String info, Exception e) {
                         if (TextUtils.isEmpty(info)) {
                             mView.showToast(R.string.networkerror);
                             e.printStackTrace();
@@ -72,7 +100,7 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
     /**
      * 实名认证
      */
-    public void getVerified(String[] fileKeys, File[] files, Map<String, String> params){
+    public void getVerified(String[] fileKeys, File[] files, Map<String, String> params) {
         OkHttpClientManager.postAsyn(URLs.USER_VERIFYID, fileKeys, files, params, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -80,7 +108,7 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("认证失败"+info);
+                    mView.showToast("认证失败" + info);
                 }
             }
 
@@ -92,4 +120,5 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
             }
         }, mView);
     }
+
 }

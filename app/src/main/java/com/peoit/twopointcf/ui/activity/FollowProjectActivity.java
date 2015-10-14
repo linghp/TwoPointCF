@@ -14,6 +14,9 @@ import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 关注项目
+ */
 public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,AbPullToRefreshView.OnHeaderRefreshListener {
 
     private ListView listView;

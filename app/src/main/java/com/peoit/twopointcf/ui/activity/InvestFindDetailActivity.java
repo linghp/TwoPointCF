@@ -83,10 +83,14 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
         if(projectBean!=null) {
-            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", projectBean.investUserAmount+"", (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",
-                    (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",
-                    projectBean.projectCity, projectBean.stockType, projectBean.endDate, projectBean.dividendType, projectBean.dividendPercent+"%",
-                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%", projectBean.successCondition+"%", projectBean.industryType, projectBean.address,
+            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", //融资资金
+                    projectBean.investUserAmount+"", //已投人数
+                    (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",//出让股份、单股投资额
+                    (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",//单股比例
+                    projectBean.projectCity, projectBean.stockType, projectBean.endDate,//所在城市、股权类型、结束时间
+                    projectBean.dividendType, projectBean.dividendPercent+"%",//分红模式、分红比例
+                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%",//股东持权、保障金比例
+                    projectBean.successCondition+"%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
                     "点击查看", "点击查看", "点击查看"};
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
             for (int i = 0; i < investfinddetail_subitemnames.length; i++) {

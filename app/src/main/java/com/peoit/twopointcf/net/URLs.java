@@ -78,7 +78,10 @@ public class URLs {
      * 创建项目
      */
     public static final String CREATEPROJECT = HOST + "/api/project/createProject";
-
+    /**
+     * 修改项目
+     */
+    public static final String UPDATEPROJECT = HOST + "/api/project/updateProject";
     /**
      * 发现项目
      * 我发布的项目 参数publisherId

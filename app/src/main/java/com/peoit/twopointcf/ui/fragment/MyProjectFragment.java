@@ -18,7 +18,7 @@ import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
  * @author ling
- * 个人中心
+ * 我的项目
  */
 public class MyProjectFragment extends BaseFragment implements View.OnClickListener{
 
@@ -96,15 +96,19 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
                 CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
                 break;
             case R.id.ll_01:
+                //已投项目
                 CommonUtil.gotoActivity(getActivity(), InvestedProjectActivity.class,false);
                 break;
             case R.id.ll_02:
+                //关注项目
                 CommonUtil.gotoActivity(getActivity(), FollowProjectActivity.class, false);
                 break;
             case R.id.ll_03:
+                //经营管理
                 CommonUtil.gotoActivity(getActivity(), BusinessManagerActivity.class, false);
                 break;
             case R.id.ll_04:
+                //已发项目
                 CommonUtil.gotoActivity(getActivity(), MyPublishProjectActivity.class, false);
                 break;
 

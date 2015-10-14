@@ -19,6 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 已发项目
+ */
 public class MyPublishProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,FindProjectPresenter.OnHttpResultListener,
         AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener{
     private ListView listView;
@@ -81,7 +84,10 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //PublishProjectActivity.startThisActivity(true,this);
-        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).projectName,investedProjectBeans.get(position).status,this);
+        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).projectName,
+                investedProjectBeans.get(position).status,
+                investedProjectBeans.get(position),
+                this);
     }
 
     @Override

@@ -64,6 +64,7 @@
                         android:textSize="@dimen/title_txt_size" />
 
                     <TextView
+                        android:id="@+id/tv_publish_detail1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="9dp"
@@ -97,6 +98,7 @@
                         android:textSize="@dimen/title_txt_size" />
 
                     <TextView
+                        android:id="@+id/tv_publish_detail2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -129,6 +131,7 @@
                         android:textSize="@dimen/title_txt_size" />
 
                     <TextView
+                        android:id="@+id/tv_publish_detail3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -161,6 +164,7 @@
                         android:textSize="@dimen/title_txt_size" />
 
                     <TextView
+                        android:id="@+id/tv_publish_detail4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

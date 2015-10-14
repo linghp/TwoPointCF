@@ -58,8 +58,8 @@ public class InvestProjectPresenter extends BasePresenter<InvestProjectPresenter
 
                     @Override
                     public void onResponse(Object u) {
-                        //mView.showToast(R.string.publishsuccess);
-                        mView.onHttpResultSuccess();
+                        mView.showToast(R.string.publishsuccess);
+//                        mView.onHttpResultSuccess();
                     }
                 }, mView);
     }

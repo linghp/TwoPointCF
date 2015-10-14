@@ -109,17 +109,17 @@ public class PublishFragment03 extends BaseFragment {
             return false;
         }
         stocktype = tv_stocktype.getText().toString().trim();
-        if (stocktype.equals("请选择")) {
+        if (stocktype.equals(getString(R.string.choosestocktype))) {
             myToast("请选择股权类型");
             return false;
         }
         endDate = tv_endDate.getText().toString().trim();
-        if (endDate.equals("请选择")) {
+        if (endDate.equals(getString(R.string.choosesendDate))) {
             myToast("请选择众筹结束时间");
             return false;
         }
         successCondition = tv_successCondition.getText().toString().trim();
-        if (successCondition.equals("请选择")) {
+        if (successCondition.equals(getString(R.string.choosessuccessCondition))) {
             myToast("请选择项目启动条件");
             return false;
         }

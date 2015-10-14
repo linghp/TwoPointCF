@@ -12,4 +12,5 @@ public interface IPublishProject {
      * 获取数据
      */
     void upload(String[] fileKeys, File[] files, Map<String, String> params);
+    void updateProject(String[] fileKeys, File[] files, Map<String, String> params);
 }

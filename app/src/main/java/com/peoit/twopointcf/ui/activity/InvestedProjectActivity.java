@@ -17,6 +17,9 @@ import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 已投项目
+ */
 public class InvestedProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,FindProjectPresenter.OnHttpResultListener,
         AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener{
     private ListView listView;
