@@ -139,13 +139,21 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         titleView.setRightBtn(R.mipmap.collection, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v.getTag().equals(R.mipmap.collection)) {
-                    v.setTag(R.mipmap.collection_on);
-                    titleView.setRightBtn(R.mipmap.collection_on, this);
+                if(localUserInfo.isLogin()) {
+                    if(v.getTag().equals(R.mipmap.collection)) {
+                        myToast("关注");
+                        v.setTag(R.mipmap.collection_on);
+                        titleView.setRightBtn(R.mipmap.collection_on, this);
+
+                    }else {
+                        myToast("取消关注");
+                        v.setTag(R.mipmap.collection);
+                        titleView.setRightBtn(R.mipmap.collection, this);
+                    }
                 }else {
-                    v.setTag(R.mipmap.collection);
-                    titleView.setRightBtn(R.mipmap.collection, this);
+                    CommonUtil.gotoActivity(InvestFindDetailActivity.this, LoginActivity.class, false);
                 }
+
             }
         });
     }
@@ -170,6 +178,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             switch (v.getId()) {
 
                 case R.id.slide_tag1:
+                    //商业计划
                     findViewById(R.id.slide_tag1).setActivated(true);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(false);
@@ -177,6 +186,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
                     break;
                 case R.id.slide_tag2:
+                    //盈利模式
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(true);
                     findViewById(R.id.slide_tag3).setActivated(false);
@@ -184,6 +194,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, secondFragment, "secondFragment").commit();
                     break;
                 case R.id.slide_tag3:
+                    //团队介绍
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(true);
@@ -191,6 +202,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, thirdFragment, "thirdFragment").commit();
                     break;
                 case R.id.slide_tag4:
+                    //讨论
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(false);
@@ -200,6 +212,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     //myToast("test");
                     break;
                 case R.id.tv_toinvest:
+                    //我要投资
                     //CommonUtil.gotoActivity(this,InvestActivity.class,false);
                     if(localUserInfo.isLogin()) {
                         InvestActivity.startThisActivity(projectBean, this);

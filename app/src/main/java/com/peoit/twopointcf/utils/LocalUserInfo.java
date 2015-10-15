@@ -52,6 +52,12 @@ public class LocalUserInfo {
         editor.commit();
     }
 
+    //设置实名认证状态
+    public void setIsVerified(String isVerified) {
+        editor.putString(ISREALNAMEVALIDATED, isVerified);
+        editor.commit();
+    }
+
     public String getUserPhotoName() {
         return mSharedPreferences.getString(USERPHOTO_FILENAME, "");
     }

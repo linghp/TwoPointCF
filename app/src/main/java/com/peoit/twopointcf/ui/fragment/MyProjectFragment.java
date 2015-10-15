@@ -93,7 +93,11 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
         }
         switch (view.getId()){
             case R.id.right_btn://title 右侧按钮(发布项目)
-                CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
+                if ("已认证".equals(localUserInfo.getIsrealnamevalidated())) {
+                    CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
+                }else {
+                    myToast("您还没有实名认证，不能发布项目");
+                }
                 break;
             case R.id.ll_01:
                 //已投项目

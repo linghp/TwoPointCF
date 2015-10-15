@@ -97,10 +97,13 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 public void onSueccess(IsVerifiedBean isVerifed) {
                     if (("n").equals(isVerifed.getIsVerified())) {
                         mycenter_tv3.setText("立即认证");//实名认证
+                        localUserInfo.setIsVerified("立即认证");
                     } else if (("w").equals(isVerifed.getIsVerified())) {
                         mycenter_tv3.setText("审核中");
+                        localUserInfo.setIsVerified("审核中");
                     } else if (("y").equals(isVerifed.getIsVerified())) {
                         mycenter_tv3.setText("已认证");
+                        localUserInfo.setIsVerified("已认证");
                     }
                 }
             });
