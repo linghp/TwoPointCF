@@ -29,7 +29,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     private ProjectAdapter projectAdapter;
     private String[] published_statuss;
     private IFindProject presenter;
-    private Map<String, String> maps = new HashMap<>();
+    private Map<String, String> params = new HashMap<>();
     public static Map<String, String> maps_status = new HashMap<>();
     public static final String WAITING_INVESTED="waiting_invested";
 
@@ -48,18 +48,18 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invested_project);
+
     }
 
     @Override
     protected void initData() {
         presenter=new FindProjectPresenter(this);
-        published_statuss=this.getResources().getStringArray(R.array.published_status);
+        params.put("publisherId", localUserInfo.getUserId());
+        presenter.getData(URLs.FINDPROJECT, params, investedProjectBeans);
         //generateData();
-        projectAdapter = new ProjectAdapter(this, investedProjectBeans,maps_status);
+        projectAdapter = new ProjectAdapter(this, investedProjectBeans, maps_status);
         listView.setAdapter(projectAdapter);
-
-        maps.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(URLs.FINDPROJECT,maps, investedProjectBeans);
+        published_statuss=this.getResources().getStringArray(R.array.published_status);
     }
 
 //    private void generateData() {
@@ -98,7 +98,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     public void requestServer() {
         super.requestServer();
-        presenter.getData(URLs.FINDPROJECT,maps, investedProjectBeans);
+        presenter.getData(URLs.FINDPROJECT,params, investedProjectBeans);
     }
 
     @Override
@@ -114,11 +114,11 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 
     @Override
     public void onFooterLoad(AbPullToRefreshView view) {
-        presenter.getDataMore(URLs.FINDPROJECT,maps);
+        presenter.getDataMore(URLs.FINDPROJECT,params);
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
-        presenter.getData(URLs.FINDPROJECT,maps,investedProjectBeans);
+        presenter.getData(URLs.FINDPROJECT,params,investedProjectBeans);
     }
 }

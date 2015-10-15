@@ -247,7 +247,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical|right"
                 android:singleLine="true"
-                android:text="立即认证"
+                android:text=""
                 android:textColor="@color/txt_black2"
                 android:textSize="@dimen/title_txt_size" />
 

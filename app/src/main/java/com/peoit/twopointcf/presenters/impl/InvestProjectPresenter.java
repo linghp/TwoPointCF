@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.peoit.twopointcf.R;
@@ -60,6 +61,7 @@ public class InvestProjectPresenter extends BasePresenter<InvestProjectPresenter
                     public void onResponse(Object u) {
                         mView.showToast(R.string.publishsuccess);
 //                        mView.onHttpResultSuccess();
+                        ((Activity) mView).finish();
                     }
                 }, mView);
     }

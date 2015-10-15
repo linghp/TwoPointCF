@@ -28,6 +28,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * 投资发现详情
+ */
 public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener {
     private TagViewPager tagViewPager;
     private TextView tv_subtitle,tv_bottom01,tv_bottom02,tv_bottom03;

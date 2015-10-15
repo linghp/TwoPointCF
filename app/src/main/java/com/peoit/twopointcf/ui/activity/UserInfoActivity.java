@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.IsVerifiedBean;
 import com.peoit.twopointcf.modules.chooseimages.ChooseImages;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
@@ -28,6 +29,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     private TextView tv_userinfo1,tv_userinfo2,tv_userinfo3,tv_userinfo4,tv_userinfo5,tv_userinfo6,tv_userinfo7;
     private LinearLayout ll_info,ll_verified,ll_photonum,ll_mailbox;
     private ChangePasswordPresenter presenter;
+    private String isVerified;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +58,21 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initData() {
         presenter = new ChangePasswordPresenter(this);
-        //获取用户等级
+        //获取实名认证状态
         Map<String, String> maps = new HashMap<>();
         maps.put("userId",localUserInfo.getUserId());
-        presenter.getUserIsVerified(maps);
+        presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
+            @Override
+            public void onSueccess(IsVerifiedBean isVerifed) {
+                if (("n").equals(isVerifed.getIsVerified())) {
+                    tv_userinfo5.setText("立即认证");//实名认证
+                } else if (("w").equals(isVerifed.getIsVerified())) {
+                    tv_userinfo5.setText("审核中");
+                } else if (("y").equals(isVerifed.getIsVerified())) {
+                    tv_userinfo5.setText("已认证");
+                }
+            }
+        });
 
     }
 
@@ -79,11 +92,6 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 //            tv_userinfo2.setText(localUserInfo.);//性别
             tv_userinfo3.setText(localUserInfo.getlevel());//等级
             tv_userinfo4.setText(localUserInfo.getuserCaption());//个人简介
-            if (("n").equals(localUserInfo.getIsrealnamevalidated())){
-                tv_userinfo5.setText("立即认证");//实名认证
-            }else {
-                tv_userinfo5.setText("已认证");
-            }
             tv_userinfo6.setText(localUserInfo.getPhonenumber());//手机号码
             tv_userinfo7.setText(localUserInfo.getEmail());//邮箱
         }

@@ -13,7 +13,7 @@
         android:padding="10dp">
 
         <com.peoit.twopointcf.ui.view.CustomShapeImageView
-            android:id="@+id/mycenter_iv"
+            android:id="@+id/iv_mylevel1"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
@@ -24,6 +24,7 @@
             app:shape="circle" />
 
         <TextView
+            android:id="@+id/tv_mylevel1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -33,10 +34,11 @@
             android:textSize="@dimen/title_txt_size" />
 
         <TextView
+            android:id="@+id/tv_mylevel2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="我的积分：10000000"
+            android:text="我的积分：2"
             android:textColor="@color/white" />
 
     </LinearLayout>
@@ -56,6 +58,7 @@
             android:textSize="@dimen/title_txt_size" />
 
         <TextView
+            android:id="@+id/tv_mylevel3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
@@ -83,6 +86,7 @@
             android:textSize="@dimen/title_txt_size" />
 
         <TextView
+            android:id="@+id/tv_mylevel4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"

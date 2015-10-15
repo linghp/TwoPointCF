@@ -103,6 +103,10 @@
         <item>红利股</item>
         <item>原始股</item>
     </string-array>
+    <string-array name="publishproject_projectTypes">
+        <item>动产</item>
+        <item>不动产</item>
+    </string-array>
 
     <string-array name="publishproject_proportion">
         <item>50%</item>

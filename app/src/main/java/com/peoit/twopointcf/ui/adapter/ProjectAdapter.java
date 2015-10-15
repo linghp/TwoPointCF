@@ -13,6 +13,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.URLs;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ import java.util.Map;
  */
 public class ProjectAdapter extends BaseAdapter {
     private Context context;
-    private List<ProjectBean> items;
+    private List<ProjectBean> items = new ArrayList<>();
     private LayoutInflater mInflater;
     private Map<String,String> maps;
 
@@ -33,6 +34,7 @@ public class ProjectAdapter extends BaseAdapter {
         this.items = items;
         this.maps=maps;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
     }
 
 

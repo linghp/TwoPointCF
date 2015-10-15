@@ -11,7 +11,7 @@ import com.peoit.twopointcf.ui.base.BaseActivity;
 
 public class InformationCenterDetailActivity extends BaseActivity{
     private TextView tv_time,tv_content;
-    private String title,content,time;
+    private String id,title,informationIntro,content,picturePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,13 @@ public class InformationCenterDetailActivity extends BaseActivity{
         setContentView(R.layout.activity_information_center_detail);
     }
 
-    public static void startThisActivity(String title, String content,String time, Context context) {
+    public static void startThisActivity(String id,String title, String informationIntro,String content,String picturePath, Context context) {
         Intent intent = new Intent(context, InformationCenterDetailActivity.class);
+        intent.putExtra("id", id);
         intent.putExtra("title", title);
+        intent.putExtra("informationIntro", informationIntro);
         intent.putExtra("content", content);
-        intent.putExtra("time", time);
+        intent.putExtra("picturePath", picturePath);
         context.startActivity(intent);
     }
 
@@ -35,15 +37,17 @@ public class InformationCenterDetailActivity extends BaseActivity{
 
     @Override
     protected void initData() {
+        id=getIntent().getStringExtra("id");
         title=getIntent().getStringExtra("title");
+        informationIntro = getIntent().getStringExtra("informationIntro");
         content=getIntent().getStringExtra("content");
-        time=getIntent().getStringExtra("time");
+        picturePath=getIntent().getStringExtra("picturePath");
     }
 
     @Override
     protected void updateView() {
-        tv_time.setText(time);
-        tv_content.setText(content);
+        tv_time.setText(id);
+        tv_content.setText(informationIntro);
         titleView.setTitle(title);
         titleView.setRightBtn(R.mipmap.share_normal,this);
     }
@@ -53,7 +57,7 @@ public class InformationCenterDetailActivity extends BaseActivity{
         super.onClick(v);
         switch (v.getId()) {
             case R.id.right_btn:
-                myToast("share");
+                myToast("分享");
                 break;
         }
     }
