@@ -59,7 +59,9 @@ public class ProjectAdapter extends BaseAdapter {
         //holder.iv_left.setImageResource(getItem(position).getPicture());
         if(getItem(position).projectPhotos.size()>0) {
             Glide.with(context).load(URLs.HOST+getItem(position).projectPhotos.get(0)).into(holder.iv_left);
-        }
+        }/*else {
+            holder.iv_left.setBackgroundResource(R.mipmap.raw_1433491802);
+        }*/
         holder.tv_title.setText(getItem(position).projectName);
         holder.tv_content.setText(getItem(position).projectIntro);
         holder.tv_tag.setText(maps.get(getItem(position).status));

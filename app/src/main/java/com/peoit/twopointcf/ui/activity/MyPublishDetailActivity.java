@@ -74,7 +74,7 @@ public class MyPublishDetailActivity extends BaseActivity {
             ((TextView) findViewById(R.id.tv_status)).setText(statusvalue);
         }
         ((TextView)findViewById(R.id.tv_publish_detail1)).setText(projectBean.sellStockMoney/10000+"万元");//融资资金
-        ((TextView)findViewById(R.id.tv_publish_detail2)).setText(projectBean.investUserAmount+"");//已投人数
+        ((TextView)findViewById(R.id.tv_publish_detail2)).setText(projectBean.investUserAmount+"人");//已投人数
         ((TextView)findViewById(R.id.tv_publish_detail3)).setText((projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%");//出让股份
         ((TextView)findViewById(R.id.tv_publish_detail4)).setText(projectBean.perSellStockMoney+"元");//单股投资额
 

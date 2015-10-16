@@ -42,7 +42,8 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
                         } else {
                             mView.showToast(info);
                         }
-                        mView.showErrorPage();
+//                        mView.showErrorPage();
+
                     }
 
                     @Override
@@ -52,7 +53,7 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
                         if (response.size() > 0) {
 //                            mView.showContentPage();
                         } else {
-                            mView.showEmptyPage();
+//                            mView.showEmptyPage();
                         }
                         MyLogger.i(">>>>>>>>>>资讯中心：" + response.toString());
                         FindInformationsPresenter.this.informationBeans.clear();

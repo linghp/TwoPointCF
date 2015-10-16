@@ -30,7 +30,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
     public void getData(Map maps) {
         OkHttpClientManager.postAsyn(URLs.USER_SIGNIN, maps, new MyResultCallback<UserInfo>() {
             @Override
-            public void onError(Request request, String info,Exception e) {
+            public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
@@ -51,6 +51,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.OnHttpResultLis
             }
         }, mView);
     }
+
     public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
         @Override
         public void onBefore(Request request) {

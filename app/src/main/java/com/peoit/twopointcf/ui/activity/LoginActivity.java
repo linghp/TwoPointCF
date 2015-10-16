@@ -20,7 +20,7 @@ import java.util.Map;
  * 登录
  * Created by zyz on 2015/9/7.
  */
-public class LoginActivity extends BaseActivity implements View.OnClickListener,LoginPresenter.OnHttpResultListener{
+public class LoginActivity extends BaseActivity implements View.OnClickListener, LoginPresenter.OnHttpResultListener {
     private ImageView loginIv1;
     private EditText loginEt1;
     private EditText loginEt2;
@@ -51,12 +51,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initData() {
-    presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this);
     }
 
     @Override
     protected void updateView() {
-        if(titleView!=null) {
+        if (titleView != null) {
             titleView.setTitle("登录");
             titleView.hideLeftBtn();
         }
@@ -65,10 +65,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.login_tv1:
 //                myToast("登录");
-                if (match()){
+                if (match()) {
                     Map<String, String> maps = new HashMap<>();
                     maps.put("loginId", userName);
                     maps.put("password", password);
@@ -77,19 +77,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.login_tv2:
                 //注册
-                CommonUtil.gotoActivity(this,RegisterActivity.class,false);
+                CommonUtil.gotoActivity(this, RegisterActivity.class, false);
                 break;
             case R.id.login_tv3:
 //                myToast("忘记密码");
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("ischange",false);
-                CommonUtil.gotoActivityWithData(this,ChangePhoneActivity.class,bundle,false);
+                bundle.putBoolean("ischange", false);
+                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
                 break;
             default:
                 break;
         }
 
     }
+
     private boolean match() {
         userName = loginEt1.getText().toString().trim();
         if (TextUtils.isEmpty(userName)) {

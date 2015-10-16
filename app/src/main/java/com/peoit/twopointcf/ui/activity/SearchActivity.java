@@ -33,9 +33,9 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
     private int sex_index;
     private int age_index;
     private List<String> data;
-    final String[] arr1 = new String[]{"全部行业", "北京", "上海", "广州", "深圳"};
-    final String[] arr2 = new String[]{"金额", "男", "女"};
-    final String[] arr3 = new String[]{"筛选", "10", "20", "30", "40", "50", "60", "70"};
+    final String[] arr1 = new String[]{"所有行业", "农畜", "制造", "建筑", "酒店","餐饮","能源","环保","交通","仓储","零售","服务","公益","购物","其他"};
+    final String[] arr2 = new String[]{"众筹进度", "65%", "70%", "75%", "80%", "85%", "90%", "95%"};
+    final String[] arr3 = new String[]{"筛选", "金额排序", "结束时间", "项目类型"};
     private IInvestFind mPresenter;
 
     @Override
@@ -175,7 +175,7 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
 
     private List<String> getData() {
         List<String> data = new ArrayList<String>();
-        data.add("上海－男－10");
+        /*data.add("上海－男－10");
         data.add("上海－男－20");
         data.add("上海－男－30");
         data.add("上海－男－40");
@@ -190,7 +190,7 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
         data.add("北京－男－10");
         data.add("广州－男－10");
         data.add("上海－女－60");
-        data.add("上海－女－20");
+        data.add("上海－女－20");*/
         return data;
     }
 

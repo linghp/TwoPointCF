@@ -6,8 +6,8 @@ package com.peoit.twopointcf.net;
  * @author ling
  */
 public class URLs {
-    public static final String HOST = "http://192.168.0.168:8080";
-//    public static final String HOST = "http://115.28.245.170:8080/honeycomb";
+//    public static final String HOST = "http://192.168.0.192:8081";
+        public static final String HOST = "http://cfc.jujia999.com:8080";
     public static final String PROJECT_NAME = "";
     public static final String API = "";
 
@@ -29,7 +29,7 @@ public class URLs {
      */
     public static final String USER_PHONEVALIDATE = HOST + "/api/user/phoneValidate";
     /**
-     *验证登录名是否可用
+     * 验证登录名是否可用
      */
     public static final String USER_USERNAMEVAILDATE = HOST + "/api/user/userNameValidate";
     /**
@@ -51,19 +51,19 @@ public class URLs {
     /**
      * 修改手机号
      */
-    public static final String CHANGEPHONE= HOST + "/api/user/changeMobile";
+    public static final String CHANGEPHONE = HOST + "/api/user/changeMobile";
     /**
      * 修改头像
      */
-    public static final String CHANGEAVATAR= HOST + "/api/user/changeAvatar";
+    public static final String CHANGEAVATAR = HOST + "/api/user/changeAvatar";
     /**
      * 获取用户级别
      */
-    public static final String GETUSERLEVEL= HOST + "/api/user/getUserLevel";
+    public static final String GETUSERLEVEL = HOST + "/api/user/getUserLevel";
     /**
      * 获取用户实名认证状态
      */
-    public static final String GETUSERISVERIFIED= HOST + "/api/user/isVerified";
+    public static final String GETUSERISVERIFIED = HOST + "/api/user/isVerified";
     /**
      * 第三方登陆
      */
@@ -73,6 +73,7 @@ public class URLs {
      * 上传实名认证信息
      */
     public static final String USER_VERIFYID = HOST + "/api/user/verifyId";
+
 
     /**
      * 创建项目
@@ -98,6 +99,14 @@ public class URLs {
      */
     public static final String FINDINVESTEDPROJECT = HOST + "/api/project/findInvestedProject";
 
+    /**
+     * 关注项目
+     */
+    public static final String CANCELPROJECT = HOST + "/api/project/concernProject";
+    /**
+     * 判断用户是否关注项目
+     */
+    public static final String ISCANCELPROJECT = HOST + "/api/project/isConcern";
 
     /**
      * 资讯中心

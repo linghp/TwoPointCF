@@ -115,7 +115,7 @@ public class PublishProjectPresenter extends BasePresenter<PublishProjectPresent
             @Override
             public void onResponse(Object response) {
 //                mView.onHttpResultSuccess();
-                mView.showToast("认证成功");
+                mView.showToast("上传成功，请等待审核");
                 ((Activity) mView).finish();
             }
         }, mView);
