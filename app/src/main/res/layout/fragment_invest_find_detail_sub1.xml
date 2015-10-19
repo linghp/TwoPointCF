@@ -1,13 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-              android:paddingLeft="16dp"
-              android:paddingRight="16dp"
-              android:paddingTop="16dp"
-              android:paddingBottom="50dp"
-              android:orientation="vertical"
-             tools:context="com.peoit.twopointcf.ui.fragment.InvestFindDetailSub1Fragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="50dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="com.peoit.twopointcf.ui.fragment.InvestFindDetailSub1Fragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -16,27 +16,31 @@
         android:drawableLeft="@mipmap/textlefttag"
         android:drawablePadding="6dp"
         android:gravity="center_vertical"
-        android:textSize="@dimen/title_txt_size"
+        android:text="项目介绍"
         android:textColor="@color/orange500"
-        android:text="项目介绍"/>
-    <TextView android:layout_marginTop="6dp"
+        android:textSize="@dimen/title_txt_size" />
+
+    <TextView android:id="@+id/tv_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="用户需求\n的身上的房顶上地方所得税地方上的速度速度速度跟谁跟谁多少地方上的宿舍的发生"
-        />
-    <TextView android:layout_marginTop="12dp"
+        android:layout_marginTop="6dp"
+        tools:text="用户需求\n的身上的房顶上地方所得税地方上的速度速度速度跟谁跟谁多少地方上的宿舍的发生" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:drawableLeft="@mipmap/textlefttag"
         android:drawablePadding="6dp"
         android:gravity="center_vertical"
-        android:textSize="@dimen/title_txt_size"
+        android:text="市场分析"
         android:textColor="@color/orange500"
-        android:text="市场分析"/>
-    <TextView android:layout_marginTop="6dp"
+        android:textSize="@dimen/title_txt_size" />
+
+    <TextView android:id="@+id/tv_02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="需求场景\n的身上的房顶上地方所得税地方上的速度速度速度跟谁跟谁多少地方上的宿舍的发生"
-        />
+        android:layout_marginTop="6dp"
+        tools:text="需求场景\n的身上的房顶上地方所得税地方上的速度速度速度跟谁跟谁多少地方上的宿舍的发生" />
 
 </LinearLayout>

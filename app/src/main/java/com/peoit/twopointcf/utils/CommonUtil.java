@@ -7,6 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -103,6 +104,30 @@ public class CommonUtil {
 	/**
 	 * 跳转页面，动画效果
 	 * 
+	 * @param fragment
+	 *            当前fragment
+	 * @param targetActivity
+	 *            目标活动
+	 * @param Code
+	 *            int 类型数据
+	 * @param finish
+	 *            是否结束当前活动
+	 */
+	public static void gotoActivityForResult_fragment(Fragment fragment,
+			Class<?> targetActivity, int Code, boolean finish) {
+		Intent intent = new Intent();
+		intent.setClass(fragment.getActivity(), targetActivity);
+		fragment.startActivityForResult(intent, Code);
+//		curActivity.overridePendingTransition(R.anim.slide_left_in,
+//				R.anim.slide_left_out);
+
+		if (finish) {
+			fragment.getActivity().finish();
+		}
+	}
+	/**
+	 * 跳转页面，动画效果
+	 *
 	 * @param curActivity
 	 *            当前活动
 	 * @param targetActivity

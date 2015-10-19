@@ -32,6 +32,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     private Map<String, String> params = new HashMap<>();
     public static Map<String, String> maps_status = new HashMap<>();
     public static final String WAITING_INVESTED="waiting_invested";
+    public static final String PROJECT_SUCCESS="project_success";
 
     static {
         maps_status.put("waiting_verified","待审核");
@@ -41,7 +42,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
         maps_status.put("invest_failed","众筹失败");
         maps_status.put("invest_delay","待延期审核");
         maps_status.put("invest_success","待启动");
-        maps_status.put("project_success","众筹成功");
+        maps_status.put(PROJECT_SUCCESS,"众筹成功");
     }
 
     @Override

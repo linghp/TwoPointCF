@@ -1,21 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/white"
-              android:orientation="vertical"
-              android:paddingBottom="50dp"
-              android:paddingLeft="9dp"
-              android:paddingRight="9dp"
-              android:paddingTop="9dp"
-              tools:context="com.peoit.twopointcf.ui.fragment.InvestFindDetailSub2Fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="50dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="com.peoit.twopointcf.ui.fragment.InvestFindDetailSub2Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        android:visibility="gone">
 
         <com.peoit.twopointcf.ui.view.CustomShapeImageView
             android:id="@+id/mycenter_iv"
@@ -25,7 +24,7 @@
 
             android:scaleType="fitXY"
             android:src="@mipmap/investfinddetail_fragmentsub3_1"
-            app:shape="circle"/>
+            app:shape="circle" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -45,8 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="张三"
                     android:textSize="@dimen/large_title_txt_size"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -54,16 +52,14 @@
                     android:layout_marginLeft="9dp"
                     android:background="@drawable/shape1"
                     android:text="发起人"
-                    android:textColor="@color/lightblue500"
-                    />
+                    android:textColor="@color/lightblue500" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
                     android:text="北京-海淀区"
-                    android:textSize="@dimen/title_txt_size"
-                    />
+                    android:textSize="@dimen/title_txt_size" />
             </LinearLayout>
 
             <TextView
@@ -71,21 +67,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
                 android:text="董事长"
-                android:textSize="@dimen/title_txt_size"
-                />
+                android:textSize="@dimen/title_txt_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
-                android:text="上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规地方更大幅度法国大范甘迪电饭锅电饭锅电饭锅 地方好地方地方好的好的发挥多好的地方"
-                />
+                android:text="上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规地方更大幅度法国大范甘迪电饭锅电饭锅电饭锅 地方好地方地方好的好的发挥多好的地方" />
         </LinearLayout>
     </LinearLayout>
 
-    <View
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/gray"></View>
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/textlefttag"
+        android:drawablePadding="6dp"
+        android:gravity="center_vertical"
+        android:text="团队介绍"
+        android:textColor="@color/orange500"
+        android:textSize="@dimen/title_txt_size" />
+
+    <TextView
+        android:id="@+id/tv_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        tools:text="1)宠物酒吧：游客在酒吧内的酒水消费\n2)宠物娱乐：骑马，遛狗，钓鱼，喂鹿等" />
 </LinearLayout>

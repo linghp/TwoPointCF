@@ -1,5 +1,7 @@
 package com.peoit.twopointcf.ui.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +18,13 @@ import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.ui.activity.CityActivity;
 import com.peoit.twopointcf.ui.activity.InvestFindDetailActivity;
-import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 import com.peoit.twopointcf.ui.activity.SearchActivity;
-import com.peoit.twopointcf.ui.adapter.ProjectAdapter;
+import com.peoit.twopointcf.ui.adapter.InvestFindAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.ui.view.TagViewPager;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,9 +42,11 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     private ListView listView;
     //private InvestFindSubFragmentAdapter adapter;
     private List<ProjectBean> projectBeans = new ArrayList<>();
-    private ProjectAdapter projectAdapter;
+    private InvestFindAdapter investFindAdapter;
     private IFindProject presenter;
     private Map<String, String> maps = new HashMap<>();
+    public static final int RESULT_GET_CITY = 1000;
+    private String city="";
 
     public static InvestFindSubFragment newInstance(int index) {
         InvestFindSubFragment f = new InvestFindSubFragment();
@@ -103,12 +107,11 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         listView.addHeaderView(tagViewPager);
 
         presenter=new FindProjectPresenter(this);
-        projectAdapter = new ProjectAdapter(getActivity(), projectBeans, MyPublishProjectActivity.maps_status);
-        listView.setAdapter(projectAdapter);
+        investFindAdapter = new InvestFindAdapter(getActivity(), projectBeans);
 
 //        maps.put("publisherId", localUserInfo.getUserId());
         presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
-        listView.setAdapter(projectAdapter);
+        listView.setAdapter(investFindAdapter);
     }
 
     @Override
@@ -162,7 +165,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
                     CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
                     break;
                 case R.id.left_text:
-                    CommonUtil.gotoActivity(getActivity(), CityActivity.class,false);
+                    CommonUtil.gotoActivityForResult_fragment(this,CityActivity.class,RESULT_GET_CITY,false);
                     break;
 
             }
@@ -172,12 +175,13 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     public void requestServer() {
         super.requestServer();
+        maps.put("city",city);
         presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
     }
 
     @Override
     public void onHttpResultSuccess() {
-        projectAdapter.notifyDataSetChanged();
+        investFindAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -194,5 +198,15 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
         presenter.getData(URLs.FINDPROJECT,maps,projectBeans);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode== Activity.RESULT_OK){
+            city=data.getStringExtra("city");
+            MyLogger.i(city);
+            titleView.showLeftTextview(city, this);
+            requestServer();
+        }
     }
 }
