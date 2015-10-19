@@ -96,6 +96,9 @@ public class CityActivity extends BaseActivity {
                 Toast.makeText(getApplication(),
                         ((SortModel) adapter.getItem(position)).getName(),
                         Toast.LENGTH_SHORT).show();
+                finish();
+
+
             }
         });
         // 根据输入框输入值的改变来过滤搜索

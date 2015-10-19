@@ -80,10 +80,12 @@
     <string name="loginsuccess">登录成功</string>
     <string name="changesuccess">修改成功</string>
     <string name="publishsuccess">发布成功</string>
+    <string name="cancelprojectsuccess">关注成功</string>
     <string name="islastpage">已到最后一页</string>
 
     <string name="choosecity">请选择城市</string>
     <string name="chooseindustry">请选择行业</string>
+    <string name="projectType">请选择项目</string>
     <string name="choosestocktype">请选择股权类型</string>
     <string name="choosesendDate">请选择结束时间</string>
     <string name="choosessuccessCondition">请选择启动条件</string>

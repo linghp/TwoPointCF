@@ -11,7 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.IsConcernBean;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.presenters.impl.FollowProjectPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub1Fragment;
@@ -26,9 +28,14 @@ import com.peoit.twopointcf.utils.MyLogger;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener {
+/**
+ * 投资发现详情
+ */
+public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener,FollowProjectPresenter.OnHttpResultListener {
     private TagViewPager tagViewPager;
     private TextView tv_subtitle,tv_bottom01,tv_bottom02,tv_bottom03;
     private LinearLayout linearLayoutsub;
@@ -36,6 +43,10 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
     private ProjectBean projectBean;
+
+    private FollowProjectPresenter presenter;
+
+    private boolean isCancelProject = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +86,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
     @Override
     protected void initData() {
+        presenter = new FollowProjectPresenter(this);
+
         firstFragment = new InvestFindDetailSub1Fragment();
         secondFragment = new InvestFindDetailSub2Fragment();
         thirdFragment = new InvestFindDetailSub3Fragment();
@@ -83,10 +96,14 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
         if(projectBean!=null) {
-            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", projectBean.investUserAmount+"", (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",
-                    (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",
-                    projectBean.projectCity, projectBean.stockType, projectBean.endDate, projectBean.dividendType, projectBean.dividendPercent+"%",
-                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%", projectBean.successCondition+"%", projectBean.industryType, projectBean.address,
+            String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", //融资资金
+                    projectBean.investUserAmount+"", //已投人数
+                    (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",//出让股份、单股投资额
+                    (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",//单股比例
+                    projectBean.projectCity, projectBean.stockType, projectBean.endDate,//所在城市、股权类型、结束时间
+                    projectBean.dividendType, projectBean.dividendPercent+"%",//分红模式、分红比例
+                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%",//股东持权、保障金比例
+                    projectBean.successCondition+"%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
                     "点击查看", "点击查看", "点击查看"};
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
             for (int i = 0; i < investfinddetail_subitemnames.length; i++) {
@@ -106,6 +123,25 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     });
                 }
             }
+
+            //判断用户是否关注项目
+            Map<String, String> maps = new HashMap<>();
+            maps.put("userId", localUserInfo.getUserId());
+            maps.put("projectId", projectBean.id);
+            presenter.getIsConcern(maps, new FollowProjectPresenter.onIsConcern() {
+                @Override
+                public void onSueccess(IsConcernBean bean) {
+                    if ("y".equals(bean.getConcern())) {
+                        isCancelProject = true;
+                        titleView.setRightBtn(R.mipmap.collection_on, InvestFindDetailActivity.this);
+                    } else {
+                        isCancelProject = false;
+                        titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
+                    }
+                }
+            });
+            //点击关注
+            titleView.setRightBtn(R.mipmap.collection, this);
         }
     }
 
@@ -128,19 +164,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 tv_bottom03.setText(days + "天");
             }
         }
-        titleView.getBtn_right().setTag(R.mipmap.collection);
-        titleView.setRightBtn(R.mipmap.collection, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v.getTag().equals(R.mipmap.collection)) {
-                    v.setTag(R.mipmap.collection_on);
-                    titleView.setRightBtn(R.mipmap.collection_on, this);
-                }else {
-                    v.setTag(R.mipmap.collection);
-                    titleView.setRightBtn(R.mipmap.collection, this);
-                }
-            }
-        });
+
     }
 
     @Override
@@ -163,6 +187,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             switch (v.getId()) {
 
                 case R.id.slide_tag1:
+                    //商业计划
                     findViewById(R.id.slide_tag1).setActivated(true);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(false);
@@ -170,6 +195,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
                     break;
                 case R.id.slide_tag2:
+                    //盈利模式
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(true);
                     findViewById(R.id.slide_tag3).setActivated(false);
@@ -177,6 +203,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, secondFragment, "secondFragment").commit();
                     break;
                 case R.id.slide_tag3:
+                    //团队介绍
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(true);
@@ -184,6 +211,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, thirdFragment, "thirdFragment").commit();
                     break;
                 case R.id.slide_tag4:
+                    //讨论
                     findViewById(R.id.slide_tag1).setActivated(false);
                     findViewById(R.id.slide_tag2).setActivated(false);
                     findViewById(R.id.slide_tag3).setActivated(false);
@@ -193,6 +221,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     //myToast("test");
                     break;
                 case R.id.tv_toinvest:
+                    //我要投资
                     //CommonUtil.gotoActivity(this,InvestActivity.class,false);
                     if(localUserInfo.isLogin()) {
                         InvestActivity.startThisActivity(projectBean, this);
@@ -200,7 +229,64 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         CommonUtil.gotoActivity(this,LoginActivity.class,false);
                     }
                     break;
+                case R.id.right_btn:
+                    on();
+                    break;
             }
         }
+    }
+    public void on(){
+        if (localUserInfo.isLogin()) {
+            if (!isCancelProject) {
+//                myToast("关注");
+                Map<String, String> maps = new HashMap<>();
+                maps.put("userId", localUserInfo.getUserId());
+                maps.put("projectId", projectBean.id);
+                maps.put("concern", "y");
+                presenter.getCancelProject(maps, new FollowProjectPresenter.onCancelProject() {
+                    @Override
+                    public void onSueccess(String bean) {
+                        if ("true".equals(bean)) {
+                            myToast("关注成功");
+                            isCancelProject = true;
+                            titleView.setRightBtn(R.mipmap.collection_on, InvestFindDetailActivity.this);
+                        } else {
+                            myToast("关注失败");
+                            isCancelProject = false;
+                            titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
+                        }
+                    }
+                });
+
+            } else {
+//                myToast("取消关注");
+                Map<String, String> maps = new HashMap<>();
+                maps.put("userId", localUserInfo.getUserId());
+                maps.put("projectId", projectBean.id);
+                maps.put("concern", "n");
+                presenter.getCancelProject(maps, new FollowProjectPresenter.onCancelProject() {
+                    @Override
+                    public void onSueccess(String bean) {
+                        if ("true".equals(bean)) {
+                            myToast("取消关注成功");
+                            isCancelProject = false;
+                            titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
+                        } else {
+                            myToast("取消关注失败");
+                            isCancelProject = true;
+                            titleView.setRightBtn(R.mipmap.collection_on, InvestFindDetailActivity.this);
+                        }
+                    }
+                });
+            }
+        } else {
+            CommonUtil.gotoActivity(InvestFindDetailActivity.this, LoginActivity.class, false);
+        }
+    }
+
+
+    @Override
+    public void onHttpResultSuccess() {
+
     }
 }

@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.InformationCenterBean;
+import com.peoit.twopointcf.net.URLs;
 
 import java.util.List;
 
@@ -39,13 +42,18 @@ public class InformationCenterFragmentAdapter extends BaseAdapter {
             holder.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
             holder.tv_content = (TextView) convertView.findViewById(R.id.tv_content);
             holder.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+            holder.iv_left = (ImageView) convertView.findViewById(R.id.iv_left);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tv_time.setText(getItem(position).getTime());
+        if(getItem(position).getPicturePath() != "") {
+            Glide.with(context).load(URLs.HOST+getItem(position).getPicturePath()).into(holder.iv_left);
+        }else {
+        }
+//        holder.tv_time.setText(getItem(position).getTime());
         holder.tv_title.setText(getItem(position).getTitle());
-        holder.tv_content.setText(getItem(position).getContent());
+        holder.tv_content.setText(getItem(position).getInformationIntro());
         return convertView;
     }
 
@@ -71,5 +79,6 @@ public class InformationCenterFragmentAdapter extends BaseAdapter {
         public TextView tv_time;
         public TextView tv_title;
         public TextView tv_content;
+        public ImageView iv_left;
     }
 }

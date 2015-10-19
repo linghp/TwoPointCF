@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.entity.IsVerifiedBean;
+import com.peoit.twopointcf.entity.UserLevelBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.ILogin;
@@ -42,7 +44,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
+//                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
                     mView.showToast(R.string.changesuccess);
                     ((Activity) mView).finish();
             }
@@ -67,7 +69,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
+//                MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
                 mView.showToast(R.string.changesuccess);
                 ((Activity) mView).finish();
             }
@@ -92,7 +94,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
+//                MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
                 mView.showToast(R.string.changesuccess);
                 ((Activity) mView).finish();
             }
@@ -103,23 +105,54 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
      * 获取用户实名认证状态
      * @param map
      */
-    public void getUserIsVerified(Map map){
-        OkHttpClientManager.postAsyn(URLs.CHANGEPHONE, map, new MyResultCallback<Object>() {
+    public void getUserIsVerified(final Map map,final OnIsVerified isVerified){
+        OkHttpClientManager.postAsyn(URLs.GETUSERISVERIFIED, map, new MyResultCallback<IsVerifiedBean>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("获取用户实名认证状态");
+                    mView.showToast("获取用户实名认证状态失败");
                 }
             }
 
             @Override
-            public void onResponse(Object response) {
-                MyLogger.i(">>>>>>>>>>>>>>>>获取用户实名认证状态" + response.toString());
-//                mView.showToast(R.string.changesuccess);
-//                ((Activity) mView).finish();
+            public void onResponse(IsVerifiedBean response) {
+                MyLogger.i("认证状态" + response);
+//                getUserLevel(map);//获取用户等级
+                if (response != null){
+                    isVerified.onSueccess(response);
+                }
+
+
+            }
+        });
+    }
+    /**
+     * 获取用户等级
+     * @param map
+     */
+    public void getUserLevel(Map map, final OnUserLevelCallBack back){
+        OkHttpClientManager.postAsyn(URLs.GETUSERLEVEL, map, new MyResultCallback<UserLevelBean>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("获取用户等级失败");
+                }
+            }
+
+            @Override
+            public void onResponse(UserLevelBean response) {
+//                mView.showToast("获取用户等级"+ response.toString());
+                MyLogger.i(">>>>>>>>获取用户等级"+ response.toString());
+//                mView.onHttpResultSuccess();
+                if (back!=null){
+                    back.onSueccess(response);
+                }
             }
         });
     }
@@ -135,5 +168,11 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             mView.hideProgress();
             super.onAfter();
         }
+    }
+    public interface OnUserLevelCallBack{
+        void onSueccess(UserLevelBean bean);
+    }
+    public interface OnIsVerified{
+        void onSueccess(IsVerifiedBean isVerifed);
     }
 }

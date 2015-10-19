@@ -61,6 +61,7 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
         this.projectBeans=projectBeans;
         maps.put("offset",0+"");
         maps.put("pageSize",pageSize+"");
+        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数"+maps);
         OkHttpClientManager.postAsyn(url, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
@@ -83,7 +84,7 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                         }else {
                             mView.showEmptyPage();
                         }
-                        MyLogger.i(response.toString());
+                        MyLogger.i(">>>>>>>>>>："+response.toString());
                         FindProjectPresenter.this.projectBeans.clear();
                         FindProjectPresenter.this.projectBeans.addAll(response);
                         mView.onHttpResultSuccess();

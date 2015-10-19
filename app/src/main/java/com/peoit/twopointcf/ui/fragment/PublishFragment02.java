@@ -40,12 +40,11 @@ import java.util.ArrayList;
  */
 public class PublishFragment02 extends BaseFragment implements AdapterView.OnItemClickListener {
     private PublishProjectActivity publishProjectActivity;
-    private EditText et_projectName, et_projectIntro;
-    private TextView tv_projectCity, tv_industryType;
-    private String projectName, projectIntro, projectCity, industryType;
+    private EditText et_projectName, et_projectIntro,et_address,et_marketAnalysis,et_sourceOfIncome,et_profitForecast,et_teamIntroducation;
+    private TextView tv_projectCity, tv_industryType,tv_projectType;
+    private String projectName, projectIntro, projectCity, industryType,address,marketAnalysis,sourceOfIncome,profitForecast,teamIntroducation,projectType;
     private String[] citys;
-    private String[] industryTypes;
-
+    private String[] industryTypes,projectTypes;
     public PublishFragment02() {
         // Required empty public constructor
     }
@@ -62,10 +61,19 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
     protected void initView(View view) {
         et_projectName = findViewByID_My(R.id.et_projectName);
         et_projectIntro = findViewByID_My(R.id.et_projectIntro);
+
+        et_marketAnalysis = findViewByID_My(R.id.et_marketAnalysis);
+        et_sourceOfIncome = findViewByID_My(R.id.et_sourceOfIncome);
+        et_profitForecast = findViewByID_My(R.id.et_profitForecast);
+        et_teamIntroducation = findViewByID_My(R.id.et_teamIntroducation);
+
+        et_address = findViewByID_My(R.id.et_address);
         tv_projectCity = findViewByID_My(R.id.tv_projectCity);
         tv_industryType = findViewByID_My(R.id.tv_industryType);
+        tv_projectType= findViewByID_My(R.id.tv_projectType);
         tv_projectCity.setOnClickListener(this);
         tv_industryType.setOnClickListener(this);
+        tv_projectType.setOnClickListener(this);
         gridView01 = findViewByID_My(R.id.gridView01);
         gridView02 = findViewByID_My(R.id.gridView02);
         gridView03 = findViewByID_My(R.id.gridView03);
@@ -83,7 +91,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
     protected void initData() {
         citys=getActivity().getResources().getStringArray(R.array.publishproject_choosecitys);
         industryTypes=getActivity().getResources().getStringArray(R.array.publishproject_industrytype);
-
+        projectTypes=getActivity().getResources().getStringArray(R.array.publishproject_projectTypes);
         photoOperate = new PhotoOperate(getActivity());
         mDatas = new ArrayList();
         for (int i = 0; i < 4; i++) {
@@ -101,7 +109,6 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected void updateView() {
-
     }
 
     public boolean putData(){
@@ -110,6 +117,12 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
             publishProjectActivity.params.put("projectIntro", projectIntro);
             publishProjectActivity.params.put("projectCity", projectCity);
             publishProjectActivity.params.put("industryType", industryType);
+//            publishProjectActivity.params.put("address", address);
+            publishProjectActivity.params.put("marketAnalysis", marketAnalysis);
+            publishProjectActivity.params.put("sourceOfIncome", sourceOfIncome);
+            publishProjectActivity.params.put("profitForecast", profitForecast);
+            publishProjectActivity.params.put("teamIntroducation", teamIntroducation);
+            publishProjectActivity.params.put("projectType", projectType);
             return true;
         }
         return false;
@@ -126,6 +139,27 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
             myToast("请输入项目介绍");
             return false;
         }
+
+        marketAnalysis = et_marketAnalysis.getText().toString().trim();
+        if (TextUtils.isEmpty(marketAnalysis)) {
+            myToast("请输入市场分析");
+            return false;
+        }
+        sourceOfIncome = et_sourceOfIncome.getText().toString().trim();
+        if (TextUtils.isEmpty(sourceOfIncome)) {
+            myToast("请输入收入来源");
+            return false;
+        }
+        profitForecast = et_profitForecast.getText().toString().trim();
+        if (TextUtils.isEmpty(profitForecast)) {
+            myToast("请输入盈利预测");
+            return false;
+        }
+        teamIntroducation = et_teamIntroducation.getText().toString().trim();
+        if (TextUtils.isEmpty(teamIntroducation)) {
+            myToast("请输入团队介绍");
+            return false;
+        }
         projectCity = tv_projectCity.getText().toString().trim();
         if (projectCity.equals(getString(R.string.choosecity))) {
             myToast("请选择所在城市");
@@ -137,6 +171,17 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
             return false;
         }
 
+        projectType = tv_projectType.getText().toString().trim();
+        if (projectType.equals(getString(R.string.projectType))) {
+            myToast("请选择项目类型");
+            return false;
+        }
+
+        address = et_address.getText().toString().trim();
+        if (TextUtils.isEmpty(address)) {
+            myToast("请输入详细地址");
+            return false;
+        }
         for (int i = 0; i < mDatas.size()-1; i++) {
             if (mDatas.get(i).size() == 0) {
                 switch (i) {
@@ -148,6 +193,9 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
                         break;
                     case 2:
                         myToast("请添加个人信用报告");
+                        break;
+                    case 3:
+                        myToast("请添加行业许可证");
                         break;
                 }
                 return false;
@@ -178,6 +226,17 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tv_industryType.setText(industryTypes[which]);
+                        dialog.dismiss();
+                    }
+                });
+                break;
+            case R.id.tv_projectType:
+                MyLogger.i("tv_projectType");
+                DialogTool.createRadioDialog(getActivity(),R.mipmap.ic_launcher,"项目类型",projectTypes,new DialogInterface.OnClickListener(){
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tv_projectType.setText(projectTypes[which]);
                         dialog.dismiss();
                     }
                 });

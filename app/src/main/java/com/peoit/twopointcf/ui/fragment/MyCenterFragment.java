@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.IsVerifiedBean;
+import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.activity.BoundPhoneNumActivity;
 import com.peoit.twopointcf.ui.activity.LoginActivity;
 import com.peoit.twopointcf.ui.activity.MyRatingActivity;
@@ -24,13 +26,17 @@ import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.FileUtil;
 import com.peoit.twopointcf.utils.MyLogger;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author ling
  *         个人中心
  */
-public class MyCenterFragment extends BaseFragment {
-    private TextView mycenter_tv1,mycenter_tv4,mycenter_tv2;
+public class MyCenterFragment extends BaseFragment implements ChangePasswordPresenter.OnHttpResultListener {
+    private TextView mycenter_tv1,mycenter_tv4,mycenter_tv2,mycenter_tv3;
     private ImageView iv_photo;
+    private ChangePasswordPresenter presenter;
 
     public static MyCenterFragment newInstance(int index) {
         MyCenterFragment f = new MyCenterFragment();
@@ -74,12 +80,34 @@ public class MyCenterFragment extends BaseFragment {
                 Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getImageDownloadDir(getActivity()) + photoName);
                 iv_photo.setImageBitmap(bitmap);
             }
+
+
             //昵称
             mycenter_tv1.setText(localUserInfo.getUsername()+"");
             //绑定手机
             mycenter_tv4.setText(localUserInfo.getPhonenumber()+"");
             //个人简介
             mycenter_tv2.setText(localUserInfo.getuserCaption());
+
+            //获取实名认证状态
+            Map<String, String> maps = new HashMap<>();
+            maps.put("userId", localUserInfo.getUserId());
+            presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
+                @Override
+                public void onSueccess(IsVerifiedBean isVerifed) {
+                    if (("n").equals(isVerifed.getIsVerified())) {
+                        mycenter_tv3.setText("立即认证");//实名认证
+                        localUserInfo.setIsVerified("立即认证");
+                    } else if (("w").equals(isVerifed.getIsVerified())) {
+                        mycenter_tv3.setText("审核中");
+                        localUserInfo.setIsVerified("审核中");
+                    } else if (("y").equals(isVerifed.getIsVerified())) {
+                        mycenter_tv3.setText("已认证");
+                        localUserInfo.setIsVerified("已认证");
+                    }
+                }
+            });
+
         }
         //testGlide();
     }
@@ -95,11 +123,13 @@ public class MyCenterFragment extends BaseFragment {
         iv_photo= (ImageView) view.findViewById(R.id.mycenter_iv);
         mycenter_tv1 = findViewByID_My(R.id.mycenter_tv1);
         mycenter_tv2 = findViewByID_My(R.id.mycenter_tv2);
+        mycenter_tv3 = findViewByID_My(R.id.mycenter_tv3);
         mycenter_tv4 = findViewByID_My(R.id.mycenter_tv4);
     }
 
     @Override
     protected void initData() {
+        presenter = new ChangePasswordPresenter(this);
     }
 
     @Override
@@ -164,5 +194,10 @@ public class MyCenterFragment extends BaseFragment {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
+
     }
 }

@@ -59,6 +59,7 @@ public class PersonalProfilePresenter extends BasePresenter<PersonalProfilePrese
                 }*/
                 mView.showToast("修改成功");
                 ((Activity) mView).finish();
+
             }
         });
 

@@ -128,7 +128,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:text="未认证"
+                        android:text=""
                         android:textColor="@color/txt_black2" />
 
                     <ImageView
