@@ -65,6 +65,7 @@ public class ProjectAdapter extends BaseAdapter {
         holder.tv_title.setText(getItem(position).projectName);
         holder.tv_content.setText(getItem(position).projectIntro);
         holder.tv_tag.setText(maps.get(getItem(position).status));
+
         return convertView;
     }
 

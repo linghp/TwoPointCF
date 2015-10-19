@@ -1,6 +1,8 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
@@ -75,7 +77,7 @@ public class CityActivity extends BaseActivity {
         sortListView = (ListView) findViewById(R.id.country_lvcountry);
         letterListView = (MyLetterAlistView) findViewById(R.id.cityLetterListView);
         SourceDateList = filledData(getResources().getStringArray(
-                R.array.province));
+                R.array.publishproject_choosecitys));
 
         View headerview=getLayoutInflater().inflate(R.layout.citylistheader,null);
         sortListView.addHeaderView(headerview);
@@ -93,10 +95,18 @@ public class CityActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                Toast.makeText(getApplication(),
-                        ((SortModel) adapter.getItem(position)).getName(),
-                        Toast.LENGTH_SHORT).show();
-                finish();
+                if(position!=0) {
+                    String city=((SortModel) adapter.getItem(position-1)).getName();
+                    Toast.makeText(getApplication(),
+                            city,
+                            Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent();
+                    intent.putExtra("city",city);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
+                }else{
+                    finish();
+                }
 
 
             }

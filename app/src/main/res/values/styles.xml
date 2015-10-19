@@ -48,8 +48,8 @@
 
     <!-- 自定义进度条 -->
     <style name="ProgressBar_Mini" parent="@android:style/Widget.ProgressBar.Horizontal">
-        <item name="android:maxHeight">20dip</item>
-        <item name="android:minHeight">9dip</item>
+        <item name="android:maxHeight">9dip</item>
+        <item name="android:minHeight">6dip</item>
         <item name="android:indeterminateOnly">false</item>
         <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
         <item name="android:progressDrawable">@drawable/progressbar_mini</item>

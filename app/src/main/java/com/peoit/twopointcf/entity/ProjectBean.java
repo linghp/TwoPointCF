@@ -88,12 +88,14 @@ public class ProjectBean implements Serializable{
     public int investedAmount;
     public int userInvestedAmount;
     public String userInvestedDate;
-    public Object marketAnalysis;
-    public Object sourceOfIncome;
-    public Object profitForecast;
-    public Object teamIntroducation;
+    public String marketAnalysis;
+    public String sourceOfIncome;
+    public String profitForecast;
+    public String teamIntroducation;
     public int investUserAmount;
     public String publisherName;
+    public String projectType;
+
 
 
     //以下为自己添加的字段

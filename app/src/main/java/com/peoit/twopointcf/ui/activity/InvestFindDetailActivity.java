@@ -42,7 +42,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     private ProgressBar progressBar;
 
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
-    private ProjectBean projectBean;
+    public ProjectBean projectBean;
 
     private FollowProjectPresenter presenter;
 
@@ -98,12 +98,12 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         if(projectBean!=null) {
             String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney/10000+"万元", //融资资金
                     projectBean.investUserAmount+"", //已投人数
-                    (projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney+"%", projectBean.perSellStockMoney+"元",//出让股份、单股投资额
-                    (projectBean.perSellStockMoney+0.0)/projectBean.sellStockMoney+"%",//单股比例
+                    CommonUtil.twoPointConversion((projectBean.sellStockMoney+0.0)/projectBean.totalStockMoney*100)+"%", projectBean.perSellStockMoney+"元",//出让股份、单股投资额
+                    CommonUtil.twoPointConversion((projectBean.perSellStockMoney + 0.0)/projectBean.totalStockMoney*100)+"%",//单股比例
                     projectBean.projectCity, projectBean.stockType, projectBean.endDate,//所在城市、股权类型、结束时间
-                    projectBean.dividendType, projectBean.dividendPercent+"%",//分红模式、分红比例
-                    projectBean.stockholderPrivilege, projectBean.investorEarnestPercent+"%",//股东持权、保障金比例
-                    projectBean.successCondition+"%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
+                    projectBean.dividendType, CommonUtil.twoPointConversion(projectBean.dividendPercent*100)+"%",//分红模式、分红比例
+                    projectBean.stockholderPrivilege, CommonUtil.twoPointConversion(projectBean.investorEarnestPercent*100)+"%",//股东持权、保障金比例
+                    "众筹完成"+CommonUtil.twoPointConversion(projectBean.successCondition*100)+"%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
                     "点击查看", "点击查看", "点击查看"};
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
             for (int i = 0; i < investfinddetail_subitemnames.length; i++) {
@@ -153,11 +153,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             if(!projectBean.status.equals(MyPublishProjectActivity.WAITING_INVESTED)){
                 findViewById(R.id.tv_toinvest).setVisibility(View.GONE);
             }
-            double investedPercent=projectBean.investedAmount/((projectBean.sellStockMoney/projectBean.perSellStockMoney)+0.0);
+            double investedPercent=projectBean.investedAmount/(projectBean.sellStockMoney+0.0);
             int investedPercent_int=(int) Math.round(investedPercent*100);
             progressBar.setProgress(investedPercent_int);
             tv_bottom01.setText(investedPercent_int+"%");
-            tv_bottom02.setText(CommonUtil.twoPointConversion(projectBean.sellStockMoney/10000.0)+"万");
+            tv_bottom02.setText(CommonUtil.twoPointConversion(projectBean.investedAmount/10000.0)+"万");
             if(!TextUtils.isEmpty(projectBean.endDate)) {
                 Calendar c = new GregorianCalendar();
                 int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(projectBean.endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());
