@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.InvestedProjectBean;
+import com.peoit.twopointcf.entity.ProjectBean;
 
 import java.util.List;
 
@@ -20,10 +20,10 @@ import java.util.List;
  */
 public class FollowProjectAdapter extends BaseAdapter {
     private Context context;
-    private List<InvestedProjectBean> items;
+    private List<ProjectBean> items;
     private LayoutInflater mInflater;
 
-    public FollowProjectAdapter(Context context, List<InvestedProjectBean> items) {
+    public FollowProjectAdapter(Context context, List<ProjectBean> items) {
         super();
         this.context = context;
         this.items = items;
@@ -49,10 +49,10 @@ public class FollowProjectAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.iv_left.setImageResource(getItem(position).getPicture());
+        /*holder.iv_left.setImageResource(getItem(position).getPicture());
         holder.tv_title.setText(getItem(position).getTitle());
         holder.tv_content.setText(getItem(position).getMoney());
-        holder.tv_tag.setText(getItem(position).getTime());
+        holder.tv_tag.setText(getItem(position).getTime());*/
         return convertView;
     }
 
@@ -64,7 +64,7 @@ public class FollowProjectAdapter extends BaseAdapter {
     }
 
     @Override
-    public InvestedProjectBean getItem(int position) {
+    public ProjectBean getItem(int position) {
         // TODO Auto-generated method stub
         return items.get(position);
     }

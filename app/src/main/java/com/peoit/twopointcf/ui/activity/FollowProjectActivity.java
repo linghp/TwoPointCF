@@ -7,6 +7,9 @@ import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.InvestedProjectBean;
+import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.URLs;
+import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
 import com.peoit.twopointcf.ui.adapter.FollowProjectAdapter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
@@ -17,12 +20,14 @@ import java.util.List;
 /**
  * 关注项目
  */
-public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,AbPullToRefreshView.OnHeaderRefreshListener {
+public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,
+        AbPullToRefreshView.OnHeaderRefreshListener,FindProjectPresenter.OnHttpResultListener {
 
     private ListView listView;
-    private List<InvestedProjectBean> investedProjectBeans = new ArrayList<>();
+    private List<ProjectBean> investedProjectBeans = new ArrayList<>();
     private FollowProjectAdapter followProjectAdapter;
 
+    private FindProjectPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +36,11 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
 
     @Override
     protected void initData() {
+        presenter=new FindProjectPresenter(this);
 //        generateData();
-        followProjectAdapter = new FollowProjectAdapter(this, investedProjectBeans);
+        params.put("userId",localUserInfo.getUserId());
+        presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
+        followProjectAdapter = new FollowProjectAdapter(FollowProjectActivity.this, investedProjectBeans);
         listView.setAdapter(followProjectAdapter);
     }
 
@@ -63,6 +71,16 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
+
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
+
+    }
+
+    @Override
+    public void onHttpResult() {
 
     }
 }

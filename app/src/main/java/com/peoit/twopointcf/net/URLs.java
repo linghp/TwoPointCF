@@ -107,7 +107,10 @@ public class URLs {
      * 判断用户是否关注项目
      */
     public static final String ISCANCELPROJECT = HOST + "/api/project/isConcern";
-
+    /**
+     * 用户关注项目列表
+     */
+    public static final String FINDCONCERNEDPROJECT = HOST + "/api/project/findConcernedProject";
     /**
      * 资讯中心
      */

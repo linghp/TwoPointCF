@@ -268,11 +268,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     @Override
                     public void onSueccess(String bean) {
                         if ("true".equals(bean)) {
-                            myToast("取消成功");
+                            myToast("取消关注成功");
                             isCancelProject = false;
                             titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
                         } else {
-                            myToast("取消失败");
+                            myToast("取消关注失败");
                             isCancelProject = true;
                             titleView.setRightBtn(R.mipmap.collection_on, InvestFindDetailActivity.this);
                         }
