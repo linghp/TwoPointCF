@@ -53,15 +53,15 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             }
         }, mView);
     }
-    public void getData1(Map maps) {
-        OkHttpClientManager.postAsyn(URLs.USER_CHANGEPASSWORD, maps, new MyResultCallback<Object>() {
+    public void getResetPassword(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.USER_RESETPASSWORD, maps, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info,Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("修改密码失败");
+                    mView.showToast("重置密码失败");
                 }
             }
 

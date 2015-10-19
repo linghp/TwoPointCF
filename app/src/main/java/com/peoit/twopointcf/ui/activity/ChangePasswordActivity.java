@@ -71,7 +71,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                         Map<String, String> maps = new HashMap<>();
                         maps.put("oldPassword", oldPassword);
                         maps.put("newPassword", newPassword);
-                        maps.put("id", localUserInfo.getUserId());
+                        maps.put("userId", localUserInfo.getUserId());
                     if (ispassword) {
                         maps.put("passwordType", "10");
                         MyLogger.i("修改登录密码传入的数据："+maps);
@@ -80,7 +80,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                     else {
                         maps.put("passwordType", "20");
                         MyLogger.i("修改授权密码传入的数据：" + maps);
-                        presenter.getData1(maps);
+                        presenter.getData(maps);
                     }
                 }
                 break;
