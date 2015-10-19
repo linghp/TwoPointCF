@@ -92,6 +92,7 @@ public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickL
                                 CommonUtil.gotoActivity(BoundPhoneNumActivity.this, ChangeEmailActivity.class, true);
 //                            if (ispassword)
 
+
                         }
                     }
                 });

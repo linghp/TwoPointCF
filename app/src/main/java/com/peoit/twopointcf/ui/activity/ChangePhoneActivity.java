@@ -62,7 +62,7 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
     }
 
     private boolean match() {
-        phonenum = et_phonenum.getText().toString();
+        phonenum = et_phonenum.getText().toString().trim();
         if (TextUtils.isEmpty(phonenum)) {
             showToast("请输入手机号码");
             return false;
