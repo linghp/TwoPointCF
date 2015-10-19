@@ -64,7 +64,7 @@ public class InvestFindAdapter extends BaseAdapter {
         }
         //holder.iv_left.setImageResource(getItem(position).getPicture());
         if (getItem(position).projectPhotos.size() > 0) {
-            Glide.with(context).load(URLs.HOST + getItem(position).projectPhotos.get(0)).placeholder(R.mipmap.placeholderpic_2x).crossFade().into(holder.iv_left);
+            Glide.with(context).load(URLs.HOST + getItem(position).projectPhotos.get(0)).placeholder(R.mipmap.placeholderpic).crossFade().into(holder.iv_left);
         }/*else {
             holder.iv_left.setBackgroundResource(R.mipmap.raw_1433491802);
         }*/
@@ -77,7 +77,7 @@ public class InvestFindAdapter extends BaseAdapter {
             holder.iv_tag.setImageResource(R.mipmap.invest_prepared_3x);
         }
         holder.tv_02.setText(getItem(position).id);
-        holder.tv_03.setText(getItem(position).sellStockMoney/10000+"万元");
+        holder.tv_03.setText(getItem(position).sellStockMoney / 10000 + "万元");
         holder.tv_04.setText(getItem(position).perSellStockMoney+"元");
         holder.tv_05.setText(getItem(position).address);
 
