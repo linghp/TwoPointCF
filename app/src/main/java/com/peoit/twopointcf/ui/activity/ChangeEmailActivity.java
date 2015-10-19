@@ -9,9 +9,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
  * 修改邮箱
@@ -53,10 +51,8 @@ public class ChangeEmailActivity extends BaseActivity implements View.OnClickLis
             case R.id.changeemail_tv1:
                 if (match()) {
 //                    myToast("修改邮箱成功");
-                    Map<String, String> maps = new HashMap<>();
-                    maps.put("email", email);
-                    maps.put("userId", localUserInfo.getUserId());
-                    presenter.getChangeEmail(maps);
+
+                    presenter.getChangeEmail(email);
                 }
                 break;
             default:
@@ -91,5 +87,10 @@ public class ChangeEmailActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onHttpResultSuccess() {
 
+    }
+
+    @Override
+    public LocalUserInfo getLocalUserInfo() {
+        return localUserInfo;
     }
 }

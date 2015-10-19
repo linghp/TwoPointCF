@@ -51,6 +51,21 @@ public class LocalUserInfo {
         editor.putString(USERPHOTO_FILENAME, photoName);
         editor.commit();
     }
+    //保存个人简介
+    public void setUserCaption(String userCaption) {
+        editor.putString(USERCAPTION, userCaption);
+        editor.commit();
+    }
+    //保存手机号码
+    public void setPhoneNumber(String phoneNumber) {
+        editor.putString(PHONENUMBER, phoneNumber);
+        editor.commit();
+    }
+    //保存邮箱
+    public void setEmail(String email) {
+        editor.putString(EMAIL, email);
+        editor.commit();
+    }
 
     //设置实名认证状态
     public void setIsVerified(String isVerified) {

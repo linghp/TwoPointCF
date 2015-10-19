@@ -1,73 +1,49 @@
 package com.peoit.twopointcf.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
-import com.peoit.twopointcf.utils.CommonUtil;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
- * 修改手机号/验证手机号
+ * 修改手机号/
  * ischange true/false
  * Created by zyz on 2015/8/29.
  */
-public class ChangePhoneActivity extends BaseActivity implements View.OnClickListener , ChangePasswordPresenter.OnHttpResultListener{
-    private LinearLayout boundphoneLl2, boundphoneLl3;
-    private TextView tv_phonenum;
-    private TextView boundphoneTv1, boundphoneTv2;
-    private EditText et_phonenum, et_num;
-    private boolean ischange = true;
+public class ChangePhoneActivity extends BaseActivity implements View.OnClickListener, ChangePasswordPresenter.OnHttpResultListener {
+    private TextView boundphoneTv1;
+    private EditText et_phonenum;
     private String phonenum;
     private ChangePasswordPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_boundphone);
+        setContentView(R.layout.activity_changephone);
     }
 
     @Override
     protected void initView() {
-        tv_phonenum = (TextView) findViewById(R.id.boundphone_et1);
+        et_phonenum = (EditText) findViewById(R.id.boundphone_et1);
         boundphoneTv1 = (TextView) findViewById(R.id.boundphone_tv1);
-
-        boundphoneLl2 = (LinearLayout) findViewById(R.id.boundphone_ll2);
-        boundphoneLl3 = (LinearLayout) findViewById(R.id.boundphone_ll3);
-        et_phonenum = (EditText) findViewById(R.id.boundphone_et2);
-        et_num = (EditText) findViewById(R.id.boundphone_et3);
-        boundphoneTv2 = (TextView) findViewById(R.id.boundphone_tv2);
 
     }
 
     @Override
     protected void initData() {
-        Intent intent = getIntent();
-        ischange = intent.getBooleanExtra("ischange", true);
         presenter = new ChangePasswordPresenter(this);
     }
 
     @Override
     protected void updateView() {
         if (titleView != null) {
-            if (ischange) {
-                titleView.setTitle("修改手机号码");
-                boundphoneLl3.setVisibility(View.GONE);
-            }
-            else{
-                titleView.setTitle("验证手机号码");
-                et_phonenum.setText(localUserInfo.getPhonenumber());
-            }
-
+            titleView.setTitle("修改手机号码");
         }
     }
 
@@ -75,25 +51,9 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.boundphone_tv1:
-                if (ischange) {
-//                    myToast("修改手机号成功");
-//                    finish();
-                    if (match()){
-                        Map<String, String> maps = new HashMap<>();
-                        maps.put("mobile", phonenum);
-                        maps.put("userId",localUserInfo.getUserId());
-                        presenter.getChangePhone(maps);
+                    if (match()) {
+                        presenter.getChangePhone(phonenum);
                     }
-
-                } else {
-//                    myToast("验证成功");
-//                    CommonUtil.gotoActivity(this,VerifySecurityQuestionActivity.class,true);//验证密保问题
-                    CommonUtil.gotoActivity(this, ChangePasswordActivity.class, true);//修改密码
-                }
-                break;
-            case R.id.boundphone_tv2:
-                myToast("获取验证码");
-                boundphoneTv2.setClickable(false);
                 break;
             default:
                 break;
@@ -106,12 +66,38 @@ public class ChangePhoneActivity extends BaseActivity implements View.OnClickLis
         if (TextUtils.isEmpty(phonenum)) {
             showToast("请输入手机号码");
             return false;
+        } else {
+            if (isMobileNO(phonenum)) {
+
+            } else {
+                showToast("手机号不合法");
+                return false;
+            }
         }
         return true;
+    }
+
+    /**
+     * 验证手机格式
+     */
+    public static boolean isMobileNO(String mobiles) {
+    /*
+    移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
+    联通：130、131、132、152、155、156、185、186
+    电信：133、153、180、189、（1349卫通）
+    总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9
+    */
+        String telRegex = "[1][358]\\d{9}";//"[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
+        return mobiles.matches(telRegex);
     }
 
     @Override
     public void onHttpResultSuccess() {
 
+    }
+
+    @Override
+    public LocalUserInfo getLocalUserInfo() {
+        return localUserInfo;
     }
 }

@@ -122,7 +122,14 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                         Map<String, String> maps = new HashMap<>();
                         maps.put("phoneNumber", phoneNumber);
                         maps.put("validateCode", verifyCode);
-                        presenter.getValidateCode(maps);
+                        presenter.getValidateCode(maps, new RegisterPresenter.onValidateCode() {
+                            @Override
+                            public void onSueccess(String bean) {
+                                if ("y".equals(bean)) {
+                                    myToast("验证码正确");
+                                }
+                            }
+                        });
                     }
 
                 }

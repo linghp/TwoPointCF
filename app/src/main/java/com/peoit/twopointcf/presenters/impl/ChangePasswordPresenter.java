@@ -11,9 +11,11 @@ import com.peoit.twopointcf.entity.UserLevelBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.ILogin;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,6 +29,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
     }
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
+        LocalUserInfo getLocalUserInfo();
     }
 
     @Override
@@ -50,13 +53,36 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             }
         }, mView);
     }
+    public void getData1(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.USER_CHANGEPASSWORD, maps, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info,Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("修改密码失败");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+//                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
+                mView.showToast(R.string.changesuccess);
+                ((Activity) mView).finish();
+            }
+        }, mView);
+    }
 
     /**
      * 修改邮箱
-     * @param map
+     * @param email
      */
-    public void getChangeEmail(Map map){
-        OkHttpClientManager.postAsyn(URLs.CHANGEEMAIL, map, new MyResultCallback<Object>() {
+    public void getChangeEmail(final String email){
+        Map<String, String> maps = new HashMap<>();
+        maps.put("email", email);
+        maps.put("userId", mView.getLocalUserInfo().getUserId());
+        OkHttpClientManager.postAsyn(URLs.CHANGEEMAIL, maps, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
@@ -71,6 +97,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             public void onResponse(Object response) {
 //                MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
                 mView.showToast(R.string.changesuccess);
+                mView.getLocalUserInfo().setEmail(email);
                 ((Activity) mView).finish();
             }
         });
@@ -78,10 +105,13 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
     /**
      * 修改电话
-     * @param map
+     * @param phonenum
      */
-    public void getChangePhone(Map map){
-        OkHttpClientManager.postAsyn(URLs.CHANGEPHONE, map, new MyResultCallback<Object>() {
+    public void getChangePhone(final String phonenum){
+        Map<String, String> maps = new HashMap<>();
+        maps.put("mobile", phonenum);
+        maps.put("userId",mView.getLocalUserInfo().getUserId());
+        OkHttpClientManager.postAsyn(URLs.CHANGEPHONE, maps, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
@@ -96,6 +126,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             public void onResponse(Object response) {
 //                MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
                 mView.showToast(R.string.changesuccess);
+                mView.getLocalUserInfo().setPhoneNumber(phonenum);
                 ((Activity) mView).finish();
             }
         });

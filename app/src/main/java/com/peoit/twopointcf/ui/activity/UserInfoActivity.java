@@ -16,6 +16,7 @@ import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.FileUtil;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
  * 个人中心——个人简介
@@ -72,12 +73,16 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             tv_userinfo1.setText(localUserInfo.getUserRealName());//真实姓名
 //            tv_userinfo2.setText(localUserInfo.);//性别
             tv_userinfo3.setText(localUserInfo.getlevel());//等级
-            tv_userinfo4.setText(localUserInfo.getuserCaption());//个人简介
-            tv_userinfo6.setText(localUserInfo.getPhonenumber());//手机号码
-            tv_userinfo7.setText(localUserInfo.getEmail());//邮箱
-
-            tv_userinfo5.setText(localUserInfo.getIsrealnamevalidated());//实名认证
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tv_userinfo4.setText(localUserInfo.getuserCaption());//个人简介
+        tv_userinfo6.setText(localUserInfo.getPhonenumber());//手机号码
+        tv_userinfo7.setText(localUserInfo.getEmail());//邮箱
+        tv_userinfo5.setText(localUserInfo.getIsrealnamevalidated());//实名认证
     }
 
     @Override
@@ -104,11 +109,15 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.ll_userinfo07:
                 //手机号码
-                CommonUtil.gotoActivity(this, ChangePhoneActivity.class,false);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isphonenum",true);
+                CommonUtil.gotoActivityWithData(this, BoundPhoneNumActivity.class, bundle, false);
                 break;
             case R.id.ll_userinfo08:
                 //邮箱
-                CommonUtil.gotoActivity(this, ChangeEmailActivity.class, false);
+                Bundle bundle1 = new Bundle();
+                bundle1.putBoolean("isphonenum", false);
+                CommonUtil.gotoActivityWithData(this, BoundPhoneNumActivity.class, bundle1, false);
                 break;
             default:
                 break;
@@ -118,5 +127,10 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onHttpResultSuccess() {
 
+    }
+
+    @Override
+    public LocalUserInfo getLocalUserInfo() {
+        return localUserInfo;
     }
 }
