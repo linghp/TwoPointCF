@@ -69,16 +69,16 @@ public class InvestFindAdapter extends BaseAdapter {
             holder.iv_left.setBackgroundResource(R.mipmap.raw_1433491802);
         }*/
         holder.tv_title.setText(getItem(position).projectName);
-        if(getItem(position).status.equals(MyPublishProjectActivity.WAITING_INVESTED)){
+        if (getItem(position).status.equals(MyPublishProjectActivity.WAITING_INVESTED)) {
             holder.iv_tag.setImageResource(R.mipmap.invest_started_3x);
-        }else if(getItem(position).status.equals(MyPublishProjectActivity.PROJECT_SUCCESS)){
+        } else if (getItem(position).status.equals(MyPublishProjectActivity.PROJECT_SUCCESS)) {
             holder.iv_tag.setImageResource(R.mipmap.invest_finished_3x);
-        }else{
+        } else {
             holder.iv_tag.setImageResource(R.mipmap.invest_prepared_3x);
         }
         holder.tv_02.setText(getItem(position).id);
         holder.tv_03.setText(getItem(position).sellStockMoney / 10000 + "万元");
-        holder.tv_04.setText(getItem(position).perSellStockMoney+"元");
+        holder.tv_04.setText(getItem(position).perSellStockMoney + "元");
         holder.tv_05.setText(getItem(position).address);
 
         double investedPercent = getItem(position).investedAmount / (getItem(position).sellStockMoney + 0.0);
@@ -115,8 +115,8 @@ public class InvestFindAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        public ImageView iv_left,iv_tag;
-        public TextView tv_title,tv_02,tv_03,tv_04,tv_05;
+        public ImageView iv_left, iv_tag;
+        public TextView tv_title, tv_02, tv_03, tv_04, tv_05;
         public ProgressBar progressBar;
         public TextView tv_bottom01, tv_bottom02, tv_bottom03;
     }
