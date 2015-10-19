@@ -9,6 +9,7 @@ import com.peoit.twopointcf.entity.UserLevelBean;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.CustomShapeImageView;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,5 +79,10 @@ public class MyRatingActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onHttpResultSuccess() {
 
+    }
+
+    @Override
+    public LocalUserInfo getLocalUserInfo() {
+        return localUserInfo;
     }
 }

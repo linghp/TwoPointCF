@@ -26,6 +26,7 @@ import com.peoit.photochooser.ImagePagerActivity;
 import com.peoit.photochooser.PhotoOperate;
 import com.peoit.photochooser.PhotoPickActivity;
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.ui.activity.PublishProjectActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.DialogTool;
@@ -34,6 +35,7 @@ import com.peoit.twopointcf.utils.MyLogger;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +50,11 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
     public PublishFragment02() {
         // Required empty public constructor
     }
+
+    private List<ProjectBean> mList;
+    private ProjectBean projectBean;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

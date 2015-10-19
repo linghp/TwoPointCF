@@ -9,9 +9,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.PersonalProfilePresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.peoit.twopointcf.utils.LocalUserInfo;
 
 /**
  * 个人简介
@@ -56,10 +54,7 @@ public class PersonalProfileActivity extends BaseActivity implements PersonalPro
                 if (TextUtils.isEmpty(edit)){
                     myToast("请输入个人简介");
                 }else {
-                    Map<String, String> maps = new HashMap<>();
-                    maps.put("caption", edit);
-                    maps.put("userId",localUserInfo.getUserId());
-                    presenter.getData(maps);
+                    presenter.getUserCaption(edit);
                 }
                 break;
             default:
@@ -71,5 +66,10 @@ public class PersonalProfileActivity extends BaseActivity implements PersonalPro
     @Override
     public void onHttpResultSuccess() {
 
+    }
+
+    @Override
+    public LocalUserInfo getLocalUserInfo() {
+        return localUserInfo;
     }
 }

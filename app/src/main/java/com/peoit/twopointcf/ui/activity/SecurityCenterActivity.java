@@ -69,25 +69,31 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
 
         switch (view.getId()) {
             case R.id.securitycenter_tv1:
-//                myToast("重置支付密码");
-                CommonUtil.gotoActivity(this,SafetyEfficacyActivity.class,false);
+//                myToast("修改登录密码");
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("ispassword", true);
+                CommonUtil.gotoActivityWithData(this, ChangePasswordActivity.class, bundle, true);
                 break;
             case R.id.securitycenter_tv2:
-//                myToast("重置登录密码");
-//                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
-                CommonUtil.gotoActivity(this, ChangePasswordActivity.class, true);//修改密码
+//                myToast("忘记登录密码");
+                Bundle bundle2 = new Bundle();
+                bundle2.putBoolean("ispassword", true);
+                CommonUtil.gotoActivityWithData(this, SafetyEfficacyActivity.class, bundle2,false);
                 break;
             case R.id.securitycenter_tv3:
                 myToast("手势");
                 break;
             case R.id.securitycenter_tv4:
-//                myToast("重置支付密码");
-                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
+//                myToast("修改授权密码");
+                Bundle bundle1 = new Bundle();
+                bundle1.putBoolean("ispassword",false);
+                CommonUtil.gotoActivityWithData(this, ChangePasswordActivity.class, bundle1, true);
                 break;
             case R.id.securitycenter_tv5:
-//                myToast("忘记支付密码");
-//                CommonUtil.gotoActivity(this, SafetyEfficacyActivity.class, false);
-                CommonUtil.gotoActivity(this, ChangePasswordActivity.class, true);//修改密码
+//                myToast("忘记授权密码");
+                Bundle bundle3 = new Bundle();
+                bundle3.putBoolean("ispassword",false);
+                CommonUtil.gotoActivityWithData(this, SafetyEfficacyActivity.class, bundle3, false);
                 break;
             default:
                 break;

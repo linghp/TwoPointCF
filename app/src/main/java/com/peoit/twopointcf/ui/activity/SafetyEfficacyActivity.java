@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,8 @@ import com.peoit.twopointcf.utils.CommonUtil;
 public class SafetyEfficacyActivity extends BaseActivity implements View.OnClickListener{
     private LinearLayout safetyefficacyLl1;
     private LinearLayout safetyefficacyLl2;
+
+    private boolean ispassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,8 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected void initData() {
-
+        Intent intent = getIntent();
+        ispassword = intent.getBooleanExtra("ispassword",false);
     }
 
     @Override
@@ -44,8 +48,8 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
             case R.id.safetyefficacy_ll1:
                 myToast("验证短信");
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("ischange",false);
-                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, true);
+                bundle.putBoolean("ispassword",ispassword);
+                CommonUtil.gotoActivityWithData(this, BoundPhoneNumActivity.class, bundle, false);
                 break;
             case R.id.safetyefficacy_ll2:
                 myToast("联系在线客服");

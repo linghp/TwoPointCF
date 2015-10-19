@@ -41,6 +41,10 @@ public class URLs {
      */
     public static final String USER_CHANGEPASSWORD = HOST + "/api/user/changePassword";
     /**
+     * 重置 登录密码或授权密码
+     */
+    public static final String USER_RESETPASSWORD = HOST + "/api/user/resetPassword";
+    /**
      * 修改用户简介
      */
     public static final String CHANGEUSERCAPTION = HOST + "/api/user/changeUserCaption";

@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.entity.IsCorrectBean;
 import com.peoit.twopointcf.entity.RegisterBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
@@ -74,8 +75,8 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
     }
 
     //验证手机验证码
-    public void getValidateCode(Map map){
-        OkHttpClientManager.postAsyn(URLs.USER_VALIDATECODE, map, new MyResultCallback<Object>() {
+    public void getValidateCode(Map map, final onValidateCode validateCode){
+        OkHttpClientManager.postAsyn(URLs.USER_VALIDATECODE, map, new MyResultCallback<IsCorrectBean>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
@@ -87,11 +88,21 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
             }
 
             @Override
-            public void onResponse(Object response) {
-                if (response != null){
+            public void onResponse(IsCorrectBean response) {
+
+                MyLogger.i(">>>>>>>>>验证手机验证码" + response.getIsCorrect());
+                if (response.getIsCorrect()){
                     mView.showToast("验证码验证成功");
-                    MyLogger.i(">>>>>>>>>验证手机验证码" + response.toString());
+                    if (validateCode != null){
+                        validateCode.onSueccess("y");
+                    }
+                }else {
+                    mView.showToast("验证码验证失败");
+                    if (validateCode != null){
+                        validateCode.onSueccess("n");
+                    }
                 }
+
             }
         },mView);
     }
@@ -164,6 +175,10 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
                 }
             }
         });
+    }
+
+    public interface onValidateCode{
+        void onSueccess(String bean);
     }
 
 }

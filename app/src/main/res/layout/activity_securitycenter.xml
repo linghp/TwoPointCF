@@ -19,7 +19,7 @@
             android:onClick="onClick"
             android:clickable="true"
             android:padding="15dp"
-            android:text="重置支付密码"
+            android:text="修改登录密码"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
@@ -37,7 +37,7 @@
             android:onClick="onClick"
             android:padding="15dp"
             android:clickable="true"
-            android:text="重置登录密码"
+            android:text="忘记登录密码"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
@@ -81,7 +81,7 @@
             android:onClick="onClick"
             android:clickable="true"
             android:padding="15dp"
-            android:text="重置支付密码"
+            android:text="修改授权密码"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
@@ -99,7 +99,7 @@
             android:onClick="onClick"
             android:padding="15dp"
             android:clickable="true"
-            android:text="忘记支付密码"
+            android:text="忘记授权密码"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
