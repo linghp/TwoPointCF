@@ -6,7 +6,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.InvestedProjectBean;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
@@ -66,7 +65,7 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        InvestFindDetailActivity.startThisActivity(null,this);
+        InvestFindDetailActivity.startThisActivity(null,false,this);
     }
 
     @Override

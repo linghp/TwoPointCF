@@ -121,6 +121,11 @@ public class URLs {
     public static final String FINDINFORMATIONS = HOST + "/api/information/findInformations";
 
     /**
+     * 支付投资项目保证金
+     */
+    public static final String PAYMARGIN = HOST + "/api/project/payMargin";
+
+    /**
      * 拼接请求路径
      *
      * @PARAM URI

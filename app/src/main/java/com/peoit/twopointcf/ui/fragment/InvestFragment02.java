@@ -64,13 +64,15 @@ public class InvestFragment02 extends BaseFragment {
 
     @Override
     protected void updateView() {
-        tvProjectname.setText(projectBean.projectName);
-        tvStockcount.setText(projectBean.mStockCount + "%");
-        tvMoney.setText(CommonUtil.twoPointConversion(projectBean.mMoney / 10000.0) + "万");
-        tvInvestorEarnest.setText(projectBean.mInvestorEarnest + "元");
-        String phoneNumber=localUserInfo.getPhonenumber();
-        String temp=phoneNumber.substring(3,7);
-        tvPhoneNumber.setText(phoneNumber.replaceFirst(temp,"****"));
+        if(projectBean!=null) {
+            tvProjectname.setText(projectBean.projectName);
+            tvStockcount.setText(projectBean.mStockPercent);
+            tvMoney.setText(CommonUtil.twoPointConversion(projectBean.mInvestMoney / 10000.0) + "万");
+            tvInvestorEarnest.setText(projectBean.mInvestorEarnest + "元");
+            String phoneNumber = localUserInfo.getPhonenumber();
+            String temp = phoneNumber.substring(3, 7);
+            tvPhoneNumber.setText(phoneNumber.replaceFirst(temp, "****"));
+        }
     }
 
     @Override

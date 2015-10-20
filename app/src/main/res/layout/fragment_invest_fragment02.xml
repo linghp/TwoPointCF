@@ -17,7 +17,7 @@
             android:orientation="vertical"
             >
 
-            <TextView
+            <TextView android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -26,7 +26,7 @@
                 android:textSize="@dimen/title_txt_size"
                 />
 
-            <View
+            <View android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"

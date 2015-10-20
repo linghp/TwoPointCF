@@ -56,10 +56,10 @@ public class InvestActivity extends BaseFragmentActivity {
                     tv_publish.setText(getString(R.string.send_investrequest));
                 } else if (count == 1) {
                     titleView.setTitle(getString(R.string.confirmmargin));
-                    tv_publish.setText(getString(R.string.paynow));
+                    tv_publish.setText(getString(R.string.confirmpay));
                 } else if (count == 2) {
                     titleView.setTitle(getString(R.string.paymargin));
-                    tv_publish.setText(getString(R.string.confirmpay));
+                    tv_publish.setText(getString(R.string.paynow));
                 }
             }
         });

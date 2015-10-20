@@ -18,7 +18,7 @@ import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub4Fragment;
 import com.peoit.twopointcf.utils.CommonUtil;
 
 /**
- * 项目详情
+ * 我发布的项目详情  已弃用 （用投资发现项目详情）
  */
 public class MyPublishDetailActivity extends BaseActivity {
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;

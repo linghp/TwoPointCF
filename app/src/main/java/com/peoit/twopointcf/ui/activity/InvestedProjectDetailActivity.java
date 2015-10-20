@@ -9,17 +9,22 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.TagViewPager;
 import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author ling
+ * 已投项目详情 弃用 （由于和投资法相项目详情一样。。）
+ */
 public class InvestedProjectDetailActivity extends BaseActivity implements View.OnClickListener{
     private TextView tv_subtitle;
     private TagViewPager tagViewPager;
     private String title;
+    private ProjectBean projectBean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +33,15 @@ public class InvestedProjectDetailActivity extends BaseActivity implements View.
         Log.i("InvestedProjectDetai","123");
     }
 
-    public static void startThisActivity(String title, Context context) {
+    public static void startThisActivity(ProjectBean projectBean, Context context) {
         Intent intent = new Intent(context, InvestedProjectDetailActivity.class);
-        intent.putExtra("title", title);
+        intent.putExtra("projectBean", projectBean);
         context.startActivity(intent);
     }
 
     @Override
     protected void initData() {
-        title = getIntent().getStringExtra("title");
+        projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
     }
 
     @Override

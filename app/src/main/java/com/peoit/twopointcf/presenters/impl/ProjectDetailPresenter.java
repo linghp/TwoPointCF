@@ -8,7 +8,7 @@ import com.peoit.twopointcf.base.IBaseView_Response;
 import com.peoit.twopointcf.entity.IsConcernBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
-import com.peoit.twopointcf.presenters.interfaces.IFollowProject;
+import com.peoit.twopointcf.presenters.interfaces.IProjectDetail;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
@@ -18,9 +18,9 @@ import java.util.Map;
  * 关注项目
  * Created by zyz on 2015/9/24.
  */
-public class FollowProjectPresenter extends BasePresenter<FollowProjectPresenter.OnHttpResultListener> implements IFollowProject {
+public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter.OnHttpResultListener> implements IProjectDetail {
 
-    public FollowProjectPresenter(OnHttpResultListener view) {
+    public ProjectDetailPresenter(OnHttpResultListener view) {
         super(view);
     }
 
@@ -108,5 +108,29 @@ public class FollowProjectPresenter extends BasePresenter<FollowProjectPresenter
 
     public interface onIsConcern {
         void onSueccess(IsConcernBean bean);
+    }
+
+
+    @Override
+    public void payMargin(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.PAYMARGIN, maps, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("支付失败");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>是否关注项目" + response);
+                    mView.showToast("支付成功");
+                }
+            }
+        }, mView);
     }
 }

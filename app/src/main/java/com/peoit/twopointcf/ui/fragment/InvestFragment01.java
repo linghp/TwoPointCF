@@ -69,14 +69,14 @@ public class InvestFragment01 extends BaseFragment{
                 if (!TextUtils.isEmpty(s1)) {
                     stockcount = Integer.parseInt(s1);
                     double money = stockcount * (projectBean.perSellStockMoney+0.0);
-                    investorEarnest=money*projectBean.investorEarnestPercent/100;
+                    investorEarnest=money*projectBean.investorEarnestPercent;
                     String money_tt = CommonUtil.twoPointConversion(money / 10000.0) + "万";
-                    String percentage = CommonUtil.twoPointConversion(money / (projectBean.sellStockMoney + 0.0)) + "%";
+                    String percentage = CommonUtil.twoPointConversion(money / (projectBean.totalStockMoney + 0.0)*100) + "%";
                     tv_money.setText(money_tt);
                     tv_percentage.setText(percentage);
 
-                    projectBean.mStockCount=stockcount;
-                    projectBean.mMoney=(int)money;
+                    projectBean.mStockPercent=percentage;
+                    projectBean.mInvestMoney=(int)money;
                     projectBean.mInvestorEarnest=(int)investorEarnest;
                 }else{
                     stockcount=0;
@@ -95,7 +95,7 @@ public class InvestFragment01 extends BaseFragment{
     protected void updateView() {
         if (projectBean != null) {
             tv_projectname.setText(projectBean.projectName);
-            //tv_initiator.setText(projectBean.projectName);
+            tv_initiator.setText(projectBean.publisherName);
         }
     }
 

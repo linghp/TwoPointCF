@@ -99,8 +99,8 @@ public class ProjectBean implements Serializable{
 
 
     //以下为自己添加的字段
-    public int mStockCount;//占股
-    public int mMoney;//投资总额
+    public String mStockPercent;//占股比例
+    public int mInvestMoney;//投资总额
     public int mInvestorEarnest;//保证金
 
 

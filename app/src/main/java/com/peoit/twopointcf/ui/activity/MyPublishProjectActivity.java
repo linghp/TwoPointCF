@@ -31,17 +31,21 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     private IFindProject presenter;
     private Map<String, String> params = new HashMap<>();
     public static Map<String, String> maps_status = new HashMap<>();
+    public static final String WAITING_PAY="waiting_pay";
     public static final String WAITING_INVESTED="waiting_invested";
+    public static final String VERIFY_FAILED="verify_failed";
+    public static final String INVEST_FAILED="invest_failed";
+    public static final String INVEST_SUCCESS="invest_success";
     public static final String PROJECT_SUCCESS="project_success";
 
     static {
         maps_status.put("waiting_verified","待审核");
-        maps_status.put("waiting_pay","待付保证金");
+        maps_status.put(WAITING_PAY,"待付保证金");
         maps_status.put(WAITING_INVESTED,"众筹中");
-        maps_status.put("verify_failed","驳回");
-        maps_status.put("invest_failed","众筹失败");
+        maps_status.put(VERIFY_FAILED,"驳回");
+        maps_status.put(INVEST_FAILED,"众筹失败");
         maps_status.put("invest_delay","待延期审核");
-        maps_status.put("invest_success","待启动");
+        maps_status.put(INVEST_SUCCESS,"待启动");
         maps_status.put(PROJECT_SUCCESS,"众筹成功");
     }
 
@@ -85,10 +89,11 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //PublishProjectActivity.startThisActivity(true,this);
-        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).projectName,
-                investedProjectBeans.get(position).status,
-                investedProjectBeans.get(position),
-                this);
+//        MyPublishDetailActivity.startThisActivity(investedProjectBeans.get(position).projectName,
+//                investedProjectBeans.get(position).status,
+//                investedProjectBeans.get(position),
+//                this);
+        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),true, this);
     }
 
     @Override

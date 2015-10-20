@@ -6,19 +6,34 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.presenters.impl.InvestProjectPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IInvestProject;
+import com.peoit.twopointcf.ui.activity.InvestActivity;
+import com.peoit.twopointcf.ui.activity.MainActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.Map;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class InvestFragment03 extends BaseFragment implements InvestProjectPresenter.OnHttpResultListener {
+    @Bind(R.id.tv_name)
+    TextView tvName;
+    @Bind(R.id.tv_orderMoney)
+    TextView tvOrderMoney;
+    @Bind(R.id.tv_yetMoney)
+    TextView tvYetMoney;
     private IInvestProject presenter;
+    private ProjectBean projectBean;
 
     public InvestFragment03() {
         // Required empty public constructor
@@ -29,7 +44,9 @@ public class InvestFragment03 extends BaseFragment implements InvestProjectPrese
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_invest_fragment03, container, false);
+        View view = inflater.inflate(R.layout.fragment_invest_fragment03, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
 
@@ -40,21 +57,33 @@ public class InvestFragment03 extends BaseFragment implements InvestProjectPrese
 
     @Override
     protected void initData() {
-        presenter=new InvestProjectPresenter(this);
+        projectBean = ((InvestActivity) mActivity).projectBean;
+        presenter = new InvestProjectPresenter(this);
     }
 
     @Override
     protected void updateView() {
-
+        if(projectBean!=null) {
+            tvName.setText(projectBean.projectName+"股权购买定金");
+            tvOrderMoney.setText(projectBean.mInvestorEarnest+"元");
+            tvYetMoney.setText(projectBean.mInvestorEarnest+"元");
+        }
     }
 
-    public void requestServer(Map<String,String> maps){
+    public void requestServer(Map<String, String> maps) {
         presenter.toInvest(maps);
     }
 
     @Override
     public void onHttpResultSuccess() {
-        myToast("支付成功");
-        mActivity.finish();
+        //myToast("支付成功");
+        //mActivity.finish();
+        CommonUtil.gotoActivity(mActivity,MainActivity.class,false);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

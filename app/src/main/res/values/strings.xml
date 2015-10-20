@@ -80,6 +80,7 @@
     <string name="loginsuccess">登录成功</string>
     <string name="changesuccess">修改成功</string>
     <string name="publishsuccess">发布成功</string>
+    <string name="investfinish">投资完成</string>
     <string name="cancelprojectsuccess">关注成功</string>
     <string name="islastpage">已到最后一页</string>
 

@@ -137,10 +137,10 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (position != 0) {
-            Bundle bundle = new Bundle();
-            bundle.putInt("position", position);
-            InvestFindDetailActivity.startThisActivity(projectBeans.get(position-1),getActivity());
-           // CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetailActivity.class, bundle, false);
+//            Bundle bundle = new Bundle();
+//            bundle.putInt("position", position);
+            InvestFindDetailActivity.startThisActivity(projectBeans.get(position-1),false,getActivity());
+            // CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetailActivity.class, bundle, false);
         }
     }
 

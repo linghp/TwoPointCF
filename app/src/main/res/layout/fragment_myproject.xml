@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        <com.peoit.twopointcf.ui.view.TitleView
-            android:id="@+id/title_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <com.peoit.twopointcf.ui.view.TitleView
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,13 +17,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" android:layout_marginLeft="12dp" android:layout_marginRight="12dp">
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="12dp" android:layout_marginBottom="12dp">
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/ll_01"
@@ -48,7 +51,7 @@
                             android:layout_height="fill_parent"
                             android:padding="6dp"
                             android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal"/>
+                            android:src="@mipmap/myprojectnormal" />
 
                         <TextView
                             android:id="@+id/main_unread_msg_number"
@@ -59,14 +62,15 @@
                             android:gravity="center"
                             android:text="3"
                             android:textColor="@android:color/white"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            android:visibility="gone" />
                     </RelativeLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_activity_invested_project"
-                        android:textSize="@dimen/large_title_txt_size"/>
+                        android:textSize="@dimen/large_title_txt_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -74,15 +78,14 @@
                         android:layout_marginTop="9dp"
                         android:lines="2"
                         android:text="管理已投项目"
-                        android:textColor="@color/grey500"
-                        />
+                        android:textColor="@color/grey500" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-      android:layout_marginLeft="6dp"
+                    android:layout_marginLeft="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/frame_bule"
                     android:clickable="true"
@@ -101,14 +104,14 @@
                             android:layout_height="fill_parent"
                             android:padding="6dp"
                             android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal"/>
+                            android:src="@mipmap/myprojectnormal" />
                     </RelativeLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="关注项目"
-                        android:textSize="@dimen/large_title_txt_size"/>
+                        android:textSize="@dimen/large_title_txt_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -116,7 +119,7 @@
                         android:layout_marginTop="9dp"
                         android:lines="2"
                         android:text="查看我关注的"
-                        android:textColor="@color/grey500"/>
+                        android:textColor="@color/grey500" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -129,13 +132,13 @@
                     android:id="@+id/ll_03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/frame_bule"
                     android:clickable="true"
                     android:gravity="center"
                     android:onClick="onClick"
                     android:orientation="vertical"
-                    android:layout_marginRight="6dp"
                     android:padding="16dp">
 
                     <RelativeLayout
@@ -148,14 +151,14 @@
                             android:layout_height="fill_parent"
                             android:padding="6dp"
                             android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal"/>
+                            android:src="@mipmap/myprojectnormal" />
                     </RelativeLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/title_activity_business_manager"
-                        android:textSize="@dimen/large_title_txt_size"/>
+                        android:textSize="@dimen/large_title_txt_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -163,7 +166,7 @@
                         android:layout_marginTop="9dp"
                         android:lines="2"
                         android:text="交易、转让持有股份"
-                        android:textColor="@color/grey500"/>
+                        android:textColor="@color/grey500" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -189,14 +192,14 @@
                             android:layout_height="fill_parent"
                             android:padding="6dp"
                             android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal"/>
+                            android:src="@mipmap/myprojectnormal" />
                     </RelativeLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="已发项目"
-                        android:textSize="@dimen/large_title_txt_size"/>
+                        android:textSize="@dimen/large_title_txt_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -204,10 +207,98 @@
                         android:layout_marginTop="9dp"
                         android:lines="2"
                         android:text="管理、修改我发布的项目"
-                        android:textColor="@color/grey500"/>
+                        android:textColor="@color/grey500" />
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:padding="6dp"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/myprojectnormal" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_activity_business_manager"
+                        android:textSize="@dimen/large_title_txt_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:lines="2"
+                        android:text="交易、转让持有股份"
+                        android:textColor="@color/grey500" />
+                </LinearLayout>
+
+                <LinearLayout android:visibility="invisible"
+                    android:id="@+id/ll_06"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:padding="6dp"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/myprojectnormal" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已发项目"
+                        android:textSize="@dimen/large_title_txt_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:lines="2"
+                        android:text="管理、修改我发布的项目"
+                        android:textColor="@color/grey500" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
 
