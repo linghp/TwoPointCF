@@ -53,7 +53,6 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
         listView = (ListView) findViewById(R.id.listview);
         titleView.setTitle(getString(R.string.title_activity_follow_project));
         listView.setOnItemClickListener(this);
-
         pullview.setOnHeaderRefreshListener(this);
         pullview.setLoadMoreEnable(false);
     }

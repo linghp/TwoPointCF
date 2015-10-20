@@ -77,7 +77,7 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
             case R.id.securitycenter_tv2:
 //                myToast("忘记登录密码");
                 Bundle bundle2 = new Bundle();
-                bundle2.putBoolean("ispassword", true);
+                bundle2.putString("ispassword", "true");
                 CommonUtil.gotoActivityWithData(this, SafetyEfficacyActivity.class, bundle2,false);
                 break;
             case R.id.securitycenter_tv3:
@@ -92,7 +92,7 @@ public class SecurityCenterActivity extends BaseActivity implements View.OnClick
             case R.id.securitycenter_tv5:
 //                myToast("忘记授权密码");
                 Bundle bundle3 = new Bundle();
-                bundle3.putBoolean("ispassword",false);
+                bundle3.putString("ispassword", "false");
                 CommonUtil.gotoActivityWithData(this, SafetyEfficacyActivity.class, bundle3, false);
                 break;
             default:

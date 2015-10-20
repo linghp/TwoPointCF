@@ -56,6 +56,7 @@
     <string name="title_activity_boundphonenum">BoundPhoneNumActivity</string>
     <string name="title_activity_VerifySecurityQuestion">VerifySecurityQuestionActivity</string>
     <string name="title_activity_ChangePassword">ChangePasswordActivity</string>
+    <string name="title_activity_ResetPassword">ResetPasswordActivity</string>
     <string name="title_activity_ChangeEmail">ChangeEmailActivity</string>
     <string name="title_activity_SafetyEfficacy">SafetyEfficacyActivity</string>
     <string name="title_activity_myrating">MyRatingActivity</string>
@@ -79,6 +80,7 @@
     <string name="registersuccess">注册成功</string>
     <string name="loginsuccess">登录成功</string>
     <string name="changesuccess">修改成功</string>
+    <string name="resetsuccess">重置成功</string>
     <string name="publishsuccess">发布成功</string>
     <string name="investfinish">投资完成</string>
     <string name="cancelprojectsuccess">关注成功</string>
