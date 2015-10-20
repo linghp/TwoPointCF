@@ -337,6 +337,7 @@
         android:background="@color/grey200"
         android:gravity="center_vertical|right"
         android:orientation="horizontal"
+        android:visibility="gone"
         >
 
         <TextView
