@@ -130,6 +130,7 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
     @Override
     protected void initData() {
         presenter = new ChangePasswordPresenter(this);
+        MyLogger.i("userid",localUserInfo.getUserId());
     }
 
     @Override

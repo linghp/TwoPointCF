@@ -7,7 +7,7 @@ package com.peoit.twopointcf.net;
  */
 public class URLs {
 //    public static final String HOST = "http://192.168.0.192:8081";
-        public static final String HOST = "http://cfc.jujia999.com:8080";
+    public static final String HOST = "http://cfc.jujia999.com:8080";
     public static final String PROJECT_NAME = "";
     public static final String API = "";
 

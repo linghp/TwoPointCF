@@ -15,7 +15,7 @@ import com.squareup.okhttp.Request;
 import java.util.Map;
 
 /**
- * 关注项目
+ * 项目详情操作
  * Created by zyz on 2015/9/24.
  */
 public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter.OnHttpResultListener> implements IProjectDetail {
@@ -128,8 +128,8 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
             public void onResponse(Object response) {
                 if (response != null) {
                     MyLogger.i(">>>>>>>>>>>>>>>>是否关注项目" + response);
-                    mView.showToast("支付成功");
                 }
+                mView.showToast("支付成功");
             }
         }, mView);
     }

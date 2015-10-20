@@ -202,6 +202,16 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             }
                         });
                         break;
+                    case MyPublishProjectActivity.WAITING_INVESTED:
+                        tvLastBottom01.setText("取消");
+                        tvLastBottom02.setVisibility(View.GONE);
+                        tvLastBottom01.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                myToast("取消");
+                            }
+                        });
+                        break;
                     case MyPublishProjectActivity.VERIFY_FAILED:
                         tvLastBottom01.setText("修改");
                         tvLastBottom02.setVisibility(View.GONE);
