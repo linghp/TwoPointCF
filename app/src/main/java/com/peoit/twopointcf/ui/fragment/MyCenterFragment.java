@@ -35,7 +35,7 @@ import java.util.Map;
  *         个人中心
  */
 public class MyCenterFragment extends BaseFragment implements ChangePasswordPresenter.OnHttpResultListener {
-    private TextView mycenter_tv1,mycenter_tv4,mycenter_tv2,mycenter_tv3;
+    private TextView mycenter_tv1, mycenter_tv4, mycenter_tv2, mycenter_tv3;
     private ImageView iv_photo;
     private ChangePasswordPresenter presenter;
 
@@ -70,24 +70,6 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         MyLogger.i("onActivityCreated");
-        //获取实名认证状态
-        Map<String, String> maps = new HashMap<>();
-        maps.put("userId", localUserInfo.getUserId());
-        presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
-            @Override
-            public void onSueccess(IsVerifiedBean isVerifed) {
-                if (("n").equals(isVerifed.getIsVerified())) {
-                    mycenter_tv3.setText("立即认证");//实名认证
-                    localUserInfo.setIsVerified("立即认证");
-                } else if (("w").equals(isVerifed.getIsVerified())) {
-                    mycenter_tv3.setText("审核中");
-                    localUserInfo.setIsVerified("审核中");
-                } else if (("y").equals(isVerifed.getIsVerified())) {
-                    mycenter_tv3.setText("已认证");
-                    localUserInfo.setIsVerified("已认证");
-                }
-            }
-        });
 
 
     }
@@ -95,18 +77,36 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
     @Override
     public void onResume() {
         super.onResume();
-        if(localUserInfo!=null){
-            String photoName=localUserInfo.getUserPhotoName();
-            if(!TextUtils.isEmpty(photoName)){
+        if (localUserInfo != null) {
+            String photoName = localUserInfo.getUserPhotoName();
+            if (!TextUtils.isEmpty(photoName)) {
                 Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getImageDownloadDir(getActivity()) + photoName);
                 iv_photo.setImageBitmap(bitmap);
             }
             //昵称
-            mycenter_tv1.setText(localUserInfo.getUsername()+"");
+            mycenter_tv1.setText(localUserInfo.getUsername() + "");
             //绑定手机
             mycenter_tv4.setText(localUserInfo.getPhonenumber() + "");
             //个人简介
             mycenter_tv2.setText(localUserInfo.getuserCaption());
+            //获取实名认证状态
+            Map<String, String> maps = new HashMap<>();
+            maps.put("userId", localUserInfo.getUserId());
+            presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
+                @Override
+                public void onSueccess(IsVerifiedBean isVerifed) {
+                    if ("n".equals(isVerifed.getIsVerified())) {
+                        mycenter_tv3.setText("立即认证");//实名认证
+                        localUserInfo.setIsVerified("立即认证");
+                    } else if ("w".equals(isVerifed.getIsVerified())) {
+                        mycenter_tv3.setText("审核中");
+                        localUserInfo.setIsVerified("审核中");
+                    } else if ("y".equals(isVerifed.getIsVerified())) {
+                        mycenter_tv3.setText("已认证");
+                        localUserInfo.setIsVerified("已认证");
+                    }
+                }
+            });
 
         }
         //testGlide();
@@ -120,7 +120,7 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
         view.findViewById(R.id.mycenter_ll4).setOnClickListener(this);
         view.findViewById(R.id.mycenter_ll7).setOnClickListener(this);
         view.findViewById(R.id.mycenter_ll8).setOnClickListener(this);
-        iv_photo= (ImageView) view.findViewById(R.id.mycenter_iv);
+        iv_photo = (ImageView) view.findViewById(R.id.mycenter_iv);
         mycenter_tv1 = findViewByID_My(R.id.mycenter_tv1);
         mycenter_tv2 = findViewByID_My(R.id.mycenter_tv2);
         mycenter_tv3 = findViewByID_My(R.id.mycenter_tv3);
@@ -161,8 +161,8 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 return;
         }
 
-        if (!localUserInfo.isLogin()){
-            CommonUtil.gotoActivity(getActivity(),LoginActivity.class,false);
+        if (!localUserInfo.isLogin()) {
+            CommonUtil.gotoActivity(getActivity(), LoginActivity.class, false);
             return;
         }
 
@@ -173,12 +173,12 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 break;
             case R.id.mycenter_ll2:
                 //实名认证
-                CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class,false);
+                CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class, false);
                 break;
             case R.id.mycenter_ll3:
                 //绑定手机
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("isphonenum",true);
+                bundle.putBoolean("isphonenum", true);
                 CommonUtil.gotoActivityWithData(getActivity(), BoundPhoneNumActivity.class, bundle, false);
                 break;
             case R.id.mycenter_ll4:
@@ -191,7 +191,7 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 break;
             case R.id.mycenter_ll8:
                 //安全中心
-                SecurityCenterActivity.startThisActivity(true,getActivity());
+                SecurityCenterActivity.startThisActivity(true, getActivity());
                 break;
             default:
                 break;

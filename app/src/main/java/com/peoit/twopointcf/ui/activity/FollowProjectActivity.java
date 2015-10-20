@@ -37,7 +37,7 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
     protected void initData() {
         presenter=new FindProjectPresenter(this);
 //        generateData();
-        params.put("userId",localUserInfo.getUserId());
+        params.put("attentionId",localUserInfo.getUserId());
         presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
         followProjectAdapter = new FollowProjectAdapter(FollowProjectActivity.this, investedProjectBeans);
         listView.setAdapter(followProjectAdapter);

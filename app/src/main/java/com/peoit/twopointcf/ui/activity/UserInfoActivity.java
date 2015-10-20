@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.IsVerifiedBean;
 import com.peoit.twopointcf.modules.chooseimages.ChooseImages;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
@@ -20,6 +21,8 @@ import com.peoit.twopointcf.utils.FileUtil;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 个人中心——个人简介
@@ -85,7 +88,24 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         tv_userinfo4.setText(localUserInfo.getuserCaption());//个人简介
         tv_userinfo6.setText(localUserInfo.getPhonenumber());//手机号码
         tv_userinfo7.setText(localUserInfo.getEmail());//邮箱
-        tv_userinfo5.setText(localUserInfo.getIsrealnamevalidated());//实名认证
+        //获取实名认证状态
+        Map<String, String> maps = new HashMap<>();
+        maps.put("userId", localUserInfo.getUserId());
+        presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
+            @Override
+            public void onSueccess(IsVerifiedBean isVerifed) {
+                if ("n".equals(isVerifed.getIsVerified())) {
+                    tv_userinfo5.setText("立即认证");//实名认证
+                    localUserInfo.setIsVerified("立即认证");
+                } else if ("w".equals(isVerifed.getIsVerified())) {
+                    tv_userinfo5.setText("审核中");
+                    localUserInfo.setIsVerified("审核中");
+                } else if ("y".equals(isVerifed.getIsVerified())) {
+                    tv_userinfo5.setText("已认证");
+                    localUserInfo.setIsVerified("已认证");
+                }
+            }
+        });
     }
 
     @Override
@@ -102,6 +122,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 params.put("userId", localUserInfo.getUserId());
                 presenter.getChangeAvatar(filenames, files, params);
             }
+
         }
     }
 
