@@ -15,6 +15,7 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +54,11 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             }
         }, mView);
     }
+
+    /**
+     * 重置密码
+     * @param maps
+     */
     public void getResetPassword(Map maps) {
         OkHttpClientManager.postAsyn(URLs.USER_RESETPASSWORD, maps, new MyResultCallback<Object>() {
             @Override
@@ -67,8 +73,8 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-//                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
-                mView.showToast(R.string.changesuccess);
+//                    MyLogger.i(">>>>>>>>>>>>>>>>重置密码" + response.toString());
+                mView.showToast(R.string.resetsuccess);
                 ((Activity) mView).finish();
             }
         }, mView);
@@ -186,6 +192,29 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
                 }
             }
         });
+    }
+    /**
+     * 修改头像
+     */
+    public void getChangeAvatar(String[] fileKeys, File[] files, Map<String, String> params) {
+        OkHttpClientManager.postAsyn(URLs.CHANGEAVATAR, fileKeys, files, params, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("修改失败" + info);
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+//                mView.onHttpResultSuccess();
+                mView.showToast("修改头像成功");
+//                ((Activity) mView).finish();
+            }
+        }, mView);
     }
     public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
         @Override

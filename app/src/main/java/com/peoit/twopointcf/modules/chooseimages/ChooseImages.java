@@ -67,7 +67,6 @@ public class ChooseImages {
         tv_xiangce.setText("相册");
         tv_xiangce.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 getNowTime();
                 imageName = getNowTime() + ".png";
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
@@ -117,8 +116,9 @@ public class ChooseImages {
                 MyLogger.i(imagelocaldir);
                 Bitmap bitmap = BitmapFactory.decodeFile(imagelocaldir
                         + imageName);
-                LocalUserInfo.getInstance(activity).setUserPhotoName(imageName);
+                LocalUserInfo.getInstance(activity).setUserPhotoName(imageName); 
                 iv_photo.setImageBitmap(bitmap);
+
                 //updatePhotoInServer(imageName);
                 break;
         }

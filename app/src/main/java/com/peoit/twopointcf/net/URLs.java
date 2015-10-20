@@ -57,7 +57,7 @@ public class URLs {
      */
     public static final String CHANGEPHONE = HOST + "/api/user/changeMobile";
     /**
-     * 修改头像
+     * 修改用户头像
      */
     public static final String CHANGEAVATAR = HOST + "/api/user/changeAvatar";
     /**

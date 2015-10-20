@@ -26,7 +26,7 @@ public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickL
     private TimeCount time;
     private RegisterPresenter presenter;
     private boolean isphonenum;
-    private boolean ispassword;
+    private String ispassword = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickL
     protected void initData() {
         Intent intent = getIntent();
         isphonenum = intent.getBooleanExtra("isphonenum", false);
-        ispassword = intent.getBooleanExtra("ispassword",false);
+        ispassword = intent.getStringExtra("ispassword");
         presenter = new RegisterPresenter(this);
     }
 
@@ -86,11 +86,23 @@ public class BoundPhoneNumActivity extends BaseActivity implements View.OnClickL
                     @Override
                     public void onSueccess(String bean) {
                         if ("y".equals(bean)) {
-                            if (isphonenum)
-                                CommonUtil.gotoActivity(BoundPhoneNumActivity.this, ChangePhoneActivity.class, true);
-                            else
-                                CommonUtil.gotoActivity(BoundPhoneNumActivity.this, ChangeEmailActivity.class, true);
-//                            if (ispassword)
+                            if (ispassword != null){
+                                if ("true".equals(ispassword)) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putBoolean("isReset", true);
+                                    CommonUtil.gotoActivityWithData(BoundPhoneNumActivity.this, ResetPasswordActivity.class,bundle, true);
+                                }else if ("false".equals(ispassword)){
+                                    Bundle bundle1 = new Bundle();
+                                    bundle1.putBoolean("isReset", false);
+                                    CommonUtil.gotoActivityWithData(BoundPhoneNumActivity.this, ResetPasswordActivity.class,bundle1, true);
+                                }
+                            }else {
+                                if (isphonenum)
+                                    CommonUtil.gotoActivity(BoundPhoneNumActivity.this, ChangePhoneActivity.class, true);
+                                else
+                                    CommonUtil.gotoActivity(BoundPhoneNumActivity.this, ChangeEmailActivity.class, true);
+                            }
+
 
 
                         }

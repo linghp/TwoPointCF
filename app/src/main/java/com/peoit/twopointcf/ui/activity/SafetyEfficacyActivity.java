@@ -17,7 +17,7 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
     private LinearLayout safetyefficacyLl1;
     private LinearLayout safetyefficacyLl2;
 
-    private boolean ispassword;
+    private String ispassword = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        ispassword = intent.getBooleanExtra("ispassword",false);
+        ispassword = intent.getStringExtra("ispassword");
     }
 
     @Override
@@ -46,9 +46,9 @@ public class SafetyEfficacyActivity extends BaseActivity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.safetyefficacy_ll1:
-                myToast("验证短信");
+//                myToast("验证短信");
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("ispassword",ispassword);
+                bundle.putString("ispassword",ispassword);
                 CommonUtil.gotoActivityWithData(this, BoundPhoneNumActivity.class, bundle, false);
                 break;
             case R.id.safetyefficacy_ll2:

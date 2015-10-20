@@ -3,6 +3,7 @@ package com.peoit.twopointcf.ui.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.FileUtil;
 import com.peoit.twopointcf.utils.LocalUserInfo;
+
+import java.io.File;
 
 /**
  * 个人中心——个人简介
@@ -88,8 +91,17 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            ChooseImages.activityResultSwitch(requestCode,data,iv_photo,this);
+            ChooseImages.activityResultSwitch(requestCode, data, iv_photo, this);
             super.onActivityResult(requestCode, resultCode, data);
+            if (ChooseImages.imagelocaldir != null || ChooseImages.imageName != null){
+                Uri uri = Uri.parse("");
+                uri = Uri.fromFile(new File(ChooseImages.imagelocaldir, ChooseImages.imageName));
+                File file = new File(FileUtil.getPath(this, uri));
+                String[] filenames = {"avatarFile"};
+                File[] files = {file};
+                params.put("userId", localUserInfo.getUserId());
+                presenter.getChangeAvatar(filenames, files, params);
+            }
         }
     }
 
@@ -97,6 +109,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_userinfo01:
+                //修改头像
                 ChooseImages.showPhotoDialog(this);
                 break;
             case R.id.ll_userinfo05:
