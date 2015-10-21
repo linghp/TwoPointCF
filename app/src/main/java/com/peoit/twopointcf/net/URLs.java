@@ -88,6 +88,14 @@ public class URLs {
      */
     public static final String UPDATEPROJECT = HOST + "/api/project/updateProject";
     /**
+     * 取消项目
+     */
+    public static final String CANCELPROJECT = HOST + "/api/project/cancelProject";
+    /**
+     * 启动项目
+     */
+    public static final String STARTPROJECT = HOST + "/api/project/startProject";
+    /**
      * 发现项目
      * 我发布的项目 参数publisherId
      */
@@ -106,7 +114,7 @@ public class URLs {
     /**
      * 关注项目
      */
-    public static final String CANCELPROJECT = HOST + "/api/project/concernProject";
+    public static final String CONCERNPROJECT = HOST + "/api/project/concernProject";
     /**
      * 判断用户是否关注项目
      */

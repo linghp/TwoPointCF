@@ -118,7 +118,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         if (projectBean != null) {
             String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney / 10000 + "万元", //融资资金
                     projectBean.investUserAmount + "", //已投人数
-                    CommonUtil.twoPointConversion((projectBean.sellStockMoney + 0.0) / projectBean.totalStockMoney * 100) + "%", projectBean.perSellStockMoney + "元",//出让股份、单股投资额
+                    CommonUtil.twoPointConversion((projectBean.sellStockMoney + 0.0) / projectBean.totalStockMoney * 100) + "%", //出让股份
+                    projectBean.perSellStockMoney + "元",//单股投资额
                     CommonUtil.twoPointConversion((projectBean.perSellStockMoney + 0.0) / projectBean.totalStockMoney * 100) + "%",//单股比例
                     projectBean.projectCity, projectBean.stockType, projectBean.endDate,//所在城市、股权类型、结束时间
                     projectBean.dividendType, CommonUtil.twoPointConversion(projectBean.dividendPercent * 100) + "%",//分红模式、分红比例
@@ -208,7 +209,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         tvLastBottom01.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                myToast("取消");
+//                                myToast("取消");
+                                Map<String, String> maps = new HashMap<>();
+                                maps.put("id", projectBean.id);
+                                presenter.getCancelProject(maps);
+
                             }
                         });
                         break;
@@ -218,7 +223,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         tvLastBottom01.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                myToast("修改");
+//                                myToast("修改");
+                                PublishProjectActivity.startThisActivity(true, projectBean,InvestFindDetailActivity.this);
                             }
                         });
                         break;
@@ -229,6 +235,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
                                 myToast("延期");
+
                             }
                         });
                         break;
@@ -238,13 +245,20 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         tvLastBottom01.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                myToast("启动");
+//                                myToast("启动");
+                                Map<String, String> maps = new HashMap<>();
+                                maps.put("id", projectBean.id);
+                                presenter.getStartProject(maps);
+
                             }
                         });
                         tvLastBottom02.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                myToast("取消");
+//                                myToast("取消");
+                                Map<String, String> maps = new HashMap<>();
+                                maps.put("id", projectBean.id);
+                                presenter.getCancelProject(maps);
                             }
                         });
                         break;
@@ -333,7 +347,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 maps.put("userId", localUserInfo.getUserId());
                 maps.put("projectId", projectBean.id);
                 maps.put("concern", "y");
-                presenter.getCancelProject(maps, new ProjectDetailPresenter.onCancelProject() {
+                presenter.getConcernProject(maps, new ProjectDetailPresenter.onCancelProject() {
                     @Override
                     public void onSueccess(String bean) {
                         if ("true".equals(bean)) {
@@ -354,7 +368,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 maps.put("userId", localUserInfo.getUserId());
                 maps.put("projectId", projectBean.id);
                 maps.put("concern", "n");
-                presenter.getCancelProject(maps, new ProjectDetailPresenter.onCancelProject() {
+                presenter.getConcernProject(maps, new ProjectDetailPresenter.onCancelProject() {
                     @Override
                     public void onSueccess(String bean) {
                         if ("true".equals(bean)) {

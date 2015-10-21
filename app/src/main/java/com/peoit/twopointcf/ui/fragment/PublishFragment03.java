@@ -52,12 +52,48 @@ public class PublishFragment03 extends BaseFragment {
 
         tv_stocktype.setOnClickListener(this);
         tv_endDate.setOnClickListener(this);
-        tv_proportion.setOnClickListener(this);
         tv_successCondition.setOnClickListener(this);
+
+        //在输入售卖金额后触发
+        et_perSellStockMoney.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (et_perSellStockMoney.hasFocus() == false) {
+                    sellStockMoney = et_sellStockMoney.getText().toString().trim();
+                    if (TextUtils.isEmpty(sellStockMoney)) {
+                        myToast("请输入发行总额");
+                    }else {
+                        perSellStockMoney = et_perSellStockMoney.getText().toString().trim();
+                        if (TextUtils.isEmpty(perSellStockMoney)) {
+                            myToast("请输入售卖金额");
+                        }else {
+                            float i = Float.valueOf(sellStockMoney);
+                            float j = Float.valueOf(perSellStockMoney);
+                            tv_proportion.setText(j / i * 100 + "%");
+                        }
+                    }
+
+
+                }
+            }
+        });
+
     }
 
     @Override
     protected void initData() {
+        //传过来的数据
+        if (publishProjectActivity.projectBean != null){
+            et_moneyUse.setText(publishProjectActivity.projectBean.moneyUse);//融资用途
+            et_totalStockMoney.setText(publishProjectActivity.projectBean.totalStockMoney+"");//股权总额
+            et_sellStockMoney.setText(publishProjectActivity.projectBean.sellStockMoney+"");//发行总额
+            tv_proportion.setText((publishProjectActivity.projectBean.perSellStockMoney + 0.0) / publishProjectActivity.projectBean.sellStockMoney * 100 + "%");//起售股份所占比例
+            et_perSellStockMoney.setText(publishProjectActivity.projectBean.perSellStockMoney+"");//售卖金额
+            tv_stocktype.setText(publishProjectActivity.projectBean.stockType);//股权类型
+            tv_endDate.setText(publishProjectActivity.projectBean.endDate);//众筹结束时间
+            tv_successCondition.setText(publishProjectActivity.projectBean.successCondition * 100 +"%");//项目启动条件
+        }
+
         stockTypes = getActivity().getResources().getStringArray(R.array.publishproject_stocktypes);
         proportion = getActivity().getResources().getStringArray(R.array.publishproject_proportion);
     }
@@ -69,14 +105,15 @@ public class PublishFragment03 extends BaseFragment {
 
     public boolean putData() {
         if (match()) {
+            float i = Float.valueOf(successCondition.replace("%",""));
             publishProjectActivity.params.put("moneyUse", moneyUse);
             publishProjectActivity.params.put("totalStockMoney", totalStockMoney);
             publishProjectActivity.params.put("sellStockMoney", sellStockMoney);
             publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
-            publishProjectActivity.params.put("perSellStockMoney", perSellStockMoney);
+//            publishProjectActivity.params.put("proportion", perSellStockMoney);
             publishProjectActivity.params.put("stockType", stocktype);
             publishProjectActivity.params.put("endDate", endDate);
-            publishProjectActivity.params.put("successCondition", successCondition.replace("%",""));
+            publishProjectActivity.params.put("successCondition", i/100+"");
             return true;
         }
         return false;

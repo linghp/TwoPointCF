@@ -35,11 +35,7 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
 
     @Override
     protected void initData() {
-        presenter=new FindProjectPresenter(this);
-        params.put("investorId",localUserInfo.getUserId());
-        presenter.getData(URLs.FINDINVESTEDPROJECT,params, investedProjectBeans);
-        investedProjectAdapter = new InvestedProjectAdapter(this, investedProjectBeans);
-        listView.setAdapter(investedProjectAdapter);
+
     }
 
 //    private void generateData() {
@@ -47,6 +43,17 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
 //        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.hongpa, "2015-06-30", "轰趴", "20万元"));
 //        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.shuilongtou, "2015-06-30", "水龙头安全套", "20万元"));
 //    }
+
+
+    @Override
+    protected void onResume() {
+        presenter=new FindProjectPresenter(this);
+        params.put("investorId",localUserInfo.getUserId());
+        presenter.getData(URLs.FINDINVESTEDPROJECT,params, investedProjectBeans);
+        investedProjectAdapter = new InvestedProjectAdapter(this, investedProjectBeans);
+        listView.setAdapter(investedProjectAdapter);
+        super.onResume();
+    }
 
     @Override
     protected void initView() {

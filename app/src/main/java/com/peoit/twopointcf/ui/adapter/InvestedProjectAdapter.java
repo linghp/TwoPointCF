@@ -59,7 +59,7 @@ public class InvestedProjectAdapter extends BaseAdapter {
         holder.tv_tag.setText(maps_status.get(getItem(position).status));
         holder.tv_title.setText(getItem(position).projectName);
         holder.tv_money.setText(CommonUtil.twoPointConversion(getItem(position).userInvestedAmount*getItem(position).perSellStockMoney/10000.0)+"万元");
-        holder.tv_time.setText(getItem(position).userInvestedDate);
+        holder.tv_time.setText(getItem(position).endDate);
         return convertView;
     }
 

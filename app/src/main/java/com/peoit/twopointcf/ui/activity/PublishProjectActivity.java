@@ -39,7 +39,7 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
     public ArrayList<File> listFiles = new ArrayList<>();
     private IPublishProject presenter;
 
-    private ProjectBean projectBean;
+    public ProjectBean projectBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,6 +207,7 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
         }
 
         if (isFromMyPublishProject) {
+            //修改项目
             params.put("userId", userid);
             params.put("id", projectBean.id);
 //        params.put("industryType", "01");

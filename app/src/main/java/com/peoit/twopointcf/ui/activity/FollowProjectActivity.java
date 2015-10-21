@@ -9,22 +9,43 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
-import com.peoit.twopointcf.ui.adapter.FollowProjectAdapter;
+import com.peoit.twopointcf.ui.adapter.ProjectAdapter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 关注项目
  */
-public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,
-        AbPullToRefreshView.OnHeaderRefreshListener,FindProjectPresenter.OnHttpResultListener {
+public class FollowProjectActivity extends BaseActivity implements AdapterView.OnItemClickListener,FindProjectPresenter.OnHttpResultListener,
+        AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener{
 
     private ListView listView;
     private List<ProjectBean> investedProjectBeans = new ArrayList<>();
-    private FollowProjectAdapter followProjectAdapter;
+//    private FollowProjectAdapter followProjectAdapter;
+    private ProjectAdapter investedProjectAdapter;
+    public static Map<String, String> maps_status = new HashMap<>();
+    public static final String WAITING_PAY="waiting_pay";
+    public static final String WAITING_INVESTED="waiting_invested";
+    public static final String VERIFY_FAILED="verify_failed";
+    public static final String INVEST_FAILED="invest_failed";
+    public static final String INVEST_SUCCESS="invest_success";
+    public static final String PROJECT_SUCCESS="project_success";
+
+    static {
+        maps_status.put("waiting_verified","待审核");
+        maps_status.put(WAITING_PAY,"待付保证金");
+        maps_status.put(WAITING_INVESTED,"众筹中");
+        maps_status.put(VERIFY_FAILED,"驳回");
+        maps_status.put(INVEST_FAILED,"众筹失败");
+        maps_status.put("invest_delay","待延期审核");
+        maps_status.put(INVEST_SUCCESS,"待启动");
+        maps_status.put(PROJECT_SUCCESS,"众筹成功");
+    }
 
     private FindProjectPresenter presenter;
     @Override
@@ -37,10 +58,11 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
     protected void initData() {
         presenter=new FindProjectPresenter(this);
 //        generateData();
-        params.put("attentionId",localUserInfo.getUserId());
+        params.put("attentionId", localUserInfo.getUserId());
         presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
-        followProjectAdapter = new FollowProjectAdapter(FollowProjectActivity.this, investedProjectBeans);
-        listView.setAdapter(followProjectAdapter);
+//        followProjectAdapter = new FollowProjectAdapter(FollowProjectActivity.this, investedProjectBeans);
+        investedProjectAdapter = new ProjectAdapter(this, investedProjectBeans,maps_status);
+        listView.setAdapter(investedProjectAdapter);
     }
 
    /* private void generateData() {
@@ -54,7 +76,7 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
         titleView.setTitle(getString(R.string.title_activity_follow_project));
         listView.setOnItemClickListener(this);
         pullview.setOnHeaderRefreshListener(this);
-        pullview.setLoadMoreEnable(false);
+        pullview.setOnFooterLoadListener(this);
     }
 
     @Override
@@ -64,21 +86,28 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        InvestFindDetailActivity.startThisActivity(null,false,this);
+//        InvestFindDetailActivity.startThisActivity(null,false,this);
+        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),false,this);
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
-
+        presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
     }
 
     @Override
     public void onHttpResultSuccess() {
-
+        investedProjectAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onHttpResult() {
+        pullview.onHeaderRefreshFinish();
+        pullview.onFooterLoadFinish();
+    }
 
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+        presenter.getDataMore(URLs.FINDCONCERNEDPROJECT,params);
     }
 }

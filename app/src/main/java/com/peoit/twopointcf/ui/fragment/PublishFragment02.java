@@ -62,6 +62,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
         // Inflate the layout for this fragment
         publishProjectActivity = (PublishProjectActivity) getActivity();
         return inflater.inflate(R.layout.fragment_publish_fragment02, container, false);
+//        publishProjectActivity.projectBean.address;
     }
 
     @Override
@@ -96,6 +97,25 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected void initData() {
+        //传过来的数据
+        if (publishProjectActivity.projectBean != null){
+            et_projectName.setText(publishProjectActivity.projectBean.projectName);//项目名称
+            et_projectIntro.setText(publishProjectActivity.projectBean.projectIntro);//项目介绍
+            et_marketAnalysis.setText(publishProjectActivity.projectBean.marketAnalysis);//市场分析
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//收入来源
+            et_profitForecast.setText(publishProjectActivity.projectBean.profitForecast);//盈利预测
+            et_teamIntroducation.setText(publishProjectActivity.projectBean.teamIntroducation);//团队介绍
+            tv_projectCity.setText(publishProjectActivity.projectBean.projectCity);//所在城市
+            tv_industryType.setText(publishProjectActivity.projectBean.industryType);//行业类型
+            tv_projectType.setText(publishProjectActivity.projectBean.projectType);//项目类型
+            et_address.setText(publishProjectActivity.projectBean.address);//详细地址
+
+            /*et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//项目图片
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//营业执照
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//个人信用报告
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//行业许可证*/
+
+        }
         citys=getActivity().getResources().getStringArray(R.array.publishproject_choosecitys);
         industryTypes=getActivity().getResources().getStringArray(R.array.publishproject_industrytype);
         projectTypes=getActivity().getResources().getStringArray(R.array.publishproject_projectTypes);
@@ -124,7 +144,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
             publishProjectActivity.params.put("projectIntro", projectIntro);
             publishProjectActivity.params.put("projectCity", projectCity);
             publishProjectActivity.params.put("industryType", industryType);
-//            publishProjectActivity.params.put("address", address);
+            publishProjectActivity.params.put("address", address);
             publishProjectActivity.params.put("marketAnalysis", marketAnalysis);
             publishProjectActivity.params.put("sourceOfIncome", sourceOfIncome);
             publishProjectActivity.params.put("profitForecast", profitForecast);
@@ -189,7 +209,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
             myToast("请输入详细地址");
             return false;
         }
-        for (int i = 0; i < mDatas.size()-1; i++) {
+        for (int i = 0; i < mDatas.size(); i++) {
             if (mDatas.get(i).size() == 0) {
                 switch (i) {
                     case 0:

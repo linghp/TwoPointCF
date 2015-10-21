@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.peoit.twopointcf.R;
@@ -47,9 +48,13 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
         }
     }
 
-    //
-    public void getCancelProject(Map maps, final onCancelProject strings) {
-        OkHttpClientManager.postAsyn(URLs.CANCELPROJECT, maps, new MyResultCallback<String>() {
+    /**
+     * 关注项目
+     * @param maps
+     * @param strings
+     */
+    public void getConcernProject(Map maps, final onCancelProject strings) {
+        OkHttpClientManager.postAsyn(URLs.CONCERNPROJECT, maps, new MyResultCallback<String>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
@@ -110,7 +115,10 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
         void onSueccess(IsConcernBean bean);
     }
 
-
+    /**
+     * 支付
+     * @param maps
+     */
     @Override
     public void payMargin(Map maps) {
         OkHttpClientManager.postAsyn(URLs.PAYMARGIN, maps, new MyResultCallback<Object>() {
@@ -127,10 +135,66 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
             @Override
             public void onResponse(Object response) {
                 if (response != null) {
-                    MyLogger.i(">>>>>>>>>>>>>>>>是否关注项目" + response);
+                    MyLogger.i(">>>>>>>>>>>>>>>>支付" + response);
                 }
                 mView.showToast("支付成功");
+                ((Activity) mView).finish();
             }
         }, mView);
     }
+
+    /**
+     * 取消项目
+     */
+    public void getCancelProject(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.CANCELPROJECT, maps, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("取消失败");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>取消项目" + response);
+                }
+                mView.showToast("取消成功");
+                ((Activity) mView).finish();
+            }
+        }, mView);
+    }
+    /**
+     * 启动项目
+     */
+    public void getStartProject(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.STARTPROJECT, maps, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("启动失败");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>启动项目" + response);
+                }
+                mView.showToast("启动成功");
+                ((Activity) mView).finish();
+            }
+        }, mView);
+    }
+    /**
+     *
+     */
+
 }

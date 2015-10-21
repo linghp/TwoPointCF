@@ -53,6 +53,14 @@ public class PublishFragment04 extends BaseFragment {
 
     @Override
     protected void initData() {
+        //传过来的数据
+        if (publishProjectActivity.projectBean != null){
+            tv_dividendType.setText(publishProjectActivity.projectBean.dividendType);//分红模式
+            tv_proportion1.setText(publishProjectActivity.projectBean.dividendPercent * 100 + "%");//分红比例
+            et_stockholderPrivilege.setText(publishProjectActivity.projectBean.stockholderPrivilege);//股东特权说明
+            tv_proportion2.setText(publishProjectActivity.projectBean.investorEarnestPercent * 100+"%");//交付保证金比例
+        }
+
         dividendtypes=getActivity().getResources().getStringArray(R.array.publishproject_dividendtypes);
         proportion1 = getActivity().getResources().getStringArray(R.array.publishproject_proportion1);
         proportion2 = getActivity().getResources().getStringArray(R.array.publishproject_proportion2);
@@ -65,10 +73,12 @@ public class PublishFragment04 extends BaseFragment {
 
     public boolean putData(){
         if(match()){
+            float i = Float.valueOf(dividendratio.replace("%", ""));
+            float j = Float.valueOf(securitydeposit.replace("%", ""));
             publishProjectActivity.params.put("dividendType", dividendtype);
-            publishProjectActivity.params.put("dividendPercent", "80");
+            publishProjectActivity.params.put("dividendPercent", i/100+"");
             publishProjectActivity.params.put("stockholderPrivilege", stockholderPrivilege);
-            publishProjectActivity.params.put("investorEarnestPercent", "10");
+            publishProjectActivity.params.put("investorEarnestPercent", j/100+"");
             return true;
         }
         return false;
