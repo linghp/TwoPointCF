@@ -150,7 +150,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("获取用户实名认证状态失败");
+//                    mView.showToast("获取用户实名认证状态失败");
                 }
             }
 

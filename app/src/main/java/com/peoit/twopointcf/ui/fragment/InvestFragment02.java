@@ -19,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * 确认保证金
  * A simple {@link Fragment} subclass.
  */
 public class InvestFragment02 extends BaseFragment {

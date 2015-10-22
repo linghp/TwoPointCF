@@ -16,6 +16,7 @@ import com.peoit.twopointcf.ui.activity.InvestActivity;
 import com.peoit.twopointcf.ui.activity.MainActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * 支付保证金
  * A simple {@link Fragment} subclass.
  */
 public class InvestFragment03 extends BaseFragment implements InvestProjectPresenter.OnHttpResultListener {
@@ -65,20 +67,26 @@ public class InvestFragment03 extends BaseFragment implements InvestProjectPrese
     protected void updateView() {
         if(projectBean!=null) {
             tvName.setText(projectBean.projectName+"股权购买定金");
-            tvOrderMoney.setText(projectBean.mInvestorEarnest+"元");
-            tvYetMoney.setText(projectBean.mInvestorEarnest+"元");
+            tvOrderMoney.setText(projectBean.mInvestMoney+"元");
+            tvYetMoney.setText(projectBean.mInvestMoney+"元");
         }
     }
 
     public void requestServer(Map<String, String> maps) {
+        /*maps.put("projectId", projectBean.id);
+        maps.put("userId", localUserInfo.getUserId());
+        maps.put("projectId", projectBean.mInvestorEarnest+"");
+        maps.put("description", "呵呵呵");//投资说明*/
+        MyLogger.i("投资传入的参数："+maps);
         presenter.toInvest(maps);
     }
 
     @Override
     public void onHttpResultSuccess() {
         //myToast("支付成功");
+
         //mActivity.finish();
-        CommonUtil.gotoActivity(mActivity,MainActivity.class,false);
+        CommonUtil.gotoActivity(mActivity,MainActivity.class,true);
     }
 
     @Override

@@ -17,6 +17,9 @@ import com.peoit.twopointcf.ui.fragment.InvestFragment02;
 import com.peoit.twopointcf.ui.fragment.InvestFragment03;
 import com.peoit.twopointcf.utils.DialogTool;
 
+/**
+ * 我要投资
+ */
 public class InvestActivity extends BaseFragmentActivity {
     private TextView tv_publish;
     public ProjectBean projectBean;
@@ -79,8 +82,10 @@ public class InvestActivity extends BaseFragmentActivity {
             case R.id.tv_publish:
                 int count = fragmentManager.getBackStackEntryCount();
                 if (count == 0) {
+                    //发送投资申请
                     fragment01.requestServer();
                 } else if (count == 1) {
+                    //确认支付
                     new AlertDialog.Builder(this).setTitle("注意").setMessage("支付保证金后，不支持保证金退款，请仔细和对相关信息。").setPositiveButton(
                             "确定", new DialogInterface.OnClickListener() {
                                 @Override
@@ -104,7 +109,8 @@ public class InvestActivity extends BaseFragmentActivity {
         int count = fragmentManager.getBackStackEntryCount();
         switch (count) {
             case 0:
-                DialogTool.createCommonDialog(this, 0, "提醒", "请确定并进入支付保证金页面，您将要支付"+Math.round(fragment01.investorEarnest)+"元保证金。", "确认", new DialogInterface.OnClickListener() {
+                DialogTool.createCommonDialog(this, 0, "提醒", "请确定并进入支付保证金页面，您将要支付"+Math.round(fragment01.investorEarnest)+"元保证金。",
+                        "确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(projectBean!=null) {

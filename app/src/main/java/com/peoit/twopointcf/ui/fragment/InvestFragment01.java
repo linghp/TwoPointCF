@@ -21,6 +21,7 @@ import com.peoit.twopointcf.utils.CommonUtil;
 import java.util.HashMap;
 
 /**
+ * 投资
  * A simple {@link Fragment} subclass.
  */
 public class InvestFragment01 extends BaseFragment{
@@ -30,6 +31,7 @@ public class InvestFragment01 extends BaseFragment{
     //private IInvestProject presenter;
     private int stockcount;
     public double investorEarnest;
+    double money;
 
     public InvestFragment01() {
         // Required empty public constructor
@@ -68,7 +70,7 @@ public class InvestFragment01 extends BaseFragment{
                 String s1 = s.toString();
                 if (!TextUtils.isEmpty(s1)) {
                     stockcount = Integer.parseInt(s1);
-                    double money = stockcount * (projectBean.perSellStockMoney+0.0);
+                    money = stockcount * (projectBean.perSellStockMoney+0.0);
                     investorEarnest=money*projectBean.investorEarnestPercent;
                     String money_tt = CommonUtil.twoPointConversion(money / 10000.0) + "万";
                     String percentage = CommonUtil.twoPointConversion(money / (projectBean.totalStockMoney + 0.0)*100) + "%";
@@ -106,9 +108,8 @@ public class InvestFragment01 extends BaseFragment{
         if(match()) {
             params.put("projectId",projectBean.id);
             params.put("userId",localUserInfo.getUserId());
-            params.put("amount",stockcount+"");
+            params.put("amount",money+"");
             params.put("description",tv_description.getText().toString().trim());
-
             mActivity.onResultSuccess();
         }
     }

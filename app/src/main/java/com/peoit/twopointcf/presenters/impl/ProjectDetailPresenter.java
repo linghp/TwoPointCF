@@ -61,7 +61,7 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("请求失败");
+                    mView.showToast("关注失败");
                 }
             }
 
@@ -91,7 +91,7 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("获取关注状态失败");
+//                    mView.showToast("获取关注状态失败");
                 }
             }
 

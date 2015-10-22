@@ -70,8 +70,6 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         MyLogger.i("onActivityCreated");
-
-
     }
 
     @Override
@@ -130,7 +128,7 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
     @Override
     protected void initData() {
         presenter = new ChangePasswordPresenter(this);
-        MyLogger.i("userid",localUserInfo.getUserId());
+        MyLogger.i("userid", localUserInfo.getUserId());
     }
 
     @Override
@@ -174,7 +172,12 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 break;
             case R.id.mycenter_ll2:
                 //实名认证
-                CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class, false);
+                if ("立即认证".equals(localUserInfo.getIsrealnamevalidated()))
+                    CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class, false);
+                else if ("审核中".equals(localUserInfo.getIsrealnamevalidated()))
+                    myToast("实名认证审核中，请耐心等待");
+                else
+                    myToast("已认证");
                 break;
             case R.id.mycenter_ll3:
                 //绑定手机
