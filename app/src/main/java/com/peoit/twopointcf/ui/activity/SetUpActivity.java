@@ -19,6 +19,7 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
     private LinearLayout setupLl1;
     private LinearLayout setupLl2;
     private TextView setupTv1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,27 +40,27 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     protected void updateView() {
-        if(titleView!=null) {
+        if (titleView != null) {
             titleView.setTitle("设置");
         }
-        if(!localUserInfo.isLogin()){
+        if (!localUserInfo.isLogin()) {
             setupTv1.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.setup_ll1:
                 DialogTool.createCommonDialog(this, R.mipmap.ic_launcher, "清空缓存", "确认清空缓存？", "确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        myToast("清空缓存");
+                        myToast("已清空缓存");
                     }
                 }, "取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        myToast("取消");
+//                        myToast("取消");
                     }
                 }).show();
                 /*final List<String> strings = new ArrayList<String>();
@@ -87,8 +88,19 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
                 myToast("关于我们");
                 break;
             case R.id.setup_tv1:
-                localUserInfo.deleteUserInfo();
-                CommonUtil.gotoActivity(this,LoginActivity.class,true);
+                DialogTool.createCommonDialog(this, R.mipmap.ic_launcher, "注销登录", "确认注销登录？", "确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        localUserInfo.deleteUserInfo();
+                        CommonUtil.gotoActivity(SetUpActivity.this, LoginActivity.class, true);
+                    }
+                }, "取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        myToast("取消");
+                    }
+                }).show();
+
 
                 break;
             default:

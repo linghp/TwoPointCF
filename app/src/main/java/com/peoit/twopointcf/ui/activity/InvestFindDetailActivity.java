@@ -125,7 +125,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     projectBean.dividendType, CommonUtil.twoPointConversion(projectBean.dividendPercent * 100) + "%",//分红模式、分红比例
                     projectBean.stockholderPrivilege, CommonUtil.twoPointConversion(projectBean.investorEarnestPercent * 100) + "%",//股东持权、保障金比例
                     "众筹完成" + CommonUtil.twoPointConversion(projectBean.successCondition * 100) + "%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
-                    "点击查看", "点击查看", "点击查看"};
+                    "点击查看", "点击查看", "点击查看"};//营业执照、信用报告、行业许可证
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
             for (int i = 0; i < investfinddetail_subitemnames.length; i++) {
                 View view = inflater.inflate(R.layout.activity_invest_find_detail_subitem, null);
@@ -134,12 +134,15 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 tv01.setText(investfinddetail_subitemnames[i]);
                 tv02.setText(investfinddetail_subitemvalues[i]);
                 linearLayoutsub.addView(view);
+
+                String[] details = {"","","","","","","","","","","","","","","",projectBean.businessLicenses.get(0),projectBean.personCredits.get(0),projectBean.industryLicense.get(0)};
                 final String title = investfinddetail_subitemnames[i];
+                final String detail = details[i];
                 if (investfinddetail_subitemvalues[i] != null && investfinddetail_subitemvalues[i].contains("点击查看")) {
                     tv02.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            SimplePhotoViewActivity.startThisActivity(title, InvestFindDetailActivity.this);
+                            SimplePhotoViewActivity.startThisActivity(title,detail,InvestFindDetailActivity.this);
                         }
                     });
                 }
@@ -182,7 +185,10 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             if (!TextUtils.isEmpty(projectBean.endDate)) {
                 Calendar c = new GregorianCalendar();
                 int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(projectBean.endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());
-                tv_bottom03.setText(days + "天");
+                if (days > 0)
+                    tv_bottom03.setText(days + "天");
+                else
+                    tv_bottom03.setText("已结束");
             }
 
             //判断是不是从我的已发项目跳转过来，做相应的按钮显示及操作
@@ -264,7 +270,14 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         break;
                     default:llBottom.setVisibility(View.GONE);
                 }
+            } else{
+                if ("已结束".equals(tv_bottom03.getText().toString().trim())){
+                    tvToinvest.setVisibility(View.GONE);
+                }
+
             }
+
+
         }
 
 

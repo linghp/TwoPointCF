@@ -13,6 +13,8 @@ import com.peoit.twopointcf.ui.base.BaseActivity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 注册
@@ -259,8 +261,12 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
      */
     public static boolean isMobileEM(String email) {
         //验证邮箱
-        String str = "^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
-        return email.matches(str);
+        /*String str = "^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
+        return email.matches(str);*/
+        String strPattern = "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
+        Pattern p = Pattern.compile(strPattern);
+        Matcher m = p.matcher(email);
+        return m.matches();
     }
 
     @Override

@@ -47,7 +47,7 @@ public class InvestFindDetailSub3Fragment extends BaseFragment {
     @Override
     protected void updateView() {
         if(projectBean!=null){
-            tv_01.setText(projectBean.sourceOfIncome);
+            tv_01.setText(projectBean.teamIntroducation);
         }
     }
 }

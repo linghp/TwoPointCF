@@ -89,7 +89,11 @@ public class InvestFindAdapter extends BaseAdapter {
         if (!TextUtils.isEmpty(getItem(position).endDate)) {
             Calendar c = new GregorianCalendar();
             int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(getItem(position).endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());
-            holder.tv_bottom03.setText(days + "天");
+            if (days > 0)
+                holder.tv_bottom03.setText(days + "天");
+            else
+                holder.tv_bottom03.setText("已结束");
+
         }
 
         return convertView;

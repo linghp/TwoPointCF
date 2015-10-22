@@ -73,7 +73,8 @@
                     android:id="@+id/tv_02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="123141341351324141"
+                    android:singleLine="true"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
 
@@ -96,6 +97,7 @@
                     android:id="@+id/tv_03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/red300"
                     tools:text="￥ 300万" />
@@ -122,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/red300"
+                    android:singleLine="true"
                     tools:text="￥ 300万" />
             </LinearLayout>
 

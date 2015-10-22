@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.ui.activity.BoundPhoneNumActivity;
 import com.peoit.twopointcf.ui.activity.InvestActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.CommonUtil;
@@ -70,10 +71,14 @@ public class InvestFragment02 extends BaseFragment {
             tvStockcount.setText(projectBean.mStockPercent);
             tvMoney.setText(CommonUtil.twoPointConversion(projectBean.mInvestMoney / 10000.0) + "万");
             tvInvestorEarnest.setText(projectBean.mInvestorEarnest + "元");
-            String phoneNumber = localUserInfo.getPhonenumber();
-            String temp = phoneNumber.substring(3, 7);
-            tvPhoneNumber.setText(phoneNumber.replaceFirst(temp, "****"));
         }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        String phoneNumber = localUserInfo.getPhonenumber();
+        String temp = phoneNumber.substring(3, 7);
+        tvPhoneNumber.setText(phoneNumber.replaceFirst(temp, "****"));
     }
 
     @Override
@@ -87,7 +92,10 @@ public class InvestFragment02 extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.ll_bindPhoneNumber:
-                myToast("bind");
+                //修改电话号码
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isphonenum", true);
+                CommonUtil.gotoActivityWithData(getActivity(), BoundPhoneNumActivity.class, bundle, false);
                 break;
         }
     }

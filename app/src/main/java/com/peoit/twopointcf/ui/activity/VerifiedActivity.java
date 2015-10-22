@@ -215,6 +215,8 @@ public class VerifiedActivity extends BaseActivity implements View.OnClickListen
         return true;
     }
 
+
+
     @Override
     public void onHttpResultSuccess() {
 

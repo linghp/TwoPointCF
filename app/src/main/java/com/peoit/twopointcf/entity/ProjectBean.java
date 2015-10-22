@@ -83,7 +83,7 @@ public class ProjectBean implements Serializable{
     public List<String> personCredits = new ArrayList<String>();
     @SerializedName("industryLicense")
     @Expose
-    public List<Object> industryLicense = new ArrayList<Object>();
+    public List<String> industryLicense = new ArrayList<String>();
 
     public int investedAmount;
     public int userInvestedAmount;

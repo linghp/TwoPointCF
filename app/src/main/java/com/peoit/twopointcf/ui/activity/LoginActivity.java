@@ -81,9 +81,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.login_tv3:
 //                myToast("忘记密码");
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("ischange", false);
-                CommonUtil.gotoActivityWithData(this, ChangePhoneActivity.class, bundle, false);
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("ispassword", "true");
+                CommonUtil.gotoActivityWithData(this, SafetyEfficacyActivity.class, bundle2 ,false);
                 break;
             default:
                 break;
