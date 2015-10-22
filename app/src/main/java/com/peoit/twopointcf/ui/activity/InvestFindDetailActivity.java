@@ -1,6 +1,7 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,6 +24,7 @@ import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub4Fragment;
 import com.peoit.twopointcf.ui.view.TagViewPager;
 import com.peoit.twopointcf.utils.AbDateUtil;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.DialogTool;
 import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     public ProjectBean projectBean;
 
     private ProjectDetailPresenter presenter;
-    private Map<String,String> maps_status= MyPublishProjectActivity.maps_status;
+    private Map<String, String> maps_status = MyPublishProjectActivity.maps_status;
 
     private boolean isCancelProject = false;//取消关注
 
@@ -68,7 +70,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         //ButterKnife.bind(this);
     }
 
-    public static void startThisActivity(ProjectBean projectBean,boolean isFromMyPublishProject,Context context) {
+    public static void startThisActivity(ProjectBean projectBean, boolean isFromMyPublishProject, Context context) {
         Intent intent = new Intent(context, InvestFindDetailActivity.class);
         intent.putExtra("projectBean", projectBean);
         intent.putExtra("isFromMyPublishProject", isFromMyPublishProject);
@@ -114,7 +116,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
 
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
-        isFromMyPublishProject=getIntent().getBooleanExtra("isFromMyPublishProject",false);
+        isFromMyPublishProject = getIntent().getBooleanExtra("isFromMyPublishProject", false);
         if (projectBean != null) {
             String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney / 10000 + "万元", //融资资金
                     projectBean.investUserAmount + "", //已投人数
@@ -135,14 +137,14 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 tv02.setText(investfinddetail_subitemvalues[i]);
                 linearLayoutsub.addView(view);
 
-                String[] details = {"","","","","","","","","","","","","","","",projectBean.businessLicenses.get(0),projectBean.personCredits.get(0),projectBean.industryLicense.get(0)};
+                String[] details = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", projectBean.businessLicenses.get(0), projectBean.personCredits.get(0), projectBean.industryLicense.get(0)};
                 final String title = investfinddetail_subitemnames[i];
                 final String detail = details[i];
                 if (investfinddetail_subitemvalues[i] != null && investfinddetail_subitemvalues[i].contains("点击查看")) {
                     tv02.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            SimplePhotoViewActivity.startThisActivity(title,detail,InvestFindDetailActivity.this);
+                            SimplePhotoViewActivity.startThisActivity(title, detail, InvestFindDetailActivity.this);
                         }
                     });
                 }
@@ -203,9 +205,18 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
                                 //myToast("支付");
-                                Map<String, String> maps = new HashMap<>();
-                                maps.put("id", projectBean.id);
-                                presenter.payMargin(maps);
+                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "支付", "确认支付我们将跳转到支付界面？", "确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Map<String, String> maps = new HashMap<>();
+                                        maps.put("id", projectBean.id);
+                                        presenter.payMargin(maps);
+                                    }
+                                }, "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
                             }
                         });
                         break;
@@ -216,9 +227,19 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
 //                                myToast("取消");
-                                Map<String, String> maps = new HashMap<>();
-                                maps.put("id", projectBean.id);
-                                presenter.getCancelProject(maps);
+                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", "确认取消该项目的投资？", "确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Map<String, String> maps = new HashMap<>();
+                                        maps.put("id", projectBean.id);
+                                        presenter.getCancelProject(maps);
+                                    }
+                                }, "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
+
 
                             }
                         });
@@ -230,7 +251,16 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
 //                                myToast("修改");
-                                PublishProjectActivity.startThisActivity(true, projectBean,InvestFindDetailActivity.this);
+                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "修改", "确认修改该项目？", "确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
+                                    }
+                                }, "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
                             }
                         });
                         break;
@@ -240,7 +270,16 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         tvLastBottom01.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                myToast("延期");
+                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "延期", "确认延期该项目？", "确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        myToast("已确认延期，正在审核");
+                                    }
+                                }, "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
 
                             }
                         });
@@ -252,9 +291,18 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
 //                                myToast("启动");
-                                Map<String, String> maps = new HashMap<>();
-                                maps.put("id", projectBean.id);
-                                presenter.getStartProject(maps);
+                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "启动", "确认启动该项目？", "确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Map<String, String> maps = new HashMap<>();
+                                        maps.put("id", projectBean.id);
+                                        presenter.getStartProject(maps);
+                                    }
+                                }, "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
 
                             }
                         });
@@ -262,16 +310,26 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
 //                                myToast("取消");
-                                Map<String, String> maps = new HashMap<>();
-                                maps.put("id", projectBean.id);
-                                presenter.getCancelProject(maps);
+                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", "确认取消该项目的投资？", "确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Map<String, String> maps = new HashMap<>();
+                                        maps.put("id", projectBean.id);
+                                        presenter.getCancelProject(maps);
+                                    }
+                                }, "取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
                             }
                         });
                         break;
-                    default:llBottom.setVisibility(View.GONE);
+                    default:
+                        llBottom.setVisibility(View.GONE);
                 }
-            } else{
-                if ("已结束".equals(tv_bottom03.getText().toString().trim())){
+            } else {
+                if ("已结束".equals(tv_bottom03.getText().toString().trim())) {
                     tvToinvest.setVisibility(View.GONE);
                 }
 

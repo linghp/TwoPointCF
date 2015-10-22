@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.URLs;
+import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +27,14 @@ public class ProjectAdapter extends BaseAdapter {
     private Context context;
     private List<ProjectBean> items = new ArrayList<>();
     private LayoutInflater mInflater;
-    private Map<String,String> maps;
+    private Map<String, String> maps;
+    private Map<String, String> maps_status = MyPublishProjectActivity.maps_status;
 
-    public ProjectAdapter(Context context, List<ProjectBean> items,Map<String,String> maps) {
+    public ProjectAdapter(Context context, List<ProjectBean> items, Map<String, String> maps) {
         super();
         this.context = context;
         this.items = items;
-        this.maps=maps;
+        this.maps = maps;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -57,15 +59,14 @@ public class ProjectAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         //holder.iv_left.setImageResource(getItem(position).getPicture());
-        if(getItem(position).projectPhotos.size()>0) {
-            Glide.with(context).load(URLs.HOST+getItem(position).projectPhotos.get(0)).into(holder.iv_left);
+        if (getItem(position).projectPhotos.size() > 0) {
+            Glide.with(context).load(URLs.HOST + getItem(position).projectPhotos.get(0)).into(holder.iv_left);
         }/*else {
             holder.iv_left.setBackgroundResource(R.mipmap.raw_1433491802);
         }*/
         holder.tv_title.setText(getItem(position).projectName);
         holder.tv_content.setText(getItem(position).projectIntro);
-        holder.tv_tag.setText(maps.get(getItem(position).status));
-
+        holder.tv_tag.setText(maps_status.get(getItem(position).status));
         return convertView;
     }
 

@@ -91,6 +91,12 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
     }
 
     @Override
+    public void requestServer() {
+        super.requestServer();
+        presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
+    }
+
+    @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
         presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
     }
