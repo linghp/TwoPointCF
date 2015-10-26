@@ -83,6 +83,17 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                             mView.showContentPage();
                         }else {
                             mView.showEmptyPage();
+                           /* DialogTool.createCommonDialog((Activity)mView, R.mipmap.ic_launcher, "关注项目", "您还没有关注的项目，立即关注吧？", "确认", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    CommonUtil.gotoActivity((Activity) mView, InvestFindSubFragment.class, false);
+                                }
+                            }, "取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+//                        myToast("取消");
+                                }
+                            }).show();*/
                         }
                         MyLogger.i(">>>>>>>>>>请求项目："+response.toString());
                         FindProjectPresenter.this.projectBeans.clear();

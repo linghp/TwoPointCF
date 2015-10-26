@@ -78,6 +78,10 @@
         <item>西藏</item>
 
         <item>新疆</item>
+
+        <item>中国香港</item>
+        <item>中国台湾</item>
+        <item>中国澳门</item>
     </string-array>
 
     <string-array name="publishproject_industrytype">
@@ -122,6 +126,8 @@
         <item>100%</item>
     </string-array>
     <string-array name="publishproject_dividendtypes">
+        <item>半月分红</item>
+        <item>月度分红</item>
         <item>季度分红</item>
         <item>年度分红</item>
     </string-array>

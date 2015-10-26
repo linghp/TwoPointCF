@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseFragment;
@@ -20,6 +21,7 @@ public class PublishFragment01 extends BaseFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public CheckBox checkBox;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,6 +69,7 @@ public class PublishFragment01 extends BaseFragment {
 
     @Override
     protected void initView(View view) {
+       checkBox = findViewByID_My(R.id.myCheckBox);
 
     }
 

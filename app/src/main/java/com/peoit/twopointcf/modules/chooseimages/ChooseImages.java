@@ -113,7 +113,7 @@ public class ChooseImages {
                 // * ，但此时调用options.outHeight时，已经包含了图片的高了
                 // */
                 // options.inJustDecodeBounds = true;\
-                MyLogger.i(imagelocaldir);
+                MyLogger.i(">>>>>>>>>>>图片路径"+imagelocaldir);
                 Bitmap bitmap = BitmapFactory.decodeFile(imagelocaldir
                         + imageName);
                 LocalUserInfo.getInstance(activity).setUserPhotoName(imageName); 

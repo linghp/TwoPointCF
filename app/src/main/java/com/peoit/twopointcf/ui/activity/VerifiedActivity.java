@@ -203,15 +203,15 @@ public class VerifiedActivity extends BaseActivity implements View.OnClickListen
             }
         }
         emergencyContactPersonName = et_name1.getText().toString().trim();
-        /*if (TextUtils.isEmpty(emergencyContactPersonName)){
+        if (TextUtils.isEmpty(emergencyContactPersonName)){
             myToast("请输入紧急联系人姓名");
             return false;
-        }*/
+        }
         emergencyContactPersonNumber = et_phone.getText().toString().trim();
-       /* if (TextUtils.isEmpty(emergencyContactPersonNumber)){
+        if (TextUtils.isEmpty(emergencyContactPersonNumber)){
             myToast("请输入紧急联系人电话");
             return false;
-        }*/
+        }
         return true;
     }
 

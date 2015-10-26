@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,56 +14,59 @@ import com.peoit.twopointcf.ui.activity.InvestedProjectActivity;
 import com.peoit.twopointcf.ui.activity.LoginActivity;
 import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 import com.peoit.twopointcf.ui.activity.PublishProjectActivity;
+import com.peoit.twopointcf.ui.activity.VerifiedActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.DialogTool;
 
 /**
  * @author ling
- * 我的项目
+ *         我的项目
  */
-public class MyProjectFragment extends BaseFragment implements View.OnClickListener{
+public class MyProjectFragment extends BaseFragment implements View.OnClickListener {
 
-	private TextView mText;
+    private TextView mText;
 
 
-	public static MyProjectFragment newInstance(int index) {
-		MyProjectFragment f = new MyProjectFragment();
+    public static MyProjectFragment newInstance(int index) {
+        MyProjectFragment f = new MyProjectFragment();
 
-		// Supply index input as an argument.
-		Bundle args = new Bundle();
-		args.putInt("index", index);
-		f.setArguments(args);
+        // Supply index input as an argument.
+        Bundle args = new Bundle();
+        args.putInt("index", index);
+        f.setArguments(args);
 
-		return f;
-	}
+        return f;
+    }
 
-	public int getShownIndex() {
-		return getArguments().getInt("index", 0);
-	}
+    public int getShownIndex() {
+        return getArguments().getInt("index", 0);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_myproject, container, false);
-		return view;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_myproject, container, false);
+        return view;
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-        if(titleView!=null){
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (titleView != null) {
             titleView.hideLeftBtn();
             titleView.setTitle(R.string.myproject);
-			titleView.setRightBtn(R.mipmap.add, this);
+//            titleView.setRightBtn(R.mipmap.add, this);
         }
-	}
+    }
 
     @Override
     protected void initView(View view) {
-      view.findViewById(R.id.ll_01).setOnClickListener(this);
-      view.findViewById(R.id.ll_02).setOnClickListener(this);
-      view.findViewById(R.id.ll_03).setOnClickListener(this);
-      view.findViewById(R.id.ll_04).setOnClickListener(this);
+        view.findViewById(R.id.ll_01).setOnClickListener(this);
+        view.findViewById(R.id.ll_02).setOnClickListener(this);
+        view.findViewById(R.id.ll_03).setOnClickListener(this);
+        view.findViewById(R.id.ll_04).setOnClickListener(this);
+        view.findViewById(R.id.ll_05).setOnClickListener(this);
     }
 
     @Override
@@ -76,32 +80,45 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
 
 
     @Override
-	public void onHiddenChanged(boolean hidden) {
-		super.onHiddenChanged(hidden);
-	}
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+    }
 
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     public void onClick(View view) {
-        if (!localUserInfo.isLogin()){
-            CommonUtil.gotoActivity(getActivity(),LoginActivity.class,false);
+        if (!localUserInfo.isLogin()) {
+            CommonUtil.gotoActivity(getActivity(), LoginActivity.class, false);
             return;
         }
-        switch (view.getId()){
-            case R.id.right_btn://title 右侧按钮(发布项目)
+        switch (view.getId()) {
+            /*case R.id.right_btn://title 右侧按钮(发布项目)
                 if ("已认证".equals(localUserInfo.getIsrealnamevalidated())) {
                     CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
-                }else {
-                    myToast("您还没有实名认证，不能发布项目");
+                } else if ("立即认证".equals(localUserInfo.getIsrealnamevalidated())) {
+                    DialogTool.createCommonDialog(getActivity(), R.mipmap.ic_launcher, "发布项目", "您还没有实名认证，不能发布项目，立即实名认证？", "确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class, false);
+                        }
+                    }, "取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+//                        myToast("取消");
+                        }
+                    }).show();
+                } else if ("审核中".equals(localUserInfo.getIsrealnamevalidated())) {
+                    myToast("实名认证审核中，请耐心等待");
                 }
-                break;
+
+                break;*/
             case R.id.ll_01:
                 //已投项目
-                CommonUtil.gotoActivity(getActivity(), InvestedProjectActivity.class,false);
+                CommonUtil.gotoActivity(getActivity(), InvestedProjectActivity.class, false);
                 break;
             case R.id.ll_02:
                 //关注项目
@@ -115,7 +132,26 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
                 //已发项目
                 CommonUtil.gotoActivity(getActivity(), MyPublishProjectActivity.class, false);
                 break;
-
+            case R.id.ll_05:
+                //发布项目
+                if ("已认证".equals(localUserInfo.getIsrealnamevalidated())) {
+                    CommonUtil.gotoActivity(getActivity(), PublishProjectActivity.class, false);
+                } else if ("立即认证".equals(localUserInfo.getIsrealnamevalidated())) {
+                    DialogTool.createCommonDialog(getActivity(), R.mipmap.ic_launcher, "发布项目", "您还没有实名认证，不能发布项目，立即实名认证？", "确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class, false);
+                        }
+                    }, "取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+//                        myToast("取消");
+                        }
+                    }).show();
+                } else if ("审核中".equals(localUserInfo.getIsrealnamevalidated())) {
+                    myToast("实名认证审核中，请耐心等待");
+                }
+                break;
         }
 
     }

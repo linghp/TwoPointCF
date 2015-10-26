@@ -48,7 +48,7 @@ public class PublishFragment04 extends BaseFragment {
         tv_proportion2 = findViewByID_My(R.id.tv_proportion2);
         tv_dividendType.setOnClickListener(this);
         tv_proportion1.setOnClickListener(this);
-        tv_proportion2.setOnClickListener(this);
+//        tv_proportion2.setOnClickListener(this);
     }
 
     @Override
@@ -58,12 +58,14 @@ public class PublishFragment04 extends BaseFragment {
             tv_dividendType.setText(publishProjectActivity.projectBean.dividendType);//分红模式
             tv_proportion1.setText(publishProjectActivity.projectBean.dividendPercent * 100 + "%");//分红比例
             et_stockholderPrivilege.setText(publishProjectActivity.projectBean.stockholderPrivilege);//股东特权说明
-            tv_proportion2.setText(publishProjectActivity.projectBean.investorEarnestPercent * 100+"%");//交付保证金比例
+//            tv_proportion2.setText(publishProjectActivity.projectBean.investorEarnestPercent * 100+"%");//交付保证金比例
+            tv_proportion2.setText("20%");//交付保证金比例
         }
 
         dividendtypes=getActivity().getResources().getStringArray(R.array.publishproject_dividendtypes);
         proportion1 = getActivity().getResources().getStringArray(R.array.publishproject_proportion1);
-        proportion2 = getActivity().getResources().getStringArray(R.array.publishproject_proportion2);
+//        proportion2 = getActivity().getResources().getStringArray(R.array.publishproject_proportion2);
+        tv_proportion2.setText("20%");//交付保证金比例
     }
 
     @Override
@@ -132,7 +134,7 @@ public class PublishFragment04 extends BaseFragment {
                     }
                 });
                 break;
-            case R.id.tv_proportion2:
+            /*case R.id.tv_proportion2:
                 DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "保证金比例", proportion2, new DialogInterface.OnClickListener() {
 
                     @Override
@@ -141,7 +143,7 @@ public class PublishFragment04 extends BaseFragment {
                         dialog.dismiss();
                     }
                 });
-                break;
+                break;*/
 
         }
     }

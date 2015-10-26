@@ -211,7 +211,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout android:visibility="gone"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -246,7 +246,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_activity_business_manager"
+                        android:text="@string/title_activity_publish_project"
                         android:textSize="@dimen/large_title_txt_size" />
 
                     <TextView
@@ -254,11 +254,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="9dp"
                         android:lines="2"
-                        android:text="交易、转让持有股份"
+                        android:text="发布我的项目"
                         android:textColor="@color/grey500" />
                 </LinearLayout>
 
-                <LinearLayout android:visibility="invisible"
+                <LinearLayout
+                    android:visibility="invisible"
                     android:id="@+id/ll_06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
