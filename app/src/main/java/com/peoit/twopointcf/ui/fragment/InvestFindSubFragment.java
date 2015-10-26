@@ -162,6 +162,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         } else {
             switch (v.getId()) {
                 case R.id.right_btn:
+                    //搜索
                     CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
                     break;
                 case R.id.left_text:

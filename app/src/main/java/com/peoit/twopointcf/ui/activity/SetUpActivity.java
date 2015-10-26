@@ -100,8 +100,6 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
 //                        myToast("取消");
                     }
                 }).show();
-
-
                 break;
             default:
                 break;
