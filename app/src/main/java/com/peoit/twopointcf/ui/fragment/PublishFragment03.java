@@ -151,6 +151,10 @@ public class PublishFragment03 extends BaseFragment {
             return false;
         }
         endDate = tv_endDate.getText().toString().trim();
+        if (TextUtils.isEmpty(endDate)){
+            myToast("请选择众筹结束时间");
+            return false;
+        }
         if (endDate.equals(getString(R.string.choosesendDate))) {
             myToast("请选择众筹结束时间");
             return false;

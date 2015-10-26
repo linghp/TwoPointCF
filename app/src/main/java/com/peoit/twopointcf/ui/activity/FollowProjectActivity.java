@@ -58,6 +58,12 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
     protected void initData() {
         presenter=new FindProjectPresenter(this);
 //        generateData();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         params.put("attentionId", localUserInfo.getUserId());
         presenter.getData(URLs.FINDCONCERNEDPROJECT, params, investedProjectBeans);
 //        followProjectAdapter = new FollowProjectAdapter(FollowProjectActivity.this, investedProjectBeans);
@@ -65,11 +71,11 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
         listView.setAdapter(investedProjectAdapter);
     }
 
-   /* private void generateData() {
-        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.weihengshengwu,"预热中", "伟恒生物", "国内首家可大规模生产药媒用脱酚棉籽蛋白的企业"));
-        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.hongpa, "预热中", "轰趴", "国内第一家高品质厨师上门服务O2O平台"));
-        investedProjectBeans.add(new InvestedProjectBean(R.mipmap.shuilongtou, "筹资中", "水龙头安全套", "家用净水神器，5秒就能搞定安装的净水器（第二期）"));
-    }*/
+    /* private void generateData() {
+            investedProjectBeans.add(new InvestedProjectBean(R.mipmap.weihengshengwu,"预热中", "伟恒生物", "国内首家可大规模生产药媒用脱酚棉籽蛋白的企业"));
+            investedProjectBeans.add(new InvestedProjectBean(R.mipmap.hongpa, "预热中", "轰趴", "国内第一家高品质厨师上门服务O2O平台"));
+            investedProjectBeans.add(new InvestedProjectBean(R.mipmap.shuilongtou, "筹资中", "水龙头安全套", "家用净水神器，5秒就能搞定安装的净水器（第二期）"));
+        }*/
     @Override
     protected void initView() {
         listView = (ListView) findViewById(R.id.listview);

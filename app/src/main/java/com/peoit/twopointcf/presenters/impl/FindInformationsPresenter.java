@@ -42,7 +42,7 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
                         } else {
                             mView.showToast(info);
                         }
-//                        mView.showErrorPage();
+                        mView.showErrorPage();
 
                     }
 
@@ -51,9 +51,9 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
                         //mTv.setText(u.toString());
                         offset = 0;
                         if (response.size() > 0) {
-//                            mView.showContentPage();
+                            mView.showContentPage();
                         } else {
-//                            mView.showEmptyPage();
+                            mView.showEmptyPage();
                         }
                         MyLogger.i(">>>>>>>>>>资讯中心：" + response.toString());
                         FindInformationsPresenter.this.informationBeans.clear();
@@ -115,14 +115,14 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
             super.onBefore(request);
             if(informationBeans.size()==0) {//防止下拉刷新和对话框进度同时出现
                 //mView.showProgress(false, mView.getStringbyid(R.string.networkrequest));
-//                mView.showLoadingPage();
+                mView.showLoadingPage();
             }
         }
 
         @Override
         public void onAfter() {
             super.onAfter();
-            //mView.hideProgress();
+//            mView.hideProgress();
             mView.onHttpResult();
         }
     }

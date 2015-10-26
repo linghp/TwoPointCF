@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.ui.view.DataCleanManager;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.DialogTool;
 
@@ -55,6 +56,13 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
                 DialogTool.createCommonDialog(this, R.mipmap.ic_launcher, "清空缓存", "确认清空缓存？", "确认", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        DataCleanManager.cleanInternalCache(SetUpActivity.this);
+                        DataCleanManager.cleanDatabases(SetUpActivity.this);
+                        DataCleanManager.cleanSharedPreference(SetUpActivity.this);
+                        DataCleanManager.cleanFiles(SetUpActivity.this);
+                        DataCleanManager.cleanExternalCache(SetUpActivity.this);
+                        DataCleanManager.cleanApplicationData(SetUpActivity.this, "/storage/emulated/0/download/com.peoit.twopointcf");
+                        DataCleanManager.cleanCustomCache("/storage/emulated/0/download/com.peoit.twopointcf");
                         myToast("已清空缓存");
                     }
                 }, "取消", new DialogInterface.OnClickListener() {
@@ -100,8 +108,6 @@ public class SetUpActivity extends BaseActivity implements View.OnClickListener 
 //                        myToast("取消");
                     }
                 }).show();
-
-
                 break;
             default:
                 break;

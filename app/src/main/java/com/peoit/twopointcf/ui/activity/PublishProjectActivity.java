@@ -33,6 +33,7 @@ import java.util.HashMap;
  */
 public class PublishProjectActivity extends BaseFragmentActivity implements PublishProjectPresenter.OnHttpResultListener {
     private TextView tv_publish;
+    private PublishFragment01 fragment;
     private boolean isFromMyPublishProject = false;
     public HashMap<String, String> params = new HashMap<>();
     public ArrayList<String> listFileNames = new ArrayList<>();
@@ -120,7 +121,6 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
 
         titleView.setBack(this);
 
-
     }
 
     @Override
@@ -128,7 +128,7 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
         if (isFromMyPublishProject) {
 
         } else {
-            PublishFragment01 fragment = new PublishFragment01();
+            fragment = new PublishFragment01();
             addFragmentToContainer(fragment, "publishfragment01");
         }
 
@@ -140,8 +140,13 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
             case R.id.tv_publish:
                 int count = fragmentManager.getBackStackEntryCount();
                 if (count == 0) {
-                    PublishFragment02 fragment = new PublishFragment02();
-                    addFragmentToStack(fragment, "publishfragment02");
+                    if (fragment.checkBox.isChecked()){
+                        PublishFragment02 fragment = new PublishFragment02();
+                        addFragmentToStack(fragment, "publishfragment02");
+                    }else {
+                        myToast("请仔细阅读服务协议");
+                    }
+
                 } else if (count == 1) {
                     PublishFragment02 fragment02 = (PublishFragment02) fragmentManager.findFragmentByTag("publishfragment02");
                     if (!fragment02.putData()) {

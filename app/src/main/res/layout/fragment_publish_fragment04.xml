@@ -99,13 +99,19 @@
                 android:text="交付保证金比例:"
                 android:textSize="@dimen/title_txt_size" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tv_proportion2"
                 style="@style/publish_leftpart_rightpart"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/down_arrow_grey"
-                android:text="@string/choose_securitydeposit" />
+                android:text="@string/choose_securitydeposit" />-->
+            <TextView
+                android:id="@+id/tv_proportion2"
+                style="@style/publish_leftpart_rightpart"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="20%" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"

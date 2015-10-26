@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -7,15 +8,44 @@ import android.view.View;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.ui.view.FragmentIndicator;
+import com.peoit.twopointcf.utils.DialogTool;
+import com.pgyersdk.javabean.AppBean;
+import com.pgyersdk.update.PgyUpdateManager;
+import com.pgyersdk.update.UpdateManagerListener;
 
 
 public class MainActivity extends AppCompatActivity {
     public static Fragment[] mFragments;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setFragmentIndicator(0);
+
+        PgyUpdateManager.register(this);//蒲公英检查更新
+        PgyUpdateManager.register(MainActivity.this,
+                new UpdateManagerListener() {
+                    @Override
+                    public void onUpdateAvailable(final String result) {
+                        // 将新版本信息封装到AppBean中
+                        final AppBean appBean = getAppBeanFromString(result);
+                        DialogTool.createCommonDialog(MainActivity.this, R.mipmap.ic_launcher, "更新", "确认更新？", "确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                startDownloadTask(MainActivity.this, appBean.getDownloadURL());
+                            }
+                        }, "取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+//                        myToast("取消");
+                            }
+                        }).show();
+                    }
+                    @Override
+                    public void onNoUpdateAvailable() {
+                    }
+                });
     }
 
     /**

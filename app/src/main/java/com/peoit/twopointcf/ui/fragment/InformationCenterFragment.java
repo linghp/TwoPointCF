@@ -23,7 +23,7 @@ import java.util.List;
  * @author ling
  *         资讯中心
  */
-public class InformationCenterFragment extends BaseFragment implements AdapterView.OnItemClickListener,View.OnClickListener,FindInformationsPresenter
+public class InformationCenterFragment extends BaseFragment implements AdapterView.OnItemClickListener,FindInformationsPresenter
 .OnHttpResultListener,AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener{
     private ListView listView;
     private InformationCenterFragmentAdapter adapter;
@@ -49,8 +49,7 @@ public class InformationCenterFragment extends BaseFragment implements AdapterVi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater
-                .inflate(R.layout.fragment_informationcenter, container, false);
+        View view = inflater.inflate(R.layout.fragment_investfindsub, container, false);
         return view;
     }
 
@@ -61,7 +60,10 @@ public class InformationCenterFragment extends BaseFragment implements AdapterVi
 
     @Override
     protected void initView(View view) {
-        listView = (ListView) view.findViewById(R.id.mylistview);
+//        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        listView = (ListView) view.findViewById(R.id.listView);
+        pullview.setOnHeaderRefreshListener(this);
+        pullview.setOnFooterLoadListener(this);
         listView.setOnItemClickListener(this);
     }
 
@@ -114,22 +116,29 @@ public class InformationCenterFragment extends BaseFragment implements AdapterVi
     }
 
     @Override
-    public void onFooterLoad(AbPullToRefreshView view) {
+    public void requestServer() {
+        super.requestServer();
+        presenter.getData(informationCenterBeans);
+    }
 
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+        presenter.getDataMore();
     }
 
     @Override
     public void onHeaderRefresh(AbPullToRefreshView view) {
-
+        presenter.getData(informationCenterBeans);
     }
 
     @Override
     public void onHttpResultSuccess() {
-
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onHttpResult() {
-
+        pullview.onHeaderRefreshFinish();
+        pullview.onFooterLoadFinish();
     }
 }

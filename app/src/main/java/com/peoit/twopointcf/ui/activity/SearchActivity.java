@@ -3,7 +3,6 @@ package com.peoit.twopointcf.ui.activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -20,6 +19,7 @@ import com.peoit.twopointcf.presenters.impl.InvestFindPresenter;
 import com.peoit.twopointcf.presenters.interfaces.IInvestFind;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.LoadingLayout;
+import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,7 +135,7 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
         mMenu.setMenuSelectedListener(new OnMenuSelectedListener() {
             @Override
             public void onSelected(View listview, int RowIndex, int ColumnIndex) {
-                Log.i("SearchActivity", "select " + ColumnIndex + " column and " + RowIndex + " row");
+                MyLogger.i(">>>>>>>>>>>>>>>>>>>>>SearchActivity", "select " + ColumnIndex + " column and " + RowIndex + " row");
                 if (ColumnIndex == 0) {
                     city_index = RowIndex;
                 } else if (ColumnIndex == 1) {
