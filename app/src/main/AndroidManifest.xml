@@ -178,6 +178,9 @@
             android:name="com.peoit.photochooser.ImagePagerActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name=".ui.activity.ViewPagerPhotoViewActivity"
+             />
     </application>
 
 </manifest>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.peoit.twopointcf.ui.view.HackyViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_currentPosition"
+        android:layout_width="fill_parent"
+        android:layout_height="36dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="#60000000"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+         />
+</merge>

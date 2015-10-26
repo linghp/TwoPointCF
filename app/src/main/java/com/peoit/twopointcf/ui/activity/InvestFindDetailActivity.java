@@ -27,6 +27,7 @@ import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.DialogTool;
 import com.peoit.twopointcf.utils.MyLogger;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -339,17 +340,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     public void onClick(View v) {
         if (v.getTag() != null) {
             int tag = (int) v.getTag();
-            switch (tag) {//轮播图的每一张的tag
-                case 0:
-                    // myToast(tag);
-                case 1:
-                    // myToast(tag);
-                case 2:
-                    //myToast(tag);
-                case 3:
-                    myToast(tag + "");
-                    break;
-            }
+            //myToast(tag + "");
+            ViewPagerPhotoViewActivity.startThisActivity((ArrayList)(projectBean.projectPhotos),tag,this);
         } else {
             MyLogger.i("xxx");
             switch (v.getId()) {

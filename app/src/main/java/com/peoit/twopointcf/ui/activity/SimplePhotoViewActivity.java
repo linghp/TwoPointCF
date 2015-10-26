@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
@@ -20,6 +21,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  */
 public class SimplePhotoViewActivity extends BaseActivity {
     private PhotoViewAttacher mAttacher;
+    private TextView tv_currentPosition;
     private String title,detail;
     private ImageView mImageView;
 

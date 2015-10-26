@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <TextView android:visibility="gone"
+    <TextView
         android:id="@+id/tv_current_matrix"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
