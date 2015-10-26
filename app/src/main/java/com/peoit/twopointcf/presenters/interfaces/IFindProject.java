@@ -1,6 +1,8 @@
 package com.peoit.twopointcf.presenters.interfaces;
 
+import com.peoit.twopointcf.entity.BannerBean;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,11 @@ import java.util.Map;
  * description:
  */
 public interface IFindProject {
+    /**
+     * 获取banner
+     */
+    void getDataBanner(String url,List<BannerBean> bannerBeans,FindProjectPresenter.OnHttpResultBannerListener listener);
+
     /**
      * 获取数据
      */

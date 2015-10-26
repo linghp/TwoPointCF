@@ -1,6 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,11 +27,9 @@ import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.DialogTool;
 import com.peoit.twopointcf.utils.MyLogger;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,11 +68,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         //ButterKnife.bind(this);
     }
 
-    public static void startThisActivity(ProjectBean projectBean, boolean isFromMyPublishProject, Context context) {
+    public static void startThisActivity(ProjectBean projectBean, boolean isFromMyPublishProject, Activity context) {
         Intent intent = new Intent(context, InvestFindDetailActivity.class);
         intent.putExtra("projectBean", projectBean);
         intent.putExtra("isFromMyPublishProject", isFromMyPublishProject);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, 100);
     }
 
     @Override
@@ -96,13 +94,6 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         layoutParams.width = CommonUtil.getScreenWidth(this);
         layoutParams.height = layoutParams.width / 3;
         tagViewPager.setLayoutParams(layoutParams);
-        //轮播
-        List<Integer> imgLists = new ArrayList<>();
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        tagViewPager.toUse(imgLists, this);
     }
 
     @Override
@@ -168,6 +159,9 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             });
             //点击关注
             titleView.setRightBtn(R.mipmap.collection, this);
+
+            //轮播
+            tagViewPager.toUse(projectBean.projectPhotos, this);
         }
     }
 
@@ -461,7 +455,10 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
 
     @Override
-    public void onHttpResultSuccess() {
-
+    public void onHttpResultSuccess(String status) {
+        Intent intent = new Intent();
+        intent.putExtra("status", status);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
     }
 }

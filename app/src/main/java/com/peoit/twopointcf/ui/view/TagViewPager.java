@@ -16,7 +16,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.net.URLs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -315,7 +317,7 @@ public class TagViewPager extends RelativeLayout implements
 		return super.dispatchTouchEvent(event);
 	}
 
-    public void toUse(final List<Integer> imgList,  final OnClickListener listener){
+    public void toUse(final List<String> imgList,  final OnClickListener listener){
         this.init(R.mipmap.tagvewpager_point01,
                 R.mipmap.tagvewpager_point02, 14, 5, 2, 20,32);
         this.setAutoNext(true, 5000);
@@ -340,7 +342,9 @@ public class TagViewPager extends RelativeLayout implements
                 // 图片的下载
 //                mAbImageLoader.display(iv, Constant.BASEURL
 //                        + imgList.get(position));
-                iv.setImageResource(imgList.get(position));
+				Glide.with(context).load(URLs.HOST + imgList.get(position)).placeholder(R.mipmap.placeholderpic).crossFade().into(iv);
+
+				//iv.setImageResource(imgList.get(position));
                 container.addView(iv);
                 iv.setTag(position);
                 return iv;

@@ -1,6 +1,8 @@
 package com.peoit.twopointcf.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,6 +28,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
         AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener{
     private ListView listView;
     private List<ProjectBean> investedProjectBeans = new ArrayList<>();
+    private int itemClickPosition;
     private ProjectAdapter projectAdapter;
     private String[] published_statuss;
     private IFindProject presenter;
@@ -62,7 +65,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     protected void initData() {
         presenter=new FindProjectPresenter(this);
         params.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(URLs.FINDPROJECT, params, investedProjectBeans);
+        requestServer();
         //generateData();
         projectAdapter = new ProjectAdapter(this, investedProjectBeans, maps_status);
         listView.setAdapter(projectAdapter);
@@ -95,6 +98,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 //                investedProjectBeans.get(position).status,
 //                investedProjectBeans.get(position),
 //                this);
+        itemClickPosition=position;
         InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),true, this);
     }
 
@@ -107,6 +111,20 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     public void requestServer() {
         super.requestServer();
         presenter.getData(URLs.FINDPROJECT,params, investedProjectBeans);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==RESULT_OK&&resultCode==100){
+            String status=data.getStringExtra("status");
+            if(!TextUtils.isEmpty(status)){
+                investedProjectBeans.get(itemClickPosition).status=status;
+            }else{
+                investedProjectBeans.remove(itemClickPosition);
+            }
+            projectAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override

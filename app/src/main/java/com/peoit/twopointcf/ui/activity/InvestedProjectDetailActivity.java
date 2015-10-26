@@ -13,9 +13,6 @@ import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.view.TagViewPager;
 import com.peoit.twopointcf.utils.MyLogger;
-
-import java.util.ArrayList;
-import java.util.List;
 /**
  * @author ling
  * 已投项目详情 弃用 （由于和投资法相项目详情一样。。）
@@ -42,19 +39,16 @@ public class InvestedProjectDetailActivity extends BaseActivity implements View.
     @Override
     protected void initData() {
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
+        if(projectBean!=null){
+            //轮播
+            tagViewPager.toUse(projectBean.projectPhotos, this);
+        }
     }
 
     @Override
     protected void initView() {
         tv_subtitle= (TextView) findViewById(R.id.tv_subtitle);
         tagViewPager = (TagViewPager) findViewById(R.id.tagViewPager);
-        //轮播
-        List<Integer> imgLists = new ArrayList<>();
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        tagViewPager.toUse(imgLists, this);
     }
 
     @Override

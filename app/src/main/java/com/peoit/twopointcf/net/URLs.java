@@ -102,6 +102,11 @@ public class URLs {
     public static final String FINDPROJECT = HOST + "/api/project/findProjects";
 
     /**
+     * 投资发现的banner
+     */
+    public static final String BANNERLIST = HOST + "/api/banner/getBannerList";
+
+    /**
      * 投资项目
      */
     public static final String INVESTPROJECT = HOST + "/api/project/invest";

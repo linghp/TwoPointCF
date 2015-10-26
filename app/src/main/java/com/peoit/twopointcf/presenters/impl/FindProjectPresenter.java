@@ -6,12 +6,14 @@ import android.text.TextUtils;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
+import com.peoit.twopointcf.entity.BannerBean;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.presenters.interfaces.IFindProject;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,12 +23,17 @@ import java.util.Map;
  */
 public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnHttpResultListener> implements IFindProject {
     private List<ProjectBean> projectBeans;
+    private List<BannerBean> bannerBeans;
     private int offset=0;
     private int pageSize=10;
 
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
         void onHttpResult();
+    }
+
+    public interface OnHttpResultBannerListener {
+        void onHttpResultSuccessBanner();
     }
 
     public FindProjectPresenter(OnHttpResultListener view) {
@@ -57,11 +64,37 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
     }
 
     @Override
+    public void getDataBanner(String url, List<BannerBean> bannerBeans,final OnHttpResultBannerListener listener) {
+        OkHttpClientManager.postAsyn(url, new HashMap<String, String>(),
+                new OkHttpClientManager.ResultCallback<List<BannerBean>>() {
+                    @Override
+                    public void onError(Request request, String info,Exception e) {
+//                        if (TextUtils.isEmpty(info)) {
+//                            mView.showToast(R.string.networkerror);
+//                            e.printStackTrace();
+//                        } else {
+//                            mView.showToast(info);
+//                        }
+//                        mView.showErrorPage();
+                    }
+
+                    @Override
+                    public void onResponse(List<BannerBean> response) {
+
+                        MyLogger.i(">>>>>>>>>>请求项目："+response.toString());
+                        FindProjectPresenter.this.bannerBeans.clear();
+                        FindProjectPresenter.this.bannerBeans.addAll(response);
+                        listener.onHttpResultSuccessBanner();
+                    }
+                }, mView);
+    }
+
+    @Override
     public void getData(String url,Map maps,List<ProjectBean> projectBeans) {
         this.projectBeans=projectBeans;
         maps.put("offset",0+"");
-        maps.put("pageSize",pageSize+"");
-        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数"+maps);
+        maps.put("pageSize", pageSize + "");
+        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
         OkHttpClientManager.postAsyn(url, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override

@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
+import com.peoit.twopointcf.entity.BannerBean;
 import com.peoit.twopointcf.entity.ProjectBean;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.FindProjectPresenter;
@@ -36,12 +37,13 @@ import java.util.Map;
  *         投资发现
  */
 public class InvestFindSubFragment extends BaseFragment implements AdapterView.OnItemClickListener, FindProjectPresenter.OnHttpResultListener,
-        AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener {
+        AbPullToRefreshView.OnFooterLoadListener,AbPullToRefreshView.OnHeaderRefreshListener ,FindProjectPresenter.OnHttpResultBannerListener {
     private TextView mText;
     private TagViewPager tagViewPager;
     private ListView listView;
     //private InvestFindSubFragmentAdapter adapter;
     private List<ProjectBean> projectBeans = new ArrayList<>();
+    private List<BannerBean> bannerBeans=new ArrayList<>();
     private InvestFindAdapter investFindAdapter;
     private IFindProject presenter;
     private Map<String, String> maps = new HashMap<>();
@@ -98,19 +100,20 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     protected void initData() {
         //轮播
-        List<Integer> imgLists = new ArrayList<>();
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        imgLists.add(R.mipmap.raw_1433489820);
-        tagViewPager.toUse(imgLists, this);
+//        List<Integer> imgLists = new ArrayList<>();
+//        imgLists.add(R.mipmap.raw_1433489820);
+//        imgLists.add(R.mipmap.raw_1433489820);
+//        imgLists.add(R.mipmap.raw_1433489820);
+//        imgLists.add(R.mipmap.raw_1433489820);
+//        tagViewPager.toUse(imgLists, this);
         listView.addHeaderView(tagViewPager);
 
         presenter=new FindProjectPresenter(this);
         investFindAdapter = new InvestFindAdapter(getActivity(), projectBeans);
 
 //        maps.put("publisherId", localUserInfo.getUserId());
-        presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
+        //presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
+        requestServer();
         listView.setAdapter(investFindAdapter);
     }
 
@@ -175,13 +178,24 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     public void requestServer() {
         super.requestServer();
-        maps.put("city",city);
+        maps.put("city", city);
+        presenter.getDataBanner(URLs.BANNERLIST,bannerBeans,this);
         presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
+
     }
 
     @Override
     public void onHttpResultSuccess() {
         investFindAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onHttpResultSuccessBanner() {
+        List<String> imgList=new ArrayList<>();
+        for (BannerBean bannerBean : bannerBeans) {
+            imgList.add(bannerBean.getPath());
+        }
+        tagViewPager.toUse(imgList, this);
     }
 
     @Override

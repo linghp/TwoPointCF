@@ -1,6 +1,5 @@
 package com.peoit.twopointcf.presenters.impl;
 
-import android.app.Activity;
 import android.text.TextUtils;
 
 import com.peoit.twopointcf.R;
@@ -10,6 +9,7 @@ import com.peoit.twopointcf.entity.IsConcernBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.interfaces.IProjectDetail;
+import com.peoit.twopointcf.ui.activity.MyPublishProjectActivity;
 import com.peoit.twopointcf.utils.MyLogger;
 import com.squareup.okhttp.Request;
 
@@ -31,7 +31,7 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
     }
 
     public interface OnHttpResultListener extends IBaseView_Response {
-        void onHttpResultSuccess();
+        void onHttpResultSuccess(String status);
     }
 
     public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
@@ -138,7 +138,8 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
                     MyLogger.i(">>>>>>>>>>>>>>>>支付" + response);
                 }
                 mView.showToast("支付成功");
-                ((Activity) mView).finish();
+                mView.onHttpResultSuccess(MyPublishProjectActivity.WAITING_INVESTED);
+                //((Activity) mView).finish();
             }
         }, mView);
     }
@@ -164,7 +165,8 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
                     MyLogger.i(">>>>>>>>>>>>>>>>取消项目" + response);
                 }
                 mView.showToast("取消成功");
-                ((Activity) mView).finish();
+                mView.onHttpResultSuccess("");
+                //((Activity) mView).finish();
             }
         }, mView);
     }
@@ -189,7 +191,8 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
                     MyLogger.i(">>>>>>>>>>>>>>>>启动项目" + response);
                 }
                 mView.showToast("启动成功");
-                ((Activity) mView).finish();
+                mView.onHttpResultSuccess(MyPublishProjectActivity.WAITING_INVESTED);
+                //((Activity) mView).finish();
             }
         }, mView);
     }

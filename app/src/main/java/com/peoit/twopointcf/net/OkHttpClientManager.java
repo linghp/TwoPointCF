@@ -222,6 +222,12 @@ public class OkHttpClientManager
         getInstance()._getUploadDelegate().postAsyn(url,fileKeys,files,params1,callback,tag);
     }
 
+      //下载图片
+    public static void downloadAsyn(String url, String destFileDir, ResultCallback callback)
+    {
+        getInstance()._getDownloadDelegate().downloadAsyn(url,destFileDir,callback);
+    }
+
     //=============便利的访问方式结束===============
 
 

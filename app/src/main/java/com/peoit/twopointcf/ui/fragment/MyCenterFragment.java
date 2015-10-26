@@ -37,6 +37,7 @@ import java.util.Map;
 public class MyCenterFragment extends BaseFragment implements ChangePasswordPresenter.OnHttpResultListener {
     private TextView mycenter_tv1, mycenter_tv4, mycenter_tv2, mycenter_tv3;
     private ImageView iv_photo;
+    private View mycenter_ll2;
     private ChangePasswordPresenter presenter;
 
     public static MyCenterFragment newInstance(int index) {
@@ -88,6 +89,14 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
             //个人简介
             mycenter_tv2.setText(localUserInfo.getuserCaption());
             //获取实名认证状态
+            RequestUserIsVerified();
+
+        }
+        //testGlide();
+    }
+
+    private void RequestUserIsVerified() {
+        if(localUserInfo.isLogin()) {
             Map<String, String> maps = new HashMap<>();
             maps.put("userId", localUserInfo.getUserId());
             presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
@@ -99,15 +108,14 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                     } else if ("w".equals(isVerifed.getIsVerified())) {
                         mycenter_tv3.setText("审核中");
                         localUserInfo.setIsVerified("审核中");
+                        myToast("实名认证审核中，请耐心等待");
                     } else if ("y".equals(isVerifed.getIsVerified())) {
                         mycenter_tv3.setText("已认证");
                         localUserInfo.setIsVerified("已认证");
                     }
                 }
             });
-
         }
-        //testGlide();
     }
 
     @Override
@@ -123,6 +131,8 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
         mycenter_tv2 = findViewByID_My(R.id.mycenter_tv2);
         mycenter_tv3 = findViewByID_My(R.id.mycenter_tv3);
         mycenter_tv4 = findViewByID_My(R.id.mycenter_tv4);
+        mycenter_ll2 = findViewByID_My(R.id.mycenter_ll2);
+        mycenter_ll2.setOnClickListener(this);
     }
 
     @Override
@@ -172,12 +182,13 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 break;
             case R.id.mycenter_ll2:
                 //实名认证
-                if ("立即认证".equals(localUserInfo.getIsrealnamevalidated()))
+                if ("立即认证".equals(localUserInfo.getIsrealnamevalidated())) {
                     CommonUtil.gotoActivity(getActivity(), VerifiedActivity.class, false);
-                else if ("审核中".equals(localUserInfo.getIsrealnamevalidated()))
-                    myToast("实名认证审核中，请耐心等待");
-                else
+                }else if ("审核中".equals(localUserInfo.getIsrealnamevalidated())) {
+                    RequestUserIsVerified();
+                }else {
                     myToast("已认证");
+                }
                 break;
             case R.id.mycenter_ll3:
                 //绑定手机

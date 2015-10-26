@@ -27,10 +27,14 @@ import com.peoit.photochooser.PhotoOperate;
 import com.peoit.photochooser.PhotoPickActivity;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.OkHttpClientManager;
+import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.ui.activity.PublishProjectActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.utils.DialogTool;
+import com.peoit.twopointcf.utils.FileUtil;
 import com.peoit.twopointcf.utils.MyLogger;
+import com.squareup.okhttp.Request;
 
 import java.io.File;
 import java.io.Serializable;
@@ -97,25 +101,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected void initData() {
-        //传过来的数据
-        if (publishProjectActivity.projectBean != null){
-            et_projectName.setText(publishProjectActivity.projectBean.projectName);//项目名称
-            et_projectIntro.setText(publishProjectActivity.projectBean.projectIntro);//项目介绍
-            et_marketAnalysis.setText(publishProjectActivity.projectBean.marketAnalysis);//市场分析
-            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//收入来源
-            et_profitForecast.setText(publishProjectActivity.projectBean.profitForecast);//盈利预测
-            et_teamIntroducation.setText(publishProjectActivity.projectBean.teamIntroducation);//团队介绍
-            tv_projectCity.setText(publishProjectActivity.projectBean.projectCity);//所在城市
-            tv_industryType.setText(publishProjectActivity.projectBean.industryType);//行业类型
-            tv_projectType.setText(publishProjectActivity.projectBean.projectType);//项目类型
-            et_address.setText(publishProjectActivity.projectBean.address);//详细地址
 
-            /*et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//项目图片
-            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//营业执照
-            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//个人信用报告
-            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//行业许可证*/
-
-        }
         citys=getActivity().getResources().getStringArray(R.array.publishproject_choosecitys);
         industryTypes=getActivity().getResources().getStringArray(R.array.publishproject_industrytype);
         projectTypes=getActivity().getResources().getStringArray(R.array.publishproject_projectTypes);
@@ -132,6 +118,59 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
         gridView02.setAdapter(adapter2);
         gridView03.setAdapter(adapter3);
         gridView04.setAdapter(adapter4);
+
+        //传过来的数据
+        if (publishProjectActivity.projectBean != null){
+            projectBean=publishProjectActivity.projectBean;
+            et_projectName.setText(publishProjectActivity.projectBean.projectName);//项目名称
+            et_projectIntro.setText(publishProjectActivity.projectBean.projectIntro);//项目介绍
+            et_marketAnalysis.setText(publishProjectActivity.projectBean.marketAnalysis);//市场分析
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//收入来源
+            et_profitForecast.setText(publishProjectActivity.projectBean.profitForecast);//盈利预测
+            et_teamIntroducation.setText(publishProjectActivity.projectBean.teamIntroducation);//团队介绍
+            tv_projectCity.setText(publishProjectActivity.projectBean.projectCity);//所在城市
+            tv_industryType.setText(publishProjectActivity.projectBean.industryType);//行业类型
+            tv_projectType.setText(publishProjectActivity.projectBean.projectType);//项目类型
+            et_address.setText(publishProjectActivity.projectBean.address);//详细地址
+
+            /*et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//项目图片
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//营业执照
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//个人信用报告
+            et_sourceOfIncome.setText(publishProjectActivity.projectBean.sourceOfIncome);//行业许可证*/
+            //下载图片
+            downloadPicture(projectBean.projectPhotos,0,adapter1);
+            downloadPicture(projectBean.businessLicenses,1,adapter2);
+            downloadPicture(projectBean.personCredits,2,adapter3);
+            downloadPicture(projectBean.industryLicense,3,adapter4);
+
+        }
+    }
+
+    private void downloadPicture(List<String> pictureUrl,final int gridviewIndex,final BaseAdapter adapter) {
+        for (String projectPhoto : pictureUrl) {
+            OkHttpClientManager.downloadAsyn(URLs.HOST + projectPhoto, FileUtil.getImageDownloadDir(mActivity), new OkHttpClientManager.ResultCallback<Object>() {
+                @Override
+                public void onError(Request request, String info, Exception e) {
+
+                }
+
+                @Override
+                public void onResponse(Object response) {
+                    MyLogger.i(response.toString());
+                    File file=new File(response.toString());
+                    Uri uri=Uri.fromFile(file);
+                    //Uri uri = Uri.parse(response.toString());
+                    File outputFile = null;
+                    try {
+                        outputFile = photoOperate.scal(uri);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    mDatas.get(gridviewIndex).add(new PhotoData(outputFile));
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
     }
 
     @Override
@@ -278,7 +317,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
     private ImageSize mSize;
     private PhotoOperate photoOperate;
     private Uri fileUri;
-    private int tag = 0;//判断点击的是一个gridview
+    private int tag = 0;//判断点击的是哪一个gridview
 
     public ArrayList<ArrayList<PhotoData>> mDatas = new ArrayList(4);
     BaseAdapter adapter1, adapter2, adapter3, adapter4;
@@ -459,7 +498,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
     }
 
     private void onActivityResultExtract(int requestCode, int resultCode, Intent data, ArrayList<PhotoData> mData, BaseAdapter adapter) {
-        if (requestCode == RESULT_REQUEST_PICK_PHOTO) {
+        if (requestCode == RESULT_REQUEST_PICK_PHOTO) {//点击加图片
             if (resultCode == Activity.RESULT_OK) {
                 try {
                     ArrayList<PhotoPickActivity.ImageInfo> pickPhots = (ArrayList<PhotoPickActivity.ImageInfo>) data
@@ -474,7 +513,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
                 }
                 adapter.notifyDataSetChanged();
             }
-        } else if (requestCode == RESULT_REQUEST_PHOTO) {
+        } else if (requestCode == RESULT_REQUEST_PHOTO) {//无用
             if (resultCode == Activity.RESULT_OK) {
                 try {
                     File outputFile = photoOperate.scal(fileUri);
@@ -486,7 +525,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
                     e.printStackTrace();
                 }
             }
-        } else if (requestCode == RESULT_REQUEST_IMAGE) {
+        } else if (requestCode == RESULT_REQUEST_IMAGE) {//点击图片
             if (resultCode == Activity.RESULT_OK) {
                 ArrayList<String> delUris = data
                         .getStringArrayListExtra("mDelUrls");
@@ -499,7 +538,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
                     adapter.notifyDataSetChanged();
                 }
             }
-        } else if (requestCode == RESULT_REQUEST_FOLLOW) {
+        } else if (requestCode == RESULT_REQUEST_FOLLOW) {//无用
             if (resultCode == Activity.RESULT_OK) {
                 String name = data.getStringExtra("name");
                 //mEnterLayout.insertText(name);
