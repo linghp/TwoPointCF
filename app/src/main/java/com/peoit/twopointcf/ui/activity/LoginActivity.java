@@ -15,6 +15,8 @@ import com.peoit.twopointcf.utils.LocalUserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 登录
@@ -97,11 +99,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             showToast("请输入账号");
             return false;
         }
+
         password = loginEt2.getText().toString().trim();
         if (TextUtils.isEmpty(password)) {
             showToast("请输入密码");
             return false;
         }
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]{8,}");
+        Matcher matcher = pattern.matcher(password);
+        if(!matcher.matches()){
+            showToast("密码应为字母和数字的不少于8位的组合");
+            return false;
+        }
+
         return true;
     }
 

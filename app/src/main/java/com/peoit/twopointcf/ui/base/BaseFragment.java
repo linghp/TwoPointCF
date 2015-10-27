@@ -14,6 +14,7 @@ import com.peoit.twopointcf.ui.view.LoadingLayout;
 import com.peoit.twopointcf.ui.view.TitleView;
 import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
+import com.peoit.twopointcf.utils.MyLogger;
 
 /**
  * Created by ling on 2015/7/31.
@@ -84,6 +85,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
 
     @Override
     public void showProgress(boolean flag, String message) {
+        MyLogger.i("showProgress");
         if (pd == null) {
             pd = new ProgressDialog(getActivity());
             pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);

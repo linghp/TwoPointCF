@@ -143,7 +143,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
      * @param map
      */
     public void getUserIsVerified(final Map map,final OnIsVerified isVerified){
-        OkHttpClientManager.postAsyn(URLs.GETUSERISVERIFIED, map, new MyResultCallback<IsVerifiedBean>() {
+        OkHttpClientManager.postAsyn(URLs.GETUSERISVERIFIED, map, new OkHttpClientManager.ResultCallback<IsVerifiedBean>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {

@@ -60,7 +60,7 @@ public class ProjectAdapter extends BaseAdapter {
         }
         //holder.iv_left.setImageResource(getItem(position).getPicture());
         if (getItem(position).projectPhotos.size() > 0) {
-            Glide.with(context).load(URLs.HOST + getItem(position).projectPhotos.get(0)).into(holder.iv_left);
+            Glide.with(context).load(URLs.HOST + getItem(position).projectPhotos.get(0)).placeholder(R.mipmap.placeholderpic).crossFade().into(holder.iv_left);
         }/*else {
             holder.iv_left.setBackgroundResource(R.mipmap.raw_1433491802);
         }*/

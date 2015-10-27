@@ -229,6 +229,14 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             showToast("请输入登录密码");
             return false;
         }
+
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]{8,}");
+        Matcher matcher = pattern.matcher(password);
+        if(!matcher.matches()){
+            showToast("密码应为字母和数字的不少于8位的组合");
+            return false;
+        }
+
         authorizationCode = registerEt5.getText().toString().trim();
         if (TextUtils.isEmpty(authorizationCode)) {
             showToast("请输入授权密码");
@@ -263,7 +271,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         //验证邮箱
         /*String str = "^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
         return email.matches(str);*/
-        String strPattern = "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
+        String strPattern = "^[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
         Pattern p = Pattern.compile(strPattern);
         Matcher m = p.matcher(email);
         return m.matches();

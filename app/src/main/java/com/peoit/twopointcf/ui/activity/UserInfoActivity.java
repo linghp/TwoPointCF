@@ -19,6 +19,7 @@ import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.FileUtil;
 import com.peoit.twopointcf.utils.LocalUserInfo;
+import com.peoit.twopointcf.utils.MyLogger;
 
 import java.io.File;
 import java.util.HashMap;
@@ -91,6 +92,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         //获取实名认证状态
         Map<String, String> maps = new HashMap<>();
         maps.put("userId", localUserInfo.getUserId());
+        MyLogger.i("userId", localUserInfo.getUserId());
         presenter.getUserIsVerified(maps, new ChangePasswordPresenter.OnIsVerified() {
             @Override
             public void onSueccess(IsVerifiedBean isVerifed) {

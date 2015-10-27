@@ -116,7 +116,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RESULT_OK&&resultCode==100){
+        if(resultCode==RESULT_OK&&requestCode==100){
             String status=data.getStringExtra("status");
             if(!TextUtils.isEmpty(status)){
                 investedProjectBeans.get(itemClickPosition).status=status;

@@ -65,6 +65,7 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
 
     @Override
     public void getDataBanner(String url, List<BannerBean> bannerBeans,final OnHttpResultBannerListener listener) {
+        this.bannerBeans=bannerBeans;
         OkHttpClientManager.postAsyn(url, new HashMap<String, String>(),
                 new OkHttpClientManager.ResultCallback<List<BannerBean>>() {
                     @Override

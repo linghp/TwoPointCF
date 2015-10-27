@@ -120,14 +120,15 @@ public class InvestFragment01 extends BaseFragment{
             myToast("请输入投资股数");
             return false;
         }
-        /*if (stockcount>(projectBean.sellStockMoney/projectBean.perSellStockMoney)) {
-            myToast("您输入的投资股数已超出总股数");
-            return false;
-        }*/
-        if (money > (projectBean.perSellStockMoney - projectBean.sellStockMoney) ){
-            myToast("您输入的投资股数已超出总股数");
+        int  balance=projectBean.sellStockMoney-projectBean.investedAmount;
+        if (money>balance) {
+            myToast("超出剩余投资金额("+balance+"元)");
             return false;
         }
+//        if (money > (projectBean.perSellStockMoney - projectBean.sellStockMoney) ){
+//            myToast("您输入的投资股数已超出总股数");
+//            return false;
+//        }
 
         return true;
     }

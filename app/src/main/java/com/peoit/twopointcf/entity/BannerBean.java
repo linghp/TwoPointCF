@@ -23,8 +23,27 @@ public class BannerBean implements Serializable {
     private String title;
     private String path;
     private String description;
-    private Object city;
+    private String city;
+    private String type;
+    private String url;
     private int sortOrder;
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -46,7 +65,7 @@ public class BannerBean implements Serializable {
         this.description = description;
     }
 
-    public void setCity(Object city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
@@ -74,7 +93,7 @@ public class BannerBean implements Serializable {
         return description;
     }
 
-    public Object getCity() {
+    public String getCity() {
         return city;
     }
 
