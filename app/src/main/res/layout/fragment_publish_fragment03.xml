@@ -16,33 +16,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:text="融资用途:"
-                    android:textSize="@dimen/title_txt_size" />
-
-                <EditText
-                    android:id="@+id/et_moneyUse"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="请输入融资用途"
-                    android:textColorHint="@color/grey500" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="9dp"
-                android:background="@color/gray" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +41,13 @@
                     android:numeric="decimal"
                     android:textColorHint="@color/grey500" />
             </LinearLayout>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="股权总额的解释说明"
+                android:textColor="@color/orange700" />
+        </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -155,6 +139,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0.00%"
+                    android:textColorHint="@color/grey500" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="9dp"
+                android:background="@color/gray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="融资用途:"
+                    android:textSize="@dimen/title_txt_size" />
+
+                <TextView
+                    android:id="@+id/et_moneyUse"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choosemoneyUse"
+                    android:drawableRight="@mipmap/down_arrow_grey"
                     android:textColorHint="@color/grey500" />
             </LinearLayout>
 

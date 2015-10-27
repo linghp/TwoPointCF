@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="6dp"
@@ -99,13 +99,13 @@
                 android:text="交付保证金比例:"
                 android:textSize="@dimen/title_txt_size" />
 
-            <!--<TextView
+            &lt;!&ndash;<TextView
                 android:id="@+id/tv_proportion2"
                 style="@style/publish_leftpart_rightpart"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/down_arrow_grey"
-                android:text="@string/choose_securitydeposit" />-->
+                android:text="@string/choose_securitydeposit" />&ndash;&gt;
             <TextView
                 android:id="@+id/tv_proportion2"
                 style="@style/publish_leftpart_rightpart"
@@ -116,6 +116,6 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray" />
+            android:background="@color/gray" />-->
     </LinearLayout>
 </FrameLayout>

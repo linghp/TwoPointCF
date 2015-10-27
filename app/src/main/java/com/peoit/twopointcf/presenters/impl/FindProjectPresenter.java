@@ -80,7 +80,6 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
 
                     @Override
                     public void onResponse(List<BannerBean> response) {
-
                         MyLogger.i(">>>>>>>>>>请求项目："+response.toString());
                         FindProjectPresenter.this.bannerBeans.clear();
                         FindProjectPresenter.this.bannerBeans.addAll(response);

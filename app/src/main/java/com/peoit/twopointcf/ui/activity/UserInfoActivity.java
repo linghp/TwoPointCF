@@ -76,7 +76,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                 Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getImageDownloadDir(this)+ photoName);
                 iv_photo.setImageBitmap(bitmap);
             }
-            tv_userinfo1.setText(localUserInfo.getUserRealName());//真实姓名
+            tv_userinfo1.setText(localUserInfo.getUsername());//真实姓名
 //            tv_userinfo2.setText(localUserInfo.);//性别
             tv_userinfo3.setText(localUserInfo.getlevel());//等级
         }

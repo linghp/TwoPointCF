@@ -4,7 +4,6 @@ package com.peoit.twopointcf.ui.fragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +44,7 @@ public class PublishFragment04 extends BaseFragment {
         et_stockholderPrivilege=findViewByID_My(R.id.et_stockholderPrivilege);
         tv_dividendType=findViewByID_My(R.id.tv_dividendType);
         tv_proportion1 = findViewByID_My(R.id.tv_proportion1);
-        tv_proportion2 = findViewByID_My(R.id.tv_proportion2);
+//        tv_proportion2 = findViewByID_My(R.id.tv_proportion2);
         tv_dividendType.setOnClickListener(this);
         tv_proportion1.setOnClickListener(this);
 //        tv_proportion2.setOnClickListener(this);
@@ -59,13 +58,13 @@ public class PublishFragment04 extends BaseFragment {
             tv_proportion1.setText(publishProjectActivity.projectBean.dividendPercent * 100 + "%");//分红比例
             et_stockholderPrivilege.setText(publishProjectActivity.projectBean.stockholderPrivilege);//股东特权说明
 //            tv_proportion2.setText(publishProjectActivity.projectBean.investorEarnestPercent * 100+"%");//交付保证金比例
-            tv_proportion2.setText("20%");//交付保证金比例
+//            tv_proportion2.setText("20%");//交付保证金比例
         }
 
         dividendtypes=getActivity().getResources().getStringArray(R.array.publishproject_dividendtypes);
         proportion1 = getActivity().getResources().getStringArray(R.array.publishproject_proportion1);
 //        proportion2 = getActivity().getResources().getStringArray(R.array.publishproject_proportion2);
-        tv_proportion2.setText("20%");//交付保证金比例
+//        tv_proportion2.setText("20%");//交付保证金比例
     }
 
     @Override
@@ -76,11 +75,11 @@ public class PublishFragment04 extends BaseFragment {
     public boolean putData(){
         if(match()){
             float i = Float.valueOf(dividendratio.replace("%", ""));
-            float j = Float.valueOf(securitydeposit.replace("%", ""));
+//            float j = Float.valueOf(securitydeposit.replace("%", ""));
             publishProjectActivity.params.put("dividendType", dividendtype);
             publishProjectActivity.params.put("dividendPercent", i/100+"");
             publishProjectActivity.params.put("stockholderPrivilege", stockholderPrivilege);
-            publishProjectActivity.params.put("investorEarnestPercent", j/100+"");
+//            publishProjectActivity.params.put("investorEarnestPercent", j/100+"");
             return true;
         }
         return false;
@@ -97,16 +96,16 @@ public class PublishFragment04 extends BaseFragment {
             myToast("请选择分红比例");
             return false;
         }
-        securitydeposit = tv_proportion2.getText().toString().trim();
+        /*securitydeposit = tv_proportion2.getText().toString().trim();
         if (securitydeposit.equals(getString(R.string.choose_securitydeposit))) {
             myToast("请选择保证金比例");
             return false;
-        }
+        }*/
         stockholderPrivilege = et_stockholderPrivilege.getText().toString().trim();
-        if (TextUtils.isEmpty(stockholderPrivilege)) {
+        /*if (TextUtils.isEmpty(stockholderPrivilege)) {
             myToast("请输入股东特权说明");
             return false;
-        }
+        }*/
         return true;
     }
 
