@@ -24,11 +24,11 @@ import com.peoit.twopointcf.utils.DialogTool;
  * A simple {@link Fragment} subclass.
  */
 public class PublishFragment03 extends BaseFragment {
-    private EditText et_moneyUse, et_totalStockMoney, et_sellStockMoney, et_perSellStockMoney;
-    private TextView tv_stocktype, tv_endDate, tv_successCondition, tv_proportion;
+    private EditText et_totalStockMoney, et_sellStockMoney, et_perSellStockMoney;
+    private TextView et_moneyUse,tv_stocktype, tv_endDate, tv_successCondition, tv_proportion;
     private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stocktype, endDate, successCondition;
     private PublishProjectActivity publishProjectActivity;
-    private String[] stockTypes, proportion;
+    private String[] stockTypes, proportion,moneyUses;
     private int totalStockMoney_int,sellStockMoney_int,perSellStockMoney_int;
 
     public PublishFragment03() {
@@ -54,6 +54,7 @@ public class PublishFragment03 extends BaseFragment {
         tv_endDate = findViewByID_My(R.id.tv_endDate);
         tv_successCondition = findViewByID_My(R.id.tv_successCondition);
 
+        et_moneyUse.setOnClickListener(this);
         tv_stocktype.setOnClickListener(this);
         tv_endDate.setOnClickListener(this);
         tv_successCondition.setOnClickListener(this);
@@ -165,6 +166,7 @@ public class PublishFragment03 extends BaseFragment {
             tv_successCondition.setText(publishProjectActivity.projectBean.successCondition * 100 +"%");//项目启动条件
         }
 
+        moneyUses = getActivity().getResources().getStringArray(R.array.publishproject_moneyUse);
         stockTypes = getActivity().getResources().getStringArray(R.array.publishproject_stocktypes);
         proportion = getActivity().getResources().getStringArray(R.array.publishproject_proportion);
     }
@@ -192,8 +194,12 @@ public class PublishFragment03 extends BaseFragment {
 
     private boolean match() {
         moneyUse = et_moneyUse.getText().toString().trim();
-        if (TextUtils.isEmpty(moneyUse)) {
+        /*if (TextUtils.isEmpty(moneyUse)) {
             myToast("请输入融资用途");
+            return false;
+        }*/
+        if (moneyUse.equals(getString(R.string.choosemoneyUse))) {
+            myToast("请选择融资用途");
             return false;
         }
         totalStockMoney = et_totalStockMoney.getText().toString().trim();
@@ -262,7 +268,7 @@ public class PublishFragment03 extends BaseFragment {
                 });
                 break;
             case R.id.tv_endDate:
-                //众筹结束时间
+                //众筹结束时间（日期）
                 DataPickDialogUtil dataPickDialogUtil = new DataPickDialogUtil(getActivity());
                 dataPickDialogUtil.dateTimePicKDialog(tv_endDate);
                 break;
@@ -273,6 +279,17 @@ public class PublishFragment03 extends BaseFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tv_successCondition.setText(proportion[which]);
+                        dialog.dismiss();
+                    }
+                });
+                break;
+            case R.id.et_moneyUse:
+                //项目启动条件
+                DialogTool.createRadioDialog(getActivity(), R.mipmap.ic_launcher, "项目融资用途", moneyUses, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        et_moneyUse.setText(moneyUses[which]);
                         dialog.dismiss();
                     }
                 });

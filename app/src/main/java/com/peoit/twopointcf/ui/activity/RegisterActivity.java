@@ -81,7 +81,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                         if (isMobileEM(email)) {
 //                presenter.getVlidateCode(email);
                         } else {
-                            showToast("邮箱不合法");
+                            showToast("请输入正确邮箱");
                         }
                     }
                 }
@@ -102,12 +102,47 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                             maps.put("phoneNumber", phoneNumber);
                             presenter.getPhoneValidate(maps);
                         } else {
-                            showToast("手机号不合法");
+                            showToast("请输入正确手机号");
                         }
                     }
                 }
             }
         });
+        /*//登录密码失去焦点时触发
+        registerEt4.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (registerEt4.hasFocus() == false) {
+                    password = registerEt4.getText().toString().trim();
+                    if (TextUtils.isEmpty(password)) {
+                        showToast("请输入登录密码");
+                    } else {
+                        if (isMobilePW(password)) {
+                        } else {
+                            showToast("登录密码必须包含：数字、字母、符号等，且长度不得小于8位数");
+                        }
+                    }
+
+                }
+            }
+        });
+        //授权密码失去焦点时触发
+        registerEt5.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (registerEt5.hasFocus() == false) {
+                    authorizationCode = registerEt5.getText().toString().trim();
+                    if (TextUtils.isEmpty(authorizationCode)) {
+                        showToast("请输入授权密码");
+                    } else {
+                        if (isMobilePW(authorizationCode)) {
+                        } else {
+                            showToast("授权密码必须包含：数字、字母、符号等，且长度不得小于8位数");
+                        }
+                    }
+                }
+            }
+        });*/
         //验证码失去焦点时触发
         registerEt6.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -176,7 +211,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
 //                myToast("获取验证码");
                 phoneNumber = registerEt3.getText().toString().trim();
                 if (TextUtils.isEmpty(phoneNumber)) {
-                    showToast("请输入电话");
+                    showToast("请输入验证码");
                 } else {
                     if (isMobileNO(phoneNumber)) {
                         time.start();//开始计时
@@ -185,7 +220,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                         maps.put("phoneNumber", phoneNumber);
                         presenter.getVlidateCode(maps);
                     } else {
-                        showToast("手机号不合法");
+                        showToast("请输入正确验证码");
                     }
                 }
                 break;
@@ -208,7 +243,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             if (isMobileEM(email)) {
 //                presenter.getVlidateCode(email);
             } else {
-                showToast("邮箱不合法");
+                showToast("请输入正确邮箱");
                 return false;
             }
         }
@@ -220,7 +255,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             if (isMobileNO(phoneNumber)) {
 //                presenter.getVlidateCode(phoneNumber);
             } else {
-                showToast("手机号不合法");
+                showToast("请输入正确手机号");
                 return false;
             }
         }
@@ -276,6 +311,16 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         Matcher m = p.matcher(email);
         return m.matches();
     }
+
+    /**
+     * 验证密码格式 密码必须包含：数字、字母、符号等，且长度不得小于8位数
+     */
+    /*public static boolean isMobilePW(String password) {
+        String strPattern = "((?=.*\\d)(?=.*\\D)|(?=.*[a-zA-Z])(?=.*[^a-zA-Z]))^.{8,16}$";//6-16位的数字、字母、字符至少包含两种
+        Pattern p = Pattern.compile(strPattern);
+        Matcher m = p.matcher(password);
+        return m.matches();
+    }*/
 
     @Override
     public void onHttpResultSuccess() {

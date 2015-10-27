@@ -169,6 +169,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
                     CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
                     break;
                 case R.id.left_text:
+                    //选择城市
                     CommonUtil.gotoActivityForResult_fragment(this,CityActivity.class,RESULT_GET_CITY,false);
                     break;
 

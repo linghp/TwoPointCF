@@ -110,6 +110,9 @@
             android:name=".ui.activity.BoundPhoneNumActivity"
             android:label="@string/title_activity_boundphonenum" />
         <activity
+            android:name=".ui.activity.BoundPhoneNumActivity1"
+            android:label="@string/title_activity_boundphonenum1" />
+        <activity
             android:name=".ui.activity.VerifySecurityQuestionActivity"
             android:label="@string/title_activity_VerifySecurityQuestion" />
         <activity

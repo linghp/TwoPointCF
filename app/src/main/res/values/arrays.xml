@@ -41,6 +41,7 @@
     </string-array>
 
     <string-array name="publishproject_choosecitys">
+        <item>全国</item>
         <item>北京</item>
         <item>上海</item>
         <item>天津</item>
@@ -103,6 +104,16 @@
         <item>其他</item>
     </string-array>
 
+    <string-array name="publishproject_moneyUse">
+        <item>融资用途一</item>
+        <item>融资用途二</item>
+        <item>融资用途三</item>
+        <item>融资用途四</item>
+        <item>融资用途五</item>
+        <item>融资用途六</item>
+        <item>融资用途七</item>
+    </string-array>
+
     <string-array name="publishproject_stocktypes">
         <item>红利股</item>
         <item>原始股</item>
@@ -144,6 +155,15 @@
         <item>20%</item>
         <item>25%</item>
         <item>30%</item>
+    </string-array>
+
+    <string-array name="verified_money">
+        <item>5000元~1万元</item>
+        <item>1万元~10万元</item>
+        <item>10万元~100万元</item>
+        <item>100万元~500万元</item>
+        <item>500万元~1000万元</item>
+        <item>1000万元以上</item>
     </string-array>
 
 </resources>

@@ -69,6 +69,7 @@
                     android:background="@color/transparent"
                     android:gravity="right"
                     android:hint="请输入您的身份证号"
+                    android:maxLength="18"
                     android:inputType="text"
                     android:singleLine="true"
                     android:padding="5dp"
@@ -96,13 +97,16 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/title_txt_size" />
 
-                <EditText
+                <TextView
                     android:id="@+id/verified_et3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@color/transparent"
                     android:gravity="right"
-                    android:hint="固定资产>100万"
+                    android:text="@string/choose_verified1"
+                    android:onClick="onClick"
+                    android:drawableRight="@mipmap/down_arrow_grey"
                     android:numeric="decimal"
                     android:singleLine="true"
                     android:padding="5dp"
@@ -130,13 +134,16 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/title_txt_size" />
 
-                <EditText
+                <TextView
                     android:id="@+id/verified_et4"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@color/transparent"
                     android:gravity="right"
-                    android:hint="流动资产>50万"
+                    android:text="@string/choose_verified2"
+                    android:onClick="onClick"
+                    android:drawableRight="@mipmap/down_arrow_grey"
                     android:numeric="decimal"
                     android:singleLine="true"
                     android:padding="5dp"
@@ -170,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:gravity="right"
-                    android:hint="选填"
+                    android:hint="请输入紧急联系人姓名"
                     android:inputType="text"
                     android:singleLine="true"
                     android:padding="5dp"
@@ -204,9 +211,10 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:gravity="right"
-                    android:hint="选填"
-                    android:numeric="integer"
+                    android:hint="请输入紧急联系人电话"
+                    android:maxLength="11"
                     android:singleLine="true"
+                    android:numeric="integer"
                     android:padding="5dp"
                     android:textColor="@color/txt_black2"
                     android:textSize="@dimen/title_txt_size" />
