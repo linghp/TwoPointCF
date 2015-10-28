@@ -139,6 +139,26 @@ public class URLs {
     public static final String PAYMARGIN = HOST + "/api/project/payMargin";
 
     /**
+     * 经营管理
+     */
+    /**
+     * 获取项目公告列表
+     */
+    public static final String LISTNOTICE= HOST + "/api/notice/listnotice";
+    /**
+     * 获取财务报表接口
+     */
+    public static final String LISTREPORT= HOST + "/api/finance/listreport";
+    /**
+     * 发布财务报告
+     */
+    public static final String PUBLISHREPORT = HOST + "/api/finance/publishreport";
+    /**
+     * 发布项目公告
+     */
+    public static final String PUBLISHNOTICE = HOST + "/api/notice/publishnotice";
+
+    /**
      * 拼接请求路径
      *
      * @PARAM URI

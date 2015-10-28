@@ -53,10 +53,10 @@ public class FinancialReportsFragmentAdapter extends BaseAdapter implements Pinn
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
-        holder.tv01.setText(items.get(position).getTime());
+        holder.tv01.setText(items.get(position).getDate());
         if(type==FinancialReportsBean.ITEM){
-            holder.tv02.setText(getItem(position).getEarning());
-            holder.tv03.setText(getItem(position).getExpenditure());
+            holder.tv02.setText(getItem(position).getIncome());
+            holder.tv03.setText(getItem(position).getExpense());
             holder.tv04.setText(getItem(position).getRemarks());
         }
         return convertView;

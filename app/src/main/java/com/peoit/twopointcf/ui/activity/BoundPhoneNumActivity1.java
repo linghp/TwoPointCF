@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.RegisterPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,7 +64,7 @@ public class BoundPhoneNumActivity1 extends BaseActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.boundphone_tv2:
                 phonenum = boundphoneEt2.getText().toString().trim();
-                if (TextUtils.isEmpty(phonenum)){
+                if (!TextUtils.isEmpty(phonenum)) {
                     //获取验证码
                     time.start();//开始计时
                     //获取验证码
@@ -75,23 +76,30 @@ public class BoundPhoneNumActivity1 extends BaseActivity implements View.OnClick
                 break;
             case R.id.boundphone_tv3:
                 num = boundphoneEt1.getText().toString().trim();
+                phonenum = boundphoneEt2.getText().toString().trim();
                 //确定,验证验证码
-                if (!TextUtils.isEmpty(num)){
-                    Map<String, String> map = new HashMap<>();
-                    map.put("phoneNumber", localUserInfo.getPhonenumber());
-                    map.put("validateCode", num);
-                    presenter.getValidateCode(map, new RegisterPresenter.onValidateCode() {
-                        @Override
-                        public void onSueccess(String bean) {
-                            if ("y".equals(bean)) {
-
-                            }else {
-                                myToast("验证码验证错误");
+                if (!TextUtils.isEmpty(phonenum)) {
+                    if (!TextUtils.isEmpty(num)) {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("phoneNumber", localUserInfo.getPhonenumber());
+                        map.put("validateCode", num);
+                        presenter.getValidateCode(map, new RegisterPresenter.onValidateCode() {
+                            @Override
+                            public void onSueccess(String bean) {
+                                if ("y".equals(bean)) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("phonenum", phonenum + "");
+                                    CommonUtil.gotoActivityWithData(BoundPhoneNumActivity1.this, ResetPasswordActivity.class, bundle, true);
+                                } else {
+                                    myToast("验证码验证错误");
+                                }
                             }
-                        }
-                    });
-                }else {
-                    myToast("请输入验证码");
+                        });
+                    }else {
+                        myToast("请输入验证码");
+                    }
+                } else {
+                    myToast("请输入您要找回的手机号码");
                 }
                 break;
             default:

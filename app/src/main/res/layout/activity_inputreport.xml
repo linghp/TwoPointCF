@@ -3,45 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <LinearLayout
-        android:id="@+id/boundphone_ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:onClick="onClick"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="手机号码"
+            android:text="今日收入"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
         <EditText
-            android:id="@+id/boundphone_et2"
+            android:id="@+id/et_inputreport1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
-            android:drawablePadding="5dp"
             android:gravity="right"
-            android:padding="5dp"
-            android:inputType="number"
-            android:maxLength="11"
+            android:hint="请输入今日收入"
+            android:inputType="text"
             android:singleLine="true"
-            android:hint="请输入您的手机号码"
+            android:padding="5dp"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/txt_black3" />
     <LinearLayout
-        android:id="@+id/boundphone_ll3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -51,48 +46,63 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="验  证  码"
+            android:text="今日支出"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
         <EditText
-            android:id="@+id/boundphone_et1"
-            android:layout_width="wrap_content"
+            android:id="@+id/et_inputreport2"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="@color/transparent"
             android:gravity="right"
-            android:hint="短信验证码"
-            android:numeric="integer"
+            android:hint="请输入今日支出"
+            android:inputType="text"
+            android:singleLine="true"
             android:padding="5dp"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/txt_black2" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
-            android:id="@+id/boundphone_tv2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn"
-            android:clickable="true"
-            android:gravity="center"
-            android:onClick="onClick"
-            android:text="获取验证码"
-            android:textColor="@color/txt_white"
+            android:layout_height="100dp"
+            android:text="备        注"
+            android:layout_gravity="left"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
+
+        <EditText
+            android:id="@+id/et_inputreport3"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:background="@color/transparent"
+            android:hint="请输入备注"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
     <TextView
-        android:id="@+id/boundphone_tv3"
+        android:id="@+id/tv_inputreport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -105,7 +115,7 @@
         android:gravity="center"
         android:onClick="onClick"
         android:padding="6dp"
-        android:text="确        定"
+        android:text="确认录入"
         android:textColor="@color/txt_white"
         android:textSize="@dimen/btn_txt_size" />
 

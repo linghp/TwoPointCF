@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.BusinessManagerBean;
+import com.peoit.twopointcf.entity.ProjectBean;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * Created by ling on 2015/8/31.
  * description:
  */
-public class BusinessManagerAdapter extends ArrayAdapter<BusinessManagerBean>{
+public class BusinessManagerAdapter extends ArrayAdapter<ProjectBean>{
     private LayoutInflater mInflater;
     private int resourceId;
 
@@ -38,8 +38,8 @@ public class BusinessManagerAdapter extends ArrayAdapter<BusinessManagerBean>{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tv_title.setText(getItem(position).getTitle());
-        holder.tv_content.setText(getItem(position).getContent());
+        holder.tv_title.setText(getItem(position).projectName);
+        holder.tv_content.setText(getItem(position).projectIntro);
         return convertView;
     }
 
