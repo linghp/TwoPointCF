@@ -122,7 +122,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         if (titleView != null) {
             titleView.setTitle(R.string.investfind);
             titleView.setRightBtn(R.mipmap.search_white, this);
-            titleView.showLeftTextview("重庆", this);
+            titleView.showLeftTextview("全国", this);
         }
     }
 
@@ -166,7 +166,8 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
             switch (v.getId()) {
                 case R.id.right_btn:
                     //搜索
-                    CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
+                    //CommonUtil.gotoActivity(getActivity(), SearchActivity.class,false);
+                    SearchActivity.startThisActivity(city,getActivity());
                     break;
                 case R.id.left_text:
                     //选择城市
@@ -180,7 +181,11 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     @Override
     public void requestServer() {
         super.requestServer();
-        maps.put("city", city);
+        if(city.equals("全国")){
+            maps.put("city", "");
+        }else{
+            maps.put("city", city);
+        }
         presenter.getDataBanner(URLs.BANNERLIST,bannerBeans,this);
         presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
 

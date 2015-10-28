@@ -16,6 +16,9 @@ import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 import com.peoit.twopointcf.utils.MyLogger;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by ling on 2015/7/31.
  * last:2015/7/31
@@ -29,6 +32,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView_Respons
     protected AbPullToRefreshView pullview;
     protected LoadingLayout loadingLayout;
     protected LocalUserInfo localUserInfo;
+    protected Map<String, String> maps = new HashMap<>();
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

@@ -1,44 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    tools:showIn="@layout/fragment_invest_find_detail_sub4">
+    android:background="@color/white"
+    android:paddingBottom="6dp"
+    >
 
-    <com.peoit.twopointcf.ui.view.CustomShapeImageView
-        android:id="@+id/mycenter_iv"
+    <LinearLayout
         android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitXY"
-        android:src="@mipmap/photo1"
-        app:shape="circle" />
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.peoit.twopointcf.ui.view.CustomShapeImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            app:shape="circle"
+            tools:src="@mipmap/photo1" />
+
+        <TextView
+            android:id="@+id/tv_discussantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="lingdsdfsdfdsdsdsdfsd" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="9dp"
+        android:layout_margin="9dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:text="hero"
-            android:textSize="@dimen/title_txt_size" />
 
         <TextView
+            android:id="@+id/tv_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:text="上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规地方更大幅度法国大范甘迪电饭锅电饭锅电饭锅 地方好地方地方好的好的发挥多好的地方" />
+            tools:text="上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规地方更大幅度法国大范甘迪电饭锅电饭锅电饭锅 地方好地方地方好的好的发挥多好的地方" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"

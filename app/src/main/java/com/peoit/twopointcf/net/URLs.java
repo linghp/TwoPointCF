@@ -139,6 +139,17 @@ public class URLs {
     public static final String PAYMARGIN = HOST + "/api/project/payMargin";
 
     /**
+     * 发布评论
+     */
+    public static final String PUBLISHCOMMENT= HOST + "/api/comments/publishcomments";
+    /**
+     * 获取评论
+     */
+    public static final String LISTCOMMENTS = HOST + "/api/comments/listcomments";
+
+
+
+    /**
      * 拼接请求路径
      *
      * @PARAM URI

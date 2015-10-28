@@ -18,7 +18,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.citylistdemo.CharacterParser;
 import com.example.citylistdemo.MyLetterAlistView;
@@ -79,7 +78,7 @@ public class CityActivity extends BaseActivity {
         SourceDateList = filledData(getResources().getStringArray(
                 R.array.publishproject_choosecitys));
 
-        View headerview=getLayoutInflater().inflate(R.layout.citylistheader,null);
+        View headerview = getLayoutInflater().inflate(R.layout.citylistheader, null);
         sortListView.addHeaderView(headerview);
 
         // 根据a-z进行排序源数据
@@ -95,19 +94,19 @@ public class CityActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                if(position!=0) {
-                    String city=((SortModel) adapter.getItem(position-1)).getName();
-                    Toast.makeText(getApplication(),
-                            city,
-                            Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent();
-                    intent.putExtra("city",city);
-                    setResult(Activity.RESULT_OK, intent);
-                    finish();
-                }else{
-                    finish();
+                String city = "";
+                if (position != 0) {
+                    city = ((SortModel) adapter.getItem(position - 1)).getName();
+//                    Toast.makeText(getApplication(),
+//                            city,
+//                            Toast.LENGTH_SHORT).show();
+                } else {
+                    city = "重庆";
                 }
-
+                Intent intent = new Intent();
+                intent.putExtra("city", city);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
 
             }
         });
@@ -203,9 +202,14 @@ public class CityActivity extends BaseActivity {
             SortModel sortModel = new SortModel();
             sortModel.setName(date[i]);
             // 汉字转换成拼音
+
             String pinyin = characterParser.getSelling(date[i]);
             String sortString = pinyin.substring(0, 1).toUpperCase();
-
+            if (date[i].equals("重庆")) {
+                sortString = "C";
+            } else if (date[i].equals("全国")) {
+                sortString = "#";
+            }
             // 正则表达式，判断首字母是否是英文字母
             if (sortString.matches("[A-Z]")) {
                 sortModel.setSortLetters(sortString.toUpperCase());

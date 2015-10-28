@@ -1,13 +1,15 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,16 +17,19 @@ import android.widget.TextView;
 import com.jayfang.dropdownmenu.DropDownMenu;
 import com.jayfang.dropdownmenu.OnMenuSelectedListener;
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.presenters.impl.InvestFindPresenter;
-import com.peoit.twopointcf.presenters.interfaces.IInvestFind;
+import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.presenters.impl.SearchProjectPresenter;
+import com.peoit.twopointcf.presenters.interfaces.ISearchProject;
+import com.peoit.twopointcf.ui.adapter.InvestFindAdapter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
-import com.peoit.twopointcf.ui.view.LoadingLayout;
+import com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView;
 import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends BaseActivity implements InvestFindPresenter.OnHttpResultListener {
+public class SearchActivity extends BaseActivity implements SearchProjectPresenter.OnHttpResultListener,
+        AbPullToRefreshView.OnFooterLoadListener,AdapterView.OnItemClickListener {
     private DropDownMenu mMenu;
     private ListView mList;
     private EditText searchText;
@@ -36,55 +41,32 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
     final String[] arr1 = new String[]{"所有行业", "农畜", "制造", "建筑", "酒店","餐饮","能源","环保","交通","仓储","零售","服务","公益","购物","其他"};
     final String[] arr2 = new String[]{"众筹进度", "65%", "70%", "75%", "80%", "85%", "90%", "95%"};
     final String[] arr3 = new String[]{"筛选", "金额排序", "结束时间", "项目类型"};
-    private IInvestFind mPresenter;
+    private ISearchProject presenter;
+    private List<ProjectBean> projectBeans = new ArrayList<>();
+    private InvestFindAdapter adapter;
+
+    private String city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        testLoadingLayout();
     }
 
-    private void testLoadingLayout() {
-        final LoadingLayout loadingLayout = (LoadingLayout) findViewById(R.id.loading_layout);
-        findViewById(R.id.btn_show_content).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingLayout.showContent();
-            }
-        });
-        findViewById(R.id.btn_show_error).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingLayout.showError();
-            }
-        });
-        findViewById(R.id.btn_show_empty).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingLayout.showEmpty();
-            }
-        });
-        findViewById(R.id.btn_show_loading).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingLayout.showLoading();
-            }
-        });
-
-        loadingLayout.setOnRetryClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingLayout.showLoading();
-            }
-        });
+    public static void startThisActivity(String city, Context context) {
+        Intent intent = new Intent(context, SearchActivity.class);
+        intent.putExtra("city", city);
+        context.startActivity(intent);
     }
 
     @Override
     protected void initView() {
+        pullview.setPullRefreshEnable(false);
+        pullview.setOnFooterLoadListener(this);
         mMenu = (DropDownMenu) findViewById(R.id.menu);
         mList = (ListView) findViewById(R.id.lv_list);
+        mList.setOnItemClickListener(this);
         searchText = titleView.getEt_search();
         searchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
@@ -98,7 +80,13 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
                                             .getCurrentFocus()
                                             .getWindowToken(),
                                     InputMethodManager.HIDE_NOT_ALWAYS);
-                    mPresenter.getData();
+                    String searchContent = searchText.getText().toString().trim();
+                    if (TextUtils.isEmpty(searchContent)) {
+                        myToast("搜索内容不能为空");
+                        return false;
+                    } else {
+                        presenter.getData(params, false);
+                    }
 
                     return true;
                 }
@@ -109,7 +97,14 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
 
     @Override
     protected void initData() {
-        mPresenter = new InvestFindPresenter(this);
+        city=getIntent().getStringExtra("city");
+        params.put("city",city);
+        if(city.equals("全国")){
+            params.put("city", "");
+        }
+        presenter = new SearchProjectPresenter(this,projectBeans);
+        adapter = new InvestFindAdapter(this, projectBeans);
+        mList.setAdapter(adapter);
 
         mMenu.setMenuCount(3);
         mMenu.setShowCount(6);
@@ -147,9 +142,6 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
                 setFilter();
             }
         });
-
-        data = getData();
-        mList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, data));
     }
 
     @Override
@@ -161,41 +153,27 @@ public class SearchActivity extends BaseActivity implements InvestFindPresenter.
 
 
     private void setFilter() {
-        List<String> temp = new ArrayList<String>();
-        for (int i = 0; i < getData().size(); i++) {
-            boolean city = ((city_index == 0) ? true : data.get(i).contains(arr1[city_index]));
-            boolean sex = ((sex_index == 0) ? true : data.get(i).contains(arr2[sex_index]));
-            boolean age = ((age_index == 0) ? true : data.get(i).contains(arr3[age_index]));
-            if (city && sex && age) {
-                temp.add(data.get(i));
-            }
-        }
-        mList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, temp));
+
     }
 
-    private List<String> getData() {
-        List<String> data = new ArrayList<String>();
-        /*data.add("上海－男－10");
-        data.add("上海－男－20");
-        data.add("上海－男－30");
-        data.add("上海－男－40");
-        data.add("上海－男－50");
-        data.add("上海－男－60");
-        data.add("上海－男－70");
-        data.add("广州－男－10");
-        data.add("广州－女－10");
-        data.add("北京－男－20");
-        data.add("北京－女－10");
-        data.add("广州－男－10");
-        data.add("北京－男－10");
-        data.add("广州－男－10");
-        data.add("上海－女－60");
-        data.add("上海－女－20");*/
-        return data;
-    }
 
     @Override
     public void onHttpResultSuccess() {
-        myToast("onHttpResultSuccess");
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onHttpResult() {
+        pullview.onFooterLoadFinish();
+    }
+
+    @Override
+    public void onFooterLoad(AbPullToRefreshView view) {
+        presenter.getData(params, true);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        InvestFindDetailActivity.startThisActivity(projectBeans.get(position),false,this);
     }
 }

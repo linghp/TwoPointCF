@@ -128,7 +128,7 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                                 }
                             }).show();*/
                         }
-                        MyLogger.i(">>>>>>>>>>请求项目："+response.toString());
+                        MyLogger.i(response.toString());
                         FindProjectPresenter.this.projectBeans.clear();
                         FindProjectPresenter.this.projectBeans.addAll(response);
                         mView.onHttpResultSuccess();
