@@ -9,22 +9,27 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.peoit.twopointcf.R;
-import com.peoit.twopointcf.entity.BusinessDynamicsBean;
 import com.peoit.twopointcf.entity.FinancialReportsBean;
+import com.peoit.twopointcf.net.URLs;
+import com.peoit.twopointcf.presenters.impl.BusinessManagerPresenter;
+import com.peoit.twopointcf.ui.activity.BusinessManagerDetailActivity;
 import com.peoit.twopointcf.ui.adapter.FinancialReportsFragmentAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ling on 2015/9/1.
  * description:（我的项目->经营管理->)财务报告
  */
-public class FinancialReportsFragment extends BaseFragment implements AdapterView.OnItemClickListener{
+public class FinancialReportsFragment extends BaseFragment implements AdapterView.OnItemClickListener, BusinessManagerPresenter.OnHttpResultListener {
     private ListView listView;
-    private List<FinancialReportsBean> lists;
+    private List<FinancialReportsBean> lists = new ArrayList<>();
     private FinancialReportsFragmentAdapter financialReportsFragmentAdapter;
+    private BusinessManagerPresenter presenter;
 
     public FinancialReportsFragment() {
         // Required empty public constructor
@@ -41,19 +46,24 @@ public class FinancialReportsFragment extends BaseFragment implements AdapterVie
 
     @Override
     protected void initView(View view) {
-        listView= (ListView) view.findViewById(R.id.listView);
+        listView = (ListView) view.findViewById(R.id.listView);
     }
 
     @Override
     protected void initData() {
-        lists=new ArrayList<>();
-        generatedata();
-        financialReportsFragmentAdapter=new FinancialReportsFragmentAdapter(getActivity(),lists);
+        presenter = new BusinessManagerPresenter(this);
+        Map map = new HashMap();
+//        map.put("userId", localUserInfo.getUserId());
+        map.put("projectId", ((BusinessManagerDetailActivity) getActivity()).id);
+        presenter.getListReport(URLs.LISTREPORT, map);
+
+//        generatedata();
+        financialReportsFragmentAdapter = new FinancialReportsFragmentAdapter(getActivity(), lists);
         listView.setAdapter(financialReportsFragmentAdapter);
         listView.setOnItemClickListener(this);
     }
 
-    private void generatedata() {
+    /*private void generatedata() {
         lists.add(new FinancialReportsBean(FinancialReportsBean.SECTION,"8月","","",""));
         lists.add(new FinancialReportsBean(BusinessDynamicsBean.ITEM,"5号","13500","108888","备注"));
         lists.add(new FinancialReportsBean(BusinessDynamicsBean.ITEM,"12号","13500","108888","备注"));
@@ -76,7 +86,7 @@ public class FinancialReportsFragment extends BaseFragment implements AdapterVie
         lists.add(new FinancialReportsBean(BusinessDynamicsBean.ITEM,"25号","13500","108888","备注"));
         lists.add(new FinancialReportsBean(BusinessDynamicsBean.ITEM,"27号","13500","108888","备注"));
         lists.add(new FinancialReportsBean(BusinessDynamicsBean.ITEM,"30号","13500","108888","备注"));
-    }
+    }*/
 
     @Override
     protected void updateView() {
@@ -86,5 +96,10 @@ public class FinancialReportsFragment extends BaseFragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //CommonUtil.gotoActivity(getActivity(), BusinessManagerDetailActivity.class,false);
+    }
+
+    @Override
+    public void onHttpResultSuccess() {
+
     }
 }

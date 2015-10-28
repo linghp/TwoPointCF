@@ -43,8 +43,8 @@ public class ProjectAnnouncementAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
-        ((MViewHolder)viewHolder).tv_content.setText(listData.get(i).getContent());
-        ((MViewHolder)viewHolder).tv_time.setText(listData.get(i).getTime());
+        ((MViewHolder)viewHolder).tv_content.setText(listData.get(i).getNoticeContent());
+        ((MViewHolder)viewHolder).tv_time.setText(listData.get(i).getCreateData());
     }
 
 

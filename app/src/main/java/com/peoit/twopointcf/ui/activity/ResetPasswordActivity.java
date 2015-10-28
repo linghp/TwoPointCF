@@ -27,6 +27,7 @@ public class ResetPasswordActivity extends BaseActivity implements ChangePasswor
 
     private ChangePasswordPresenter presenter;
     private boolean isReset;
+    private String phonenum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +46,21 @@ public class ResetPasswordActivity extends BaseActivity implements ChangePasswor
     protected void initData() {
         Intent intent = getIntent();
         isReset = intent.getBooleanExtra("isReset", false);
+        phonenum = intent.getStringExtra("phonenum");
         presenter = new ChangePasswordPresenter(this);
     }
 
     @Override
     protected void updateView() {
         if (titleView != null) {
-            if (isReset)
-                titleView.setTitle("重置登录密码");
-            else
-                titleView.setTitle("重置授权密码");
+            if (TextUtils.isEmpty(phonenum)) {
+                if (isReset)
+                    titleView.setTitle("重置登录密码");
+                else
+                    titleView.setTitle("重置授权密码");
+            }else {
+                titleView.setTitle("找回登录密码");
+            }
         }
     }
 
@@ -64,15 +70,25 @@ public class ResetPasswordActivity extends BaseActivity implements ChangePasswor
             case R.id.resetPassword_tv1:
                 if (match()) {
                     Map<String, String> maps = new HashMap<>();
-                    maps.put("id", localUserInfo.getUserId());
-                    maps.put("newPassword", newPassword);
-                    if (isReset) {
+                    if (TextUtils.isEmpty(phonenum)) {
+                        if (isReset) {
+                                maps.put("id", localUserInfo.getUserId());
+                                maps.put("newPassword", newPassword);
+                                maps.put("passwordType", "10");
+                                MyLogger.i("重置登录密码传入的数据：" + maps);
+                                presenter.getResetPassword(maps);
+                        } else {
+                            maps.put("id", localUserInfo.getUserId());
+                            maps.put("newPassword", newPassword);
+                            maps.put("passwordType", "20");
+                            MyLogger.i("重置授权密码传入的数据：" + maps);
+                            presenter.getResetPassword(maps);
+                        }
+                    } else {
+                        maps.put("id", phonenum);
+                        maps.put("newPassword", newPassword);
                         maps.put("passwordType", "10");
-                        MyLogger.i("重置登录密码传入的数据：" + maps);
-                        presenter.getResetPassword(maps);
-                    }else {
-                        maps.put("passwordType", "20");
-                        MyLogger.i("重置授权密码传入的数据：" + maps);
+                        MyLogger.i("忘记登录密码传入的数据：" + maps);
                         presenter.getResetPassword(maps);
                     }
                 }

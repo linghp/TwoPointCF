@@ -76,6 +76,7 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
         InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),false,this);
     }
 
+
     @Override
     public void requestServer() {
         super.requestServer();

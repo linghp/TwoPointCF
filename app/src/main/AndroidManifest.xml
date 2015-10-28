@@ -154,19 +154,26 @@
             android:label="@string/citylist" />
         <activity
             android:name=".ui.activity.BusinessManagerActivity"
-            android:label="@string/title_activity_business_manager"></activity>
+            android:label="@string/title_activity_business_manager"/>
         <activity
             android:name=".ui.activity.BusinessManagerDetailActivity"
-            android:label="@string/title_activity_business_manager_detail"></activity>
+            android:label="@string/title_activity_business_manager_detail"/>
+        <activity
+            android:name=".ui.activity.AnnouncementActivity"
+            android:label="@string/title_activity_AnnouncementActivity" />
+        <activity
+            android:name=".ui.activity.InputReportActivity"
+            android:label="@string/title_activity_InputReportActivity" />
+
         <activity
             android:name=".ui.activity.MyPublishDetailActivity"
-            android:label="@string/title_activity_my_publish_detail"></activity>
+            android:label="@string/title_activity_my_publish_detail"/>
         <activity
             android:name=".ui.activity.SimplePhotoViewActivity"
-            android:label="@string/title_activity_simple_photo_view"></activity>
+            android:label="@string/title_activity_simple_photo_view"/>
         <activity
             android:name=".ui.activity.InformationCenterDetailActivity"
-            android:label="@string/title_activity_information_center_detail"></activity>
+            android:label="@string/title_activity_information_center_detail"/>
 
         <activity
             android:name="com.peoit.photochooser.PhotoPickActivity"

@@ -26,7 +26,7 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
     private PopupWindow popupWindow;
     private Fragment[] mFragments;
     private boolean isPublished;
-    private String title;
+    public String title,id;
     private SlidingTabLayout_noViewpager tabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +34,11 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
         setContentView(R.layout.activity_business_manager_detail);
     }
 
-    public static void startThisActivity(boolean isPublished,String title,Context context) {
+    public static void startThisActivity(boolean isPublished,String id,String title,Context context) {
         Intent intent = new Intent(context, BusinessManagerDetailActivity.class);
         intent.putExtra("isPublished", isPublished);
         intent.putExtra("title", title);
+        intent.putExtra("id", id);
         context.startActivity(intent);
     }
 
@@ -53,7 +54,8 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
         super.initData();
         isPublished=getIntent().getBooleanExtra("isPublished",false);
         title=getIntent().getStringExtra("title");
-        MyLogger.i("title:"+title);
+        id=getIntent().getStringExtra("id");
+        MyLogger.i(">>>>>>>>>>>title:"+title+"id"+id);
 
         mFragments = new Fragment[2];
         mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.fragment_ProjectAnnouncement);
@@ -151,9 +153,14 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
                 break;
             case R.id.right_btn:
                 if(mFragments[0].isVisible()){
-                    myToast("0");
+//                    myToast("添加项目公告(发布公告)");
+//                    CommonUtil.gotoActivity(this,AnnouncementActivity.class,false);
+                    AnnouncementActivity.startThisActivity(id,this);
+
                 }else{
-                    myToast("1");
+//                    myToast("添加项目报告（录入报表）");
+//                    CommonUtil.gotoActivity(this,InputReportActivity.class,false);
+                    InputReportActivity.startThisActivity(id,this);
                 }
                 break;
         }
