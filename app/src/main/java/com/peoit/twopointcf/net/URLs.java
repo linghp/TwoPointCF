@@ -168,6 +168,10 @@ public class URLs {
      * 发布项目公告
      */
     public static final String PUBLISHNOTICE = HOST + "/api/notice/publishnotice";
+    /**
+     * 获取投资成功完成的项目
+     */
+    public static final String FINDINVESTEDSUCCESSPROJECT = HOST + "/api/project/findInvestedSuccessProject";
 
     /**
      * 拼接请求路径

@@ -43,6 +43,7 @@ public class ProjectAnnouncementAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+        ((MViewHolder)viewHolder).tv_title.setText(listData.get(i).getNoticeTitle());
         ((MViewHolder)viewHolder).tv_content.setText(listData.get(i).getNoticeContent());
         ((MViewHolder)viewHolder).tv_time.setText(listData.get(i).getCreateData());
     }
@@ -50,13 +51,15 @@ public class ProjectAnnouncementAdapter extends RecyclerView.Adapter{
 
 
     public class MViewHolder extends RecyclerView.ViewHolder {
+        public TextView tv_title;
         public TextView tv_content;
         public TextView tv_time;
 
         public MViewHolder(View view) {
             super(view);
-            this.tv_content = (TextView) view.findViewById(R.id.tv_01);
-            this.tv_time = (TextView) view.findViewById(R.id.tv_02);
+            this.tv_title = (TextView) view.findViewById(R.id.tv_title);
+            this.tv_content = (TextView) view.findViewById(R.id.tv_content);
+            this.tv_time = (TextView) view.findViewById(R.id.tv_time);
 
         }
     }

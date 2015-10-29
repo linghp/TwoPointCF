@@ -63,11 +63,14 @@ public class SearchProjectPresenter extends BasePresenter<SearchProjectPresenter
         }
         maps.put("offset", offset + "");
         maps.put("pageSize", pageSize + "");
-        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
+        //MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
         OkHttpClientManager.postAsyn(URLs.FINDPROJECT, maps,
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
                     public void onError(Request request, String info, Exception e) {
+                        if (!isMore){
+                            offset--;
+                        }
                         if (TextUtils.isEmpty(info)) {
                             mView.showToast(R.string.networkerror);
                             e.printStackTrace();
@@ -82,6 +85,9 @@ public class SearchProjectPresenter extends BasePresenter<SearchProjectPresenter
                         if (isMore&&response.size()==0){
                             mView.showToast(R.string.islastpage);
                             return;
+                        }
+                        if(!isMore&&response.size()==0){
+                            mView.showToast(R.string.nodata);
                         }
                         SearchProjectPresenter.this.projectBeans.addAll(response);
                         mView.onHttpResultSuccess();

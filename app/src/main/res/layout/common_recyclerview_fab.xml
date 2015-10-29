@@ -14,6 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fastScrollEnabled="true"
+            android:background="@color/white"
+            android:padding="6dp"
             android:scrollbars="none" />
     </com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView>
 

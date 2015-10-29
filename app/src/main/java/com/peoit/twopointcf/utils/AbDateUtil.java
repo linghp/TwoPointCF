@@ -186,6 +186,40 @@ public class AbDateUtil {
 		}
 		return mDateTime;
 	}
+
+	/**
+	 * 描述：获取指定日期时间的月份.
+	 *
+	 */
+	public static int getMonth(String strDate, String format) {
+		int month=0;
+		try {
+			Calendar c = new GregorianCalendar();
+			SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(format);
+			c.setTime(mSimpleDateFormat.parse(strDate));
+			month=c.get(Calendar.MONTH)+1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return month;
+	}
+
+	/**
+	 * 描述：获取指定日期时间的月份中的几号.
+	 *
+	 */
+	public static int getDay(String strDate, String format) {
+		int day=0;
+		try {
+			Calendar c = new GregorianCalendar();
+			SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(format);
+			c.setTime(mSimpleDateFormat.parse(strDate));
+			day=c.get(Calendar.DAY_OF_MONTH);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return day;
+	}
 	
 	/**
 	 * 描述：获取milliseconds表示的日期时间的字符串.

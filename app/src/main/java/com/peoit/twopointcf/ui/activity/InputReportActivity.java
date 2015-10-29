@@ -1,6 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +12,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.BusinessManagerPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.DataPickDialogUtil;
 
 /**
  * 录入报表 （添加财务报告）
@@ -21,8 +22,8 @@ public class InputReportActivity extends BaseActivity implements BusinessManager
     private EditText etInputreport1;
     private EditText etInputreport2;
     private EditText etInputreport3;
-    private TextView tvInputreport;
-    private String income, expense, remarks;
+    private TextView tvInputreport,tv_Date;
+    private String date, income, expense, remarks;
     private BusinessManagerPresenter presenter;
     private String id;
 
@@ -31,10 +32,10 @@ public class InputReportActivity extends BaseActivity implements BusinessManager
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inputreport);
     }
-    public static void startThisActivity(String id,Context context) {
+    public static void startThisActivity(String id,Activity context) {
         Intent intent = new Intent(context, InputReportActivity.class);
         intent.putExtra("id", id);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, 101);
     }
     @Override
     protected void initView() {
@@ -42,6 +43,8 @@ public class InputReportActivity extends BaseActivity implements BusinessManager
         etInputreport2 = (EditText) findViewById(R.id.et_inputreport2);
         etInputreport3 = (EditText) findViewById(R.id.et_inputreport3);
         tvInputreport = (TextView) findViewById(R.id.tv_inputreport);
+        tv_Date = (TextView) findViewById(R.id.tv_Date);
+        tv_Date.setOnClickListener(this);
         tvInputreport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +53,7 @@ public class InputReportActivity extends BaseActivity implements BusinessManager
                     params.put("expense", expense);
                     params.put("remarks", remarks);
                     params.put("projectId", id);//项目id
-                    params.put("data", "");
+                    params.put("date", date);
                     presenter.getData(URLs.PUBLISHREPORT,params);
                 }
             }
@@ -64,6 +67,11 @@ public class InputReportActivity extends BaseActivity implements BusinessManager
     }
 
     private boolean match() {
+        date = tv_Date.getText().toString().trim();
+        if (date.equals(getString(R.string.choosedate))) {
+            myToast("请选择日期");
+            return false;
+        }
         income = etInputreport1.getText().toString().trim();
         if (TextUtils.isEmpty(income)) {
             showToast("请输入今日收入");
@@ -92,6 +100,18 @@ public class InputReportActivity extends BaseActivity implements BusinessManager
 
     @Override
     public void onHttpResultSuccess() {
+        setResult(RESULT_OK);
+        finish();
+    }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.tv_Date:
+                DataPickDialogUtil dataPickDialogUtil = new DataPickDialogUtil(this);
+                dataPickDialogUtil.dateTimePicKDialog(tv_Date);
+                break;
+        }
     }
 }

@@ -15,6 +15,7 @@ import com.peoit.twopointcf.presenters.impl.BusinessManagerPresenter;
 import com.peoit.twopointcf.ui.activity.BusinessManagerDetailActivity;
 import com.peoit.twopointcf.ui.adapter.FinancialReportsFragmentAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.utils.AbDateUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,10 +53,8 @@ public class FinancialReportsFragment extends BaseFragment implements AdapterVie
     @Override
     protected void initData() {
         presenter = new BusinessManagerPresenter(this);
-        Map map = new HashMap();
-//        map.put("userId", localUserInfo.getUserId());
-        map.put("projectId", ((BusinessManagerDetailActivity) getActivity()).id);
-        presenter.getListReport(URLs.LISTREPORT, map);
+        presenter.setFinancialReportsBeans(lists);
+        requestServer();
 
 //        generatedata();
         financialReportsFragmentAdapter = new FinancialReportsFragmentAdapter(getActivity(), lists);
@@ -63,6 +62,14 @@ public class FinancialReportsFragment extends BaseFragment implements AdapterVie
         listView.setOnItemClickListener(this);
     }
 
+    @Override
+    public void requestServer() {
+        super.requestServer();
+        Map map = new HashMap();
+//        map.put("userId", localUserInfo.getUserId());
+        map.put("projectId", ((BusinessManagerDetailActivity) getActivity()).id);
+        presenter.getListReport(URLs.LISTREPORT, map);
+    }
     /*private void generatedata() {
         lists.add(new FinancialReportsBean(FinancialReportsBean.SECTION,"8月","","",""));
         lists.add(new FinancialReportsBean(BusinessDynamicsBean.ITEM,"5号","13500","108888","备注"));
@@ -100,6 +107,25 @@ public class FinancialReportsFragment extends BaseFragment implements AdapterVie
 
     @Override
     public void onHttpResultSuccess() {
-
+        List<FinancialReportsBean> lists_temp = new ArrayList<>();
+        lists_temp.addAll(lists);
+        lists.clear();
+        int month_tag=0;
+        for (FinancialReportsBean financialReportsBean : lists_temp) {
+            String date=financialReportsBean.getDate();
+            int month= AbDateUtil.getMonth(date, "yyyy-MM-dd");
+            if(month_tag==0){
+                month_tag=month;
+                lists.add(new FinancialReportsBean(FinancialReportsBean.SECTION,month+"月"));
+            }
+            if(month_tag!=month){
+                month_tag=month;
+                lists.add(new FinancialReportsBean(FinancialReportsBean.SECTION,month+"月"));
+            }
+            financialReportsBean.setType(FinancialReportsBean.ITEM);
+            financialReportsBean.setDate(AbDateUtil.getDay(date, "yyyy-MM-dd")+"号");
+            lists.add(financialReportsBean);
+        }
+        financialReportsFragmentAdapter.notifyDataSetChanged();
     }
 }

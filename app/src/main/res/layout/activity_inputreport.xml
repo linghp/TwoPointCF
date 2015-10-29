@@ -3,6 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="录入日期"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_txt_size" />
+
+        <TextView
+            android:id="@+id/tv_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:drawableRight="@mipmap/down_arrow_grey"
+            android:text="@string/choosedate" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/txt_black3" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,9 +56,9 @@
             android:background="@color/transparent"
             android:gravity="right"
             android:hint="请输入今日收入"
-            android:inputType="text"
-            android:singleLine="true"
+            android:inputType="number"
             android:padding="5dp"
+            android:singleLine="true"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
 
@@ -36,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/txt_black3" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,9 +90,9 @@
             android:background="@color/transparent"
             android:gravity="right"
             android:hint="请输入今日支出"
-            android:inputType="text"
-            android:singleLine="true"
+            android:inputType="number"
             android:padding="5dp"
+            android:singleLine="true"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
 
@@ -69,6 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/txt_black3" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,8 +113,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:text="备        注"
             android:layout_gravity="left"
+            android:text="备        注"
             android:textColor="@color/black"
             android:textSize="@dimen/title_txt_size" />
 
@@ -89,8 +123,8 @@
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:background="@color/transparent"
-            android:hint="请输入备注"
             android:gravity="center_horizontal"
+            android:hint="请输入备注"
             android:padding="5dp"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/title_txt_size" />
@@ -101,6 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/txt_black3" />
+
     <TextView
         android:id="@+id/tv_inputreport"
         android:layout_width="match_parent"

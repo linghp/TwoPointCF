@@ -1,13 +1,15 @@
 package com.peoit.twopointcf.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by ling on 2015/9/1.
  * description:
  */
-public class FinancialReportsBean {
+public class FinancialReportsBean implements Serializable{
     public static final int ITEM = 0;
     public static final int SECTION = 1;
-    private  int type = 0;
+    private  int type;
     public static int getITEM() {
         return ITEM;
     }
@@ -40,7 +42,14 @@ public class FinancialReportsBean {
         private String expense;
         private String project;
 
-        public void setId(String id) {
+
+
+    public FinancialReportsBean(int type, String date) {
+        this.type = type;
+        this.date = date;
+    }
+
+    public void setId(String id) {
             this.id = id;
         }
 

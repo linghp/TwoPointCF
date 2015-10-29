@@ -1,6 +1,6 @@
 package com.peoit.twopointcf.ui.activity;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,10 +29,10 @@ public class AnnouncementActivity extends BaseActivity implements BusinessManage
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcement);
     }
-    public static void startThisActivity(String id,Context context) {
+    public static void startThisActivity(String id,Activity context) {
         Intent intent = new Intent(context, AnnouncementActivity.class);
         intent.putExtra("id", id);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, 100);
     }
     @Override
     protected void initView() {
@@ -47,7 +47,7 @@ public class AnnouncementActivity extends BaseActivity implements BusinessManage
                     params.put("noticeContent", noticeContent);
                     params.put("projectId", id);//项目id
                     params.put("userId", localUserInfo.getUserId());
-                    presenter.getData(URLs.PUBLISHREPORT,params);
+                    presenter.getData(URLs.PUBLISHNOTICE,params);
                 }
             }
         });
@@ -82,6 +82,7 @@ public class AnnouncementActivity extends BaseActivity implements BusinessManage
 
     @Override
     public void onHttpResultSuccess() {
-
+        setResult(RESULT_OK);
+        finish();
     }
 }

@@ -187,6 +187,7 @@ public class OkHttpClientManager
 
     public static void postAsyn(String url, Map<String, String> params, final ResultCallback callback)
     {
+        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + params);
         getInstance().getPostDelegate().postAsyn(url, params, callback, null);
     }
 
@@ -202,6 +203,7 @@ public class OkHttpClientManager
 
     public static void postAsyn(String url, Map<String, String> params, final ResultCallback callback, Object tag)
     {
+        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + params);
         getInstance().getPostDelegate().postAsyn(url, params, callback, tag);
     }
 

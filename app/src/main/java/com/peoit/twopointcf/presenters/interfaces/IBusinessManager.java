@@ -7,4 +7,5 @@ import java.util.Map;
  */
 public interface IBusinessManager {
     void getData(String url,Map map);
+    void getData_List(String url, Map map);
 }

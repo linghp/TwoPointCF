@@ -72,7 +72,7 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResul
         }
         maps.put("offset", 0 + "");
         maps.put("pageSize", pageSize + "");
-        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
+        //MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
         OkHttpClientManager.postAsyn(URLs.LISTCOMMENTS, maps,
                 new MyResultCallback<List<CommentBean>>() {
                     @Override
@@ -118,7 +118,7 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResul
 
     @Override
     public void publishComment(Map map) {
-        MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + map);
+        //MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + map);
         OkHttpClientManager.postAsyn(URLs.PUBLISHCOMMENT, map, new MyResultCallback_PublishComment<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {

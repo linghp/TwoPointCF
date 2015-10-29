@@ -90,6 +90,7 @@
     <string name="commentsuccess">评论成功</string>
     <string name="commentfail">评论失败</string>
     <string name="islastpage">已到最后一页</string>
+    <string name="nodata">没有数据</string>
 
     <string name="choosecity">请选择城市</string>
     <string name="chooseindustry">请选择行业</string>
@@ -104,4 +105,6 @@
 
     <string name="choose_verified1">请选择固定资产</string>
     <string name="choose_verified2">请选择流动资产</string>
+    <string name="choosedate">请选择日期</string>
+    <string name="pleasechoose">请选择</string>
 </resources>

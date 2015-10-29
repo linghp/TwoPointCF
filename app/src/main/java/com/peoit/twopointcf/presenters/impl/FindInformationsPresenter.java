@@ -65,14 +65,14 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
 
     @Override
     public void getDataMore() {
-        offset=offset+pageSize;
+        offset++;
         maps.put("offset",offset+"");
         maps.put("pageSize",pageSize+"");
         OkHttpClientManager.postAsyn(URLs.FINDINFORMATIONS, maps,
                 new MyResultCallback<List<InformationCenterBean>>() {
                     @Override
                     public void onError(Request request, String info,Exception e) {
-                        offset=offset-pageSize;
+                        offset--;
                         if (TextUtils.isEmpty(info)) {
                             mView.showToast(R.string.networkerror);
                             e.printStackTrace();

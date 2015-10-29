@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.other.ScrollAwareFABBehavior;
+import com.peoit.twopointcf.ui.base.BaseFragment;
 import com.peoit.twopointcf.ui.base.BaseFragmentActivity;
 import com.peoit.twopointcf.ui.view.SlidingTabLayout.SlidingTabLayout_noViewpager;
 import com.peoit.twopointcf.utils.MyLogger;
@@ -24,7 +24,7 @@ import com.peoit.twopointcf.utils.MyLogger;
  */
 public class BusinessManagerDetailActivity extends BaseFragmentActivity implements SlidingTabLayout_noViewpager.TabListener {
     private PopupWindow popupWindow;
-    private Fragment[] mFragments;
+    private BaseFragment[] mFragments;
     private boolean isPublished;
     public String title,id;
     private SlidingTabLayout_noViewpager tabs;
@@ -57,12 +57,12 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
         id=getIntent().getStringExtra("id");
         MyLogger.i(">>>>>>>>>>>title:"+title+"id"+id);
 
-        mFragments = new Fragment[2];
-        mFragments[0] = getSupportFragmentManager().findFragmentById(R.id.fragment_ProjectAnnouncement);
+        mFragments = new BaseFragment[2];
+        mFragments[0] = (BaseFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_ProjectAnnouncement);
 //        if(!isPublished) {
 //            ((ProjectAnnouncementFragment) mFragments[0]).hiddenFAB();
 //        }
-        mFragments[1] = getSupportFragmentManager().findFragmentById(R.id.fragment_FinancialReports);
+        mFragments[1] = (BaseFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_FinancialReports);
         getSupportFragmentManager().beginTransaction().hide(mFragments[0])
                 .hide(mFragments[1]).show(mFragments[0]).commit();
 
@@ -181,5 +181,17 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
     @Override
     public void onTabReSelected(int pos) {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            if(mFragments[0].isVisible()){
+                mFragments[0].requestServer();
+            }else{
+                mFragments[1].requestServer();
+            }
+        }
     }
 }

@@ -28,18 +28,19 @@ import java.util.Map;
  * Created by ling on 2015/9/1.
  * description:（我的项目->经营管理->)项目公告
  */
-public class ProjectAnnouncementFragment extends BaseFragment implements AdapterView.OnItemClickListener,BusinessManagerPresenter.OnHttpResultListener,
-        AbPullToRefreshView.OnHeaderRefreshListener,AbPullToRefreshView.OnFooterLoadListener{
+public class ProjectAnnouncementFragment extends BaseFragment implements AdapterView.OnItemClickListener, BusinessManagerPresenter.OnHttpResultListener,
+        AbPullToRefreshView.OnHeaderRefreshListener, AbPullToRefreshView.OnFooterLoadListener {
     private RecyclerView recyclerView;
-   // private FloatingActionButton fab;
+    // private FloatingActionButton fab;
     private List<ProjectAnnouncementBean> lists = new ArrayList<>();
     private ProjectAnnouncementAdapter projectAnnouncementAdapter;
-    private boolean isPublished=true;
+    private boolean isPublished = true;
     private BusinessManagerPresenter presenter;
 
     public ProjectAnnouncementFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,10 +69,8 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
     @Override
     protected void initData() {
         presenter = new BusinessManagerPresenter(this);
-        Map map = new HashMap();
-        map.put("userId",localUserInfo.getUserId());
-        map.put("projectId", ((BusinessManagerDetailActivity)getActivity()).id);
-        presenter.getListNotice(URLs.LISTNOTICE, map);
+        presenter.setProjectAnnouncementBeans(lists);
+        requestServer();
 
 //        generatedata();
 
@@ -80,7 +79,15 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
         //recyclerView.setOnItemClickListener(this);
     }
 
-   /* private void generatedata() {
+    @Override
+    public void requestServer() {
+        super.requestServer();
+        Map map = new HashMap();
+        map.put("projectId", ((BusinessManagerDetailActivity) getActivity()).id);
+        presenter.getListNotice(URLs.LISTNOTICE, map);
+    }
+
+    /* private void generatedata() {
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的上的发生的水电费水电费和好的方法的符合地方好地方很多地方的法规的法规", "2015/08/12"));
         lists.add(new ProjectAnnouncementBean("发生的所得税的所得税的水电费是滴是滴所得税的树干上的水电费收水电费水电费的所发生的是滴是滴", "2015/08/12"));
@@ -126,5 +133,6 @@ public class ProjectAnnouncementFragment extends BaseFragment implements Adapter
     @Override
     public void onHttpResultSuccess() {
 
+        projectAnnouncementAdapter.notifyDataSetChanged();
     }
 }

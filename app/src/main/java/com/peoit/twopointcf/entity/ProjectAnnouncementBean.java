@@ -91,4 +91,18 @@ public class ProjectAnnouncementBean implements Serializable{
     public String getCreateData() {
         return createData;
     }
+
+    @Override
+    public String toString() {
+        return "ProjectAnnouncementBean{" +
+                "id='" + id + '\'' +
+                ", projectName='" + projectName + '\'' +
+                ", noticeTitle='" + noticeTitle + '\'' +
+                ", noticeContent='" + noticeContent + '\'' +
+                ", userName='" + userName + '\'' +
+                ", projectId='" + projectId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", createData='" + createData + '\'' +
+                '}';
+    }
 }

@@ -62,12 +62,15 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
     protected void initData() {
         type = getArguments().getString("type");
         presenter = new FindProjectPresenter(this);
-        params.put("investorId", localUserInfo.getUserId());
+
         switch (type) {
             case BusinessManagerActivity.INVESTED:
-                presenter.getData(URLs.FINDINVESTEDPROJECT, params, lists);
+                params.put("investorId", localUserInfo.getUserId());
+                presenter.getData(URLs.FINDINVESTEDSUCCESSPROJECT, params, lists);
                 break;
             case BusinessManagerActivity.PUBLISHED:
+                params.put("publisherId", localUserInfo.getUserId());
+                params.put("status", "project_success");//众筹成功的项目
                 presenter.getData(URLs.FINDPROJECT, params, lists);
                 break;
         }
