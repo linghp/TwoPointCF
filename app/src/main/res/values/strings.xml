@@ -107,4 +107,6 @@
     <string name="choose_verified2">请选择流动资产</string>
     <string name="choosedate">请选择日期</string>
     <string name="pleasechoose">请选择</string>
+    <string name="invest">我要投资</string>
+    <string name="clicklogin">点击登陆</string>
 </resources>

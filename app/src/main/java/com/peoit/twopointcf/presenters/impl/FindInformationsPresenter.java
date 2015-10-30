@@ -24,13 +24,14 @@ import java.util.Map;
  */
 public class FindInformationsPresenter extends BasePresenter<FindInformationsPresenter.OnHttpResultListener> implements IFindInformationsProject {
     private List<InformationCenterBean> informationBeans;
-    private int offset=0;
+    private int offset=1;
     private int pageSize=10;
     Map<String, String> maps = new HashMap<>();
     @Override
     public void getData(List<InformationCenterBean> informationBeans) {
         this.informationBeans=informationBeans;
-        maps.put("offset",0+"");
+        offset=1;
+        maps.put("offset",offset+"");
         maps.put("pageSize",pageSize+"");
         OkHttpClientManager.postAsyn(URLs.FINDINFORMATIONS, maps,
                 new MyResultCallback<List<InformationCenterBean>>() {
@@ -49,7 +50,6 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
                     @Override
                     public void onResponse(List<InformationCenterBean> response) {
                         //mTv.setText(u.toString());
-                        offset = 0;
                         if (response.size() > 0) {
                             mView.showContentPage();
                         } else {
@@ -84,6 +84,7 @@ public class FindInformationsPresenter extends BasePresenter<FindInformationsPre
                     @Override
                     public void onResponse(List<InformationCenterBean> response) {
                         //mTv.setText(u.toString());
+                        offset++;
                         MyLogger.i(response.toString());
                         if (response.size()==0){
                             mView.showToast(R.string.islastpage);

@@ -58,8 +58,6 @@ public class SearchProjectPresenter extends BasePresenter<SearchProjectPresenter
         if (!isMore){
             SearchProjectPresenter.this.projectBeans.clear();
             offset=1;
-        }else{
-            offset++;
         }
         maps.put("offset", offset + "");
         maps.put("pageSize", pageSize + "");
@@ -82,6 +80,9 @@ public class SearchProjectPresenter extends BasePresenter<SearchProjectPresenter
                     @Override
                     public void onResponse(List<ProjectBean> response) {
                         MyLogger.i(response.toString());
+                        if (isMore){
+                            offset++;
+                        }
                         if (isMore&&response.size()==0){
                             mView.showToast(R.string.islastpage);
                             return;

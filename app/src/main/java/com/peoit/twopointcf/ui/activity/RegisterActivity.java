@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.RegisterPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.Encryption;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -197,8 +198,8 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                     maps.put("userName", userName);
                     maps.put("phoneNumber", phoneNumber);
                     maps.put("email", email);
-                    maps.put("password", password);
-                    maps.put("authorizationCode", authorizationCode);
+                    maps.put("password", Encryption.generatePassword(password));
+                    maps.put("authorizationCode", Encryption.generatePassword(authorizationCode));
                     maps.put("verifyCode", verifyCode);
                     presenter.getData(maps);
 

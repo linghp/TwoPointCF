@@ -159,11 +159,11 @@ public class PublishFragment03 extends BaseFragment {
             et_moneyUse.setText(publishProjectActivity.projectBean.moneyUse);//融资用途
             et_totalStockMoney.setText(publishProjectActivity.projectBean.totalStockMoney+"");//股权总额
             et_sellStockMoney.setText(publishProjectActivity.projectBean.sellStockMoney+"");//发行总额
-            tv_proportion.setText((publishProjectActivity.projectBean.perSellStockMoney + 0.0) / publishProjectActivity.projectBean.sellStockMoney * 100 + "%");//起售股份所占比例
+            tv_proportion.setText((publishProjectActivity.projectBean.sellStockMoney + 0.0) / publishProjectActivity.projectBean.totalStockMoney * 100 + "%");//起售股份所占比例
             et_perSellStockMoney.setText(publishProjectActivity.projectBean.perSellStockMoney+"");//售卖金额
             tv_stocktype.setText(publishProjectActivity.projectBean.stockType);//股权类型
             tv_endDate.setText(publishProjectActivity.projectBean.endDate);//众筹结束时间
-            tv_successCondition.setText(publishProjectActivity.projectBean.successCondition * 100 +"%");//项目启动条件
+            tv_successCondition.setText(Math.round(publishProjectActivity.projectBean.successCondition * 100) +"%");//项目启动条件
         }
 
         moneyUses = getActivity().getResources().getStringArray(R.array.publishproject_moneyUse);

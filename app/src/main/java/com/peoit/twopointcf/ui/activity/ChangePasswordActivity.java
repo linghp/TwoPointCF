@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.Encryption;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 import com.peoit.twopointcf.utils.MyLogger;
 
@@ -26,7 +27,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
     private EditText et_password3;
     private TextView tv_define;
 
-    private String oldPassword, newPassword,twoPassword;
+    private String oldPassword, newPassword, twoPassword;
     private ChangePasswordPresenter presenter;
 
     private boolean ispassword;
@@ -49,7 +50,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
     @Override
     protected void initData() {
         Intent intent = getIntent();
-        ispassword = intent.getBooleanExtra("ispassword",false);
+        ispassword = intent.getBooleanExtra("ispassword", false);
         presenter = new ChangePasswordPresenter(this);
     }
 
@@ -68,16 +69,15 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.changepassword_tv1:
                 if (match()) {
-                        Map<String, String> maps = new HashMap<>();
-                        maps.put("oldPassword", oldPassword);
-                        maps.put("newPassword", newPassword);
-                        maps.put("id", localUserInfo.getUserId());
+                    Map<String, String> maps = new HashMap<>();
+                    maps.put("oldPassword", Encryption.generatePassword(oldPassword));
+                    maps.put("newPassword", Encryption.generatePassword(newPassword));
+                    maps.put("id", localUserInfo.getUserId());
                     if (ispassword) {
                         maps.put("passwordType", "10");
-                        MyLogger.i("修改登录密码传入的数据："+maps);
+                        MyLogger.i("修改登录密码传入的数据：" + maps);
                         presenter.getData(maps);
-                    }
-                    else {
+                    } else {
                         maps.put("passwordType", "20");
                         MyLogger.i("修改授权密码传入的数据：" + maps);
                         presenter.getData(maps);
@@ -93,7 +93,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
     private boolean match() {
         oldPassword = et_password1.getText().toString().trim();
         if (TextUtils.isEmpty(oldPassword)) {
-                showToast("请输入旧密码");
+            showToast("请输入旧密码");
             return false;
         }
         newPassword = et_password2.getText().toString().trim();
@@ -102,11 +102,11 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
             return false;
         }
         twoPassword = et_password3.getText().toString().trim();
-        if (TextUtils.isEmpty(twoPassword)){
+        if (TextUtils.isEmpty(twoPassword)) {
             showToast("请输入确认密码");
             return false;
-        }else {
-            if (!newPassword.equals(twoPassword)){
+        } else {
+            if (!newPassword.equals(twoPassword)) {
                 showToast("确认密码与新密码不相同");
                 return false;
             }

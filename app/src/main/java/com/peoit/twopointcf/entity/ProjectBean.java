@@ -38,7 +38,7 @@ public class ProjectBean implements Serializable{
     public String moneyUse;
     @SerializedName("totalStockMoney")
     @Expose
-    public double totalStockMoney;
+    public int totalStockMoney;
     @SerializedName("sellStockMoney")
     @Expose
     public Integer sellStockMoney;

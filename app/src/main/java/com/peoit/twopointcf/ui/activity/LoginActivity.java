@@ -11,6 +11,7 @@ import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.LoginPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.utils.CommonUtil;
+import com.peoit.twopointcf.utils.Encryption;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 
 import java.util.HashMap;
@@ -73,7 +74,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 if (match()) {
                     Map<String, String> maps = new HashMap<>();
                     maps.put("loginId", userName);
-                    maps.put("password", password);
+                    maps.put("password", Encryption.generatePassword(password));
                     presenter.getData(maps);
                 }
                 break;

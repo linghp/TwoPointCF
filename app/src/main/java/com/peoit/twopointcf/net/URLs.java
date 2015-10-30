@@ -68,15 +68,15 @@ public class URLs {
      * 获取用户实名认证状态
      */
     public static final String GETUSERISVERIFIED = HOST + "/api/user/isVerified";
-    /**
-     * 第三方登陆
-     */
-    public static final String OAUTH_SIGNIN = HOST + "xxx";
 
     /**
      * 上传实名认证信息
      */
     public static final String USER_VERIFYID = HOST + "/api/user/verifyId";
+    /**
+     * 验证用户授权密码
+     */
+    public static final String VEIFYAUTHORIZATIONCODE = HOST + "/api/user/veifyAuthorizationCode";
 
 
     /**

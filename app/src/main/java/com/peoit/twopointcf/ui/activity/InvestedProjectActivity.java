@@ -35,7 +35,10 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
 
     @Override
     protected void initData() {
-
+        investedProjectAdapter = new InvestedProjectAdapter(this, investedProjectBeans);
+        listView.setAdapter(investedProjectAdapter);
+        presenter=new FindProjectPresenter(this);
+        params.put("investorId",localUserInfo.getUserId());
     }
 
 //    private void generateData() {
@@ -47,11 +50,7 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
 
     @Override
     protected void onResume() {
-        presenter=new FindProjectPresenter(this);
-        params.put("investorId",localUserInfo.getUserId());
-        presenter.getData(URLs.FINDINVESTEDPROJECT,params, investedProjectBeans);
-        investedProjectAdapter = new InvestedProjectAdapter(this, investedProjectBeans);
-        listView.setAdapter(investedProjectAdapter);
+        presenter.getData(URLs.FINDINVESTEDPROJECT, params, investedProjectBeans);
         super.onResume();
     }
 

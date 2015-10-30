@@ -10,7 +10,7 @@ public interface IProjectDetail {
     /**
      * 获取数据
      */
-    void getData(Map maps);
+    void getData(String url,Map maps);
     /**
      * 支付投资项目保证金
      */

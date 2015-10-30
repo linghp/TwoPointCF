@@ -76,7 +76,7 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
     @Override
     public void onResume() {
         super.onResume();
-        if (localUserInfo != null) {
+        if (localUserInfo.isLogin()) {
             String photoName = localUserInfo.getUserPhotoName();
             if (!TextUtils.isEmpty(photoName)) {
                 Bitmap bitmap = BitmapFactory.decodeFile(FileUtil.getImageDownloadDir(getActivity()) + photoName);
@@ -95,6 +95,11 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
                 mycenter_tv3.setText("已认证");
             }
 
+        }else{
+            mycenter_tv1.setText(getString(R.string.clicklogin));
+            mycenter_tv2.setText("");
+            mycenter_tv3.setText("");
+            mycenter_tv4.setText("");
         }
         //testGlide();
     }

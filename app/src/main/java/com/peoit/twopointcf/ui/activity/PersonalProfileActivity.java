@@ -30,7 +30,11 @@ public class PersonalProfileActivity extends BaseActivity implements PersonalPro
     protected void initView() {
         et_personalprofile = (EditText) findViewById(R.id.personalprofile_et);
         tv_personalprofile = (TextView) findViewById(R.id.personalprofile_tv);
-        et_personalprofile.setText(localUserInfo.getuserCaption());
+        String personalprofile=localUserInfo.getuserCaption();
+        if(personalprofile.equals("无")){
+            personalprofile="";
+        }
+        et_personalprofile.setText(personalprofile);
     }
 
     @Override

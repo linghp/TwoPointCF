@@ -55,7 +55,7 @@ public class PublishFragment04 extends BaseFragment {
         //传过来的数据
         if (publishProjectActivity.projectBean != null){
             tv_dividendType.setText(publishProjectActivity.projectBean.dividendType);//分红模式
-            tv_proportion1.setText(publishProjectActivity.projectBean.dividendPercent * 100 + "%");//分红比例
+            tv_proportion1.setText(Math.round(publishProjectActivity.projectBean.dividendPercent * 100) + "%");//分红比例
             et_stockholderPrivilege.setText(publishProjectActivity.projectBean.stockholderPrivilege);//股东特权说明
 //            tv_proportion2.setText(publishProjectActivity.projectBean.investorEarnestPercent * 100+"%");//交付保证金比例
 //            tv_proportion2.setText("20%");//交付保证金比例

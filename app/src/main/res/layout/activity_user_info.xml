@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:text="马云"
+                tools:text="马云"
                 android:textColor="@color/txt_black2"
                 android:textSize="@dimen/title_txt_size" />
 
@@ -97,7 +97,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="10dp" android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -129,12 +129,12 @@
                 android:visibility="invisible" />
         </LinearLayout>
 
-        <View
+        <View android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/txt_black3" />
 
-        <LinearLayout
+        <LinearLayout android:layout_marginTop="16dp"
             android:id="@+id/ll_userinfo04"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:text="50"
+                tools:text="50"
                 android:textColor="@color/txt_black2"
                 android:textSize="@dimen/title_txt_size" />
 
@@ -205,7 +205,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical|right"
                 android:singleLine="true"
-                android:text="地方所得税地方所得税谁说的啥电视的放松放松过水电费"
+                tools:text="地方所得税地方所得税谁说的啥电视的放松放松过水电费"
                 android:textColor="@color/txt_black2"
                 android:textSize="@dimen/title_txt_size" />
 
@@ -293,7 +293,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical|right"
                 android:singleLine="true"
-                android:text="137*******1"
+                tools:text="137*******1"
                 android:textColor="@color/txt_black2"
                 android:textSize="@dimen/title_txt_size" />
 
@@ -339,7 +339,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical|right"
                 android:singleLine="true"
-                android:text="23255412323@qq.com"
+                tools:text="23255412323@qq.com"
                 android:textColor="@color/txt_black2"
                 android:textSize="@dimen/title_txt_size" />
 

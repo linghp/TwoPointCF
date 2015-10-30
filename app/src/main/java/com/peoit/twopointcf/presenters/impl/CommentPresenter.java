@@ -22,7 +22,7 @@ import java.util.Map;
 public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResultListener> implements IComment {
     private List<CommentBean> commentBeans;
     private Map maps;
-    private int offset = 0;
+    private int offset = 1;
     private int pageSize = 10;
 
     public interface OnHttpResultListener extends IBaseView_Response {
@@ -68,15 +68,18 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResul
     public void getData(Map maps, final boolean isMore) {
         this.maps = maps;
         if (!isMore) {
-            pageSize = 10;
+            offset = 1;
         }
-        maps.put("offset", 0 + "");
+        maps.put("offset", offset+"");
         maps.put("pageSize", pageSize + "");
         //MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
         OkHttpClientManager.postAsyn(URLs.LISTCOMMENTS, maps,
                 new MyResultCallback<List<CommentBean>>() {
                     @Override
                     public void onError(Request request, String info, Exception e) {
+                        if(isMore){
+                            offset--;
+                        }
                         if (TextUtils.isEmpty(info)) {
                             mView.showToast(R.string.networkerror);
                             e.printStackTrace();
@@ -89,7 +92,6 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResul
                     @Override
                     public void onResponse(List<CommentBean> response) {
                         //mTv.setText(u.toString());
-                        offset = 0;
                         if (response.size() > 0) {
                             mView.showContentPage();
                         } else {
@@ -108,7 +110,10 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResul
                         }
                         MyLogger.i(">>>>>>>>>>请求项目：" + response.toString());
                         if (!isMore) {
+                            offset=1;
                             CommentPresenter.this.commentBeans.clear();
+                        }else{
+                            offset++;
                         }
                         CommentPresenter.this.commentBeans.addAll(response);
                         mView.onHttpResultSuccess();

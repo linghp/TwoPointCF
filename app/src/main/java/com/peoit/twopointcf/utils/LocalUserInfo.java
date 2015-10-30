@@ -282,17 +282,17 @@ public class LocalUserInfo {
     }
     public String getlevel(){
         String level=getString(LEVEL);
-        if (!TextUtils.isEmpty(level)) {
+        if (!TextUtils.isEmpty(level)&&!"null".equals(level)) {
             return level;
         }
-        return "";
+        return "0";
     }
     public String getuserCaption(){
         String userCaption=getString(USERCAPTION);
-        if (!TextUtils.isEmpty(userCaption)) {
+        if (!TextUtils.isEmpty(userCaption)&&!"null".equals(userCaption)) {
             return userCaption;
         }
-        return "";
+        return "无";
     }
     public String getIsrealnamevalidated(){
         String isrealnamevalidated=getString(ISREALNAMEVALIDATED);

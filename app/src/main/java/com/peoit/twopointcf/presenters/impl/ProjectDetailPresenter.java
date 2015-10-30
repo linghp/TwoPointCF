@@ -25,10 +25,6 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
         super(view);
     }
 
-    @Override
-    public void getData(Map maps) {
-
-    }
 
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess(String status);
@@ -47,6 +43,32 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
             super.onAfter();
         }
     }
+
+    @Override
+    public void getData(String url,Map maps) {
+        OkHttpClientManager.postAsyn(url, maps, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("授权密码验证失败");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>授权密码验证" + response);
+                }
+                //mView.showToast("取消成功");
+                mView.onHttpResultSuccess("verifysuccess");
+                //((Activity) mView).finish();
+            }
+        }, mView);
+    }
+
 
     /**
      * 关注项目

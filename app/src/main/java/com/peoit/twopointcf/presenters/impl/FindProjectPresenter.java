@@ -24,7 +24,7 @@ import java.util.Map;
 public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnHttpResultListener> implements IFindProject {
     private List<ProjectBean> projectBeans;
     private List<BannerBean> bannerBeans;
-    private int offset=0;
+    private int offset=1;
     private int pageSize=10;
 
     public interface OnHttpResultListener extends IBaseView_Response {
@@ -91,8 +91,9 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
 
     @Override
     public void getData(String url,Map maps,List<ProjectBean> projectBeans) {
+        offset=1;
         this.projectBeans=projectBeans;
-        maps.put("offset",0+"");
+        maps.put("offset",offset+"");
         maps.put("pageSize", pageSize + "");
         //MyLogger.i(">>>>>>>>>>>请求项目，传入的参数" + maps);
         OkHttpClientManager.postAsyn(url, maps,
@@ -111,7 +112,6 @@ public class FindProjectPresenter extends BasePresenter<FindProjectPresenter.OnH
                     @Override
                     public void onResponse(List<ProjectBean> response) {
                         //mTv.setText(u.toString());
-                        offset=0;
                         if(response.size()>0){
                             mView.showContentPage();
                         }else {

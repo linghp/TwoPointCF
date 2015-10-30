@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.ChangePasswordPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.Encryption;
 import com.peoit.twopointcf.utils.LocalUserInfo;
 import com.peoit.twopointcf.utils.MyLogger;
 
@@ -73,20 +74,20 @@ public class ResetPasswordActivity extends BaseActivity implements ChangePasswor
                     if (TextUtils.isEmpty(phonenum)) {
                         if (isReset) {
                                 maps.put("id", localUserInfo.getUserId());
-                                maps.put("newPassword", newPassword);
+                                maps.put("newPassword", Encryption.generatePassword(newPassword));
                                 maps.put("passwordType", "10");
                                 MyLogger.i("重置登录密码传入的数据：" + maps);
                                 presenter.getResetPassword(maps);
                         } else {
                             maps.put("id", localUserInfo.getUserId());
-                            maps.put("newPassword", newPassword);
+                            maps.put("newPassword", Encryption.generatePassword(newPassword));
                             maps.put("passwordType", "20");
                             MyLogger.i("重置授权密码传入的数据：" + maps);
                             presenter.getResetPassword(maps);
                         }
-                    } else {
+                    } else {//忘记密码
                         maps.put("id", phonenum);
-                        maps.put("newPassword", newPassword);
+                        maps.put("newPassword", Encryption.generatePassword(newPassword));
                         maps.put("passwordType", "10");
                         MyLogger.i("忘记登录密码传入的数据：" + maps);
                         presenter.getResetPassword(maps);

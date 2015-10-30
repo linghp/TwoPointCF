@@ -3,6 +3,11 @@ package com.peoit.twopointcf.utils;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+
+import com.peoit.twopointcf.R;
 
 import java.util.List;
 
@@ -32,7 +37,7 @@ public class DialogTool {
                                             DialogInterface.OnClickListener listener1,
                                             String btnName2,
                                             DialogInterface.OnClickListener listener2
-                                            ) {
+    ) {
         Dialog dialog = null;
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(ctx);
         // 设置对话框的图标
@@ -49,6 +54,39 @@ public class DialogTool {
         dialog = builder.create();
         return dialog;
     }
+
+    /**
+     * 创建带密码的对话框
+     */
+    public static Dialog createPasswordDialog(Context ctx,
+                                              int iconId,
+                                              String title,
+                                              String btnName1,
+                                              DialogInterface.OnClickListener listener1) {
+        Dialog dialog = null;
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(ctx);
+        // 设置对话框的图标
+        builder.setIcon(iconId);
+        // 设置对话框的标题
+        builder.setTitle(title);
+        // 设置对话框的显示内容
+        View view = LayoutInflater.from(ctx).inflate(R.layout.password_dialog, null);
+        builder.setView(view);
+        EditText et_password = (EditText) view.findViewById(R.id.et_password);
+        // 添加按钮1，android.content.DialogInterface.OnClickListener.OnClickListener
+        builder.setNegativeButton(btnName1, listener1);
+        // 添加按钮2，android.content.DialogInterface.OnClickListener.OnClickListener
+        builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        // 创建一个普通对话框
+        dialog = builder.create();
+        return dialog;
+    }
+
     /**
      * 　　* 创建普通对话框(单个按钮)
      * 　　*
@@ -90,7 +128,7 @@ public class DialogTool {
      * 　　* @param itemsId 字符串数组资源id 必填
      * 　　* @param listener 监听器，需实现android.content.DialogInterface.OnClickListener接口
      * 必填
-     *
+     * <p/>
      * 　　* @return
      */
 
@@ -120,7 +158,7 @@ public class DialogTool {
      * 　　* @param title 标题 必填
      * 　　* @param itemsId 字符串数组资源id 必填
      * 　　* @param listener
-     *      单选按钮项监听器，需实现android.content.DialogInterface.OnClickListener接口 必填
+     * 单选按钮项监听器，需实现android.content.DialogInterface.OnClickListener接口 必填
      * * @param btnName1 按钮1名称 必填
      * * 　　* @param btnName2 按钮2名称 必填
      * 　　* @param listener1 监听器1，需实现android.content.DialogInterface.OnClickListener接口必填
@@ -163,7 +201,7 @@ public class DialogTool {
      * 　　* @param title 标题 必填
      * 　　* @param itemsId 字符串数组资源id 必填
      * 　　* @param listener
-     *      单选按钮项监听器，需实现android.content.DialogInterface.OnClickListener接口 必填
+     * 单选按钮项监听器，需实现android.content.DialogInterface.OnClickListener接口 必填
      * * @param btnName1 按钮1名称 必填
      * * 　　* @param btnName2 按钮2名称 必填
      * 　　* @param listener1 监听器1，需实现android.content.DialogInterface.OnClickListener接口必填
@@ -176,7 +214,7 @@ public class DialogTool {
                                            String title,
                                            String[] items,
                                            DialogInterface.OnClickListener listener
-                                           ) {
+    ) {
         Dialog dialog = null;
         android.app.AlertDialog.Builder builder = new
                 android.app.AlertDialog.Builder(ctx);
@@ -207,7 +245,6 @@ public class DialogTool {
      * 　　* @param listener1 监听器1，需实现android.content.DialogInterface.OnClickListener接口必填
      * * @param listener2 监听器2，需实现android.content.DialogInterface.OnClickListener接口必填
      * 　　* @return
-     *
      */
 
     public static Dialog createCheckBoxDialog(Context ctx,

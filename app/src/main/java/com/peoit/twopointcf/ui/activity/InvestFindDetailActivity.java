@@ -1,12 +1,14 @@
 package com.peoit.twopointcf.ui.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.IsConcernBean;
 import com.peoit.twopointcf.entity.ProjectBean;
+import com.peoit.twopointcf.net.URLs;
 import com.peoit.twopointcf.presenters.impl.ProjectDetailPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
 import com.peoit.twopointcf.ui.base.BaseFragment;
@@ -25,13 +28,17 @@ import com.peoit.twopointcf.ui.view.TagViewPager;
 import com.peoit.twopointcf.utils.AbDateUtil;
 import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.DialogTool;
+import com.peoit.twopointcf.utils.Encryption;
 import com.peoit.twopointcf.utils.MyLogger;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 投资发现详情
@@ -61,6 +68,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
     private boolean isFromMyPublishProject = false;//是否来自我的已发项目
 
+    private String status_operate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,18 +208,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
                                 //myToast("支付");
-                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "支付", "确认支付我们将跳转到支付界面？", "确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Map<String, String> maps = new HashMap<>();
-                                        maps.put("id", projectBean.id);
-                                        presenter.payMargin(maps);
-                                    }
-                                }, "取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
+                                status_operate = "支付";
+                                verifyPassword(status_operate);
                             }
                         });
                         break;
@@ -222,60 +220,28 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
 //                                myToast("取消");
-                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", "确认取消该项目的投资？", "确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Map<String, String> maps = new HashMap<>();
-                                        maps.put("id", projectBean.id);
-                                        presenter.getCancelProject(maps);
-                                    }
-                                }, "取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
-
-
+                                status_operate = "取消";
+                                verifyPassword(status_operate);
                             }
                         });
                         break;
                     case MyPublishProjectActivity.VERIFY_FAILED:
-                        tvLastBottom01.setText("修改");
-                        tvLastBottom02.setVisibility(View.GONE);
+                        tvLastBottom01.setText("取消");
                         tvLastBottom01.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+//                                myToast("取消");
+                                status_operate = "取消";
+                                verifyPassword(status_operate);
+                            }
+                        });
+                        tvLastBottom02.setText("修改");
+                        tvLastBottom02.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 //                                myToast("修改");
-                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "修改", "确认修改该项目？", "确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
-                                    }
-                                }, "取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
-                            }
-                        });
-                        break;
-                    case MyPublishProjectActivity.INVEST_FAILED:
-                        tvLastBottom01.setText("延期");
-                        tvLastBottom02.setVisibility(View.GONE);
-                        tvLastBottom01.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "延期", "确认延期该项目？", "确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        myToast("已确认延期，正在审核");
-                                    }
-                                }, "取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
-
+                                status_operate = "修改";
+                                verifyPassword(status_operate);
                             }
                         });
                         break;
@@ -286,37 +252,16 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             @Override
                             public void onClick(View v) {
 //                                myToast("启动");
-                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "启动", "确认启动该项目？", "确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Map<String, String> maps = new HashMap<>();
-                                        maps.put("id", projectBean.id);
-                                        presenter.getStartProject(maps);
-                                    }
-                                }, "取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
-
+                                status_operate = "启动";
+                                verifyPassword(status_operate);
                             }
                         });
                         tvLastBottom02.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 //                                myToast("取消");
-                                DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", "确认取消该项目的投资？", "确认", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        Map<String, String> maps = new HashMap<>();
-                                        maps.put("id", projectBean.id);
-                                        presenter.getCancelProject(maps);
-                                    }
-                                }, "取消", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                }).show();
+                                status_operate = "取消";
+                                verifyPassword(status_operate);
                             }
                         });
                         break;
@@ -336,12 +281,55 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
     }
 
+    private void verifyPassword(String title) {
+        DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, title, "确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Dialog dialog = (Dialog) dialogInterface;
+                EditText et_password = (EditText) dialog.findViewById(R.id.et_password);
+                String password = et_password.getText().toString();
+                Pattern pattern = Pattern.compile("[a-zA-Z0-9]{8,}");
+                Matcher matcher = pattern.matcher(password);
+                if (!matcher.matches()) {
+                    showToast("密码应为字母和数字的不少于8位的组合");
+                    try {
+                        Field field = dialog.getClass()
+                                .getSuperclass().getDeclaredField(
+                                        "mShowing");
+                        field.setAccessible(true);
+                        // 将mShowing变量设为false，表示对话框已关闭
+                        field.set(dialog, false);
+                        dialog.dismiss();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return;
+                }
+                try {
+                    Field field = dialog.getClass()
+                            .getSuperclass().getDeclaredField(
+                                    "mShowing");
+                    field.setAccessible(true);
+                    // 将mShowing变量设为false，表示对话框已关闭
+                    field.set(dialog, true);
+                    dialog.dismiss();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Map<String, String> maps = new HashMap<>();
+                maps.put("loginId", localUserInfo.getUserId());
+                maps.put("authorizationCode", Encryption.generatePassword(password));
+                presenter.getData(URLs.VEIFYAUTHORIZATIONCODE, maps);
+            }
+        }).show();
+    }
+
     @Override
     public void onClick(View v) {
         if (v.getTag() != null) {
             int tag = (int) v.getTag();
             //myToast(tag + "");
-            ViewPagerPhotoViewActivity.startThisActivity((ArrayList)(projectBean.projectPhotos),tag,this);
+            ViewPagerPhotoViewActivity.startThisActivity((ArrayList) (projectBean.projectPhotos), tag, this);
         } else {
             MyLogger.i("xxx");
             switch (v.getId()) {
@@ -384,7 +372,22 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     //我要投资
                     //CommonUtil.gotoActivity(this,InvestActivity.class,false);
                     if (localUserInfo.isLogin()) {
-                        InvestActivity.startThisActivity(projectBean, this);
+                        if ("已认证".equals(localUserInfo.getIsrealnamevalidated())) {
+                            InvestActivity.startThisActivity(projectBean, this);
+                        } else if ("立即认证".equals(localUserInfo.getIsrealnamevalidated())) {
+                            DialogTool.createCommonDialog(this, R.mipmap.ic_launcher, getString(R.string.invest), "您还没有实名认证，不能投资项目，立即实名认证？", "确认", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    CommonUtil.gotoActivity(InvestFindDetailActivity.this, VerifiedActivity.class, false);
+                                }
+                            }, "取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            }).show();
+                        } else if ("审核中".equals(localUserInfo.getIsrealnamevalidated())) {
+                            myToast("实名认证审核中，请耐心等待");
+                        }
                     } else {
                         CommonUtil.gotoActivity(this, LoginActivity.class, false);
                     }
@@ -448,6 +451,25 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onHttpResultSuccess(String status) {
+        if (status.equals("verifysuccess")) {//验证用户授权密码
+            Map<String, String> maps = new HashMap<>();
+            maps.put("id", projectBean.id);
+            switch (status_operate) {
+                case "取消":
+                    presenter.getCancelProject(maps);
+                    break;
+                case "启动":
+                    presenter.getStartProject(maps);
+                    break;
+                case "支付":
+                    presenter.payMargin(maps);
+                    break;
+                case "修改":
+                    PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
+                    break;
+            }
+            return;
+        }
         Intent intent = new Intent();
         intent.putExtra("status", status);
         setResult(Activity.RESULT_OK, intent);
