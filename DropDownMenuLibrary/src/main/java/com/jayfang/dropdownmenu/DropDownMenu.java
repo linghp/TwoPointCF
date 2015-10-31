@@ -24,7 +24,7 @@ import java.util.List;
  * Email:JayFang1993@gmail.com
  * GitHub:github.com/JayFang1993
  */
-public class DropDownMenu extends LinearLayout implements View.OnClickListener{
+public class DropDownMenu extends LinearLayout implements View.OnClickListener {
     // Menu 展开的ListView 的 adapter
     private List<MenuListAdapter> MenuAdapters = new ArrayList<MenuListAdapter>();
 
@@ -180,8 +180,8 @@ public class DropDownMenu extends LinearLayout implements View.OnClickListener{
         MenuSelectedListener = menuSelectedListener;
     }
 
-    private View popupView_nolistview, popupView,mRlShadow_nolistview;
-    private TextView tv_money,tv_Date,tv_projectType;
+    private View popupView_nolistview, popupView, mRlShadow_nolistview;
+    private TextView tv_money, tv_Date, tv_projectType;
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -257,7 +257,11 @@ public class DropDownMenu extends LinearLayout implements View.OnClickListener{
                 TextView tv = (TextView) v.findViewById(R.id.tv_menu_title);
                 tv.setTextColor(MenuTitleTextColor);
                 tv.setTextSize(MenuTitleTextSize);
-                tv.setText(MenuItems.get(i)[0]);
+                if (i == 1) {
+                    tv.setText("众筹进度");
+                }else {
+                    tv.setText(MenuItems.get(i)[0]);
+                }
                 this.addView(v, i);
                 mTvMenuTitles.add(tv);
 
@@ -301,10 +305,10 @@ public class DropDownMenu extends LinearLayout implements View.OnClickListener{
     }
 
     private void init_popupView_nolistview() {
-        tv_money= (TextView) popupView_nolistview.findViewById(R.id.tv_money);
-        tv_Date= (TextView) popupView_nolistview.findViewById(R.id.tv_Date);
-        tv_projectType= (TextView) popupView_nolistview.findViewById(R.id.tv_projectType);
-        mRlShadow_nolistview=  popupView_nolistview.findViewById(R.id.rl_menu_shadow);
+        tv_money = (TextView) popupView_nolistview.findViewById(R.id.tv_money);
+        tv_Date = (TextView) popupView_nolistview.findViewById(R.id.tv_Date);
+        tv_projectType = (TextView) popupView_nolistview.findViewById(R.id.tv_projectType);
+        mRlShadow_nolistview = popupView_nolistview.findViewById(R.id.rl_menu_shadow);
         tv_money.setTag(1);
         tv_Date.setTag(2);
         tv_projectType.setTag(3);
@@ -326,9 +330,9 @@ public class DropDownMenu extends LinearLayout implements View.OnClickListener{
         int i = v.getId();
         if (i == R.id.tv_money) {
             menuSelectedNoListViewListener.onSelected(tv_money);
-        }else if(i == R.id.tv_Date){
+        } else if (i == R.id.tv_Date) {
             menuSelectedNoListViewListener.onSelected(tv_Date);
-        }else if(i == R.id.tv_projectType){
+        } else if (i == R.id.tv_projectType) {
             menuSelectedNoListViewListener.onSelected(tv_projectType);
         }
     }
@@ -336,9 +340,11 @@ public class DropDownMenu extends LinearLayout implements View.OnClickListener{
     public interface OnMenuSelectedNoListViewListener {
 
         public void onSelected(TextView textView);
+
         public void onRequest();
 
     }
+
     private OnMenuSelectedNoListViewListener menuSelectedNoListViewListener;
 
     public void setMenuSelectedNoListViewListener(OnMenuSelectedNoListViewListener menuSelectedNoListViewListener) {

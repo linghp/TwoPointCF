@@ -110,11 +110,9 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.OnHttpResul
                         }
                         MyLogger.i(">>>>>>>>>>请求项目：" + response.toString());
                         if (!isMore) {
-                            offset=1;
                             CommentPresenter.this.commentBeans.clear();
-                        }else{
-                            offset++;
                         }
+                            offset++;
                         CommentPresenter.this.commentBeans.addAll(response);
                         mView.onHttpResultSuccess();
                     }

@@ -27,9 +27,9 @@ public class TitleView extends FrameLayout{
 		return btn_right;
 	}
 
-	public TitleView(Context context) {
-		this(context, null);
-	}
+//	public TitleView(Context context) {
+//		this(context, null);
+//	}
 
 	public TitleView(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);

@@ -66,7 +66,7 @@ public class SearchProjectPresenter extends BasePresenter<SearchProjectPresenter
                 new MyResultCallback<List<ProjectBean>>() {
                     @Override
                     public void onError(Request request, String info, Exception e) {
-                        if (!isMore){
+                        if (isMore){
                             offset--;
                         }
                         if (TextUtils.isEmpty(info)) {
@@ -80,9 +80,7 @@ public class SearchProjectPresenter extends BasePresenter<SearchProjectPresenter
                     @Override
                     public void onResponse(List<ProjectBean> response) {
                         MyLogger.i(response.toString());
-                        if (isMore){
                             offset++;
-                        }
                         if (isMore&&response.size()==0){
                             mView.showToast(R.string.islastpage);
                             return;

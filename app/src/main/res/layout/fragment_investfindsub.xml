@@ -28,6 +28,8 @@
                 android:layout_height="match_parent"
                 android:divider="@null"
                 android:dividerHeight="12dp"
+                android:scrollbars="none"
+                android:fastScrollEnabled="true"
                 android:headerDividersEnabled="true" />
         </com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView>
     </com.peoit.twopointcf.ui.view.LoadingLayout>

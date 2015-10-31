@@ -29,7 +29,8 @@ public class PublishFragment03 extends BaseFragment {
     private String moneyUse, totalStockMoney, sellStockMoney, perSellStockMoney, stocktype, endDate, successCondition;
     private PublishProjectActivity publishProjectActivity;
     private String[] stockTypes, proportion,moneyUses;
-    private int totalStockMoney_int,sellStockMoney_int,perSellStockMoney_int;
+    private long totalStockMoney_long;
+    private int sellStockMoney_int,perSellStockMoney_int;
 
     public PublishFragment03() {
         // Required empty public constructor
@@ -71,6 +72,38 @@ public class PublishFragment03 extends BaseFragment {
             }
         });
 
+        et_totalStockMoney.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String s1 = s.toString();
+//                String totalStockMoney=et_totalStockMoney.getText().toString().trim();
+//                if(!TextUtils.isEmpty(totalStockMoney)) {
+//                    int totalStockMoney_int=Integer.parseInt(totalStockMoney);
+                if (sellStockMoney_int > 0) {
+                    if (!TextUtils.isEmpty(s1)) {
+                        totalStockMoney_long = Long.parseLong(s1);
+                        if (totalStockMoney_long>=sellStockMoney_int) {
+                            String percentage = CommonUtil.twoPointConversion(sellStockMoney_int / (totalStockMoney_long + 0.0) * 100) + "%";
+                            tv_proportion.setText(percentage);
+                        }
+                    } else {
+                        tv_proportion.setText("0.00%");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
         et_perSellStockMoney.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -90,28 +123,26 @@ public class PublishFragment03 extends BaseFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
                 String s1 = s.toString();
 //                String totalStockMoney=et_totalStockMoney.getText().toString().trim();
 //                if(!TextUtils.isEmpty(totalStockMoney)) {
 //                    int totalStockMoney_int=Integer.parseInt(totalStockMoney);
-                if(totalStockMoney_int>0){
+                if(totalStockMoney_long>0){
                     if (!TextUtils.isEmpty(s1)) {
                         sellStockMoney_int = Integer.parseInt(s1);
-                        if(sellStockMoney_int>totalStockMoney_int){
-                            myToast("发行总额不能大于股权总额");
-                        }else{
-                            String percentage = CommonUtil.twoPointConversion(sellStockMoney_int / (totalStockMoney_int + 0.0) * 100) + "%";
+                        if(!matchSellStockMoney()){
+                            String percentage = CommonUtil.twoPointConversion(sellStockMoney_int / (totalStockMoney_long + 0.0) * 100) + "%";
                             tv_proportion.setText(percentage);
                         }
                     } else {
                         tv_proportion.setText("0.00%");
                     }
                 }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
@@ -136,14 +167,25 @@ public class PublishFragment03 extends BaseFragment {
         return false;
     }
 
+    private boolean matchSellStockMoney() {
+        if(sellStockMoney_int>totalStockMoney_long){
+            myToast("发行总额不能大于股权总额");
+            return true;
+        }else if(sellStockMoney_int>3000000){
+            myToast("发行总额不能大于300万元");
+            return true;
+        }
+        return false;
+    }
+
     private boolean matchTotalStockMoney() {
         if (TextUtils.isEmpty(totalStockMoney)) {
             myToast("请输入股权总额");
             return true;
         }else {
-            totalStockMoney_int = Integer.parseInt(totalStockMoney);
+            totalStockMoney_long = Long.parseLong(totalStockMoney);
             if (sellStockMoney_int > 0) {
-                if (totalStockMoney_int < sellStockMoney_int) {
+                if (totalStockMoney_long < sellStockMoney_int) {
                     myToast("股权总额应大于售卖总额");
                     return true;
                 }
@@ -210,9 +252,11 @@ public class PublishFragment03 extends BaseFragment {
         if (TextUtils.isEmpty(sellStockMoney)) {
             myToast("请输入发行总额");
             return false;
+        }else if(matchSellStockMoney()){
+            return false;
         }
 
-        if(sellStockMoney_int>0&&totalStockMoney_int>0&&sellStockMoney_int>totalStockMoney_int){
+        if(sellStockMoney_int>0&&totalStockMoney_long>0&&sellStockMoney_int>totalStockMoney_long){
             myToast("发行总额不能大于股权总额");
             return false;
         }

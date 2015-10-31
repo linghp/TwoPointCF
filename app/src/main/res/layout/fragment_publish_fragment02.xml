@@ -193,7 +193,7 @@
                     android:textSize="@dimen/title_txt_size" />
 
                 <TextView android:id="@+id/tv_projectCity"
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:drawableRight="@mipmap/down_arrow_grey"
@@ -219,7 +219,7 @@
                     android:textSize="@dimen/title_txt_size" />
 
                 <TextView android:id="@+id/tv_industryType"
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:drawableRight="@mipmap/down_arrow_grey"
@@ -244,7 +244,7 @@
                     android:textSize="@dimen/title_txt_size" />
 
                 <TextView android:id="@+id/tv_projectType"
-                    android:layout_width="80dp"
+                    android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:drawableRight="@mipmap/down_arrow_grey"

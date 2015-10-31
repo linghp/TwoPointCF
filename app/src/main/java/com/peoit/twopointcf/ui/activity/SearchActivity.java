@@ -150,10 +150,19 @@ public class SearchActivity extends BaseActivity implements SearchProjectPresent
             return;
         } else {
             if (arr1_index != -1) {
-                params.put("industryType", arr1[arr1_index]);
+                if(arr1_index==0){
+                    params.put("industryType", "");
+                }else {
+                    params.put("industryType", arr1[arr1_index]);
+                }
             }
             if (arr2_index != -1) {
-                params.put("amountPercent", arr2[arr2_index]);
+                if(arr2_index==0){
+                    params.put("amountPercent", "");
+                }else {
+                    String amountPercent_str=arr2[arr2_index].substring(0,2);
+                    params.put("amountPercent", "0."+amountPercent_str);
+                }
             }
             if (textView_enddate != null) {
                 String enddate = textView_enddate.getText().toString().trim();
@@ -227,7 +236,11 @@ public class SearchActivity extends BaseActivity implements SearchProjectPresent
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         textView.setText(industryTypes[which]);
-                        params.put("projectType", industryTypes[which]);
+                        if (which == 0) {
+                            params.put("projectType", "");
+                        } else {
+                            params.put("projectType", industryTypes[which]);
+                        }
                         dialog.dismiss();
                     }
                 });
