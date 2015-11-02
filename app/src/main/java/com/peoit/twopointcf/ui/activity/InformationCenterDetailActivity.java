@@ -46,8 +46,8 @@ public class InformationCenterDetailActivity extends BaseActivity{
 
     @Override
     protected void updateView() {
-        tv_time.setText(id);
-        tv_content.setText(informationIntro);
+        //tv_time.setText(id);
+        tv_content.setText(content);
         titleView.setTitle(title);
         titleView.setRightBtn(R.mipmap.share_normal,this);
     }

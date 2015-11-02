@@ -278,6 +278,12 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             showToast("请输入授权密码");
             return false;
         }
+        Matcher matcher2 = pattern.matcher(authorizationCode);
+        if(!matcher2.matches()){
+            showToast("授权密码应为字母和数字的不少于8位的组合");
+            return false;
+        }
+
         verifyCode = registerEt6.getText().toString().trim();
         if (TextUtils.isEmpty(verifyCode)) {
             showToast("请输入验证码");

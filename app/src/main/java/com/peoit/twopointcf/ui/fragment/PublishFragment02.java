@@ -47,10 +47,10 @@ import java.util.List;
 public class PublishFragment02 extends BaseFragment implements AdapterView.OnItemClickListener {
     private PublishProjectActivity publishProjectActivity;
     private EditText et_projectName, et_projectIntro,et_address,et_marketAnalysis,et_sourceOfIncome,et_profitForecast,et_teamIntroducation;
-    private TextView tv_projectCity, tv_industryType,tv_projectType;
+    private TextView tv_projectCity, tv_industryType,tv_projectType,tv_industryTypeExplain;
     private String projectName, projectIntro, projectCity, industryType,address,marketAnalysis,sourceOfIncome,profitForecast,teamIntroducation,projectType;
     private String[] citys;
-    private String[] industryTypes,projectTypes;
+    private String[] industryTypes,projectTypes,industrytype_explains;
     public PublishFragment02() {
         // Required empty public constructor
     }
@@ -83,6 +83,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
         tv_projectCity = findViewByID_My(R.id.tv_projectCity);
         tv_industryType = findViewByID_My(R.id.tv_industryType);
         tv_projectType= findViewByID_My(R.id.tv_projectType);
+        tv_industryTypeExplain= findViewByID_My(R.id.tv_industryTypeExplain);
         tv_projectCity.setOnClickListener(this);
         tv_industryType.setOnClickListener(this);
         tv_projectType.setOnClickListener(this);
@@ -105,6 +106,7 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
         citys=getActivity().getResources().getStringArray(R.array.publishproject_choosecitys);
         industryTypes=getActivity().getResources().getStringArray(R.array.publishproject_industrytype);
         projectTypes=getActivity().getResources().getStringArray(R.array.publishproject_projectTypes);
+        industrytype_explains=getActivity().getResources().getStringArray(R.array.industrytype_explain);
         photoOperate = new PhotoOperate(getActivity());
         mDatas = new ArrayList();
         for (int i = 0; i < 4; i++) {
@@ -292,6 +294,8 @@ public class PublishFragment02 extends BaseFragment implements AdapterView.OnIte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tv_industryType.setText(industryTypes[which]);
+                        tv_industryTypeExplain.setVisibility(View.VISIBLE);
+                        tv_industryTypeExplain.setText(industrytype_explains[which]);
                         dialog.dismiss();
                     }
                 });

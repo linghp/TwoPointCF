@@ -28,8 +28,10 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
     public ChangePasswordPresenter(OnHttpResultListener view) {
         super(view);
     }
+
     public interface OnHttpResultListener extends IBaseView_Response {
         void onHttpResultSuccess();
+
         LocalUserInfo getLocalUserInfo();
     }
 
@@ -37,7 +39,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
     public void getData(Map maps) {
         OkHttpClientManager.postAsyn(URLs.USER_CHANGEPASSWORD, maps, new MyResultCallback<Object>() {
             @Override
-            public void onError(Request request, String info,Exception e) {
+            public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
@@ -48,21 +50,23 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-//                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
-                    mView.showToast(R.string.changesuccess);
-                    ((Activity) mView).finish();
+                if (response != null)
+                    MyLogger.i(">>>>>>>>>>>>>>>>修改密码" + response.toString());
+                mView.showToast(R.string.changesuccess);
+                ((Activity) mView).finish();
             }
         }, mView);
     }
 
     /**
      * 重置密码
+     *
      * @param maps
      */
     public void getResetPassword(Map maps) {
         OkHttpClientManager.postAsyn(URLs.USER_RESETPASSWORD, maps, new MyResultCallback<Object>() {
             @Override
-            public void onError(Request request, String info,Exception e) {
+            public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
@@ -73,7 +77,8 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-//                    MyLogger.i(">>>>>>>>>>>>>>>>重置密码" + response.toString());
+                if (response != null)
+                    MyLogger.i(">>>>>>>>>>>>>>>>重置密码" + response.toString());
                 mView.showToast(R.string.resetsuccess);
                 ((Activity) mView).finish();
             }
@@ -82,9 +87,10 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
     /**
      * 修改邮箱
+     *
      * @param email
      */
-    public void getChangeEmail(final String email){
+    public void getChangeEmail(final String email) {
         Map<String, String> maps = new HashMap<>();
         maps.put("email", email);
         maps.put("userId", mView.getLocalUserInfo().getUserId());
@@ -101,7 +107,8 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-//                MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
+                if (response != null)
+                    MyLogger.i(">>>>>>>>>>>>>>>>修改邮箱" + response.toString());
                 mView.showToast(R.string.changesuccess);
                 mView.getLocalUserInfo().setEmail(email);
                 ((Activity) mView).finish();
@@ -111,12 +118,13 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
     /**
      * 修改电话
+     *
      * @param phonenum
      */
-    public void getChangePhone(final String phonenum){
+    public void getChangePhone(final String phonenum) {
         Map<String, String> maps = new HashMap<>();
         maps.put("mobile", phonenum);
-        maps.put("userId",mView.getLocalUserInfo().getUserId());
+        maps.put("userId", mView.getLocalUserInfo().getUserId());
         OkHttpClientManager.postAsyn(URLs.CHANGEPHONE, maps, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -130,7 +138,8 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
-//                MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
+                if (response != null)
+                    MyLogger.i(">>>>>>>>>>>>>>>>修改手机" + response.toString());
                 mView.showToast(R.string.changesuccess);
                 mView.getLocalUserInfo().setPhoneNumber(phonenum);
                 ((Activity) mView).finish();
@@ -140,9 +149,10 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
     /**
      * 获取用户实名认证状态
+     *
      * @param map
      */
-    public void getUserIsVerified(final Map map,final OnIsVerified isVerified){
+    public void getUserIsVerified(final Map map, final OnIsVerified isVerified) {
         OkHttpClientManager.postAsyn(URLs.GETUSERISVERIFIED, map, new OkHttpClientManager.ResultCallback<IsVerifiedBean>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -156,9 +166,10 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(IsVerifiedBean response) {
-                MyLogger.i("认证状态" + response);
+                if (response != null)
+                    MyLogger.i("认证状态" + response);
 //                getUserLevel(map);//获取用户等级
-                if (response != null){
+                if (response != null) {
                     isVerified.onSueccess(response);
                 }
 
@@ -166,11 +177,13 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             }
         });
     }
+
     /**
      * 获取用户等级
+     *
      * @param map
      */
-    public void getUserLevel(Map map, final OnUserLevelCallBack back){
+    public void getUserLevel(Map map, final OnUserLevelCallBack back) {
         OkHttpClientManager.postAsyn(URLs.GETUSERLEVEL, map, new MyResultCallback<UserLevelBean>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -185,14 +198,16 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             @Override
             public void onResponse(UserLevelBean response) {
 //                mView.showToast("获取用户等级"+ response.toString());
-                MyLogger.i(">>>>>>>>获取用户等级"+ response.toString());
+                if (response != null)
+                    MyLogger.i(">>>>>>>>获取用户等级" + response.toString());
 //                mView.onHttpResultSuccess();
-                if (back!=null){
+                if (back != null) {
                     back.onSueccess(response);
                 }
             }
         });
     }
+
     /**
      * 修改头像
      */
@@ -210,12 +225,15 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
 
             @Override
             public void onResponse(Object response) {
+                if (response != null)
+                    MyLogger.i(">>>>>>>>修改头像" + response.toString());
 //                mView.onHttpResultSuccess();
                 mView.showToast("修改头像成功");
 //                ((Activity) mView).finish();
             }
         }, mView);
     }
+
     public abstract class MyResultCallback<T> extends OkHttpClientManager.ResultCallback<T> {
         @Override
         public void onBefore(Request request) {
@@ -229,10 +247,12 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordPresent
             super.onAfter();
         }
     }
-    public interface OnUserLevelCallBack{
+
+    public interface OnUserLevelCallBack {
         void onSueccess(UserLevelBean bean);
     }
-    public interface OnIsVerified{
+
+    public interface OnIsVerified {
         void onSueccess(IsVerifiedBean isVerifed);
     }
 }

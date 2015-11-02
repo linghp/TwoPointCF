@@ -16,7 +16,7 @@
         android:textSize="@dimen/title_txt_size"
         android:text="@string/hello_world" />
 
-    <TextView
+    <TextView android:visibility="gone"
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

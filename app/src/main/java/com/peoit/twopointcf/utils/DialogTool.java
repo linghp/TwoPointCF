@@ -56,11 +56,11 @@ public class DialogTool {
     }
 
     /**
-     * 创建带密码的对话框
+     * 创建自定义界面的对话框
      */
     public static Dialog createPasswordDialog(Context ctx,
                                               int iconId,
-                                              String title,
+                                              String title, int layoutid,
                                               String btnName1,
                                               DialogInterface.OnClickListener listener1) {
         Dialog dialog = null;
@@ -70,7 +70,7 @@ public class DialogTool {
         // 设置对话框的标题
         builder.setTitle(title);
         // 设置对话框的显示内容
-        View view = LayoutInflater.from(ctx).inflate(R.layout.password_dialog, null);
+        View view = LayoutInflater.from(ctx).inflate(layoutid, null);
         builder.setView(view);
         EditText et_password = (EditText) view.findViewById(R.id.et_password);
         // 添加按钮1，android.content.DialogInterface.OnClickListener.OnClickListener

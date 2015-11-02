@@ -111,7 +111,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         presenter=new FindProjectPresenter(this);
         investFindAdapter = new InvestFindAdapter(getActivity(), projectBeans);
 
-//        maps.put("publisherId", localUserInfo.getUserId());
+        maps.put("statusMark", "y");
         //presenter.getData(URLs.FINDPROJECT,maps, projectBeans);
         requestServer();
         listView.setAdapter(investFindAdapter);

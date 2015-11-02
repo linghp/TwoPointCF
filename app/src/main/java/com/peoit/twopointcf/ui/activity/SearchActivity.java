@@ -100,6 +100,7 @@ public class SearchActivity extends BaseActivity implements SearchProjectPresent
         if (city.equals("全国")) {
             params.put("city", "");
         }
+        params.put("statusMark", "y");
         presenter = new SearchProjectPresenter(this, projectBeans);
         adapter = new InvestFindAdapter(this, projectBeans);
         mList.setAdapter(adapter);

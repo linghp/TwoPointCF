@@ -18,6 +18,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * 点击查看项目详情的图片
+ * 暂时没有用
  */
 public class SimplePhotoViewActivity extends BaseActivity {
     private PhotoViewAttacher mAttacher;

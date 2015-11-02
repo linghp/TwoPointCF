@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -129,6 +130,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     "众筹完成" + CommonUtil.twoPointConversion(projectBean.successCondition * 100) + "%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
                     "点击查看", "点击查看", "点击查看"};//营业执照、信用报告、行业许可证
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
+            final int length=investfinddetail_subitemnames.length;
+            final List<List<String>> pictures=new ArrayList<>();
+            pictures.add(projectBean.businessLicenses);
+            pictures.add(projectBean.personCredits);
+            pictures.add(projectBean.industryLicense);
             for (int i = 0; i < investfinddetail_subitemnames.length; i++) {
                 View view = inflater.inflate(R.layout.activity_invest_find_detail_subitem, null);
                 TextView tv01 = (TextView) view.findViewById(R.id.tv_01);
@@ -137,14 +143,17 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 tv02.setText(investfinddetail_subitemvalues[i]);
                 linearLayoutsub.addView(view);
 
-                String[] details = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", projectBean.businessLicenses.get(0), projectBean.personCredits.get(0), projectBean.industryLicense.get(0)};
-                final String title = investfinddetail_subitemnames[i];
-                final String detail = details[i];
+                //String[] details = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", projectBean.businessLicenses.get(0), projectBean.personCredits.get(0), projectBean.industryLicense.get(0)};
+
+                //final String title = investfinddetail_subitemnames[i];
+                //final String detail = details[i];
+                final int i_final=i;
                 if (investfinddetail_subitemvalues[i] != null && investfinddetail_subitemvalues[i].contains("点击查看")) {
                     tv02.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            SimplePhotoViewActivity.startThisActivity(title, detail, InvestFindDetailActivity.this);
+                            ViewPagerPhotoViewActivity.startThisActivity((ArrayList) (pictures.get(i_final-length+3)), 0, InvestFindDetailActivity.this);
+                            //SimplePhotoViewActivity.startThisActivity(title, detail, InvestFindDetailActivity.this);
                         }
                     });
                 }
@@ -282,7 +291,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     }
 
     private void verifyPassword(String title) {
-        DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, title, "确定", new DialogInterface.OnClickListener() {
+        DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, title, R.layout.password_dialog,"确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Dialog dialog = (Dialog) dialogInterface;
@@ -317,7 +326,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     e.printStackTrace();
                 }
                 Map<String, String> maps = new HashMap<>();
-                maps.put("loginId", localUserInfo.getUserId());
+                maps.put("loginId", localUserInfo.getUsername());
                 maps.put("authorizationCode", Encryption.generatePassword(password));
                 presenter.getData(URLs.VEIFYAUTHORIZATIONCODE, maps);
             }
@@ -452,11 +461,20 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     @Override
     public void onHttpResultSuccess(String status) {
         if (status.equals("verifysuccess")) {//验证用户授权密码
-            Map<String, String> maps = new HashMap<>();
+            final Map<String, String> maps = new HashMap<>();
             maps.put("id", projectBean.id);
             switch (status_operate) {
                 case "取消":
-                    presenter.getCancelProject(maps);
+                    DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", R.layout.cancelproject_dialog,"确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Dialog dialog = (Dialog) dialogInterface;
+                            EditText et_cancelcause = (EditText) dialog.findViewById(R.id.et_cancelcause);
+                            String cancelcause = et_cancelcause.getText().toString().trim();
+                            final Map maps_final=maps;
+                            presenter.getCancelProject(maps_final);
+                        }
+                    }).show();
                     break;
                 case "启动":
                     presenter.getStartProject(maps);

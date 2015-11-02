@@ -154,7 +154,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray" />
+                    android:background="@color/gray" android:visibility="gone"/>
 
                 <LinearLayout
                     android:id="@+id/ll_paymethod02"
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal" android:visibility="gone">
 
                     <ImageView
                         style="@style/paymethod_image"
@@ -197,7 +197,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray" />
+                    android:background="@color/gray" android:visibility="gone"/>
 
                 <LinearLayout
                     android:id="@+id/ll_paymethod03"
@@ -205,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal" android:visibility="gone">
 
                     <ImageView
                         style="@style/paymethod_image"

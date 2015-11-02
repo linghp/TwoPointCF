@@ -48,7 +48,7 @@ public class InformationCenterFragmentAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         if(getItem(position).getPicturePath() != "") {
-            Glide.with(context).load(URLs.HOST+getItem(position).getPicturePath()).into(holder.iv_left);
+            Glide.with(context).load(URLs.HOST+getItem(position).getPicturePath()).placeholder(R.mipmap.placeholderpic).crossFade().into(holder.iv_left);
         }else {
         }
 //        holder.tv_time.setText(getItem(position).getTime());

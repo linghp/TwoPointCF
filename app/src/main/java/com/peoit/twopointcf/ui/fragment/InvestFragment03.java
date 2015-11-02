@@ -67,8 +67,8 @@ public class InvestFragment03 extends BaseFragment implements InvestProjectPrese
     protected void updateView() {
         if(projectBean!=null) {
             tvName.setText(projectBean.projectName+"股权购买定金");
-            tvOrderMoney.setText(projectBean.mInvestMoney+"元");
-            tvYetMoney.setText(projectBean.mInvestMoney+"元");
+            tvOrderMoney.setText(projectBean.mInvestorEarnest+"元");
+            tvYetMoney.setText(projectBean.mInvestorEarnest+"元");
         }
     }
 

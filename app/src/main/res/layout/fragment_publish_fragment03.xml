@@ -38,11 +38,18 @@
                         android:id="@+id/et_totalStockMoney"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:hint="请输入股权总额"
                         android:inputType="number"
                         android:maxLength="13"
                         android:numeric="decimal"
                         android:textColorHint="@color/grey500" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textSize="@dimen/title_txt_size" />
                 </LinearLayout>
 
                 <TextView
@@ -81,10 +88,17 @@
                         android:id="@+id/et_sellStockMoney"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:hint="请输入发行总额"
                         android:inputType="number"
                         android:maxLength="7"
                         android:textColorHint="@color/grey500" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textSize="@dimen/title_txt_size" />
                 </LinearLayout>
 
                 <TextView
@@ -105,21 +119,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="售卖金额(单股):"
-                    android:textSize="@dimen/title_txt_size" />
-
-                <EditText
-                    android:id="@+id/et_perSellStockMoney"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="请输入售卖金额"
-                    android:numeric="decimal"
-                    android:textColorHint="@color/grey500" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="售卖金额(单股):"
+                        android:textSize="@dimen/title_txt_size" />
+
+                    <EditText
+                        android:id="@+id/et_perSellStockMoney"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="请输入售卖金额"
+                        android:numeric="decimal"
+                        android:textColorHint="@color/grey500" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textSize="@dimen/title_txt_size" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="售卖金额必须是1000的倍数"
+                    android:textColor="@color/orange700" />
             </LinearLayout>
 
             <View

@@ -16,6 +16,8 @@ import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 重置密码
@@ -115,6 +117,14 @@ public class ResetPasswordActivity extends BaseActivity implements ChangePasswor
                 return false;
             }
         }
+
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]{8,}");
+        Matcher matcher = pattern.matcher(newPassword);
+        if(!matcher.matches()){
+            showToast("密码应为字母和数字的不少于8位的组合");
+            return false;
+        }
+
         return true;
     }
 

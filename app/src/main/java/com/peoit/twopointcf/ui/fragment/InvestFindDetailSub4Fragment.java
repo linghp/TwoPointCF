@@ -103,13 +103,19 @@ public class InvestFindDetailSub4Fragment extends BaseFragment implements Commen
         projectBean = ((InvestFindDetailActivity) getActivity()).projectBean;
         if (projectBean != null) {
             maps.put("projectId", projectBean.id);
-            presenter.getData(maps, false);
+            requestServer();
         }
     }
 
     @Override
     protected void updateView() {
 
+    }
+
+    @Override
+    public void requestServer() {
+        super.requestServer();
+        presenter.getData(maps, false);
     }
 
     @Override
