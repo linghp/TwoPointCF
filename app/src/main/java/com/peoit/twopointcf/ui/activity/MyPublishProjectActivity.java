@@ -99,7 +99,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
 //                investedProjectBeans.get(position),
 //                this);
         itemClickPosition=position;
-        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),true, this);
+        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),0, this);
     }
 
     @Override
@@ -121,7 +121,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
             if(!TextUtils.isEmpty(status)){
                 investedProjectBeans.get(itemClickPosition).status=status;
             }else{
-                investedProjectBeans.remove(itemClickPosition);
+                //investedProjectBeans.remove(itemClickPosition);
             }
             projectAdapter.notifyDataSetChanged();
         }

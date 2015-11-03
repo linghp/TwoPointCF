@@ -82,6 +82,8 @@ public class InvestFragment01 extends BaseFragment{
                     projectBean.mInvestorEarnest=(int)investorEarnest;
                 }else{
                     stockcount=0;
+                    tv_money.setText("0.00万");
+                    tv_percentage.setText("0.00%");
                 }
             }
         });

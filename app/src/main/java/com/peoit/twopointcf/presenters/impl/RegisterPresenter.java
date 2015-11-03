@@ -169,8 +169,32 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
             @Override
             public void onResponse(Object response) {
                 if (response != null){
-                    mView.showToast("手机号验证成功" + response.toString());
+                    //mView.showToast("手机号验证成功" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>验证手机号是否已被注册" + response.toString());
+
+                }
+            }
+        });
+    }
+
+     //验证手机号是否已被注册
+    public void verifyEmail(final Map map){
+        OkHttpClientManager.postAsyn(URLs.USER_VERIFYEMAIL, map, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("邮箱已被注册");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null){
+                    //mView.showToast("手机号验证成功" + response.toString());
+                    MyLogger.i(">>>>>>>>>>>>>>>>验证邮箱是否已被注册" + response.toString());
 
                 }
             }

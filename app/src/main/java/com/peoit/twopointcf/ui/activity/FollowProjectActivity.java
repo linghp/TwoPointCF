@@ -93,7 +93,7 @@ public class FollowProjectActivity extends BaseActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //        InvestFindDetailActivity.startThisActivity(null,false,this);
-        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),false,this);
+        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),-1,this);
     }
 
     @Override

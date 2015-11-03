@@ -1,5 +1,6 @@
 package com.peoit.twopointcf.presenters.impl;
 
+import android.app.Activity;
 import android.text.TextUtils;
 
 import com.peoit.twopointcf.R;
@@ -69,6 +70,33 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
         }, mView);
     }
 
+
+    /**
+     * 取消投资项目
+     * @param maps
+     */
+    public void cancelInvest(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.CANCELINVEST, maps, new MyResultCallback<String>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("取消投资失败");
+                }
+            }
+
+            @Override
+            public void onResponse(String response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>关注项目" + response);
+                    mView.showToast("取消投资成功");
+                    ((Activity) mView).finish();
+                }
+            }
+        }, mView);
+    }
 
     /**
      * 关注项目

@@ -149,9 +149,9 @@ public class PublishProjectActivity extends BaseFragmentActivity implements Publ
 
                 } else if (count == 1) {
                     PublishFragment02 fragment02 = (PublishFragment02) fragmentManager.findFragmentByTag("publishfragment02");
-//                    if (!fragment02.putData()) {
-//                        return;
-//                    }
+                    if (!fragment02.putData()) {
+                        return;
+                    }
                     PublishFragment03 fragment = new PublishFragment03();
                     addFragmentToStack(fragment, "publishfragment03");
                 } else if (count == 2) {

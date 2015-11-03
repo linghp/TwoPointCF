@@ -33,6 +33,10 @@ public class URLs {
      */
     public static final String USER_USERNAMEVAILDATE = HOST + "/api/user/userNameValidate";
     /**
+     * 验证登录名是否可用
+     */
+    public static final String USER_VERIFYEMAIL = HOST + "/api/user/verifyEmail";
+    /**
      * 登录
      */
     public static final String USER_SIGNIN = HOST + "/api/user/login";
@@ -115,6 +119,11 @@ public class URLs {
      * 查询已投资项目
      */
     public static final String FINDINVESTEDPROJECT = HOST + "/api/project/findInvestedProject";
+
+    /**
+     * 取消投资
+     */
+    public static final String CANCELINVEST = HOST + "/api/project/cancelInvest";
 
     /**
      * 关注项目

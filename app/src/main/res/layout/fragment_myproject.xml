@@ -46,19 +46,21 @@
                         android:layout_height="65dp"
                         android:gravity="center_horizontal">
 
-                        <ImageView
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/ab_01"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:background="@mipmap/invest_projects3x"
+                            android:clickable="false"
                             android:padding="6dp"
-                            android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal" />
+                            android:scaleType="fitCenter" />
 
                         <TextView
                             android:id="@+id/main_unread_msg_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:background="@mipmap/unread_count_bg"
+                            android:background="@drawable/unread_count_bg"
                             android:gravity="center"
                             android:text="3"
                             android:textColor="@android:color/white"
@@ -99,12 +101,14 @@
                         android:layout_height="65dp"
                         android:gravity="center_horizontal">
 
-                        <ImageView
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/ab_02"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:background="@mipmap/heart_full3x"
+                            android:clickable="false"
                             android:padding="6dp"
-                            android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal" />
+                            android:scaleType="fitCenter" />
                     </RelativeLayout>
 
                     <TextView
@@ -128,8 +132,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <LinearLayout
-                    android:id="@+id/ll_03"
+                    android:id="@+id/ll_04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
@@ -146,53 +151,14 @@
                         android:layout_height="65dp"
                         android:gravity="center_horizontal">
 
-                        <ImageView
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/ab_04"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:background="@mipmap/publish_projects3x"
+                            android:clickable="false"
                             android:padding="6dp"
-                            android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/title_activity_business_manager"
-                        android:textSize="@dimen/large_title_txt_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
-                        android:lines="2"
-                        android:text="交易、转让持有股份"
-                        android:textColor="@color/grey500" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_04"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/frame_bule"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:onClick="onClick"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <RelativeLayout
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:gravity="center_horizontal">
-
-                        <ImageView
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:padding="6dp"
-                            android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal" />
+                            android:scaleType="fitCenter" />
                     </RelativeLayout>
 
                     <TextView
@@ -209,7 +175,51 @@
                         android:text="管理、修改我发布的项目"
                         android:textColor="@color/grey500" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/frame_bule"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="onClick"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:gravity="center_horizontal">
+
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/ab_03"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@mipmap/bussiness_manage3x"
+                            android:clickable="false"
+                            android:padding="6dp"
+                            android:scaleType="fitCenter" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_activity_business_manager"
+                        android:textSize="@dimen/large_title_txt_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:lines="2"
+                        android:text="交易、转让持有股份"
+                        android:textColor="@color/grey500" />
+                </LinearLayout>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -235,12 +245,14 @@
                         android:layout_height="65dp"
                         android:gravity="center_horizontal">
 
-                        <ImageView
+                        <android.support.v7.widget.AppCompatButton
+                            android:id="@+id/ab_05"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
+                            android:background="@mipmap/add3x"
+                            android:clickable="false"
                             android:padding="6dp"
-                            android:scaleType="fitCenter"
-                            android:src="@mipmap/myprojectnormal" />
+                            android:scaleType="fitCenter" />
                     </RelativeLayout>
 
                     <TextView
@@ -259,7 +271,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="invisible"
                     android:id="@+id/ll_06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -270,7 +281,8 @@
                     android:gravity="center"
                     android:onClick="onClick"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:visibility="invisible">
 
                     <RelativeLayout
                         android:layout_width="65dp"

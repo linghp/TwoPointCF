@@ -56,7 +56,7 @@ public class InvestActivity extends BaseFragmentActivity {
                 int count = fragmentManager.getBackStackEntryCount();
                 if (count == 0) {
                     titleView.setTitle(getString(R.string.title_activity_invest));
-                    tv_publish.setText(getString(R.string.send_investrequest));
+                    tv_publish.setText(getString(R.string.nextstep));
                 } else if (count == 1) {
                     titleView.setTitle(getString(R.string.confirmmargin));
                     tv_publish.setText(getString(R.string.confirmpay));

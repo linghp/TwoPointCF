@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?><!-- shape如果不声明形状则默认为正方形 -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
 
-    <corners android:radius="0.0dp" />
-    <!-- 圆角，你也可以对不同的角设置不同的数值 -->
+            <corners android:radius="0.0dp" />
+            <!-- 圆角，你也可以对不同的角设置不同的数值 -->
 
-    <solid android:color="@color/white" />
-    <!-- 形状的填充色 -->
+            <solid android:color="@color/txt_white1" />
+            <!-- 形状的填充色 -->
 
-    <stroke
-        android:width="1.5dp"
-        android:color="@color/lightblue500" />
-    <!-- 边框宽度和颜色 -->
+            <stroke android:width="1.5dp" android:color="@color/lightblue700" />
+            <!-- 边框宽度和颜色 -->
 
-    <!--<padding android:left="1dp" android:top="1dp" android:right="1dp" android:bottom="1dp" />-->
-</shape>
+            <!--<padding android:left="1dp" android:top="1dp" android:right="1dp" android:bottom="1dp" />-->
+        </shape>
+    </item>
+    <item>
+        <shape>
+
+            <corners android:radius="0.0dp" />
+            <!-- 圆角，你也可以对不同的角设置不同的数值 -->
+
+            <solid android:color="@color/white" />
+            <!-- 形状的填充色 -->
+
+            <stroke android:width="1.5dp" android:color="@color/lightblue500" />
+            <!-- 边框宽度和颜色 -->
+
+            <!--<padding android:left="1dp" android:top="1dp" android:right="1dp" android:bottom="1dp" />-->
+        </shape>
+    </item>
+
+</selector>

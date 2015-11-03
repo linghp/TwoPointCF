@@ -66,8 +66,11 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     private Map<String, String> maps_status = MyPublishProjectActivity.maps_status;
 
     private boolean isCancelProject = false;//取消关注
-
-    private boolean isFromMyPublishProject = false;//是否来自我的已发项目
+    /**
+     * 0:来自我的已发项目
+     * 1:来自我的已投项目
+     */
+    private int tag_int = -1;
 
     private String status_operate = "";
 
@@ -78,10 +81,10 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         //ButterKnife.bind(this);
     }
 
-    public static void startThisActivity(ProjectBean projectBean, boolean isFromMyPublishProject, Activity context) {
+    public static void startThisActivity(ProjectBean projectBean, int tag_int, Activity context) {
         Intent intent = new Intent(context, InvestFindDetailActivity.class);
         intent.putExtra("projectBean", projectBean);
-        intent.putExtra("isFromMyPublishProject", isFromMyPublishProject);
+        intent.putExtra("tag_int", tag_int);
         context.startActivityForResult(intent, 100);
     }
 
@@ -102,7 +105,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
         ViewGroup.LayoutParams layoutParams = tagViewPager.getLayoutParams();
         layoutParams.width = CommonUtil.getScreenWidth(this);
-        layoutParams.height = layoutParams.width / 3;
+        layoutParams.height = layoutParams.width / 2;
         tagViewPager.setLayoutParams(layoutParams);
     }
 
@@ -117,7 +120,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
 
         projectBean = (ProjectBean) getIntent().getSerializableExtra("projectBean");
-        isFromMyPublishProject = getIntent().getBooleanExtra("isFromMyPublishProject", false);
+        tag_int = getIntent().getIntExtra("tag_int", -1);
         if (projectBean != null) {
             String[] investfinddetail_subitemvalues = {projectBean.sellStockMoney / 10000 + "万元", //融资资金
                     projectBean.investUserAmount + "", //已投人数
@@ -130,8 +133,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     "众筹完成" + CommonUtil.twoPointConversion(projectBean.successCondition * 100) + "%", projectBean.industryType, projectBean.address,//启动条件、行业类型、详细地址
                     "点击查看", "点击查看", "点击查看"};//营业执照、信用报告、行业许可证
             String[] investfinddetail_subitemnames = getResources().getStringArray(R.array.investfinddetail_subitemname);
-            final int length=investfinddetail_subitemnames.length;
-            final List<List<String>> pictures=new ArrayList<>();
+            final int length = investfinddetail_subitemnames.length;
+            final List<List<String>> pictures = new ArrayList<>();
             pictures.add(projectBean.businessLicenses);
             pictures.add(projectBean.personCredits);
             pictures.add(projectBean.industryLicense);
@@ -147,12 +150,12 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
                 //final String title = investfinddetail_subitemnames[i];
                 //final String detail = details[i];
-                final int i_final=i;
+                final int i_final = i;
                 if (investfinddetail_subitemvalues[i] != null && investfinddetail_subitemvalues[i].contains("点击查看")) {
                     tv02.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ViewPagerPhotoViewActivity.startThisActivity((ArrayList) (pictures.get(i_final-length+3)), 0, InvestFindDetailActivity.this);
+                            ViewPagerPhotoViewActivity.startThisActivity((ArrayList) (pictures.get(i_final - length + 3)), 0, InvestFindDetailActivity.this);
                             //SimplePhotoViewActivity.startThisActivity(title, detail, InvestFindDetailActivity.this);
                         }
                     });
@@ -206,7 +209,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             }
 
             //判断是不是从我的已发项目跳转过来，做相应的按钮显示及操作
-            if (isFromMyPublishProject) {
+            if (tag_int == 0) {
                 llBottom.setVisibility(View.VISIBLE);
                 tvToinvest.setVisibility(View.GONE);
                 switch (projectBean.status) {
@@ -277,11 +280,30 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     default:
                         llBottom.setVisibility(View.GONE);
                 }
-            } else {
-                if ("已结束".equals(tv_bottom03.getText().toString().trim())) {
-                    tvToinvest.setVisibility(View.GONE);
-                }
+            } else if ("已结束".equals(tv_bottom03.getText().toString().trim())) {
+                tvToinvest.setVisibility(View.GONE);
+            }else if(tag_int==1){
+                tvToinvest.setText("取消投资");
+                tvToinvest.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DialogTool.createCommonDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消投资", "确定取消投资？", "确认", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Map<String, String> maps = new HashMap<>();
+                                maps.put("investId", localUserInfo.getUserId());
+                                maps.put("projectId", projectBean.id);
+                                presenter.cancelInvest(maps);
+                            }
+                        }, "取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+//                        myToast("取消");
+                            }
+                        }).show();
 
+                    }
+                });
             }
 
 
@@ -291,7 +313,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     }
 
     private void verifyPassword(String title) {
-        DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, title, R.layout.password_dialog,"确定", new DialogInterface.OnClickListener() {
+        DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, title, R.layout.password_dialog, "确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Dialog dialog = (Dialog) dialogInterface;
@@ -465,13 +487,14 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             maps.put("id", projectBean.id);
             switch (status_operate) {
                 case "取消":
-                    DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", R.layout.cancelproject_dialog,"确定", new DialogInterface.OnClickListener() {
+                    DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "取消", R.layout.cancelproject_dialog, "确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Dialog dialog = (Dialog) dialogInterface;
                             EditText et_cancelcause = (EditText) dialog.findViewById(R.id.et_cancelcause);
                             String cancelcause = et_cancelcause.getText().toString().trim();
-                            final Map maps_final=maps;
+                            maps.put("cancelRemarks",cancelcause);
+                            final Map maps_final = maps;
                             presenter.getCancelProject(maps_final);
                         }
                     }).show();

@@ -78,4 +78,12 @@
         <item name="android:stretchMode">none</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="invest_fragment02_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:background">@color/gray</item>
+    </style>
 </resources>

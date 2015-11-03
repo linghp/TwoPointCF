@@ -82,7 +82,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
 //        ImageView imageView=new ImageView(this.getActivity());
         AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.width = CommonUtil.getScreenWidth(getActivity());
-        layoutParams.height = layoutParams.width / 3;
+        layoutParams.height = layoutParams.width / 2;
 //        imageView.setLayoutParams(layoutParams);
 //        imageView.setBackgroundColor(getActivity().getResources().getColor(R.color.white));
 //        imageView.setImageResource(R.mipmap.raw_1433489820);
@@ -142,7 +142,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
         if (position != 0) {
 //            Bundle bundle = new Bundle();
 //            bundle.putInt("position", position);
-            InvestFindDetailActivity.startThisActivity(projectBeans.get(position-1),false,getActivity());
+            InvestFindDetailActivity.startThisActivity(projectBeans.get(position-1),-1,getActivity());
             // CommonUtil.gotoActivityWithData(getActivity(), InvestFindDetailActivity.class, bundle, false);
         }
     }

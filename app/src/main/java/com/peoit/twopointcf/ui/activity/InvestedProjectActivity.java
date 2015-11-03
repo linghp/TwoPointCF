@@ -72,7 +72,7 @@ public class InvestedProjectActivity extends BaseActivity implements AdapterView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //InvestedProjectDetailActivity.startThisActivity(investedProjectBeans.get(position).projectName, this);
-        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),false,this);
+        InvestFindDetailActivity.startThisActivity(investedProjectBeans.get(position),1,this);
     }
 
 

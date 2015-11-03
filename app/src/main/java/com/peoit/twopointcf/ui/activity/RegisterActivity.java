@@ -80,7 +80,9 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                         showToast("请输入邮箱");
                     } else {
                         if (isMobileEM(email)) {
-//                presenter.getVlidateCode(email);
+                            Map<String, String> maps = new HashMap<>();
+                            maps.put("email", email);
+                            presenter.verifyEmail(maps);
                         } else {
                             showToast("请输入正确邮箱");
                         }
@@ -268,7 +270,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
 
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]{8,}");
         Matcher matcher = pattern.matcher(password);
-        if(!matcher.matches()){
+        if (!matcher.matches()) {
             showToast("密码应为字母和数字的不少于8位的组合");
             return false;
         }
@@ -279,7 +281,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             return false;
         }
         Matcher matcher2 = pattern.matcher(authorizationCode);
-        if(!matcher2.matches()){
+        if (!matcher2.matches()) {
             showToast("授权密码应为字母和数字的不少于8位的组合");
             return false;
         }
@@ -328,7 +330,6 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         Matcher m = p.matcher(password);
         return m.matches();
     }*/
-
     @Override
     public void onHttpResultSuccess() {
     }

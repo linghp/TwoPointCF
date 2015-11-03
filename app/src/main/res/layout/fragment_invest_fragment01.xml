@@ -1,10 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:layout_marginLeft="9dp"
-             android:layout_marginRight="9dp"
-             tools:context="com.peoit.twopointcf.ui.fragment.InvestFragment01">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peoit.twopointcf.ui.fragment.InvestFragment01">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +16,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="6dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -28,21 +27,27 @@
                     android:gravity="right"
                     android:text="投资项目:"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
-                <TextView android:id="@+id/tv_projectname"
+                <TextView
+                    android:id="@+id/tv_projectname"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="金佳骏宠物度假村"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/grey400"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="36dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -52,20 +57,27 @@
                     android:gravity="right"
                     android:text="发起人:"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
-                <TextView android:id="@+id/tv_initiator"
+                <TextView
+                    android:id="@+id/tv_initiator"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="张三"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/grey400"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="36dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -75,30 +87,36 @@
                     android:gravity="right"
                     android:text="投资:"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
-                <EditText android:id="@+id/et_stockcount"
+                <EditText
+                    android:id="@+id/et_stockcount"
                     style="@style/publish_leftpart_rightpart"
-                    android:inputType="number"
-                    android:ems="5"
-                    android:maxLength="10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="5"
                     android:hint="请输入"
-                    android:textColorHint="@color/grey500"/>
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColorHint="@color/grey500" />
 
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="股"
-                    android:textSize="@dimen/title_txt_size"
-                    />
+                    android:textSize="@dimen/title_txt_size" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/grey400"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="36dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -108,20 +126,27 @@
                     android:gravity="right"
                     android:text="金额:"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
-                <TextView android:id="@+id/tv_money"
+                <TextView
+                    android:id="@+id/tv_money"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0.00万"
-                    android:textSize="@dimen/title_txt_size"/>
+                    android:textSize="@dimen/title_txt_size" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/grey400"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="36dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -131,22 +156,28 @@
                     android:gravity="right"
                     android:text="占股:"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
 
-                <TextView android:id="@+id/tv_percentage"
+                <TextView
+                    android:id="@+id/tv_percentage"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="0.00%"
-                    android:textSize="@dimen/title_txt_size"
-                    />
+                    android:textSize="@dimen/title_txt_size" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@color/grey400"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -156,16 +187,17 @@
                     android:gravity="right"
                     android:text="说明:"
                     android:textSize="@dimen/title_txt_size"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
-                <EditText android:id="@+id/tv_description"
+                <EditText
+                    android:id="@+id/tv_description"
                     style="@style/publish_leftpart_rightpart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/shape2"
                     android:hint="请输入"
                     android:lines="10"
-                    android:background="@drawable/shape2"
-                    android:textColorHint="@color/grey500"/>
+                    android:textColorHint="@color/grey500" />
 
             </LinearLayout>
         </LinearLayout>

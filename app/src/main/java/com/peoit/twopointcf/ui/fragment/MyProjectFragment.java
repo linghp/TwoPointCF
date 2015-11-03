@@ -1,7 +1,10 @@
 package com.peoit.twopointcf.ui.fragment;
 
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,7 @@ import com.peoit.twopointcf.utils.DialogTool;
 public class MyProjectFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView mText;
+    private int[] appCompatButton_ids;
 
 
     public static MyProjectFragment newInstance(int index) {
@@ -67,6 +71,14 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
         view.findViewById(R.id.ll_03).setOnClickListener(this);
         view.findViewById(R.id.ll_04).setOnClickListener(this);
         view.findViewById(R.id.ll_05).setOnClickListener(this);
+        //tint
+        appCompatButton_ids= new int[]{R.id.ab_01,R.id.ab_02,R.id.ab_03,R.id.ab_04,R.id.ab_05};
+        for (int appCompatButton_id : appCompatButton_ids) {
+            AppCompatButton mBtnCompat = (AppCompatButton) view.findViewById(appCompatButton_id);
+            ColorStateList lists = getResources().getColorStateList(R.color.lightblue500);
+            mBtnCompat.setSupportBackgroundTintList(lists);
+            mBtnCompat.setSupportBackgroundTintMode(PorterDuff.Mode.SRC_IN);
+        }
     }
 
     @Override

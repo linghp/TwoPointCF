@@ -206,7 +206,7 @@ public class SearchActivity extends BaseActivity implements SearchProjectPresent
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        InvestFindDetailActivity.startThisActivity(projectBeans.get(position), false, this);
+        InvestFindDetailActivity.startThisActivity(projectBeans.get(position), -1, this);
     }
 
     private TextView textView_enddate;
