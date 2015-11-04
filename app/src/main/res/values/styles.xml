@@ -35,7 +35,7 @@
         <item name="android:textColor">@color/tab_text</item>
     </style>
 
-    <style name="publish_leftpart_rightpart">
+    <style name="publish_leftpart_rightpart" parent="invest_fragment02_left_title_size">
         <item name="android:layout_marginLeft">16dp</item>
     </style>
 
@@ -85,5 +85,9 @@
         <item name="android:layout_marginTop">6dp</item>
         <item name="android:layout_marginBottom">6dp</item>
         <item name="android:background">@color/gray</item>
+    </style>
+
+    <style name="invest_fragment02_left_title_size">
+        <item name="android:textSize">@dimen/title_txt_size</item>
     </style>
 </resources>

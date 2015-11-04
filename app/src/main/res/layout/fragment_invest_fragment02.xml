@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
-    android:textSize="@dimen/title_txt_size"
-    tools:context="com.peoit.twopointcf.ui.fragment.InvestFragment01">
+    tools:context="com.peoit.twopointcf.ui.fragment.InvestFragment01"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -62,14 +62,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="投资项目:"
-
+                            style="@style/invest_fragment02_left_title_size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="占股:"
-
+                            style="@style/invest_fragment02_left_title_size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -117,7 +117,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="投资总额:"
-
+                            style="@style/invest_fragment02_left_title_size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="签约方式:"
-
+                            style="@style/invest_fragment02_left_title_size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -164,7 +164,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="签约时间:"
-
+                            style="@style/invest_fragment02_left_title_size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -187,7 +187,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="保证金:"
-
+                            style="@style/invest_fragment02_left_title_size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -231,6 +231,7 @@
                 android:padding="9dp">
 
                 <TextView
+                    style="@style/invest_fragment02_left_title_size"
                     android:id="@+id/tv_phoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -261,7 +262,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="6dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal" android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"

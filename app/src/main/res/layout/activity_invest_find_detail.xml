@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     tools:context="com.peoit.twopointcf.ui.activity.InvestFindDetailActivity">
 
-    <ScrollView
+    <com.peoit.twopointcf.ui.view.MyScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
 
         <RelativeLayout
+            android:id="@+id/rl_parent"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -218,90 +220,9 @@
                                    android:layout_marginTop="9dp"
                                    android:background="@color/grey500"
                                    />-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/slide_tag1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="9dp"
-                        android:layout_marginRight="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_fourtext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="商业计划"
-                        android:textColor="@color/tab_text"
-                        android:textSize="@dimen/title_txt_size" />
-
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:background="@color/grey500" />
-
-                    <TextView
-                        android:id="@+id/slide_tag2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="9dp"
-                        android:layout_marginRight="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_fourtext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="盈利模式"
-                        android:textColor="@color/tab_text"
-                        android:textSize="@dimen/title_txt_size" />
-
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:background="@color/grey500" />
-
-                    <TextView
-                        android:id="@+id/slide_tag3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="9dp"
-                        android:layout_marginRight="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_fourtext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="团队介绍"
-                        android:textColor="@color/tab_text"
-                        android:textSize="@dimen/title_txt_size" />
-
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="20dp"
-                        android:background="@color/grey500" />
-
-                    <TextView
-                        android:id="@+id/slide_tag4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="9dp"
-                        android:clickable="true"
-                        android:drawableBottom="@drawable/selector_twotext_bottom"
-                        android:drawablePadding="9dp"
-                        android:onClick="onClick"
-                        android:paddingTop="9dp"
-                        android:text="讨论"
-                        android:textColor="@color/tab_text"
-                        android:textSize="@dimen/title_txt_size" />
-                </LinearLayout>
+                <include
+                    android:id="@+id/menu"
+                    layout="@layout/investfinddetail_menu" />
 
                 <FrameLayout
                     android:id="@+id/fl_fragment"
@@ -309,8 +230,11 @@
                     android:layout_height="match_parent"></FrameLayout>
             </LinearLayout>
 
+            <include
+                android:id="@+id/menu_top"
+                layout="@layout/investfinddetail_menu" />
         </RelativeLayout>
-    </ScrollView>
+    </com.peoit.twopointcf.ui.view.MyScrollView>
 
     <TextView
         android:id="@+id/tv_toinvest"
@@ -337,8 +261,7 @@
         android:background="@color/grey200"
         android:gravity="center_vertical|right"
         android:orientation="horizontal"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_lastbottom01"

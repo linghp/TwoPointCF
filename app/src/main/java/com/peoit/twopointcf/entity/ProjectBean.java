@@ -102,6 +102,7 @@ public class ProjectBean implements Serializable{
     public String mStockPercent;//占股比例
     public int mInvestMoney;//投资总额
     public int mInvestorEarnest;//保证金
+    public boolean isfinish;//是否结束
 
 
     @Override

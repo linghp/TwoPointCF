@@ -109,7 +109,12 @@ public class InvestFindDetailSub4Fragment extends BaseFragment implements Commen
 
     @Override
     protected void updateView() {
-
+        if(projectBean.isfinish) {
+            View view_place = findViewByID_My(R.id.view_place);
+            if (view_place != null) {
+                view_place.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -122,6 +127,7 @@ public class InvestFindDetailSub4Fragment extends BaseFragment implements Commen
     public void onHttpResultSuccess() {
         commentAdapter.notifyDataSetChanged();
         et_comment.setText("");
+        et_comment.clearFocus();
     }
 
     @Override

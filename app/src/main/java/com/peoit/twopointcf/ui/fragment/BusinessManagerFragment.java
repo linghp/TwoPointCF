@@ -66,12 +66,12 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
         switch (type) {
             case BusinessManagerActivity.INVESTED:
                 params.put("investorId", localUserInfo.getUserId());
-                presenter.getData(URLs.FINDINVESTEDSUCCESSPROJECT, params, lists);
+                requestServer();
                 break;
             case BusinessManagerActivity.PUBLISHED:
                 params.put("publisherId", localUserInfo.getUserId());
                 params.put("status", "project_success");//众筹成功的项目
-                presenter.getData(URLs.FINDPROJECT, params, lists);
+                requestServer();
                 break;
         }
         businessManagerAdapter = new BusinessManagerAdapter(getActivity(), R.layout.item_businessmanager, lists);
@@ -103,7 +103,7 @@ public class BusinessManagerFragment extends BaseFragment implements AdapterView
         super.requestServer();
         switch (type) {
             case BusinessManagerActivity.INVESTED:
-                presenter.getData(URLs.FINDINVESTEDPROJECT, params, lists);
+                presenter.getData(URLs.FINDINVESTEDSUCCESSPROJECT, params, lists);
                 break;
             case BusinessManagerActivity.PUBLISHED:
                 presenter.getData(URLs.FINDPROJECT, params, lists);

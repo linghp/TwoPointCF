@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.entity.CommentBean;
 import com.peoit.twopointcf.net.URLs;
+import com.peoit.twopointcf.utils.MyLogger;
 
 import java.util.List;
 
@@ -36,17 +37,18 @@ public class CommentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        MyLogger.i("getView");
         ViewHolder holder = null;
-        if (convertView == null) {
+        //if (convertView == null) {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.item_invest_find_detail_discussion, null);
             holder.iv_avatar = (ImageView) convertView.findViewById(R.id.iv_avatar);
             holder.tv_discussantName = (TextView) convertView.findViewById(R.id.tv_discussantName);
             holder.tv_comment = (TextView) convertView.findViewById(R.id.tv_comment);
             convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
+//        } else {
+//            holder = (ViewHolder) convertView.getTag();
+//        }
         Glide.with(context).load(URLs.HOST + getItem(position).getAvatar()).placeholder(R.mipmap.defaultloginheader).crossFade().into(holder.iv_avatar);
         holder.tv_discussantName.setText(getItem(position).getDiscussantName());
         holder.tv_comment.setText(getItem(position).getComments());

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -24,6 +25,7 @@ import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub1Fragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub2Fragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub3Fragment;
 import com.peoit.twopointcf.ui.fragment.InvestFindDetailSub4Fragment;
+import com.peoit.twopointcf.ui.view.MyScrollView;
 import com.peoit.twopointcf.ui.view.TagViewPager;
 import com.peoit.twopointcf.utils.AbDateUtil;
 import com.peoit.twopointcf.utils.CommonUtil;
@@ -44,7 +46,8 @@ import java.util.regex.Pattern;
 /**
  * 投资发现详情
  */
-public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener, ProjectDetailPresenter.OnHttpResultListener {
+public class InvestFindDetailActivity extends BaseActivity implements View.OnClickListener, ProjectDetailPresenter.OnHttpResultListener,
+        MyScrollView.OnScrollListener{
     //@Bind(R.id.tv_toinvest)
     TextView tvToinvest;
     //@Bind(R.id.tv_lastbottom01)
@@ -58,6 +61,8 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     private TextView tv_subtitle, tv_bottom01, tv_bottom02, tv_bottom03;
     private LinearLayout linearLayoutsub;
     private ProgressBar progressBar;
+    private View menu_top,menu;
+    private MyScrollView myScrollView;
 
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
     public ProjectBean projectBean;
@@ -87,12 +92,16 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         intent.putExtra("tag_int", tag_int);
         context.startActivityForResult(intent, 100);
     }
-
+    int tagViewPager_height;
     @Override
     protected void initView() {
         tagViewPager = (TagViewPager) findViewById(R.id.tagViewPager);
         tv_subtitle = (TextView) findViewById(R.id.tv_subtitle);
         linearLayoutsub = findViewByID_My(R.id.linearLayoutsub);
+        menu_top = findViewByID_My(R.id.menu_top);
+        menu = findViewByID_My(R.id.menu);
+        myScrollView = (MyScrollView) findViewById(R.id.scrollView);
+
         findViewById(R.id.slide_tag1).setActivated(true);
         progressBar = findViewByID_My(R.id.progressBar);
         tv_bottom01 = findViewByID_My(R.id.tv_bottom01);
@@ -106,8 +115,26 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         ViewGroup.LayoutParams layoutParams = tagViewPager.getLayoutParams();
         layoutParams.width = CommonUtil.getScreenWidth(this);
         layoutParams.height = layoutParams.width / 2;
+        tagViewPager_height=CommonUtil.getScreenWidth(this)/2;
         tagViewPager.setLayoutParams(layoutParams);
+
+        myScrollView.setOnScrollListener(this);
+        //当布局的状态或者控件的可见性发生改变回调的接口
+        findViewById(R.id.rl_parent).getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                //这一步很重要，使得上面的购买布局和下面的购买布局重合
+                onScroll(myScrollView.getScrollY());
+            }
+        });
     }
+
+    @Override
+    public void onScroll(int scrollY) {
+        int mBuyLayout2ParentTop = Math.max(scrollY, menu.getTop()+tagViewPager_height);
+        menu_top.layout(0, mBuyLayout2ParentTop, menu_top.getWidth(), mBuyLayout2ParentTop + menu_top.getHeight());
+    }
+
 
     @Override
     protected void initData() {
@@ -202,10 +229,12 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             if (!TextUtils.isEmpty(projectBean.endDate)) {
                 Calendar c = new GregorianCalendar();
                 int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(projectBean.endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());
-                if (days > 0)
+                if (days > 0){
                     tv_bottom03.setText(days + "天");
-                else
+                }else {
                     tv_bottom03.setText("已结束");
+                    projectBean.isfinish=true;
+                }
             }
 
             //判断是不是从我的已发项目跳转过来，做相应的按钮显示及操作
@@ -367,35 +396,39 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
                 case R.id.slide_tag1:
                     //商业计划
-                    findViewById(R.id.slide_tag1).setActivated(true);
-                    findViewById(R.id.slide_tag2).setActivated(false);
-                    findViewById(R.id.slide_tag3).setActivated(false);
-                    findViewById(R.id.slide_tag4).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag1).setActivated(true);
+                    menu_top.findViewById(R.id.slide_tag2).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag3).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag4).setActivated(false);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, firstFragment, "firstFragment").commit();
                     break;
                 case R.id.slide_tag2:
                     //盈利模式
-                    findViewById(R.id.slide_tag1).setActivated(false);
-                    findViewById(R.id.slide_tag2).setActivated(true);
-                    findViewById(R.id.slide_tag3).setActivated(false);
-                    findViewById(R.id.slide_tag4).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag1).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag2).setActivated(true);
+                    menu_top.findViewById(R.id.slide_tag3).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag4).setActivated(false);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, secondFragment, "secondFragment").commit();
                     break;
                 case R.id.slide_tag3:
                     //团队介绍
-                    findViewById(R.id.slide_tag1).setActivated(false);
-                    findViewById(R.id.slide_tag2).setActivated(false);
-                    findViewById(R.id.slide_tag3).setActivated(true);
-                    findViewById(R.id.slide_tag4).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag1).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag2).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag3).setActivated(true);
+                    menu_top.findViewById(R.id.slide_tag4).setActivated(false);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, thirdFragment, "thirdFragment").commit();
                     break;
                 case R.id.slide_tag4:
                     //讨论
-                    findViewById(R.id.slide_tag1).setActivated(false);
-                    findViewById(R.id.slide_tag2).setActivated(false);
-                    findViewById(R.id.slide_tag3).setActivated(false);
-                    findViewById(R.id.slide_tag4).setActivated(true);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fourthFragment, "fourthFragment").commit();
+                    menu_top.findViewById(R.id.slide_tag1).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag2).setActivated(false);
+                    menu_top.findViewById(R.id.slide_tag3).setActivated(false);
+                    if(menu_top.findViewById(R.id.slide_tag4).isActivated()) {
+                        fourthFragment.requestServer();
+                    }else{
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fl_fragment, fourthFragment, "fourthFragment").commit();
+                    }
+                    menu_top.findViewById(R.id.slide_tag4).setActivated(true);
                     //v.setActivated(true);
                     //myToast("test");
                     break;
@@ -516,4 +549,5 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         setResult(Activity.RESULT_OK, intent);
         finish();
     }
+
 }
