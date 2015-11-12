@@ -62,7 +62,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     private LinearLayout linearLayoutsub;
     private ProgressBar progressBar;
     private View menu_top,menu;
-    private MyScrollView myScrollView;
+    public MyScrollView myScrollView;
 
     private BaseFragment firstFragment, secondFragment, thirdFragment, fourthFragment;
     public ProjectBean projectBean;
@@ -102,7 +102,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
         menu = findViewByID_My(R.id.menu);
         myScrollView = (MyScrollView) findViewById(R.id.scrollView);
 
-        findViewById(R.id.slide_tag1).setActivated(true);
+        menu_top.findViewById(R.id.slide_tag1).setActivated(true);
         progressBar = findViewByID_My(R.id.progressBar);
         tv_bottom01 = findViewByID_My(R.id.tv_bottom01);
         tv_bottom02 = findViewByID_My(R.id.tv_bottom02);
@@ -127,6 +127,25 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                 onScroll(myScrollView.getScrollY());
             }
         });
+
+//        myScrollView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()) {
+//                    case MotionEvent.ACTION_MOVE:
+//                        int scrollViewMeasuredHeight=myScrollView.getChildAt(0).getMeasuredHeight();
+//                        if(v.getScrollY() + v.getHeight() >=  scrollViewMeasuredHeight){//jia
+//                            myScrollView.requestDisallowInterceptTouchEvent(false);
+//                            MyLogger.i("ACTION_MOVE");
+//                        }
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+//                        MyLogger.i("ACTION_UP");
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     @Override
@@ -294,6 +313,26 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                             public void onClick(View v) {
 //                                myToast("启动");
                                 status_operate = "启动";
+                                verifyPassword(status_operate);
+                            }
+                        });
+                        tvLastBottom02.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+//                                myToast("取消");
+                                status_operate = "取消";
+                                verifyPassword(status_operate);
+                            }
+                        });
+                        break;
+                    case MyPublishProjectActivity.INVEST_DELAY:
+                        tvLastBottom01.setText("延期");
+                        tvLastBottom02.setText("取消");
+                        tvLastBottom01.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+//                                myToast("启动");
+                                status_operate = "延期";
                                 verifyPassword(status_operate);
                             }
                         });
@@ -540,6 +579,9 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     break;
                 case "修改":
                     PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
+                    break;
+                case "延期":
+                    //PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
                     break;
             }
             return;

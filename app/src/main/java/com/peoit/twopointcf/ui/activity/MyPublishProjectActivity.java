@@ -38,6 +38,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
     public static final String WAITING_INVESTED="waiting_invested";
     public static final String VERIFY_FAILED="verify_failed";
     public static final String INVEST_FAILED="invest_failed";
+    public static final String INVEST_DELAY="invest_delay";
     public static final String INVEST_SUCCESS="invest_success";
     public static final String PROJECT_SUCCESS="project_success";
     public static final String PROJECT_FAILED="project_failed";
@@ -48,7 +49,7 @@ public class MyPublishProjectActivity extends BaseActivity implements AdapterVie
         maps_status.put(WAITING_INVESTED,"众筹中");
         maps_status.put(VERIFY_FAILED,"驳回");
         maps_status.put(INVEST_FAILED,"众筹失败");
-        maps_status.put("invest_delay","待延期审核");
+        maps_status.put(INVEST_DELAY,"待延期审核");
         maps_status.put(INVEST_SUCCESS,"待启动");
         maps_status.put(PROJECT_SUCCESS,"众筹成功");
         maps_status.put(PROJECT_FAILED,"已取消");

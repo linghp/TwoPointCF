@@ -29,6 +29,7 @@
                 android:divider="@null"
                 android:dividerHeight="12dp"
                 android:scrollbars="none"
+                android:clickable="true"
                 android:fastScrollEnabled="true"
                 android:headerDividersEnabled="true" />
         </com.peoit.twopointcf.ui.view.pullview.AbPullToRefreshView>

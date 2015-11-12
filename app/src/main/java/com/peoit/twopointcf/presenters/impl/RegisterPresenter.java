@@ -59,7 +59,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("注册失败");
+                    mView.showToast("填写信息错误，请检查所填信息是否已注册");
                 }
             }
 

@@ -87,7 +87,9 @@ public class MyCenterFragment extends BaseFragment implements ChangePasswordPres
             //绑定手机
             mycenter_tv4.setText(localUserInfo.getPhonenumber() + "");
             //个人简介
-            mycenter_tv2.setText(localUserInfo.getuserCaption());
+            if(localUserInfo.getuserCaption().equals("无")) {
+                mycenter_tv2.setText("无个人简介");
+            }
             //获取实名认证状态
             if(!"已认证".equals(localUserInfo.getIsrealnamevalidated())) {
                 RequestUserIsVerified();

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.peoit.twopointcf.R;
@@ -23,6 +22,7 @@ import com.peoit.twopointcf.ui.activity.InvestFindDetailActivity;
 import com.peoit.twopointcf.ui.activity.LoginActivity;
 import com.peoit.twopointcf.ui.adapter.CommentAdapter;
 import com.peoit.twopointcf.ui.base.BaseFragment;
+import com.peoit.twopointcf.ui.view.NoScrollListView;
 import com.peoit.twopointcf.utils.CommonUtil;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ import java.util.Map;
  * description:
  */
 public class InvestFindDetailSub4Fragment extends BaseFragment implements CommentPresenter.OnHttpResultListener {
-    private ListView listView;
+    private NoScrollListView listView;
     private EditText et_comment;
     private View bt_send;
     private CommentAdapter commentAdapter;
@@ -105,6 +105,8 @@ public class InvestFindDetailSub4Fragment extends BaseFragment implements Commen
             maps.put("projectId", projectBean.id);
             requestServer();
         }
+
+        //listView.setParentScrollView(((InvestFindDetailActivity)getActivity()).myScrollView);
     }
 
     @Override

@@ -58,6 +58,27 @@ public class InvestFindAdapter extends BaseAdapter {
             holder.tv_bottom01 = (TextView) convertView.findViewById(R.id.tv_bottom01);
             holder.tv_bottom02 = (TextView) convertView.findViewById(R.id.tv_bottom02);
             holder.tv_bottom03 = (TextView) convertView.findViewById(R.id.tv_bottom03);
+//            holder.tv_02.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
+//            holder.tv_02.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    MyLogger.i(""+event.getAction());
+//                    switch (event.getAction()) {
+//                        case MotionEvent.ACTION_DOWN:
+//                            v.setActivated(true);
+//                            break;
+//                        case MotionEvent.ACTION_UP:
+//                            v.setActivated(false);
+//                            break;
+//                    }
+//                    return false;
+//                }
+//            });
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
