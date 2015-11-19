@@ -121,7 +121,7 @@ public class InvestFindSubFragment extends BaseFragment implements AdapterView.O
     protected void updateView() {
         if (titleView != null) {
             titleView.setTitle(R.string.investfind);
-            titleView.setRightBtn(R.mipmap.search_white, this);
+            titleView.setRightBtn(R.mipmap.search, this);
             titleView.showLeftTextview("全国", this);
         }
     }

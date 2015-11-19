@@ -20,22 +20,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></com.peoit.twopointcf.ui.view.TagViewPager>
 
-            <LinearLayout
+            <LinearLayout android:layout_marginTop="6dp"
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tagViewPager"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="9dp"
-                    android:text="金佳俊宠物度假村"
-                    android:textSize="@dimen/title_txt_size"
-
-                    android:textStyle="bold" />
 
                 <include
                     layout="@layout/aa"

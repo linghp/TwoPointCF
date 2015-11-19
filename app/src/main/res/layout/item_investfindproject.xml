@@ -5,8 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
+    android:paddingBottom="6dp"
     android:paddingLeft="12dp"
-    android:paddingRight="12dp" android:paddingBottom="6dp">
+    android:paddingRight="12dp">
 
     <LinearLayout
         android:id="@+id/ll_top_normal"
@@ -15,7 +16,6 @@
         android:layout_toLeftOf="@+id/iv_tag"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="9dp"
         android:paddingTop="9dp">
 
         <ImageView
@@ -29,13 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
-            android:gravity="center_vertical"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <TextView
@@ -43,11 +42,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    tools:text="最惠宝"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textSize="@dimen/title_txt_size" />
+                    android:textSize="@dimen/large_title_txt_size"
+                    tools:text="最惠宝" />
 
 
             </LinearLayout>
@@ -59,22 +58,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="项目编号："
+                    android:text="项目编号:"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <TextView
                     android:id="@+id/tv_02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="123141341351324141"
                     android:singleLine="true"
+                    android:text="123141341351324141"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
 
@@ -82,24 +82,22 @@
                 android:id="@+id/ll_03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="6dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-
+                    style="@style/main_item_second_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="目标金额："
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:text="项目金额:" />
 
                 <TextView
                     android:id="@+id/tv_03"
+                    style="@style/main_item_second_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/red300"
                     tools:text="￥ 300万" />
             </LinearLayout>
 
@@ -107,33 +105,48 @@
                 android:id="@+id/ll_04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="6dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="单股金额："
-                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                    android:text="单股金额:"
+                    style="@style/main_item_second_text"/>
 
                 <TextView
                     android:id="@+id/tv_04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/red300"
                     android:singleLine="true"
+                    style="@style/main_item_second_text"
                     tools:text="￥ 300万" />
             </LinearLayout>
 
-            <TextView android:layout_marginTop="3dp"
-                android:id="@+id/tv_05"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ll_05"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:text="test" />
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已筹金额:"
+                    style="@style/main_item_second_text" />
+
+                <TextView
+                    android:id="@+id/tv_05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    style="@style/main_item_second_text"
+                    tools:text="￥ 300万" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <ImageView
@@ -149,7 +162,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        tools:src="@mipmap/invest_prepared_3x" />
+        android:layout_marginTop="18dp"
+        tools:src="@mipmap/chouzizhong_3x" />
 
     <include
         android:id="@+id/ll_subitemBottom"

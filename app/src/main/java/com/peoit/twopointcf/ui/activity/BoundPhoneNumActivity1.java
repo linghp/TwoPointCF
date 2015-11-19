@@ -23,7 +23,7 @@ public class BoundPhoneNumActivity1 extends BaseActivity implements View.OnClick
     private TextView boundphoneTv2, boundphoneTv3;
     private EditText boundphoneEt1, boundphoneEt2;
     private String num, phonenum;
-    private TimeCount time;
+    private CountDownTimer countDownTimer;
     private RegisterPresenter presenter;
 
     @Override
@@ -38,7 +38,7 @@ public class BoundPhoneNumActivity1 extends BaseActivity implements View.OnClick
         boundphoneEt2 = findViewByID_My(R.id.boundphone_et2);
         boundphoneTv2 = (TextView) findViewById(R.id.boundphone_tv2);
         boundphoneTv3 = (TextView) findViewById(R.id.boundphone_tv3);
-        time = new TimeCount(60000, 1000);//构造CountDownTimer对象
+        countDownTimer = CommonUtil.getCountDownTimer(boundphoneTv2, 60000);
 
     }
 
@@ -64,68 +64,58 @@ public class BoundPhoneNumActivity1 extends BaseActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.boundphone_tv2:
                 phonenum = boundphoneEt2.getText().toString().trim();
-                if (!TextUtils.isEmpty(phonenum)) {
-                    //获取验证码
-                    time.start();//开始计时
-                    //获取验证码
-                    Map<String, String> maps = new HashMap<>();
-                    maps.put("phoneNumber", localUserInfo.getPhonenumber());
-                    presenter.getVlidateCode(maps);
+                if (TextUtils.isEmpty(phonenum)) {
+                    myToast("请输入手机号");
+                    return;
                 }
-
+                if (!CommonUtil.isMobileNO(phonenum)) {
+                    myToast("请输入正确的手机号");
+                    return;
+                }
+                //获取验证码
+                countDownTimer.start();//开始计时
+                //获取验证码
+                Map<String, String> maps = new HashMap<>();
+                maps.put("phoneNumber", phonenum);
+                presenter.getVlidateCode(maps);
                 break;
+
             case R.id.boundphone_tv3:
                 num = boundphoneEt1.getText().toString().trim();
                 phonenum = boundphoneEt2.getText().toString().trim();
+                if (TextUtils.isEmpty(phonenum)) {
+                    myToast("请输入手机号");
+                    return;
+                }
+                if (!CommonUtil.isMobileNO(phonenum)) {
+                    myToast("请输入正确的手机号");
+                    return;
+                }
                 //确定,验证验证码
-                if (!TextUtils.isEmpty(phonenum)) {
-                    if (!TextUtils.isEmpty(num)) {
-                        Map<String, String> map = new HashMap<>();
-                        map.put("phoneNumber", localUserInfo.getPhonenumber());
-                        map.put("validateCode", num);
-                        presenter.getValidateCode(map, new RegisterPresenter.onValidateCode() {
-                            @Override
-                            public void onSueccess(String bean) {
-                                if ("y".equals(bean)) {
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("phonenum", phonenum + "");
-                                    CommonUtil.gotoActivityWithData(BoundPhoneNumActivity1.this, ResetPasswordActivity.class, bundle, true);
-                                } else {
-                                    myToast("验证码验证错误");
-                                }
+                if (!TextUtils.isEmpty(num)) {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("phoneNumber", phonenum);
+                    map.put("validateCode", num);
+                    presenter.getValidateCode(map, new RegisterPresenter.onValidateCode() {
+                        @Override
+                        public void onSueccess(String bean) {
+                            if ("y".equals(bean)) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("phonenum", phonenum + "");
+                                CommonUtil.gotoActivityWithData(BoundPhoneNumActivity1.this, ResetPasswordActivity.class, bundle, true);
+                            } else {
+                                myToast("验证码验证错误");
                             }
-                        });
-                    }else {
-                        myToast("请输入验证码");
-                    }
+                        }
+                    });
                 } else {
-                    myToast("请输入您要找回的手机号码");
+                    myToast("请输入验证码");
                 }
                 break;
             default:
                 break;
         }
     }
-
-    //获取验证码倒计时
-    class TimeCount extends CountDownTimer {
-        public TimeCount(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);//参数依次为总时长,和计时的时间间隔
-        }
-
-        @Override
-        public void onFinish() {//计时完毕时触发
-            boundphoneTv2.setText("重新获取");
-            boundphoneTv2.setClickable(true);
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {//计时过程显示
-            boundphoneTv2.setClickable(false);
-            boundphoneTv2.setText(millisUntilFinished / 1000 + "s后获取");
-        }
-    }
-
 
     @Override
     public void onHttpResultSuccess() {

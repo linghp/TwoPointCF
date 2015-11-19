@@ -220,6 +220,33 @@ public class ProjectDetailPresenter extends BasePresenter<ProjectDetailPresenter
             }
         }, mView);
     }
+
+    /**
+     * 延期项目
+     */
+    public void getDelayProject(Map maps) {
+        OkHttpClientManager.postAsyn(URLs.CANCELPROJECT, maps, new MyResultCallback<Object>() {
+            @Override
+            public void onError(Request request, String info, Exception e) {
+                if (TextUtils.isEmpty(info)) {
+                    mView.showToast(R.string.networkerror);
+                    e.printStackTrace();
+                } else {
+                    mView.showToast("延期失败");
+                }
+            }
+
+            @Override
+            public void onResponse(Object response) {
+                if (response != null) {
+                    MyLogger.i(">>>>>>>>>>>>>>>>延期项目" + response);
+                }
+                mView.showToast("延期成功");
+                mView.onHttpResultSuccess("");
+                //((Activity) mView).finish();
+            }
+        }, mView);
+    }
     /**
      * 启动项目
      */

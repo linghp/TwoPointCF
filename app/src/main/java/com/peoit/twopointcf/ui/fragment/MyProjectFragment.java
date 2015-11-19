@@ -34,7 +34,6 @@ public class MyProjectFragment extends BaseFragment implements View.OnClickListe
 
     public static MyProjectFragment newInstance(int index) {
         MyProjectFragment f = new MyProjectFragment();
-
         // Supply index input as an argument.
         Bundle args = new Bundle();
         args.putInt("index", index);

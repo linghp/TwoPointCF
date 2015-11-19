@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android"
-          >
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_pressed="true">
         <shape>
             <stroke android:width="1dip" android:color="@color/lightblue700" />
             <solid android:color="@color/lightblue500" />
-            <corners
-                android:radius="9dp" />
-            <padding
-                android:left="3dp"
-                android:top="3dp"
-                android:right="3dp"
-                android:bottom="3dp" />
+            <corners android:radius="9dp" />
+            <padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" />
         </shape>
-</item>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <stroke android:width="1dip" android:color="@color/grey1" />
+            <solid android:color="@color/grey2" />
+            <corners android:radius="9dp" />
+            <padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" />
+        </shape>
+    </item>
     <item>
-    <shape>
-        <stroke android:width="1dip" android:color="@color/lightblue700" />
-        <solid android:color="@color/lightblue500alpha" />
-        <corners
-            android:radius="9dp" />
-        <padding
-            android:left="3dp"
-            android:top="3dp"
-            android:right="3dp"
-            android:bottom="3dp" />
-    </shape>
-</item>
+        <shape>
+            <stroke android:width="1dip" android:color="@color/lightblue700" />
+            <solid android:color="@color/lightblue500alpha" />
+            <corners android:radius="9dp" />
+            <padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" />
+        </shape>
+    </item>
 
 </selector>

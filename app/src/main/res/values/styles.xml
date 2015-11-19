@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/lightblue300</item>
         <item name="colorPrimaryDark">@color/lightblue700</item>
-        <item name="colorAccent">@color/lightblue500</item>
+        <item name="colorAccent">@color/default_text</item>
         <item name="android:textColor">@color/default_text</item>
         <item name="android:textSize">14.0sp</item>
     </style>
@@ -16,14 +16,12 @@
 
 
     <style name="Text.Title" parent="@style/Text">
-        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="Text.Titlesub" parent="@style/Text">
-        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
@@ -48,7 +46,7 @@
 
     <!-- 自定义进度条 -->
     <style name="ProgressBar_Mini" parent="@android:style/Widget.ProgressBar.Horizontal">
-        <item name="android:maxHeight">9dip</item>
+        <item name="android:maxHeight">6dip</item>
         <item name="android:minHeight">6dip</item>
         <item name="android:indeterminateOnly">false</item>
         <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
@@ -89,5 +87,10 @@
 
     <style name="invest_fragment02_left_title_size">
         <item name="android:textSize">@dimen/title_txt_size</item>
+    </style>
+
+    <style name="main_item_second_text">
+        <item name="android:textSize">@dimen/title_txt_size</item>
+        <item name="android:textColor">@color/second_text</item>
     </style>
 </resources>

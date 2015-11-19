@@ -50,14 +50,13 @@ public class InvestFindAdapter extends BaseAdapter {
             holder.iv_left = (ImageView) convertView.findViewById(R.id.iv_left);
             holder.iv_tag = (ImageView) convertView.findViewById(R.id.iv_tag);
             holder.tv_title = (TextView) convertView.findViewById(R.id.tv_01);
-            holder.tv_02 = (TextView) convertView.findViewById(R.id.tv_02);
+           // holder.tv_02 = (TextView) convertView.findViewById(R.id.tv_02);
             holder.tv_03 = (TextView) convertView.findViewById(R.id.tv_03);
             holder.tv_04 = (TextView) convertView.findViewById(R.id.tv_04);
             holder.tv_05 = (TextView) convertView.findViewById(R.id.tv_05);
             holder.progressBar = (ProgressBar) convertView.findViewById(R.id.progressBar);
-            holder.tv_bottom01 = (TextView) convertView.findViewById(R.id.tv_bottom01);
-            holder.tv_bottom02 = (TextView) convertView.findViewById(R.id.tv_bottom02);
-            holder.tv_bottom03 = (TextView) convertView.findViewById(R.id.tv_bottom03);
+            holder.tv_bottom = (TextView) convertView.findViewById(R.id.tv_bottom);
+            holder.tv_top02 = (TextView) convertView.findViewById(R.id.tv_top02);
 //            holder.tv_02.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -91,29 +90,32 @@ public class InvestFindAdapter extends BaseAdapter {
         }*/
         holder.tv_title.setText(getItem(position).projectName);
         if (getItem(position).status.equals(MyPublishProjectActivity.WAITING_INVESTED)) {
-            holder.iv_tag.setImageResource(R.mipmap.invest_started_3x);
+            holder.iv_tag.setImageResource(R.mipmap.chouzizhong_3x);
         } else if (getItem(position).status.equals(MyPublishProjectActivity.PROJECT_SUCCESS)) {
-            holder.iv_tag.setImageResource(R.mipmap.invest_finished_3x);
-        } else {
-            holder.iv_tag.setImageResource(R.mipmap.invest_prepared_3x);
+            holder.iv_tag.setImageResource(R.mipmap.yichenggong_3x);
         }
-        holder.tv_02.setText(getItem(position).id);
+        //holder.tv_02.setText(getItem(position).id);
         holder.tv_03.setText(getItem(position).sellStockMoney / 10000 + "万元");
         holder.tv_04.setText(getItem(position).perSellStockMoney + "元");
-        holder.tv_05.setText(getItem(position).address);
+        holder.tv_05.setText(CommonUtil.twoPointConversion(getItem(position).investedAmount / 10000.0) + "万");
 
         double investedPercent = getItem(position).investedAmount / (getItem(position).sellStockMoney + 0.0);
         int investedPercent_int = (int) Math.round(investedPercent * 100);
+        if(investedPercent_int>=100){
+            holder.progressBar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progressbar_mini_finished));
+        }else{
+            holder.progressBar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progressbar_mini));
+        }
         holder.progressBar.setProgress(investedPercent_int);
-        holder.tv_bottom01.setText(investedPercent_int + "%");
-        holder.tv_bottom02.setText(CommonUtil.twoPointConversion(getItem(position).investedAmount / 10000.0) + "万");
+        holder.tv_top02.setText(investedPercent_int + "%");
+        //holder.tv_bottom02.setText(CommonUtil.twoPointConversion(getItem(position).investedAmount / 10000.0) + "万");
         if (!TextUtils.isEmpty(getItem(position).endDate)) {
             Calendar c = new GregorianCalendar();
             int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(getItem(position).endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());
             if (days > 0)
-                holder.tv_bottom03.setText(days + "天");
+                holder.tv_bottom.setText("剩余时间："+days + "天");
             else
-                holder.tv_bottom03.setText("已结束");
+                holder.tv_bottom.setText("剩余时间："+"已结束");
 
         }
 
@@ -143,6 +145,7 @@ public class InvestFindAdapter extends BaseAdapter {
         public ImageView iv_left, iv_tag;
         public TextView tv_title, tv_02, tv_03, tv_04, tv_05;
         public ProgressBar progressBar;
-        public TextView tv_bottom01, tv_bottom02, tv_bottom03;
+        //public TextView tv_bottom01, tv_bottom02, tv_bottom03;
+        public TextView tv_top02, tv_bottom;
     }
 }

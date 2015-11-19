@@ -58,7 +58,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     LinearLayout llBottom;
 
     private TagViewPager tagViewPager;
-    private TextView tv_subtitle, tv_bottom01, tv_bottom02, tv_bottom03;
+    private TextView tv_subtitle, tv_top02,tv_bottom;
     private LinearLayout linearLayoutsub;
     private ProgressBar progressBar;
     private View menu_top,menu;
@@ -96,7 +96,9 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
     @Override
     protected void initView() {
         tagViewPager = (TagViewPager) findViewById(R.id.tagViewPager);
-        tv_subtitle = (TextView) findViewById(R.id.tv_subtitle);
+        tv_subtitle = (TextView) findViewById(R.id.tv_top01);
+        tv_top02 = (TextView) findViewById(R.id.tv_top02);
+        tv_subtitle.setVisibility(View.VISIBLE);
         linearLayoutsub = findViewByID_My(R.id.linearLayoutsub);
         menu_top = findViewByID_My(R.id.menu_top);
         menu = findViewByID_My(R.id.menu);
@@ -104,9 +106,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
 
         menu_top.findViewById(R.id.slide_tag1).setActivated(true);
         progressBar = findViewByID_My(R.id.progressBar);
-        tv_bottom01 = findViewByID_My(R.id.tv_bottom01);
-        tv_bottom02 = findViewByID_My(R.id.tv_bottom02);
-        tv_bottom03 = findViewByID_My(R.id.tv_bottom03);
+        tv_bottom = findViewByID_My(R.id.tv_bottom);
         llBottom = findViewByID_My(R.id.ll_lastbottom);
         tvToinvest = findViewByID_My(R.id.tv_toinvest);
         tvLastBottom01 = findViewByID_My(R.id.tv_lastbottom01);
@@ -220,12 +220,12 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         titleView.setRightBtn(R.mipmap.collection_on, InvestFindDetailActivity.this);
                     } else {
                         isCancelProject = false;
-                        titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
+                        titleView.setRightBtn(R.mipmap.shoucang_3x, InvestFindDetailActivity.this);
                     }
                 }
             });
             //点击关注
-            titleView.setRightBtn(R.mipmap.collection, this);
+            titleView.setRightBtn(R.mipmap.shoucang_3x, this);
 
             //轮播
             tagViewPager.toUse(projectBean.projectPhotos, this);
@@ -242,16 +242,20 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
             }
             double investedPercent = projectBean.investedAmount / (projectBean.sellStockMoney + 0.0);
             int investedPercent_int = (int) Math.round(investedPercent * 100);
+            if(investedPercent_int>=100){
+                progressBar.setProgressDrawable(getResources().getDrawable(R.drawable.progressbar_mini_finished));
+            }
             progressBar.setProgress(investedPercent_int);
-            tv_bottom01.setText(investedPercent_int + "%");
-            tv_bottom02.setText(CommonUtil.twoPointConversion(projectBean.investedAmount / 10000.0) + "万");
+            tv_top02.setText(investedPercent_int + "%");
+//            tv_bottom01.setText(investedPercent_int + "%");
+//            tv_bottom02.setText(CommonUtil.twoPointConversion(projectBean.investedAmount / 10000.0) + "万");
             if (!TextUtils.isEmpty(projectBean.endDate)) {
                 Calendar c = new GregorianCalendar();
                 int days = AbDateUtil.getOffectDay(AbDateUtil.getDateByFormat(projectBean.endDate, "yyyy-MM-dd").getTime(), c.getTime().getTime());
                 if (days > 0){
-                    tv_bottom03.setText(days + "天");
+                    tv_bottom.setText("剩余时间："+days + "天");
                 }else {
-                    tv_bottom03.setText("已结束");
+                    tv_bottom.setText("剩余时间："+"已结束");
                     projectBean.isfinish=true;
                 }
             }
@@ -348,7 +352,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     default:
                         llBottom.setVisibility(View.GONE);
                 }
-            } else if ("已结束".equals(tv_bottom03.getText().toString().trim())) {
+            } else if (tv_bottom.getText().toString().trim().contains("已结束")) {
                 tvToinvest.setVisibility(View.GONE);
             }else if(tag_int==1){
                 tvToinvest.setText("取消投资");
@@ -520,7 +524,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         } else {
                             myToast("关注失败");
                             isCancelProject = false;
-                            titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
+                            titleView.setRightBtn(R.mipmap.shoucang_3x, InvestFindDetailActivity.this);
                         }
                     }
                 });
@@ -537,7 +541,7 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                         if ("true".equals(bean)) {
                             myToast("取消关注成功");
                             isCancelProject = false;
-                            titleView.setRightBtn(R.mipmap.collection, InvestFindDetailActivity.this);
+                            titleView.setRightBtn(R.mipmap.shoucang_3x, InvestFindDetailActivity.this);
                         } else {
                             myToast("取消关注失败");
                             isCancelProject = true;
@@ -581,7 +585,19 @@ public class InvestFindDetailActivity extends BaseActivity implements View.OnCli
                     PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
                     break;
                 case "延期":
-                    //PublishProjectActivity.startThisActivity(true, projectBean, InvestFindDetailActivity.this);
+                    DialogTool.createPasswordDialog(InvestFindDetailActivity.this, R.mipmap.ic_launcher, "延期", R.layout.cancelproject_dialog, "确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Dialog dialog = (Dialog) dialogInterface;
+                            EditText et_cancelcause = (EditText) dialog.findViewById(R.id.et_cancelcause);
+                            String cancelcause = et_cancelcause.getText().toString().trim();
+                            maps.clear();
+                            maps.put("projectId", projectBean.id);
+                            maps.put("delayRemarks",cancelcause);
+                            final Map maps_final = maps;
+                            presenter.getDelayProject(maps_final);
+                        }
+                    }).show();
                     break;
             }
             return;

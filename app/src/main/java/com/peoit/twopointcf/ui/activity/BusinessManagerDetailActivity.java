@@ -77,7 +77,7 @@ public class BusinessManagerDetailActivity extends BaseFragmentActivity implemen
 //            Drawable drawable = getResources().getDrawable(R.mipmap.down_arrow);
 //            titleView.setTitleRightDrawable(drawable,this);
             if(isPublished){
-                titleView.setRightBtn(R.mipmap.add,this);
+                titleView.setRightBtn(R.mipmap.search,this);
             }
         }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.presenters.impl.RegisterPresenter;
 import com.peoit.twopointcf.ui.base.BaseActivity;
+import com.peoit.twopointcf.utils.CommonUtil;
 import com.peoit.twopointcf.utils.Encryption;
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     private TextView registerTv2;
     private TextView registerTv3;
     String userName, phoneNumber, email, password, authorizationCode, verifyCode;
-    private TimeCount time;
+    private CountDownTimer countDownTimer;
     private RegisterPresenter presenter;
 
     @Override
@@ -52,7 +53,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
         registerTv1 = (TextView) findViewById(R.id.register_tv1);
         registerTv2 = (TextView) findViewById(R.id.register_tv2);
         registerTv3 = (TextView) findViewById(R.id.register_tv3);//获取验证码
-        time = new TimeCount(60000, 1000);//构造CountDownTimer对象
+        countDownTimer = CommonUtil.getCountDownTimer(registerTv3, 60000);
         //昵称失去焦点时触发
         registerEt1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -99,7 +100,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                     if (TextUtils.isEmpty(phoneNumber)) {
                         showToast("请输入手机号");
                     } else {
-                        if (isMobileNO(phoneNumber)) {
+                        if (CommonUtil.isMobileNO(phoneNumber)) {
                             //检测手机号是否被注册
                             Map<String, String> maps = new HashMap<>();
                             maps.put("phoneNumber", phoneNumber);
@@ -216,8 +217,8 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
                 if (TextUtils.isEmpty(phoneNumber)) {
                     showToast("请输入验证码");
                 } else {
-                    if (isMobileNO(phoneNumber)) {
-                        time.start();//开始计时
+                    if (CommonUtil.isMobileNO(phoneNumber)) {
+                        countDownTimer.start();//开始计时
                         //获取验证码
                         Map<String, String> maps = new HashMap<>();
                         maps.put("phoneNumber", phoneNumber);
@@ -255,7 +256,7 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
             showToast("请输入手机号");
             return false;
         } else {
-            if (isMobileNO(phoneNumber)) {
+            if (CommonUtil.isMobileNO(phoneNumber)) {
 //                presenter.getVlidateCode(phoneNumber);
             } else {
                 showToast("请输入正确手机号");
@@ -295,20 +296,6 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     }
 
     /**
-     * 验证手机格式
-     */
-    public static boolean isMobileNO(String mobiles) {
-    /*
-    移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
-    联通：130、131、132、152、155、156、185、186
-    电信：133、153、180、189、（1349卫通）
-    总结起来就是第一位必定为1，第二位必定为3或5或8，其他位置的可以为0-9
-    */
-        String telRegex = "[1][358]\\d{9}";//"[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
-        return mobiles.matches(telRegex);
-    }
-
-    /**
      * 验证邮箱格式
      */
     public static boolean isMobileEM(String email) {
@@ -334,22 +321,4 @@ public class RegisterActivity extends BaseActivity implements RegisterPresenter.
     public void onHttpResultSuccess() {
     }
 
-    //获取验证码倒计时
-    class TimeCount extends CountDownTimer {
-        public TimeCount(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);//参数依次为总时长,和计时的时间间隔
-        }
-
-        @Override
-        public void onFinish() {//计时完毕时触发
-            registerTv3.setText("重新获取");
-            registerTv3.setClickable(true);
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {//计时过程显示
-            registerTv3.setClickable(false);
-            registerTv3.setText(millisUntilFinished / 1000 + "s后获取");
-        }
-    }
 }

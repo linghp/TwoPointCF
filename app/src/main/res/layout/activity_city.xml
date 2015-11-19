@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:hint="请输入城市名或拼音" android:drawableLeft="@mipmap/search"
+        android:drawablePadding="3dp"
+        android:hint="请输入城市名或拼音" android:drawableLeft="@mipmap/searchsmall"
         style="@style/searchstyle"
          />
     <RelativeLayout

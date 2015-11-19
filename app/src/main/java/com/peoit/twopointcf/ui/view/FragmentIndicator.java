@@ -102,25 +102,25 @@ public class FragmentIndicator extends LinearLayout implements OnClickListener {
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView2);
 				currIcon.setImageResource(R.mipmap.investfindfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView2);
-				currText.setTextColor(COLOR_SELECT);
+				//currText.setTextColor(COLOR_SELECT);
 				break;
 			case 1:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView3);
 				currIcon.setImageResource(R.mipmap.bussinessdynamicfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView3);
-				currText.setTextColor(COLOR_SELECT);
+				//currText.setTextColor(COLOR_SELECT);
 				break;
 			case 2:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView4);
 				currIcon.setImageResource(R.mipmap.myprojectfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView4);
-				currText.setTextColor(COLOR_SELECT);
+				//currText.setTextColor(COLOR_SELECT);
 				break;
 			case 3:
 				currIcon =(ImageView) mIndicators[which].findViewById(R.id.imageView1);
 				currIcon.setImageResource(R.mipmap.mycenterfocus);
 				currText = (TextView) mIndicators[which].findViewById(R.id.textView1);
-				currText.setTextColor(COLOR_SELECT);
+				//currText.setTextColor(COLOR_SELECT);
 				break;
 		}
 

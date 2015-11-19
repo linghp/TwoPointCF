@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import com.peoit.twopointcf.R;
 import com.peoit.twopointcf.base.BasePresenter;
 import com.peoit.twopointcf.base.IBaseView_Response;
-import com.peoit.twopointcf.entity.IsCorrectBean;
 import com.peoit.twopointcf.entity.RegisterBean;
 import com.peoit.twopointcf.net.OkHttpClientManager;
 import com.peoit.twopointcf.net.URLs;
@@ -75,37 +74,33 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
     }
 
     //验证手机验证码
-    public void getValidateCode(Map map, final onValidateCode validateCode){
-        OkHttpClientManager.postAsyn(URLs.USER_VALIDATECODE, map, new MyResultCallback<IsCorrectBean>() {
+    public void getValidateCode(Map map, final onValidateCode validateCode) {
+        OkHttpClientManager.postAsyn(URLs.USER_VALIDATECODE, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
                 if (TextUtils.isEmpty(info)) {
                     mView.showToast(R.string.networkerror);
                     e.printStackTrace();
                 } else {
-                    mView.showToast("验证码错误");
+                    mView.showToast(info);
                 }
             }
 
             @Override
-            public void onResponse(IsCorrectBean response) {
-
-                MyLogger.i(">>>>>>>>>验证手机验证码" + response.getIsCorrect());
-                if (response.getIsCorrect()){
+            public void onResponse(Object response) {
+                MyLogger.i(">>>>>>>>>验证手机验证码" + response);
+                if (response != null) {
                     mView.showToast("验证码验证成功");
-                    if (validateCode != null){
-                        validateCode.onSueccess("y");
-                    }
-                }else {
+                    validateCode.onSueccess("y");
+                } else {
                     mView.showToast("验证码验证失败");
-                    if (validateCode != null){
-                        validateCode.onSueccess("n");
-                    }
+                    validateCode.onSueccess("n");
                 }
 
             }
-        },mView);
+        }, mView);
     }
+
     //获取手机验证码
     public void getVlidateCode(Map maps) {
         OkHttpClientManager.postAsyn(URLs.USER_VLIDATECODE, maps, new MyResultCallback<Object>() {
@@ -121,17 +116,17 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
             @Override
             public void onResponse(Object response) {
-                if (response != null){
-                    mView.showToast("获取手机验证码成功" + response.toString());
+                if (response != null) {
+                    mView.showToast("获取手机验证码成功,请查收");
                     MyLogger.i(">>>>>>>>>>>>>>>>获取手机验证码" + response.toString());
 
                 }
             }
-        },mView);
+        }, mView);
     }
 
     //验证昵称是否可用
-    public  void getUserNameValidate(Map map){
+    public void getUserNameValidate(Map map) {
         OkHttpClientManager.postAsyn(URLs.USER_USERNAMEVAILDATE, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -145,7 +140,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
             @Override
             public void onResponse(Object response) {
-                if (response != null){
+                if (response != null) {
                     mView.showToast("昵称验证通过" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>验证昵称是否可用" + response.toString());
                 }
@@ -154,7 +149,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
     }
 
     //验证手机号是否已被注册
-    public void getPhoneValidate(final Map map){
+    public void getPhoneValidate(final Map map) {
         OkHttpClientManager.postAsyn(URLs.USER_PHONEVALIDATE, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -168,7 +163,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
             @Override
             public void onResponse(Object response) {
-                if (response != null){
+                if (response != null) {
                     //mView.showToast("手机号验证成功" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>验证手机号是否已被注册" + response.toString());
 
@@ -177,8 +172,8 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
         });
     }
 
-     //验证手机号是否已被注册
-    public void verifyEmail(final Map map){
+    //验证手机号是否已被注册
+    public void verifyEmail(final Map map) {
         OkHttpClientManager.postAsyn(URLs.USER_VERIFYEMAIL, map, new MyResultCallback<Object>() {
             @Override
             public void onError(Request request, String info, Exception e) {
@@ -192,7 +187,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
 
             @Override
             public void onResponse(Object response) {
-                if (response != null){
+                if (response != null) {
                     //mView.showToast("手机号验证成功" + response.toString());
                     MyLogger.i(">>>>>>>>>>>>>>>>验证邮箱是否已被注册" + response.toString());
 
@@ -201,7 +196,7 @@ public class RegisterPresenter extends BasePresenter<RegisterPresenter.OnHttpRes
         });
     }
 
-    public interface onValidateCode{
+    public interface onValidateCode {
         void onSueccess(String bean);
     }
 
